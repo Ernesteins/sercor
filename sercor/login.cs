@@ -22,7 +22,6 @@ namespace sercor
             InitializeComponent();
             try
             {
-                //Conexion MYSQL
                 bdComun.obtenerConexion(server, databaseName, user, password);
             }
             catch (MySql.Data.MySqlClient.MySqlException)
