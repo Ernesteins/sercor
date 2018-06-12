@@ -10,8 +10,15 @@ namespace sercor
 {
     public class bdComun
     {
-        public static MySqlConnection obtenerConexion(string server,string databaseName, string user, string password)
+        //CONEXION
+        public static MySqlConnection obtenerConexion()
         {
+            //Variables de conexion
+            string server = "127.0.0.1";
+            string databaseName = "sercorDB";
+            string user = "sercoruser";
+            string password = "S3rc0r";
+
             MySqlConnection conectar = new MySqlConnection("server="+server+";" +
                 "database="+databaseName+";" +
                 "Uid="+user+";" +
