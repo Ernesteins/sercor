@@ -23,8 +23,6 @@ NOTAS
 	30doorDIE
 
 PENDIENTE
-	quitar apellido en cliente, verificar cambios en clase cliente y clienteDBM
-	extender almacenamiento de nombre en cliente
 	actualizar campos cada vez que se guarda un cliente
 	si el cliente es nuevo crear un registro, caso contrario nope
 
@@ -45,7 +43,10 @@ COSAS DESCUBIERTAS
 
 URGENTE
 	cambio de dimension en ID_CLIENTE a 15 debido al RUC
-	Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE int(15);
+	Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE int(32);
 
 	cambio de nombre en tabla usuarios campo: contrasena por CONTRASENA
 	Alter TABLE sercorDB.usuario MODIFY CONTRASENA char varying(64);
+
+	eliminar columna apellido de cliente
+	ALTER TABLE sercordb.cliente DROP APELLIDO;

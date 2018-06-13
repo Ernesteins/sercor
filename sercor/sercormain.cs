@@ -97,6 +97,7 @@ namespace sercor
         {
             //CARGA EN AUTOCOMPLETE DE NOMBRE DESDE BASE DE DATOS
             var clienteNombres = new AutoCompleteStringCollection();
+            var clienteId = new AutoCompleteStringCollection();
             //MessageBox.Show(Convert.ToString(ClienteDBM.ObtenerNombres().Count));
             int j = 0;
             for (int i = 0; i <= ClienteDBM.ObtenerNombres().Count; i++)
@@ -104,10 +105,12 @@ namespace sercor
                 if (j != ClienteDBM.ObtenerNombres().Count)
                 {
                     clienteNombres.Add(ClienteDBM.ObtenerNombres()[j].NOMBRE);
+                    clienteId.Add(Convert.ToString(ClienteDBM.ObtenerNombres()[j].ID_CLIENTE));
                     j++;
                 }
             }
-            txtName.AutoCompleteCustomSource = clienteNombres;
+            //txtName.AutoCompleteCustomSource = clienteNombres;
+            txtId.AutoCompleteCustomSource = clienteId;
         }
 
         public sercormain(){
@@ -146,6 +149,66 @@ namespace sercor
         private void btnMovimientos_Click(object sender, EventArgs e)
         {
             menuToggler(6);
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            //if (ocupado2 != true)
+            //{
+            //    Ocupado(1);
+            //    if (txtName.Text == ClienteDBM.ObtenerCliente(null, txtName.Text).NOMBRE)
+            //    {
+            //        txtTelefono.Text = ClienteDBM.ObtenerCliente(null, txtName.Text).TELEFONO;
+            //        txtDireccion.Text = ClienteDBM.ObtenerCliente(null, txtName.Text).DIRECCION;
+            //        txtId.Text = Convert.ToString(ClienteDBM.ObtenerCliente(null, txtName.Text).ID_CLIENTE);
+            //        ocupado = false;
+            //    }
+            //    else
+            //    {
+            //        txtTelefono.Text = "";
+            //        txtDireccion.Text = "";
+            //        txtId.Text = "";
+            //        ocupado = false;
+            //    }
+            //}
+        }
+
+        //bool ocupado;
+        //bool ocupado2;
+        //private void Ocupado(int e)
+        //{
+        //    switch (e)
+        //    {
+        //        case 1:
+        //            ocupado = true;
+        //            break;
+        //        case 2:
+        //            ocupado2 = true;
+        //            break;
+        //    }
+        //}
+
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+            //if (ocupado!=true)
+            //{
+            //    Ocupado(2);
+                if (txtId.Text == Convert.ToString(ClienteDBM.ObtenerCliente(txtId.Text, null).ID_CLIENTE))
+                {
+                    txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
+                    txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
+                    txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
+                    //ocupado2 = false;
+                }
+                else
+                {
+                    txtName.Text = "";
+                    txtTelefono.Text = "";
+                    txtDireccion.Text = "";
+                    //ocupado2 = false;
+                }
+            //}
         }
     }
 }

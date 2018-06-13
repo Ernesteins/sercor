@@ -66,7 +66,7 @@ namespace sercor
         }
 
 
-
+        //OBTENER UN SOLO USUARIO
         public static Usuario ObtenerUsuario(string pId)
         {
             Usuario pUsuario = new Usuario();
