@@ -14,8 +14,23 @@ namespace sercor
     public partial class login : Form
     {
         //Variables posición de formulario
-        int posY = 0, posX = 0; 
+        //int posY = 0, posX = 0; 
 
+        private void pnHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            ////if (e.Button != MouseButtons.Left)
+            ////{
+            ////    pnHead.Cursor = Cursors.Default;
+            ////    posX = e.X;
+            ////    posY = e.Y;
+            ////}
+            ////else
+            ////{
+            ////    Left = Left + (e.X - posX);
+            ////    Top = Top + (e.Y - posY);
+            ////    pnHead.Cursor = Cursors.SizeAll;
+            ////}
+        }
 
         //CONEXION DE CARGA
         private void Conectar()
@@ -26,16 +41,14 @@ namespace sercor
                 bdComun.obtenerConexion();
 
                 lblStatus.Text = "Conectado a sercorDB";
-                lblStatus.ForeColor = Color.Green;
-                pnBottom.BackColor = Color.Green;
+                lblIndiactor.ForeColor = Color.Lime;
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
                 MessageBox.Show("Error en conexión", "Sercor", MessageBoxButtons.OK);
 
                 lblStatus.Text = "Desconectado";
-                lblStatus.ForeColor = Color.Red;
-                pnBottom.BackColor = Color.Red;
+                lblIndiactor.ForeColor = Color.OrangeRed;
                 txtPsw.Enabled = false;
                 txtUser.Enabled = false;
                 btnlogin.Enabled = false;
@@ -72,17 +85,18 @@ namespace sercor
                 UsuarioSeleccionado = UsuarioDBM.ObtenerUsuario(txtUser.Text);
                 if (UsuarioSeleccionado!=null)
                 {
-                    string passHashed = UsuarioSeleccionado.contrasena;
+                    string passHashed = UsuarioSeleccionado.CONTRASENA;
                     string passUnhash = Hash.sha256(txtPsw.Text);
                     if (passHashed==passUnhash)
                     {
                         string nombreUser = UsuarioSeleccionado.NOMBRE;
-                        MessageBox.Show(nombreUser, "");
+                        //MessageBox.Show(nombreUser, "");
+                        //pasar aquí el nivel de usuario
+                        FormInstance.mainWindow();
                     }
                 }
             }
         }
-
 
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -99,22 +113,6 @@ namespace sercor
         private void lblStatus_Click(object sender, EventArgs e)
         {
             Conectar();
-        }
-
-        private void pnHead_MouseMove(object sender, MouseEventArgs e)
-        {
-                if (e.Button != MouseButtons.Left)
-                {
-                    pnHead.Cursor = Cursors.Default;
-                    posX = e.X;
-                    posY = e.Y;
-                }
-                else
-                {
-                    Left = Left + (e.X - posX);
-                    Top = Top + (e.Y - posY);
-                    pnHead.Cursor = Cursors.SizeAll;
-                }
         }
     }
 }

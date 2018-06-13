@@ -11,7 +11,7 @@ namespace sercor
         public uint ID_USUARIO { get; set; }
         public UInt16 TIPO { get; set; }
         public string USUARIO { get; set; }
-        public string contrasena { get; set; }
+        public string CONTRASENA { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string CEDULA { get; set; }
@@ -31,7 +31,7 @@ namespace sercor
             this.ID_USUARIO = pId;
             this.TIPO = pTipo;
             this.USUARIO = pUsuario;
-            this.contrasena = pContrasena;
+            this.CONTRASENA = pContrasena;
             this.NOMBRE = pNombre;
             this.APELLIDO = pApellido;
             this.CEDULA = pCedula;

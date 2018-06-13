@@ -14,6 +14,38 @@ TIPO USUARIO
 	3 Soporte
 	4 Cajero
 
+INVESTIGAR
+	clienteNombres.Add(ClienteDBM.ObtenerNombres()[j].NOMBRE);
 
 NOTAS
 	servicio Mysql automatico al inicio
+	crisGRA1996_
+	30doorDIE
+
+PENDIENTE
+	quitar apellido en cliente, verificar cambios en clase cliente y clienteDBM
+	extender almacenamiento de nombre en cliente
+	actualizar campos cada vez que se guarda un cliente
+	si el cliente es nuevo crear un registro, caso contrario nope
+
+
+COSAS DESCUBIERTAS
+	//dataGridView1.DataSource = ClienteDBM.ObtenerNombres();
+	
+	//string m = Convert.ToString(ClienteDBM.ObtenerNombres()[0].NOMBRE);
+	//MessageBox.Show(m);
+
+	//CARGA EN AUTOCOMPLETE DE NOMBRE DESDE BASE DE DATOS
+            var clienteNombres = new AutoCompleteStringCollection();
+            for (int i = 0; i <= ClienteDBM.ObtenerNombres().Count; i++)
+            {
+                clienteNombres.Add(ClienteDBM.ObtenerNombres()[0].NOMBRE);
+            }
+            txtName.AutoCompleteCustomSource = clienteNombres;
+
+URGENTE
+	cambio de dimension en ID_CLIENTE a 15 debido al RUC
+	Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE int(15);
+
+	cambio de nombre en tabla usuarios campo: contrasena por CONTRASENA
+	Alter TABLE sercorDB.usuario MODIFY CONTRASENA char varying(64);

@@ -17,10 +17,10 @@ namespace sercor
             int retorno = 0;
 
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "Insert into clientes (ID_USUARIO, TIPO, USUARIO, contrasena, " +
+                "Insert into clientes (ID_USUARIO, TIPO, USUARIO, CONTRASENA, " +
                 "NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILIGEIO1, PRIVILEGIO2) " +
                 "values ('{0}','{1}','{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}')",
-                pUsuario.TIPO, pUsuario.USUARIO, pUsuario.contrasena, pUsuario.NOMBRE,
+                pUsuario.TIPO, pUsuario.USUARIO, pUsuario.CONTRASENA, pUsuario.NOMBRE,
                 pUsuario.APELLIDO, pUsuario.CEDULA, pUsuario.DIRECCION, pUsuario.TELEFONO,
                 pUsuario.PRIVILEGIO1, pUsuario.PRIVILEGIO2
                 ), bdComun.obtenerConexion());
@@ -39,7 +39,7 @@ namespace sercor
             List<Usuario> _lista = new List<Usuario>();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_USUARIO, TIPO, USUARIO, contrasena, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILIGEIO1, PRIVILEGIO2 FROM usuario  where USUARIO ='{0}'", pUser), bdComun.obtenerConexion());
+           "SELECT ID_USUARIO, TIPO, USUARIO, CONTRASENA, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO ='{0}'", pUser), bdComun.obtenerConexion());
             // or contrasena='{1}' 
             //, pContrasena
 
@@ -51,7 +51,7 @@ namespace sercor
                 pUsuario.ID_USUARIO = _reader.GetUInt32(0);
                 pUsuario.TIPO = _reader.GetUInt16(1);
                 pUsuario.USUARIO = _reader.GetString(2);
-                pUsuario.contrasena = _reader.GetString(3);
+                pUsuario.CONTRASENA = _reader.GetString(3);
                 pUsuario.NOMBRE = _reader.GetString(4);
                 pUsuario.APELLIDO = _reader.GetString(5);
                 pUsuario.CEDULA = _reader.GetString(6);
@@ -72,14 +72,14 @@ namespace sercor
             Usuario pUsuario = new Usuario();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT ID_USUARIO, TIPO, USUARIO, contrasena, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO='{0}'", pId), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT ID_USUARIO, TIPO, USUARIO, CONTRASENA, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO='{0}'", pId), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
                 pUsuario.ID_USUARIO = _reader.GetUInt32(0);
                 pUsuario.TIPO = _reader.GetUInt16(1);
                 pUsuario.USUARIO = _reader.GetString(2);
-                pUsuario.contrasena = _reader.GetString(3);
+                pUsuario.CONTRASENA = _reader.GetString(3);
                 pUsuario.NOMBRE = _reader.GetString(4);
                 pUsuario.APELLIDO = _reader.GetString(5);
                 pUsuario.CEDULA = _reader.GetString(6);
@@ -94,8 +94,5 @@ namespace sercor
             return pUsuario;
 
         }
-
-
-
     }
 }
