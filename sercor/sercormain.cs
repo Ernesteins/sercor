@@ -12,6 +12,48 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
+        //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
+        public  sercormain(Usuario usuario)
+        {
+            InitializeComponent();
+
+            menuToggler(1);
+
+            autocompleteRefresh();
+
+            UInt16 tipoUser = usuario.TIPO;
+            string usuarioUser = usuario.USUARIO;
+            string nombreUser = usuario.NOMBRE;
+            string apellidoUser = usuario.APELLIDO;
+            string cedulaUser = usuario.CEDULA;
+            string direccionUser = usuario.DIRECCION;
+            string telefonoUser = usuario.TELEFONO;
+            UInt16 privilegio1User = usuario.PRIVILEGIO1;
+            UInt16 privilegio2User = usuario.PRIVILEGIO2;
+
+            btnUser.Text = nombreUser + " " + apellidoUser;
+
+            //CARACTERISTICAS SEGUN TIPO DE USUARIO
+            switch (tipoUser)
+            {
+                case 1:
+                    btnUser.BackColor=Color.FromArgb(255, 128, 128);
+                    break;
+
+                case 2:
+                    btnUser.BackColor = Color.FromArgb(255, 192, 128);
+                    break;
+
+                case 3:
+                    btnUser.BackColor = Color.FromArgb(128, 255, 128);
+                    break;
+
+                case 4:
+                    btnUser.BackColor = Color.FromArgb(128, 128, 255);
+                    break;
+            }
+        }
+
         //CAMBIO DE MENU
         private void menuToggler(int pnNumber)
         {
@@ -113,12 +155,12 @@ namespace sercor
             txtId.AutoCompleteCustomSource = clienteId;
         }
 
-        public sercormain(){
-            InitializeComponent();
-            menuToggler(1);
+        //public sercormain(){
+        //    InitializeComponent();
+        //    menuToggler(1);
 
-            autocompleteRefresh();
-        }
+        //    autocompleteRefresh();
+        //}
 
         public Cliente clienteNombres { get; set; }
 
@@ -209,6 +251,21 @@ namespace sercor
                     //ocupado2 = false;
                 }
             //}
+        }
+
+        private void btnAllProducts_Click(object sender, EventArgs e)
+        {
+            //dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            txtId.Text = "";
+            txtName.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+
+            txtId.Focus();
         }
     }
 }
