@@ -87,6 +87,7 @@ namespace sercor
                 {
                     string passHashed = UsuarioSeleccionado.CONTRASENA;
                     string passUnhash = Hash.sha256(txtPsw.Text);
+                    //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
                     if (passHashed==passUnhash)
                     {
                         string nombreUser = UsuarioSeleccionado.NOMBRE;
@@ -113,6 +114,16 @@ namespace sercor
         private void lblStatus_Click(object sender, EventArgs e)
         {
             Conectar();
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
