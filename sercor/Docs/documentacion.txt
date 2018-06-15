@@ -25,14 +25,14 @@ NOTAS
 	https://www.flaticon.com/packs/interaction-assets-2/11
 
 PENDIENTE
-	arreglos base de datos
-	modificar producto productoDBM
+	
+	
 	actualizar campos cada vez que se guarda un cliente
 	si el cliente es nuevo crear un registro, caso contrario nope
 
 	impedir el ingreso de letras en el numero telefónico
 	impedir el ingreso de numeros en el nombre
-	busqueda de productos desde la descripción(autocompletado) - ingresar algunos productos
+	
 	
 		
 
@@ -52,14 +52,3 @@ COSAS DESCUBIERTAS
 	
 
 URGENTE
-	cambio de dimension en ID_CLIENTE a 15 debido al RUC
-	Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE CHAR(32);
-
-	cambio de nombre en tabla usuarios campo: contrasena por CONTRASENA
-	Alter TABLE sercorDB.usuario MODIFY CONTRASENA char varying(64);
-
-	eliminar columna apellido de cliente
-	ALTER TABLE sercordb.cliente DROP APELLIDO;
-
-	aumentar el tamaño del nombre del cliente
-	ALTER TABLE sercordb.cliente MODIFY NOMBRE char varying(100);
