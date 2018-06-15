@@ -86,14 +86,15 @@ namespace sercor
                 if (UsuarioSeleccionado!=null)
                 {
                     string passHashed = UsuarioSeleccionado.CONTRASENA;
+
                     string passUnhash = Hash.sha256(txtPsw.Text);
                     //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
                     if (passHashed==passUnhash)
                     {
-                        string nombreUser = UsuarioSeleccionado.NOMBRE;
                         //MessageBox.Show(nombreUser, "");
                         //pasar aquí el nivel de usuario
-                        FormInstance.mainWindow();
+
+                        FormInstance.mainWindow(UsuarioSeleccionado);
                     }
                 }
             }

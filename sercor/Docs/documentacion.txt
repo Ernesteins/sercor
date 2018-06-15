@@ -9,11 +9,11 @@ credenciales root
 	crdencial:usuario
 
 TIPO USUARIO
-	1 RootAdmin
-	2 Admin
-	3 Soporte
-	4 Cajero
-
+	1 RootAdmin ROJO 255; 128; 128
+	2 Admin	NARANJA 255; 192; 128
+	3 Soporte VERDE 128; 255; 128
+	4 Cajero MORADO 128; 128; 255
+	
 INVESTIGAR
 	clienteNombres.Add(ClienteDBM.ObtenerNombres()[j].NOMBRE);
 
@@ -23,6 +23,8 @@ NOTAS
 	30doorDIE
 
 PENDIENTE
+	arreglos base de datos
+	modificar producto productoDBM
 	actualizar campos cada vez que se guarda un cliente
 	si el cliente es nuevo crear un registro, caso contrario nope
 

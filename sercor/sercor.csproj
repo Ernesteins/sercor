@@ -57,6 +57,8 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto.cs" />
+    <Compile Include="ProductoDBM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sercormain.cs">
@@ -98,6 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\documentacion.txt" />
+    <None Include="Resources\ui16 %2853%29.png" />
+    <None Include="Resources\ui16 %2857%29.png" />
+    <None Include="Resources\ui16 %2824%29.png" />
     <None Include="Resources\ui32 %28128%29.png" />
     <None Include="Resources\ui32 %28127%29.png" />
     <None Include="Resources\ui32 %28126%29.png" />

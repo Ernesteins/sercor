@@ -16,7 +16,7 @@ namespace sercor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new sercormain());
+            Application.Run(new login());
         }
     }
 }

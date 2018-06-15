@@ -103,6 +103,36 @@ namespace sercor.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ui16__24_ {
+            get {
+                object obj = ResourceManager.GetObject("ui16 (24)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ui16__53_ {
+            get {
+                object obj = ResourceManager.GetObject("ui16 (53)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ui16__57_ {
+            get {
+                object obj = ResourceManager.GetObject("ui16 (57)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ui32__1_ {
             get {
                 object obj = ResourceManager.GetObject("ui32 (1)", resourceCulture);
