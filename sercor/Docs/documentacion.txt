@@ -22,6 +22,8 @@ NOTAS
 	crisGRA1996_
 	30doorDIE
 
+	https://www.flaticon.com/packs/interaction-assets-2/11
+
 PENDIENTE
 	arreglos base de datos
 	modificar producto productoDBM

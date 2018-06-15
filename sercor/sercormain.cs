@@ -21,6 +21,8 @@ namespace sercor
 
             autocompleteRefresh();
 
+            dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
+
             int tipoUser = usuario.TIPO;
             string usuarioUser = usuario.USUARIO;
             string nombreUser = usuario.NOMBRE;
@@ -270,6 +272,39 @@ namespace sercor
             txtDireccion.Text = "";
 
             txtId.Focus();
+        }
+
+        private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
+            Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
+
+
+            int filas = vistaFactura.RowCount;
+            bool modif = false;
+            int k = 0;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+                if (codigo == Convert.ToInt32(vistaFactura.Rows[j].Cells[0].Value))
+                {
+                    k = j;
+                    modif = true;
+                }
+            }
+            if (modif == false)
+            {
+                vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
+                1, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+            }
+            else
+            {
+                vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
+                vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
+                vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
+                vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
+            }
+
         }
     }
 }
