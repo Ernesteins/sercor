@@ -48,7 +48,7 @@ namespace sercor
             {
                 Usuario pUsuario = new Usuario();
 
-                pUsuario.ID_USUARIO = _reader.GetUInt32(0);
+                pUsuario.ID_USUARIO = _reader.GetInt32(0);
                 pUsuario.TIPO = _reader.GetUInt16(1);
                 pUsuario.USUARIO = _reader.GetString(2);
                 pUsuario.CONTRASENA = _reader.GetString(3);
@@ -76,8 +76,8 @@ namespace sercor
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                pUsuario.ID_USUARIO = _reader.GetUInt32(0);
-                pUsuario.TIPO = _reader.GetUInt16(1);
+                pUsuario.ID_USUARIO = _reader.GetInt32(0);
+                pUsuario.TIPO = _reader.GetInt32(1);
                 pUsuario.USUARIO = _reader.GetString(2);
                 pUsuario.CONTRASENA = _reader.GetString(3);
                 pUsuario.NOMBRE = _reader.GetString(4);
@@ -85,8 +85,8 @@ namespace sercor
                 pUsuario.CEDULA = _reader.GetString(6);
                 pUsuario.DIRECCION = _reader.GetString(7);
                 pUsuario.TELEFONO = _reader.GetString(8);
-                pUsuario.PRIVILEGIO1 = _reader.GetUInt16(9);
-                pUsuario.PRIVILEGIO2 = _reader.GetUInt16(10);
+                pUsuario.PRIVILEGIO1 = _reader.GetInt16(9);
+                pUsuario.PRIVILEGIO2 = _reader.GetInt16(10);
 
             }
 

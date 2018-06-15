@@ -21,15 +21,15 @@ namespace sercor
 
             autocompleteRefresh();
 
-            UInt16 tipoUser = usuario.TIPO;
+            int tipoUser = usuario.TIPO;
             string usuarioUser = usuario.USUARIO;
             string nombreUser = usuario.NOMBRE;
             string apellidoUser = usuario.APELLIDO;
             string cedulaUser = usuario.CEDULA;
             string direccionUser = usuario.DIRECCION;
             string telefonoUser = usuario.TELEFONO;
-            UInt16 privilegio1User = usuario.PRIVILEGIO1;
-            UInt16 privilegio2User = usuario.PRIVILEGIO2;
+            int privilegio1User = usuario.PRIVILEGIO1;
+            int privilegio2User = usuario.PRIVILEGIO2;
 
             btnUser.Text = nombreUser + " " + apellidoUser;
 
@@ -255,7 +255,11 @@ namespace sercor
 
         private void btnAllProducts_Click(object sender, EventArgs e)
         {
-            //dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
+            dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
+
+            //DataGridViewColumn column = dgvProductos.Columns[0];
+            //column.Width = 50;
+
         }
 
         private void btnNew_Click(object sender, EventArgs e)
