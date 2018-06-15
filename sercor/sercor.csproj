@@ -99,7 +99,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\consultas.sql" />
     <Content Include="Docs\documentacion.txt" />
+    <Content Include="Docs\genesis.sql" />
     <None Include="Resources\ui16 %2853%29.png" />
     <None Include="Resources\ui16 %2857%29.png" />
     <None Include="Resources\ui16 %2824%29.png" />

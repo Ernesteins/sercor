@@ -51,7 +51,7 @@ COSAS DESCUBIERTAS
 
 URGENTE
 	cambio de dimension en ID_CLIENTE a 15 debido al RUC
-	Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE int(32);
+	Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE CHAR(32);
 
 	cambio de nombre en tabla usuarios campo: contrasena por CONTRASENA
 	Alter TABLE sercorDB.usuario MODIFY CONTRASENA char varying(64);
