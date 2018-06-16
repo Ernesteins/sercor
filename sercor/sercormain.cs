@@ -34,7 +34,7 @@ namespace sercor
         }
 
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
-        public  sercormain(Usuario usuario)
+        public sercormain(Usuario usuario)
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace sercor
 
             ultimoIdFactura();
 
-            toogleError(false,"");
+            toogleError(false, "");
 
             autocompleteRefresh();
 
@@ -64,7 +64,7 @@ namespace sercor
             switch (tipoUser)
             {
                 case 1:
-                    btnUser.BackColor=Color.FromArgb(255, 128, 128);
+                    btnUser.BackColor = Color.FromArgb(255, 128, 128);
                     break;
 
                 case 2:
@@ -96,7 +96,7 @@ namespace sercor
             btnCxc.BackColor = Color.LightSkyBlue;
             btnInventario.BackColor = Color.LightSkyBlue;
             btnReportes.BackColor = Color.LightSkyBlue;
-            btnTrabajos.BackColor = Color.LightSkyBlue; 
+            btnTrabajos.BackColor = Color.LightSkyBlue;
             btnMovimientos.BackColor = Color.LightSkyBlue;
 
             btnVentas.ForeColor = Color.FromArgb(64, 64, 64);
@@ -105,7 +105,7 @@ namespace sercor
             btnReportes.ForeColor = Color.FromArgb(64, 64, 64);
             btnMovimientos.ForeColor = Color.FromArgb(64, 64, 64);
             btnTrabajos.ForeColor = Color.FromArgb(64, 64, 64);
-            
+
             switch (pnNumber)
             {
                 case 1: //VENTAS
@@ -191,8 +191,8 @@ namespace sercor
 
         public Cliente clienteNombres { get; set; }
 
-        private void btnVentas_Click(object sender, EventArgs e){
-            menuToggler(1);  
+        private void btnVentas_Click(object sender, EventArgs e) {
+            menuToggler(1);
         }
 
         private void btnCxc_Click(object sender, EventArgs e)
@@ -263,20 +263,20 @@ namespace sercor
             //if (ocupado!=true)
             //{
             //    Ocupado(2);
-                if (txtId.Text == Convert.ToString(ClienteDBM.ObtenerCliente(txtId.Text, null).ID_CLIENTE))
-                {
-                    txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
-                    txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
-                    txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
-                    //ocupado2 = false;
-                }
-                else
-                {
-                    txtName.Text = "";
-                    txtTelefono.Text = "";
-                    txtDireccion.Text = "";
-                    //ocupado2 = false;
-                }
+            if (txtId.Text == Convert.ToString(ClienteDBM.ObtenerCliente(txtId.Text, null).ID_CLIENTE))
+            {
+                txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
+                txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
+                txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
+                //ocupado2 = false;
+            }
+            else
+            {
+                txtName.Text = "";
+                txtTelefono.Text = "";
+                txtDireccion.Text = "";
+                //ocupado2 = false;
+            }
             //}
         }
 
@@ -334,7 +334,7 @@ namespace sercor
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            toogleError(false,"");
+            toogleError(false, "");
             try
             {
                 if (txtAdd.Text == "")
@@ -343,7 +343,7 @@ namespace sercor
                 }
                 if (Convert.ToInt32(txtAdd.Text) <= 0)
                 {
-                    toogleError(true,"Debe ingresar un número mayor a 0");
+                    toogleError(true, "Debe ingresar un número mayor a 0");
                 }
                 else
                 {
@@ -377,10 +377,24 @@ namespace sercor
                     }
                 }
             }
-            catch(System.FormatException)
+            catch (System.FormatException)
             {
-                toogleError(true,"Debe ingresar un número");
+                toogleError(true, "Debe ingresar un número");
             }
         }
+
+        private void desc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private float  Calculo_FactorDescuento(float descuento,float total_inicial,float subtotal_inicial,float iva)
+        {
+            float factorDescuento = 0;
+            factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
+            return (factorDescuento);
+        }
+
+
     }
 }

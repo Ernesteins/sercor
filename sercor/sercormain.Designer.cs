@@ -615,6 +615,7 @@
             this.desc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.desc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.desc.UseVisualStyleBackColor = false;
+            this.desc.Click += new System.EventHandler(this.desc_Click);
             // 
             // textBox10
             // 
