@@ -125,7 +125,7 @@ create table DETALLE (
    ID_PRODUCTO          CHAR(16)                 not null,
    CANTIDAD             FLOAT(12,2)          not null,
    SUBTOTAL             FLOAT(12,2)          not null,
-   FACTOR_DESCUENTO     FLOAT(12,2)          not null,
+   
    constraint PK_DETALLE primary key (ID_DETALLE)
 );
 
@@ -190,6 +190,8 @@ create table FACTURA (
    IVA                  FLOAT(12,2)          not null,
    TOTAL                FLOAT(12,2)          not null,
    FECHA                DATETIME                 not null,
+   FACTOR_DESCUENTO     FLOAT(12,2)          not null,
+   VALOR_DESCONTADO     FLOAT(12,2)          not null,
    constraint PK_FACTURA primary key (ID_FACTURA)
 );
 
