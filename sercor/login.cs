@@ -15,6 +15,24 @@ namespace sercor
     {
         //Variables posición de formulario
         //int posY = 0, posX = 0; 
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+
+            if ((keyData != Keys.Enter) & (keyData != Keys.F2))
+                return base.ProcessCmdKey(ref msg, keyData);
+
+            if (keyData == Keys.Enter)
+            {
+                loginVoid();
+            }
+
+            if (keyData == Keys.F2)
+            {
+                //aqui la accion del F2
+            }
+
+            return true;
+        }
 
         private void pnHead_MouseMove(object sender, MouseEventArgs e)
         {
@@ -70,26 +88,30 @@ namespace sercor
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
+            loginVoid();
+        }
+
+        private void loginVoid(){
             if (txtUser.Text == "")
             {
-                MessageBox.Show("No ha ingresado un usuario", "Sercor", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("No ha ingresado un usuario", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtUser.Focus();
             }
-            else if (txtPsw.Text=="") 
+            else if (txtPsw.Text == "")
             {
-                MessageBox.Show("No ha ingresado su contraseña", "Sercor", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("No ha ingresado su contraseña", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtPsw.Focus();
             }
             else
             {
                 UsuarioSeleccionado = UsuarioDBM.ObtenerUsuario(txtUser.Text);
-                if (UsuarioSeleccionado!=null)
+                if (UsuarioSeleccionado != null)
                 {
                     string passHashed = UsuarioSeleccionado.CONTRASENA;
 
                     string passUnhash = Hash.sha256(txtPsw.Text);
                     //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
-                    if (passHashed==passUnhash)
+                    if (passHashed == passUnhash)
                     {
                         //MessageBox.Show(nombreUser, "");
                         //pasar aquí el nivel de usuario
@@ -99,7 +121,6 @@ namespace sercor
                 }
             }
         }
-
 
         private void btnClose_Click(object sender, EventArgs e)
         {

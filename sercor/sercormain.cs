@@ -12,12 +12,26 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
+        private void toogleError(bool show, string mensaje)
+        {
+            if (show == false)
+            {
+                lblErrors.Text = "Salida";
+            }
+            else
+            {
+                lblErrors.Text = mensaje;
+            }
+        }  
+        
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
         public  sercormain(Usuario usuario)
         {
             InitializeComponent();
 
             menuToggler(1);
+
+            toogleError(false,"");
 
             autocompleteRefresh();
 
@@ -67,12 +81,12 @@ namespace sercor
             pnTrabajos.Visible = false;
             pnMovCaja.Visible = false;
 
-            btnVentas.BackColor = Color.Gray;
-            btnCxc.BackColor = Color.Gray;
-            btnInventario.BackColor = Color.Gray;
-            btnReportes.BackColor = Color.Gray;
-            btnTrabajos.BackColor = Color.Gray; 
-            btnMovimientos.BackColor = Color.Gray;
+            btnVentas.BackColor = Color.LightSkyBlue;
+            btnCxc.BackColor = Color.LightSkyBlue;
+            btnInventario.BackColor = Color.LightSkyBlue;
+            btnReportes.BackColor = Color.LightSkyBlue;
+            btnTrabajos.BackColor = Color.LightSkyBlue; 
+            btnMovimientos.BackColor = Color.LightSkyBlue;
 
             btnVentas.ForeColor = Color.FromArgb(64, 64, 64);
             btnCxc.ForeColor = Color.FromArgb(64, 64, 64);
@@ -87,7 +101,7 @@ namespace sercor
                     pnVentas.Visible = true;
                     pnVentas.Dock = DockStyle.Fill;
 
-                    btnVentas.BackColor = Color.FromArgb(64, 64, 64);
+                    btnVentas.BackColor = Color.DodgerBlue;
                     btnVentas.ForeColor = Color.White;
                     break;
 
@@ -95,7 +109,7 @@ namespace sercor
                     pnCxc.Visible = true;
                     pnCxc.Dock = DockStyle.Fill;
 
-                    btnCxc.BackColor = Color.FromArgb(64, 64, 64);
+                    btnCxc.BackColor = Color.DodgerBlue;
                     btnCxc.ForeColor = Color.White;
                     break;
 
@@ -103,7 +117,7 @@ namespace sercor
                     pnInventario.Visible = true;
                     pnInventario.Dock = DockStyle.Fill;
 
-                    btnInventario.BackColor = Color.FromArgb(64, 64, 64);
+                    btnInventario.BackColor = Color.DodgerBlue;
                     btnInventario.ForeColor = Color.White;
                     break;
 
@@ -111,7 +125,7 @@ namespace sercor
                     pnReportes.Visible = true;
                     pnReportes.Dock = DockStyle.Fill;
 
-                    btnReportes.BackColor = Color.FromArgb(64, 64, 64);
+                    btnReportes.BackColor = Color.DodgerBlue;
                     btnReportes.ForeColor = Color.White;
                     break;
 
@@ -119,7 +133,7 @@ namespace sercor
                     pnTrabajos.Visible = true;
                     pnTrabajos.Dock = DockStyle.Fill;
 
-                    btnTrabajos.BackColor = Color.FromArgb(64, 64, 64);
+                    btnTrabajos.BackColor = Color.DodgerBlue;
                     btnTrabajos.ForeColor = Color.White;
                     break;
 
@@ -127,7 +141,7 @@ namespace sercor
                     pnMovCaja.Visible = true;
                     pnMovCaja.Dock = DockStyle.Fill;
 
-                    btnMovimientos.BackColor = Color.FromArgb(64, 64, 64);
+                    btnMovimientos.BackColor = Color.DodgerBlue;
                     btnMovimientos.ForeColor = Color.White;
                     break;
 
@@ -271,6 +285,8 @@ namespace sercor
             txtTelefono.Text = "";
             txtDireccion.Text = "";
 
+            vistaFactura.Rows.Clear();
+
             txtId.Focus();
         }
 
@@ -278,7 +294,6 @@ namespace sercor
         {
             int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
             Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
-
 
             int filas = vistaFactura.RowCount;
             bool modif = false;
@@ -305,6 +320,56 @@ namespace sercor
                 vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
             }
 
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            toogleError(false,"");
+            try
+            {
+                if (txtAdd.Text == "")
+                {
+                    txtAdd.Text = "0";
+                }
+                if (Convert.ToInt32(txtAdd.Text) <= 0)
+                {
+                    toogleError(true,"Debe ingresar un número mayor a 0");
+                }
+                else
+                {
+                    int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
+                    Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
+                    int cantidad = Convert.ToInt32(txtAdd.Text);
+
+                    int filas = vistaFactura.RowCount;
+                    bool modif = false;
+                    int k = 0;
+
+                    for (int j = 0; j <= filas - 1; j++)
+                    {
+                        if (codigo == Convert.ToInt32(vistaFactura.Rows[j].Cells[0].Value))
+                        {
+                            k = j;
+                            modif = true;
+                        }
+                    }
+                    if (modif == false)
+                    {
+                        vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
+                        cantidad, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                    }
+                    else
+                    {
+                        vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
+                        vistaFactura.Rows[k].Cells[2].Value = cantidad;
+                        vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
+                        vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
+                    }
+                }
+            }
+            catch(System.FormatException)
+            {
+                toogleError(true,"Debe ingresar un número");
+            }
         }
     }
 }

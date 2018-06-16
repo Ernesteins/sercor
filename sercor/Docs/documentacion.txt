@@ -23,6 +23,7 @@ NOTAS
 	30doorDIE
 
 	https://www.flaticon.com/packs/interaction-assets-2/11
+	https://www.flaticon.com/packs/essential-collection
 
 PENDIENTE
 	
