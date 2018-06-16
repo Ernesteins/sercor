@@ -2,6 +2,7 @@
 /* DBMS name:      PostgreSQL 9.x                               */
 /* Created on:     9/6/2018 20:04:07                            */
 /*==============================================================*/
+drop database sercorDB;
 create database sercorDB;
 use sercorDB;
 /*==============================================================*/
@@ -28,7 +29,7 @@ ID_CAJA
 /*==============================================================*/
 create table CAMBIO_PRECIOS (
    ID_CAMBIO            INT4                 not null,
-   ID_PRODUCTO          INT4                 null,
+   ID_PRODUCTO          CHAR(16)                 null,
    FECHA_CAMBIO         DATETIME                 not null,
    VALOR_VIEJO          FLOAT(12,2)          not null,
    VALOR_NUEVO          FLOAT(12,2)          not null,
@@ -75,7 +76,7 @@ ID_CLIENTE
 /*==============================================================*/
 create table CUENTA (
    ID_CUENTA            INT4                 not null,
-   ID_CLIENTE           INT4                 null,
+   ID_CLIENTE           CHAR(32)                 null,
    ID_FACTURA           INT4                 null,
    /*ID_CAJA              INT4                 null, */
    ID_TRABAJO           INT4                 null,
@@ -120,7 +121,7 @@ ID_TRABAJO
 create table DETALLE (
    ID_DETALLE           INT4                 not null,
    ID_FACTURA           INT4                 null,
-   ID_PRODUCTO          INT4                 not null,
+   ID_PRODUCTO          CHAR(16)                 not null,
    CANTIDAD             FLOAT(12,2)          not null,
    SUBTOTAL             FLOAT(12,2)          not null,
    FACTOR_DESCUENTO     FLOAT(12,2)          not null,
@@ -180,7 +181,7 @@ ID_CAJA
 /*==============================================================*/
 create table FACTURA (
    ID_FACTURA           INT4                 not null,
-   ID_CLIENTE           INT4                 null,
+   ID_CLIENTE           CHAR(32)                null,
    ID_USUARIO           INT4                 null,
    /*ID_DETALLE           INT4                 null,*/
    /*ID_CUENTA            INT4                 null,*/
@@ -237,7 +238,7 @@ ID_TRABAJO
 /* Table: PRODUCTO                                              */
 /*==============================================================*/
 create table PRODUCTO (
-   ID_PRODUCTO          INT4                 not null,
+   ID_PRODUCTO          CHAR(16)                 not null,
    /*ID_DETALLE           INT4                 null,*/
    NOMBRE               CHAR(50)             not null,
    DESCRIPCION          CHAR(128)            not null,
@@ -259,9 +260,9 @@ ID_PRODUCTO
 /*==============================================================*/
 /* Index: DETALLE_PROD_FK                                       */
 /*==============================================================*/
-create  index DETALLE_PROD_FK on PRODUCTO ( /*BORRAR*/
+/*create  index DETALLE_PROD_FK on PRODUCTO (
 ID_DETALLE
-);
+);*/
 
 /*==============================================================*/
 /* Table: TRABAJOS                              Quitar cuenta                */

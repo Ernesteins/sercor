@@ -1,4 +1,6 @@
-﻿credenciales de aplicacion para conexion a base de datos
+﻿Factura base ID 0
+
+credenciales de aplicacion para conexion a base de datos
 	username:sercoruser
 	password:S3rc0r
 	crdencial:usuario

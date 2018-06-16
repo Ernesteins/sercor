@@ -54,7 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ordenTipo = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblNumeroFactura = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.metodoPago = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -371,7 +371,7 @@
             // 
             this.panel1.Controls.Add(this.ordenTipo);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lblNumeroFactura);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.metodoPago);
             this.panel1.Controls.Add(this.label4);
@@ -417,20 +417,20 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Orden/Factura/Nota";
             // 
-            // label6
+            // lblNumeroFactura
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoEllipsis = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(353, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(344, 81);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "N°0000000000";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNumeroFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumeroFactura.AutoEllipsis = true;
+            this.lblNumeroFactura.BackColor = System.Drawing.Color.White;
+            this.lblNumeroFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblNumeroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblNumeroFactura.Location = new System.Drawing.Point(353, 46);
+            this.lblNumeroFactura.Name = "lblNumeroFactura";
+            this.lblNumeroFactura.Size = new System.Drawing.Size(344, 81);
+            this.lblNumeroFactura.TabIndex = 18;
+            this.lblNumeroFactura.Text = "N°0000000000";
+            this.lblNumeroFactura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -1306,7 +1306,7 @@
             this.pnCxc.BackColor = System.Drawing.Color.Gainsboro;
             this.pnCxc.Controls.Add(this.panel2);
             this.pnCxc.Controls.Add(this.pnCxcMenu);
-            this.pnCxc.Location = new System.Drawing.Point(730, 552);
+            this.pnCxc.Location = new System.Drawing.Point(733, 552);
             this.pnCxc.Margin = new System.Windows.Forms.Padding(0);
             this.pnCxc.Name = "pnCxc";
             this.pnCxc.Size = new System.Drawing.Size(77, 210);
@@ -1748,7 +1748,7 @@
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblNumeroFactura;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label12;
