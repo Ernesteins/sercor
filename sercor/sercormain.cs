@@ -12,6 +12,8 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
+        public Factura ultimoRegistro { get; set; }
+
         private void toogleError(bool show, string mensaje)
         {
             if (show == false)
@@ -24,12 +26,21 @@ namespace sercor
             }
         }  
         
+        private void ultimoIdFactura()
+        {
+            ultimoRegistro = FacturaDBM.UltimoID();
+            int idUltimoFactura = ultimoRegistro.ID_FACTURA;
+            int nuevoIdFactura = idUltimoFactura + 1;
+            lblNumeroFactura.Text = Convert.ToString(nuevoIdFactura);
+        }
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
         public  sercormain(Usuario usuario)
         {
             InitializeComponent();
 
             menuToggler(1);
+
+            ultimoIdFactura();
 
             toogleError(false,"");
 
