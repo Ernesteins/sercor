@@ -220,64 +220,22 @@ namespace sercor
             menuToggler(6);
         }
 
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            //if (ocupado2 != true)
-            //{
-            //    Ocupado(1);
-            //    if (txtName.Text == ClienteDBM.ObtenerCliente(null, txtName.Text).NOMBRE)
-            //    {
-            //        txtTelefono.Text = ClienteDBM.ObtenerCliente(null, txtName.Text).TELEFONO;
-            //        txtDireccion.Text = ClienteDBM.ObtenerCliente(null, txtName.Text).DIRECCION;
-            //        txtId.Text = Convert.ToString(ClienteDBM.ObtenerCliente(null, txtName.Text).ID_CLIENTE);
-            //        ocupado = false;
-            //    }
-            //    else
-            //    {
-            //        txtTelefono.Text = "";
-            //        txtDireccion.Text = "";
-            //        txtId.Text = "";
-            //        ocupado = false;
-            //    }
-            //}
-        }
-
-        //bool ocupado;
-        //bool ocupado2;
-        //private void Ocupado(int e)
-        //{
-        //    switch (e)
-        //    {
-        //        case 1:
-        //            ocupado = true;
-        //            break;
-        //        case 2:
-        //            ocupado2 = true;
-        //            break;
-        //    }
-        //}
-
 
         private void txtId_TextChanged(object sender, EventArgs e)
         {
-            //if (ocupado!=true)
-            //{
-            //    Ocupado(2);
+
             if (txtId.Text == Convert.ToString(ClienteDBM.ObtenerCliente(txtId.Text, null).ID_CLIENTE))
             {
                 txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
                 txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
                 txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
-                //ocupado2 = false;
             }
             else
             {
                 txtName.Text = "";
                 txtTelefono.Text = "";
                 txtDireccion.Text = "";
-                //ocupado2 = false;
             }
-            //}
         }
 
         private void btnAllProducts_Click(object sender, EventArgs e)
@@ -388,10 +346,10 @@ namespace sercor
 
         private void btnDescuento_Click(object sender, EventArgs e)
         {
-
-                
-            
+            multiplicador();
         }
+
+        float ivaConst = 0.12F;
 
         private void subtotal()
         {
@@ -400,7 +358,7 @@ namespace sercor
             int filas = vistaFactura.RowCount;
 
             float subtotal = 0;
-            float ivaConst = 0.12F;
+           
             float iva;
             float total;
 
@@ -409,16 +367,14 @@ namespace sercor
                 subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
             }
 
-            txtSubtotal.Text = subtotal.ToString("0.00");
+            txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString();
             iva = ivaConst * subtotal;
-            txtIva.Text =iva.ToString("0.00");
+            txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString();
             total = subtotal + iva;
-            txtTotal.Text = total.ToString("0.00");
+            //trocito clave
+            //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
 
-        }
-
-        private void desc_Click(object sender, EventArgs e)
-        {
+            txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString();
 
         }
 
@@ -429,6 +385,52 @@ namespace sercor
             return (factorDescuento);
         }
 
+        private float Calculo_FactorDescuentoINV(float descuento, float total_inicial, float subtotal_inicial, float iva)
+        {
+            float factorDescuento = 0;
+            factorDescuento =  (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial)*-1;
+            return (factorDescuento);
+        }
 
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void multiplicador()
+        {
+            try
+            {
+                if (txtDescuento.Text=="")
+                {
+                    txtDescuento.Text = "0";
+                }
+                string descuentito=txtDescuento.Text;
+                txtDescuento.Text = descuentito.Replace(".",",");
+
+                string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+                int filas = vistaFactura.RowCount;
+
+                subtotal();
+                float factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
+                    , float.Parse(txtSubtotal.Text), ivaConst);
+                MessageBox.Show(factorDescuento.ToString());
+                for (int j = 0; j <= filas - 1; j++)
+                {
+                    
+                    vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
+                    vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+                }
+                
+                subtotal();
+            }
+            catch (System.FormatException)
+            {
+                toogleError(true, "Debe ingresar un número");
+            }
+        }
     }
 }

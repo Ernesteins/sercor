@@ -28,8 +28,9 @@ NOTAS
 	https://www.flaticon.com/packs/essential-collection
 
 PENDIENTE
-	
-	
+	bug primer ingreso multiplicar
+	Boton descuento hacerlo toggle
+
 	actualizar campos cada vez que se guarda un cliente
 	si el cliente es nuevo crear un registro, caso contrario nope
 
