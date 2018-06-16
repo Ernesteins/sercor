@@ -10,7 +10,7 @@ use sercorDB;
 create table CAJA (
    ID_CAJA              INT4                 not null,
    TIPO                 INT2                 not null,
-   FECHA                DATE                 not null,
+   FECHA                DATETIME                 not null,
    DESCRIPCION          CHAR(128)            not null,
    MONTO                FLOAT(12,2)          not null,
    constraint PK_CAJA primary key (ID_CAJA)
@@ -29,7 +29,7 @@ ID_CAJA
 create table CAMBIO_PRECIOS (
    ID_CAMBIO            INT4                 not null,
    ID_PRODUCTO          INT4                 null,
-   FECHA_CAMBIO         DATE                 not null,
+   FECHA_CAMBIO         DATETIME                 not null,
    VALOR_VIEJO          FLOAT(12,2)          not null,
    VALOR_NUEVO          FLOAT(12,2)          not null,
    CODIGO_PRODUCTO      CHAR(32)             not null,
@@ -54,9 +54,9 @@ ID_PRODUCTO
 /* Table: CLIENTE                                               */
 /*==============================================================*/
 create table CLIENTE (
-   ID_CLIENTE           INT4                 not null,
-   NOMBRE               CHAR(50)             not null,
-   APELLIDO             CHAR(50)             not null,
+   ID_CLIENTE           CHAR(32)                 not null,
+   NOMBRE               CHAR(100)             not null,
+   /*APELLIDO             CHAR(50)             not null,*/
    DIRECCION            CHAR(128)            not null,
    TELEFONO             CHAR(32)             not null,
    constraint PK_CLIENTE primary key (ID_CLIENTE)
@@ -69,13 +69,15 @@ create unique index CLIENTE_PK on CLIENTE (
 ID_CLIENTE
 );
 
+
 /*==============================================================*/
-/* Table: CUENTA                                               */
+/* Table: CUENTA                                   Quitar caja            */
 /*==============================================================*/
 create table CUENTA (
    ID_CUENTA            INT4                 not null,
    ID_CLIENTE           INT4                 null,
-   ID_CAJA              INT4                 null,
+   ID_FACTURA           INT4                 null,
+   /*ID_CAJA              INT4                 null, */
    ID_TRABAJO           INT4                 null,
    TOTAL                FLOAT(12,2)          not null,
    FORMA_PAGO           INT2                 not null,
@@ -99,10 +101,10 @@ ID_CLIENTE
 );
 
 /*==============================================================*/
-/* Index: CUENTA_CAJA_FK                                       */
+/* Index: CUENTA_FACTURA_FK                                       */
 /*==============================================================*/
-create  index CUENTA_CAJA_FK on CUENTA (
-ID_CAJA
+create  index CUENTA_FACTURA_FK on CUENTA (
+ID_FACTURA
 );
 
 /*==============================================================*/
@@ -118,6 +120,7 @@ ID_TRABAJO
 create table DETALLE (
    ID_DETALLE           INT4                 not null,
    ID_FACTURA           INT4                 null,
+   ID_PRODUCTO          INT4                 not null,
    CANTIDAD             FLOAT(12,2)          not null,
    SUBTOTAL             FLOAT(12,2)          not null,
    FACTOR_DESCUENTO     FLOAT(12,2)          not null,
@@ -139,12 +142,20 @@ ID_FACTURA
 );
 
 /*==============================================================*/
+/* Index: PROD_DETALLE_FK                                       */
+/*==============================================================*/
+create  index PROD_DETALLE_FK on DETALLE (
+ID_PRODUCTO
+);
+
+
+/*==============================================================*/
 /* Table: EGRESOS                                               */
 /*==============================================================*/
 create table EGRESOS (
    ID_EGRESO            INT4                 not null,
    ID_CAJA              INT4                 null,
-   FECHA                DATE                 not null,
+   FECHA                DATETIME                 not null,
    DESCUENTO            FLOAT(12,2)          not null,
    MONTO                FLOAT(12,2)          not null,
    constraint PK_EGRESOS primary key (ID_EGRESO)
@@ -171,12 +182,12 @@ create table FACTURA (
    ID_FACTURA           INT4                 not null,
    ID_CLIENTE           INT4                 null,
    ID_USUARIO           INT4                 null,
-   ID_DETALLE           INT4                 null,
-   ID_CUENTA            INT4                 null,
-   ID_TRABAJO           INT4                 null,
+   /*ID_DETALLE           INT4                 null,*/
+   /*ID_CUENTA            INT4                 null,*/
+   /*ID_TRABAJO           INT4                 null,*/
    IVA                  FLOAT(12,2)          not null,
    TOTAL                FLOAT(12,2)          not null,
-   FECHA                DATE                 not null,
+   FECHA                DATETIME                 not null,
    constraint PK_FACTURA primary key (ID_FACTURA)
 );
 
@@ -204,30 +215,30 @@ ID_USUARIO
 /*==============================================================*/
 /* Index: FACT_DETALLE2_FK                                      */
 /*==============================================================*/
-create  index FACT_DETALLE2_FK on FACTURA (
+/*create  index FACT_DETALLE2_FK on FACTURA ( 
 ID_DETALLE
-);
+);*/
 
 /*==============================================================*/
 /* Index: FACT_CUENTA_FK                                       */
 /*==============================================================*/
-create  index FACT_CUENTA_FK on FACTURA (
+/*create  index FACT_CUENTA_FK on FACTURA (
 ID_CUENTA
-);
+);*/
 
 /*==============================================================*/
 /* Index: FACTURA_TRABAJOS2_FK                                  */
 /*==============================================================*/
-create  index FACTURA_TRABAJOS2_FK on FACTURA (
+/*create  index FACTURA_TRABAJOS2_FK on FACTURA (
 ID_TRABAJO
-);
+);*/
 
 /*==============================================================*/
 /* Table: PRODUCTO                                              */
 /*==============================================================*/
 create table PRODUCTO (
    ID_PRODUCTO          INT4                 not null,
-   ID_DETALLE           INT4                 null,
+   /*ID_DETALLE           INT4                 null,*/
    NOMBRE               CHAR(50)             not null,
    DESCRIPCION          CHAR(128)            not null,
    CATEGORIA            CHAR(32)             not null,
@@ -248,23 +259,23 @@ ID_PRODUCTO
 /*==============================================================*/
 /* Index: DETALLE_PROD_FK                                       */
 /*==============================================================*/
-create  index DETALLE_PROD_FK on PRODUCTO (
+create  index DETALLE_PROD_FK on PRODUCTO ( /*BORRAR*/
 ID_DETALLE
 );
 
 /*==============================================================*/
-/* Table: TRABAJOS                                              */
+/* Table: TRABAJOS                              Quitar cuenta                */
 /*==============================================================*/
 create table TRABAJOS (
    ID_TRABAJO           INT4                 not null,
    ID_CUENTA            INT4                 null,
    ID_FACTURA           INT4                 null,
-   FECHA_INICIO         DATE                 not null,
+   FECHA_INICIO         DATETIME                 not null,
    NOMBRE_CL            CHAR(32)             not null,
    ARMAZON              CHAR(32)             not null,
    LUNA                 CHAR(32)             not null,
    ESTADO               INT2                 not null,
-   FECHA_ENTREGA        DATE                 not null,
+   FECHA_ENTREGA        DATETIME                 not null,
    constraint PK_TRABAJOS primary key (ID_TRABAJO)
 );
 
@@ -296,7 +307,7 @@ create table USUARIO (
    ID_USUARIO           INT4                 not null,
    TIPO                 INT2                 not null,
    USUARIO              CHAR(32)             not null,
-   CONTRASENA           CHAR(32)             not null,
+   CONTRASENA           CHAR(64)             not null,
    NOMBRE               CHAR(50)             not null,
    APELLIDO             CHAR(50)             not null,
    CEDULA               CHAR(10)             not null,
@@ -320,7 +331,7 @@ ID_USUARIO
 
 create table ABONO(
    ID_CUENTA            INT4                 NOT null,
-   FECHA                DATE                 not null,
+   FECHA                DATETIME                 not null,
    MONTO                FLOAT(12,2)          not null,
    primary key (ID_CUENTA,FECHA)
 );
@@ -331,8 +342,8 @@ alter table CAMBIO_PRECIOS
       on delete restrict on update restrict;
 
 alter table CUENTA
-   add constraint FK_CUENTA_CUENTA_C_CAJA foreign key (ID_CAJA)
-      references CAJA (ID_CAJA)
+   add constraint FK_CUENTA_CUENTA_F_FACTURA foreign key (ID_FACTURA)
+      references FACTURA (ID_FACTURA)
       on delete restrict on update restrict;
 
 alter table CUENTA
@@ -343,11 +354,16 @@ alter table CUENTA
 alter table CUENTA
    add constraint FK_CUENTA_CUENTA_T_TRABAJOS foreign key (ID_TRABAJO)
       references TRABAJOS (ID_TRABAJO)
-      on delete restrict on update restrict;
+         on delete restrict on update restrict;
 
 alter table DETALLE
    add constraint FK_DETALLE_FACT_DETA_FACTURA foreign key (ID_FACTURA)
       references FACTURA (ID_FACTURA)
+      on delete restrict on update restrict;
+
+alter table DETALLE
+   add constraint FK_DETALLE_CT_PRODUCTO foreign key (ID_PRODUCTO)
+      references PRODUCTO (ID_PRODUCTO)
       on delete restrict on update restrict;
 
 alter table EGRESOS
@@ -355,40 +371,40 @@ alter table EGRESOS
       references CAJA (ID_CAJA)
       on delete restrict on update restrict;
 
-alter table FACTURA
+/*alter table FACTURA
    add constraint FK_FACTURA_FACTURA_T_TRABAJOS foreign key (ID_TRABAJO)
       references TRABAJOS (ID_TRABAJO)
-      on delete restrict on update restrict;
+      on delete restrict on update restrict;*/
 
 alter table FACTURA
    add constraint FK_FACTURA_FACT_CLIE_CLIENTE foreign key (ID_CLIENTE)
       references CLIENTE (ID_CLIENTE)
       on delete restrict on update restrict;
 
-alter table FACTURA
+/*alter table FACTURA
    add constraint FK_FACTURA_FACT_CUEN_CUENTA foreign key (ID_CUENTA)
       references CUENTA (ID_CUENTA)
-      on delete restrict on update restrict;
+      on delete restrict on update restrict;*/
 
-alter table FACTURA
+/*alter table FACTURA
    add constraint FK_FACTURA_FACT_DETA_DETALLE foreign key (ID_DETALLE)
       references DETALLE (ID_DETALLE)
-      on delete restrict on update restrict;
+      on delete restrict on update restrict;*/
 
 alter table FACTURA
    add constraint FK_FACTURA_FACT_USUA_USUARIO foreign key (ID_USUARIO)
       references USUARIO (ID_USUARIO)
       on delete restrict on update restrict;
 
-alter table PRODUCTO
+/*alter table PRODUCTO
    add constraint FK_PRODUCTO_DETALLE_P_DETALLE foreign key (ID_DETALLE)
       references DETALLE (ID_DETALLE)
-      on delete restrict on update restrict;
+      on delete restrict on update restrict;*/
 
-alter table TRABAJOS
+/*alter table TRABAJOS
    add constraint FK_TRABAJOS_CUENTA_T_CUENTA foreign key (ID_CUENTA)
       references CUENTA (ID_CUENTA)
-      on delete restrict on update restrict;
+      on delete restrict on update restrict;*/
 
 alter table TRABAJOS
    add constraint FK_TRABAJOS_FACTURA_T_FACTURA foreign key (ID_FACTURA)

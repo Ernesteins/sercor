@@ -382,5 +382,10 @@ namespace sercor
                 toogleError(true,"Debe ingresar un número");
             }
         }
+
+        private void pnCxcMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

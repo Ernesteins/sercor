@@ -1332,6 +1332,7 @@
             this.pnCxcMenu.Name = "pnCxcMenu";
             this.pnCxcMenu.Size = new System.Drawing.Size(77, 86);
             this.pnCxcMenu.TabIndex = 0;
+            this.pnCxcMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.pnCxcMenu_Paint);
             // 
             // pnInventario
             // 
