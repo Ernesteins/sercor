@@ -330,6 +330,7 @@ namespace sercor
                 vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
                 vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
             }
+            subtotal();
 
         }
         private void btnAdd_Click(object sender, EventArgs e)
@@ -376,11 +377,44 @@ namespace sercor
                         vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
                     }
                 }
+                
             }
             catch(System.FormatException)
             {
                 toogleError(true,"Debe ingresar un número");
             }
+            subtotal();
+        }
+
+        private void btnDescuento_Click(object sender, EventArgs e)
+        {
+
+                
+            
+        }
+
+        private void subtotal()
+        {
+            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+            int filas = vistaFactura.RowCount;
+
+            float subtotal = 0;
+            float ivaConst = 0.12F;
+            float iva;
+            float total;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
+            }
+
+            txtSubtotal.Text = subtotal.ToString("0.00");
+            iva = ivaConst * subtotal;
+            txtIva.Text =iva.ToString("0.00");
+            total = subtotal + iva;
+            txtTotal.Text = total.ToString("0.00");
+
         }
     }
 }
