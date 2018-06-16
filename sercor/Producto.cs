@@ -8,7 +8,7 @@ namespace sercor
 {
     public class Producto
     {
-        public int COD { get; set; }
+        public string COD { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
         public string CATEGORIA { get; set; }
@@ -20,8 +20,8 @@ namespace sercor
         //Constructor de objeto
         public Producto() { }
 
-        public Producto(int pId, int pDetalle, string pNombre, string pDescripcion, string pCategoria,
-            string pSubcategoria, int pExistencia, float pPrecio, UInt16 pEstado)
+        public Producto(string pId, string pNombre, string pDescripcion, string pCategoria,
+            string pSubcategoria, int pExistencia, float pPrecio, float pEstado)
         {
             this.COD = pId;
             this.NOMBRE = pNombre;

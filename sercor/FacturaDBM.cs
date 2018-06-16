@@ -36,7 +36,7 @@ namespace sercor
             while (_reader.Read())
             {
                 pFactura.ID_FACTURA = _reader.GetInt32(0);
-                pFactura.ID_CLIENTE = _reader.GetInt32(1);
+                pFactura.ID_CLIENTE = _reader.GetString(1);
                 pFactura.ID_USUARIO = _reader.GetInt32(2);
                 pFactura.IVA = _reader.GetFloat(3);
                 pFactura.TOTAL= _reader.GetFloat(4);

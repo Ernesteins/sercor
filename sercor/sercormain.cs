@@ -12,8 +12,6 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
-        public Factura ultimoRegistro { get; set; }
-
         private void toogleError(bool show, string mensaje)
         {
             if (show == false)
@@ -24,8 +22,9 @@ namespace sercor
             {
                 lblErrors.Text = mensaje;
             }
-        }  
-        
+        }
+
+        public Factura ultimoRegistro { get; set; }
         private void ultimoIdFactura()
         {
             ultimoRegistro = FacturaDBM.UltimoID();
@@ -33,8 +32,9 @@ namespace sercor
             int nuevoIdFactura = idUltimoFactura + 1;
             lblNumeroFactura.Text = Convert.ToString(nuevoIdFactura);
         }
+
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
-        public  sercormain(Usuario usuario)
+        public sercormain(Usuario usuario)
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace sercor
 
             ultimoIdFactura();
 
-            toogleError(false,"");
+            toogleError(false, "");
 
             autocompleteRefresh();
 
@@ -64,7 +64,7 @@ namespace sercor
             switch (tipoUser)
             {
                 case 1:
-                    btnUser.BackColor=Color.FromArgb(255, 128, 128);
+                    btnUser.BackColor = Color.FromArgb(255, 128, 128);
                     break;
 
                 case 2:
@@ -96,7 +96,7 @@ namespace sercor
             btnCxc.BackColor = Color.LightSkyBlue;
             btnInventario.BackColor = Color.LightSkyBlue;
             btnReportes.BackColor = Color.LightSkyBlue;
-            btnTrabajos.BackColor = Color.LightSkyBlue; 
+            btnTrabajos.BackColor = Color.LightSkyBlue;
             btnMovimientos.BackColor = Color.LightSkyBlue;
 
             btnVentas.ForeColor = Color.FromArgb(64, 64, 64);
@@ -105,7 +105,7 @@ namespace sercor
             btnReportes.ForeColor = Color.FromArgb(64, 64, 64);
             btnMovimientos.ForeColor = Color.FromArgb(64, 64, 64);
             btnTrabajos.ForeColor = Color.FromArgb(64, 64, 64);
-            
+
             switch (pnNumber)
             {
                 case 1: //VENTAS
@@ -191,8 +191,8 @@ namespace sercor
 
         public Cliente clienteNombres { get; set; }
 
-        private void btnVentas_Click(object sender, EventArgs e){
-            menuToggler(1);  
+        private void btnVentas_Click(object sender, EventArgs e) {
+            menuToggler(1);
         }
 
         private void btnCxc_Click(object sender, EventArgs e)
@@ -263,20 +263,20 @@ namespace sercor
             //if (ocupado!=true)
             //{
             //    Ocupado(2);
-                if (txtId.Text == Convert.ToString(ClienteDBM.ObtenerCliente(txtId.Text, null).ID_CLIENTE))
-                {
-                    txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
-                    txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
-                    txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
-                    //ocupado2 = false;
-                }
-                else
-                {
-                    txtName.Text = "";
-                    txtTelefono.Text = "";
-                    txtDireccion.Text = "";
-                    //ocupado2 = false;
-                }
+            if (txtId.Text == Convert.ToString(ClienteDBM.ObtenerCliente(txtId.Text, null).ID_CLIENTE))
+            {
+                txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
+                txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
+                txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
+                //ocupado2 = false;
+            }
+            else
+            {
+                txtName.Text = "";
+                txtTelefono.Text = "";
+                txtDireccion.Text = "";
+                //ocupado2 = false;
+            }
             //}
         }
 
@@ -303,7 +303,7 @@ namespace sercor
 
         private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
+            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
             Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
 
             int filas = vistaFactura.RowCount;
@@ -312,7 +312,7 @@ namespace sercor
 
             for (int j = 0; j <= filas - 1; j++)
             {
-                if (codigo == Convert.ToInt32(vistaFactura.Rows[j].Cells[0].Value))
+                if (codigo == Convert.ToString(vistaFactura.Rows[j].Cells[0].Value))
                 {
                     k = j;
                     modif = true;
@@ -330,11 +330,12 @@ namespace sercor
                 vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
                 vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
             }
+            subtotal();
 
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            toogleError(false,"");
+            toogleError(false, "");
             try
             {
                 if (txtAdd.Text == "")
@@ -343,11 +344,11 @@ namespace sercor
                 }
                 if (Convert.ToInt32(txtAdd.Text) <= 0)
                 {
-                    toogleError(true,"Debe ingresar un número mayor a 0");
+                    toogleError(true, "Debe ingresar un número mayor a 0");
                 }
                 else
                 {
-                    int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
+                    string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
                     Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
                     int cantidad = Convert.ToInt32(txtAdd.Text);
 
@@ -357,7 +358,7 @@ namespace sercor
 
                     for (int j = 0; j <= filas - 1; j++)
                     {
-                        if (codigo == Convert.ToInt32(vistaFactura.Rows[j].Cells[0].Value))
+                        if (codigo == Convert.ToString(vistaFactura.Rows[j].Cells[0].Value))
                         {
                             k = j;
                             modif = true;
@@ -376,16 +377,58 @@ namespace sercor
                         vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
                     }
                 }
+                
             }
-            catch(System.FormatException)
+            catch (System.FormatException)
             {
-                toogleError(true,"Debe ingresar un número");
+                toogleError(true, "Debe ingresar un número");
             }
+            subtotal();
         }
 
-        private void pnCxcMenu_Paint(object sender, PaintEventArgs e)
+        private void btnDescuento_Click(object sender, EventArgs e)
+        {
+
+                
+            
+        }
+
+        private void subtotal()
+        {
+            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+            int filas = vistaFactura.RowCount;
+
+            float subtotal = 0;
+            float ivaConst = 0.12F;
+            float iva;
+            float total;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
+            }
+
+            txtSubtotal.Text = subtotal.ToString("0.00");
+            iva = ivaConst * subtotal;
+            txtIva.Text =iva.ToString("0.00");
+            total = subtotal + iva;
+            txtTotal.Text = total.ToString("0.00");
+
+        }
+
+        private void desc_Click(object sender, EventArgs e)
         {
 
         }
+
+        private float  Calculo_FactorDescuento(float descuento,float total_inicial,float subtotal_inicial,float iva)
+        {
+            float factorDescuento = 0;
+            factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
+            return (factorDescuento);
+        }
+
+
     }
 }
