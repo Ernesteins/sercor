@@ -8,8 +8,8 @@ namespace sercor
 {
     public class Usuario
     {
-        public uint ID_USUARIO { get; set; }
-        public UInt16 TIPO { get; set; }
+        public int ID_USUARIO { get; set; }
+        public int TIPO { get; set; }
         public string USUARIO { get; set; }
         public string CONTRASENA { get; set; }
         public string NOMBRE { get; set; }
@@ -17,15 +17,15 @@ namespace sercor
         public string CEDULA { get; set; }
         public string DIRECCION { get; set; }
         public string TELEFONO { get; set; }
-        public UInt16 PRIVILEGIO1 { get; set; }
-        public UInt16 PRIVILEGIO2 { get; set; }
+        public int PRIVILEGIO1 { get; set; }
+        public int PRIVILEGIO2 { get; set; }
 
         //Constructor de objeto
         public Usuario() { }
 
-        public Usuario(uint pId, UInt16 pTipo, string pUsuario, string pContrasena, string pNombre,
+        public Usuario(int pId, int pTipo, string pUsuario, string pContrasena, string pNombre,
             string pApellido, string pCedula, string pDireccion, string pTelefono,
-            UInt16 pPriv1, UInt16 pPriv2)
+            int pPriv1, int pPriv2)
 
         {
             this.ID_USUARIO = pId;

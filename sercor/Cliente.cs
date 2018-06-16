@@ -8,7 +8,7 @@ namespace sercor
 {
     public class Cliente
     {
-        public uint ID_CLIENTE { get; set; }
+        public int ID_CLIENTE { get; set; }
         public string NOMBRE { get; set; }
         public string DIRECCION { get; set; }
         public string TELEFONO { get; set; }
@@ -16,7 +16,7 @@ namespace sercor
         //Constructor de objeto
         public Cliente() { }
 
-        public Cliente(uint pId, string pNombre, string pDireccion, string pTelefono)
+        public Cliente(int pId, string pNombre, string pDireccion, string pTelefono)
 
         {
             this.ID_CLIENTE = pId;
