@@ -12,8 +12,6 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
-        public Factura ultimoRegistro { get; set; }
-
         private void toogleError(bool show, string mensaje)
         {
             if (show == false)
@@ -24,8 +22,9 @@ namespace sercor
             {
                 lblErrors.Text = mensaje;
             }
-        }  
-        
+        }
+
+        public Factura ultimoRegistro { get; set; }
         private void ultimoIdFactura()
         {
             ultimoRegistro = FacturaDBM.UltimoID();
@@ -33,6 +32,7 @@ namespace sercor
             int nuevoIdFactura = idUltimoFactura + 1;
             lblNumeroFactura.Text = Convert.ToString(nuevoIdFactura);
         }
+
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
         public  sercormain(Usuario usuario)
         {
@@ -303,7 +303,7 @@ namespace sercor
 
         private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
+            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
             Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
 
             int filas = vistaFactura.RowCount;
@@ -312,7 +312,7 @@ namespace sercor
 
             for (int j = 0; j <= filas - 1; j++)
             {
-                if (codigo == Convert.ToInt32(vistaFactura.Rows[j].Cells[0].Value))
+                if (codigo == Convert.ToString(vistaFactura.Rows[j].Cells[0].Value))
                 {
                     k = j;
                     modif = true;
@@ -347,7 +347,7 @@ namespace sercor
                 }
                 else
                 {
-                    int codigo = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
+                    string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
                     Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
                     int cantidad = Convert.ToInt32(txtAdd.Text);
 
@@ -357,7 +357,7 @@ namespace sercor
 
                     for (int j = 0; j <= filas - 1; j++)
                     {
-                        if (codigo == Convert.ToInt32(vistaFactura.Rows[j].Cells[0].Value))
+                        if (codigo == Convert.ToString(vistaFactura.Rows[j].Cells[0].Value))
                         {
                             k = j;
                             modif = true;
@@ -381,11 +381,6 @@ namespace sercor
             {
                 toogleError(true,"Debe ingresar un número");
             }
-        }
-
-        private void pnCxcMenu_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

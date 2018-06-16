@@ -23,7 +23,7 @@ namespace sercor
             {
                 Cliente pCliente = new Cliente();
 
-                pCliente.ID_CLIENTE = _reader.GetInt32(0);
+                pCliente.ID_CLIENTE = _reader.GetString(0);
                 pCliente.NOMBRE = _reader.GetString(1);
                 pCliente.DIRECCION = _reader.GetString(2);
                 pCliente.TELEFONO = _reader.GetString(3);
@@ -45,7 +45,7 @@ namespace sercor
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                pCliente.ID_CLIENTE = _reader.GetInt32(0);
+                pCliente.ID_CLIENTE = _reader.GetString(0);
                 pCliente.NOMBRE = _reader.GetString(1);
                 pCliente.DIRECCION = _reader.GetString(2);
                 pCliente.TELEFONO = _reader.GetString(3);

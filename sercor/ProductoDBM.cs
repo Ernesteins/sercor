@@ -22,7 +22,7 @@ namespace sercor
             {
                 Producto pProducto = new Producto();
 
-                pProducto.COD = _reader.GetInt32(0);
+                pProducto.COD = _reader.GetString(0);
                 pProducto.NOMBRE = _reader.GetString(1);
                 pProducto.DESCRIPCION = _reader.GetString(2);
                 pProducto.CATEGORIA= _reader.GetString(3);
@@ -36,7 +36,7 @@ namespace sercor
             return _lista;
         }
 
-        public static Producto ObtenerProductoCod(int pCod)
+        public static Producto ObtenerProductoCod(string pCod)
         {
             Producto pProducto = new Producto();
             MySqlConnection conexion = bdComun.obtenerConexion();
@@ -45,7 +45,7 @@ namespace sercor
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                pProducto.COD = _reader.GetInt32(0);
+                pProducto.COD = _reader.GetString(0);
                 pProducto.NOMBRE = _reader.GetString(1);
                 pProducto.DESCRIPCION = _reader.GetString(2);
                 pProducto.CATEGORIA = _reader.GetString(3);

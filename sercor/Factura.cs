@@ -9,7 +9,7 @@ namespace sercor
     public class Factura
     {
         public int ID_FACTURA { get; set; }
-        public int ID_CLIENTE { get; set; }
+        public string ID_CLIENTE { get; set; }
         public int ID_USUARIO { get; set; }
         public float IVA { get; set; }
         public float TOTAL { get; set; }
@@ -19,7 +19,7 @@ namespace sercor
         //Constructor de objeto
         public Factura() { }
 
-        public Factura(int pIdFactura, int pIdCliente, int pIdUsuario, float pIva, float pTotal, string pFecha)
+        public Factura(int pIdFactura, string pIdCliente, int pIdUsuario, float pIva, float pTotal, string pFecha)
         {
             this.ID_FACTURA = pIdFactura;
             this.ID_CLIENTE = pIdCliente;
