@@ -102,9 +102,23 @@
     <Content Include="Docs\consultas.sql" />
     <Content Include="Docs\documentacion.txt" />
     <Content Include="Docs\genesis.sql" />
+    <None Include="Resources\error16.png" />
+    <None Include="Resources\success16.png" />
+    <None Include="Resources\dollar16.png" />
+    <None Include="Resources\dollar-symbol16.png" />
+    <None Include="Resources\search16.png" />
+    <None Include="Resources\plus16.png" />
+    <None Include="Resources\package16.png" />
+    <None Include="Resources\packing16.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\garbage.png" />
+    <None Include="Resources\locked.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\edit2.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\plus32.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
