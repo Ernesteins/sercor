@@ -36,7 +36,7 @@ namespace sercor
 
         private void pnHead_MouseMove(object sender, MouseEventArgs e)
         {
-            ////if (e.Button != MouseButtons.Left)
+            /*////if (e.Button != MouseButtons.Left)
             ////{
             ////    pnHead.Cursor = Cursors.Default;
             ////    posX = e.X;
@@ -47,7 +47,7 @@ namespace sercor
             ////    Left = Left + (e.X - posX);
             ////    Top = Top + (e.Y - posY);
             ////    pnHead.Cursor = Cursors.SizeAll;
-            ////}
+            ////}*/
         }
 
         //CONEXION DE CARGA
