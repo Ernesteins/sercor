@@ -30,14 +30,18 @@ NOTAS
 PENDIENTE
 	bug primer ingreso multiplicar
 	Boton descuento hacerlo toggle
+	
+	Fecha constante incluso cambiando
+
+	mejorar consulta de numero de factura
+	select max(id_factura) from factura
 
 	actualizar campos cada vez que se guarda un cliente
 	si el cliente es nuevo crear un registro, caso contrario nope
 
 	impedir el ingreso de letras en el numero telefónico
 	impedir el ingreso de numeros en el nombre
-	
-	
+		
 		
 
 COSAS DESCUBIERTAS

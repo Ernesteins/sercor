@@ -417,7 +417,7 @@ namespace sercor
                 subtotal();
                 float factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
                     , float.Parse(txtSubtotal.Text), ivaConst);
-                MessageBox.Show(factorDescuento.ToString());
+                //MessageBox.Show(factorDescuento.ToString());
                 for (int j = 0; j <= filas - 1; j++)
                 {
                     
