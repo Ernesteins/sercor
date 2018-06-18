@@ -92,12 +92,12 @@ namespace sercor
             pnTrabajos.Visible = false;
             pnMovCaja.Visible = false;
 
-            btnVentas.BackColor = Color.LightSkyBlue;
-            btnCxc.BackColor = Color.LightSkyBlue;
-            btnInventario.BackColor = Color.LightSkyBlue;
-            btnReportes.BackColor = Color.LightSkyBlue;
-            btnTrabajos.BackColor = Color.LightSkyBlue;
-            btnMovimientos.BackColor = Color.LightSkyBlue;
+            btnVentas.BackColor = Color.White;
+            btnCxc.BackColor = Color.White;
+            btnInventario.BackColor = Color.White;
+            btnReportes.BackColor = Color.White;
+            btnTrabajos.BackColor = Color.White;
+            btnMovimientos.BackColor = Color.White;
 
             btnVentas.ForeColor = Color.FromArgb(64, 64, 64);
             btnCxc.ForeColor = Color.FromArgb(64, 64, 64);
@@ -112,48 +112,42 @@ namespace sercor
                     pnVentas.Visible = true;
                     pnVentas.Dock = DockStyle.Fill;
 
-                    btnVentas.BackColor = Color.DodgerBlue;
-                    btnVentas.ForeColor = Color.White;
+                    btnVentas.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 2: //CXC
                     pnCxc.Visible = true;
                     pnCxc.Dock = DockStyle.Fill;
 
-                    btnCxc.BackColor = Color.DodgerBlue;
-                    btnCxc.ForeColor = Color.White;
+                    btnCxc.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 3:
                     pnInventario.Visible = true;
                     pnInventario.Dock = DockStyle.Fill;
 
-                    btnInventario.BackColor = Color.DodgerBlue;
-                    btnInventario.ForeColor = Color.White;
+                    btnInventario.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 4:
                     pnReportes.Visible = true;
                     pnReportes.Dock = DockStyle.Fill;
 
-                    btnReportes.BackColor = Color.DodgerBlue;
-                    btnReportes.ForeColor = Color.White;
+                    btnReportes.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 5:
                     pnTrabajos.Visible = true;
                     pnTrabajos.Dock = DockStyle.Fill;
 
-                    btnTrabajos.BackColor = Color.DodgerBlue;
-                    btnTrabajos.ForeColor = Color.White;
+                    btnTrabajos.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 6:
                     pnMovCaja.Visible = true;
                     pnMovCaja.Dock = DockStyle.Fill;
 
-                    btnMovimientos.BackColor = Color.DodgerBlue;
-                    btnMovimientos.ForeColor = Color.White;
+                    btnMovimientos.BackColor = Color.WhiteSmoke;
                     break;
 
                 default:
