@@ -12,8 +12,27 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
-        private void toogleError(bool show, string mensaje)
+        private void toogleError(bool show, string mensaje, int tipo)
         {
+            lblErrors.Visible = true;
+            ptcError.Visible = true;
+            switch (tipo)
+            {
+                case 1://TIPO ERROR
+                    lblErrors.ForeColor = Color.Maroon;
+                    ptcError.BackgroundImage = sercor.Properties.Resources.error16;
+                    break;
+
+                case 2://TIPO AVISO
+                    lblErrors.ForeColor = Color.FromArgb(255, 128, 0);
+                    ptcError.BackgroundImage = sercor.Properties.Resources.alarm16;
+                    break;
+
+                case 3:
+                    lblErrors.Visible = false;
+                    ptcError.Visible = false;
+                    break;
+            }
             if (show == false)
             {
                 lblErrors.Text = "Salida";
@@ -42,7 +61,7 @@ namespace sercor
 
             ultimoIdFactura();
 
-            toogleError(false, "");
+            toogleError(false, "",3);
 
             autocompleteRefresh();
 
@@ -277,17 +296,30 @@ namespace sercor
             }
             else
             {
-                vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
-                vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
-                vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
-                vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
+                ImprimirFactura(k,0,productoSeleccionado);
             }
             subtotal();
 
         }
+
+        private void ImprimirFactura(int k, int cantidad, Producto productoSeleccionado)
+        {
+            vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
+            if (cantidad==0)
+            {
+                vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
+            }
+            else
+            {
+                vistaFactura.Rows[k].Cells[2].Value = cantidad;
+            }
+            vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
+            vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            toogleError(false, "");
+            toogleError(false, "",3);
             try
             {
                 if (txtAdd.Text == "")
@@ -296,7 +328,7 @@ namespace sercor
                 }
                 if (Convert.ToInt32(txtAdd.Text) <= 0)
                 {
-                    toogleError(true, "Debe ingresar un número mayor a 0");
+                    toogleError(true, "Debe ingresar un número mayor a 0",1);
                 }
                 else
                 {
@@ -321,26 +353,99 @@ namespace sercor
                         vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
                         cantidad, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
                     }
-                    else
-                    {
-                        vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
-                        vistaFactura.Rows[k].Cells[2].Value = cantidad;
-                        vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
-                        vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
-                    }
+                    ImprimirFactura(k, cantidad, productoSeleccionado);
                 }
                 
             }
             catch (System.FormatException)
             {
-                toogleError(true, "Debe ingresar un número");
+                toogleError(true, "Debe ingresar un número",1);
             }
             subtotal();
         }
+  
+
+        private void multiplicador()
+        {
+                    string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+                    int filas = vistaFactura.RowCount;
+
+                    subtotal();
+                    float factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
+                        , float.Parse(txtSubtotal.Text), ivaConst);
+                    //MessageBox.Show(factorDescuento.ToString());
+                    for (int j = 0; j <= filas - 1; j++)
+                    {
+
+                        vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
+                        vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+                    }
+
+                    subtotal();
+        }
+
+        bool togDescuento = true;//Habilita el boton de descuento True = habilitar
 
         private void btnDescuento_Click(object sender, EventArgs e)
         {
-            multiplicador();
+            toogleError(false, "",3);
+            try
+            {
+                if (txtDescuento.Text == "")
+                {
+                    txtDescuento.Text = "0";
+                    toogleError(true, "Ingrese un número mayor a 0",1);
+                }
+
+                string descuentito = txtDescuento.Text;
+                txtDescuento.Text = descuentito.Replace(".", ",");
+
+                if (float.Parse(txtDescuento.Text) >= float.Parse(txtTotal.Text) * 0.9)
+                {
+                    toogleError(true, "El descuento no debe ser mayor al 90% del total actual",1);
+                }
+                else
+                {
+                    if (togDescuento == true)
+                    {
+                        multiplicador();
+
+                        btnDescuento.Text = "Cancelar";
+                        btnDescuento.ForeColor = Color.Maroon;
+
+                        //UNA VEZ APLICADO EL DESCUENTO, NO SE PUEDE AGREGAR PRODUCTOS A MENOS UE CANCELE
+                        txtDescuento.Enabled = false;
+                        btnAdd.Enabled = false;
+                        txtAdd.Enabled = false;
+                        dgvProductos.Enabled = false;
+                        vistaFactura.Enabled = false;
+
+                        togDescuento = false;
+                        toogleError(true, "Descuento aplicado", 2);
+                    }
+                    else
+                    {
+                        btnDescuento.Text = "Descontar";
+                        btnDescuento.ForeColor = Color.FromArgb(64, 64, 64);
+
+                        txtDescuento.Enabled = true;
+                        btnAdd.Enabled = true;
+                        txtAdd.Enabled = true;
+                        dgvProductos.Enabled = true;
+                        vistaFactura.Enabled = true;
+
+                        togDescuento = true;
+                        ///////////////////////////////
+                        //FUNCION PARA REGRESAR PRECIOS
+                        ///////////////////////////////
+                    }
+                }
+            }
+            catch (System.FormatException)
+            {
+                toogleError(true, "Debe ingresar un número",1);
+            }
         }
 
         float ivaConst = 0.12F;
@@ -384,47 +489,6 @@ namespace sercor
             float factorDescuento = 0;
             factorDescuento =  (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial)*-1;
             return (factorDescuento);
-        }
-
-
-        private void txtDescuento_TextChanged(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void multiplicador()
-        {
-            try
-            {
-                if (txtDescuento.Text=="")
-                {
-                    txtDescuento.Text = "0";
-                }
-                string descuentito=txtDescuento.Text;
-                txtDescuento.Text = descuentito.Replace(".",",");
-
-                string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
-
-                int filas = vistaFactura.RowCount;
-
-                subtotal();
-                float factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
-                    , float.Parse(txtSubtotal.Text), ivaConst);
-                //MessageBox.Show(factorDescuento.ToString());
-                for (int j = 0; j <= filas - 1; j++)
-                {
-                    
-                    vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
-                    vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
-                }
-                
-                subtotal();
-            }
-            catch (System.FormatException)
-            {
-                toogleError(true, "Debe ingresar un número");
-            }
         }
     }
 }

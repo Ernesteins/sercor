@@ -72,7 +72,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.statusStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus,
             this.lblIndiactor});
@@ -86,7 +86,7 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(125, 17);
             this.lblStatus.Text = "Conectado a SercorDB";
@@ -152,6 +152,7 @@
             // 
             // txtUser
             // 
+            this.txtUser.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUser.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(11, 149);
@@ -162,6 +163,7 @@
             // 
             // txtPsw
             // 
+            this.txtPsw.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtPsw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPsw.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPsw.Location = new System.Drawing.Point(11, 201);
@@ -173,11 +175,11 @@
             // 
             // btnlogin
             // 
-            this.btnlogin.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnlogin.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnlogin.FlatAppearance.BorderSize = 0;
             this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnlogin.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogin.ForeColor = System.Drawing.Color.White;
+            this.btnlogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnlogin.Location = new System.Drawing.Point(86, 235);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(112, 32);

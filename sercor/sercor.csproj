@@ -104,6 +104,8 @@
     <Content Include="Docs\consultas.sql" />
     <Content Include="Docs\documentacion.txt" />
     <Content Include="Docs\genesis.sql" />
+    <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\alarm16.png" />
     <None Include="Resources\save16.png" />
     <None Include="Resources\printer16.png" />
     <None Include="Resources\error16.png" />

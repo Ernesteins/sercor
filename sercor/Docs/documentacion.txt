@@ -27,14 +27,13 @@ NOTAS
 	https://www.flaticon.com/packs/interaction-assets-2/11
 	https://www.flaticon.com/packs/essential-collection
 
-PENDIENTE
-	bug primer ingreso multiplicar
-	Boton descuento hacerlo toggle
-	
+PENDIENTE	[......]=Baja Prioridad
 	Fecha constante incluso cambiando
 
-	mejorar consulta de numero de factura
-	select max(id_factura) from factura
+	[Log de avisos]
+
+	[mejorar consulta de numero de factura
+	select max(id_factura) from factura]
 
 	actualizar campos cada vez que se guarda un cliente
 	si el cliente es nuevo crear un registro, caso contrario nope
@@ -42,7 +41,9 @@ PENDIENTE
 	impedir el ingreso de letras en el numero telefónico
 	impedir el ingreso de numeros en el nombre
 		
-		
+REALIZADO
+	bug primer ingreso multiplicar
+	Boton descuento hacerlo toggle
 
 COSAS DESCUBIERTAS
 	//dataGridView1.DataSource = ClienteDBM.ObtenerNombres();
