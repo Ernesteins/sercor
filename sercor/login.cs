@@ -13,8 +13,6 @@ namespace sercor
 {
     public partial class login : Form
     {
-        //Variables posición de formulario
-        //int posY = 0, posX = 0; 
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
 
@@ -34,22 +32,6 @@ namespace sercor
             return true;
         }
 
-        private void pnHead_MouseMove(object sender, MouseEventArgs e)
-        {
-            /*////if (e.Button != MouseButtons.Left)
-            ////{
-            ////    pnHead.Cursor = Cursors.Default;
-            ////    posX = e.X;
-            ////    posY = e.Y;
-            ////}
-            ////else
-            ////{
-            ////    Left = Left + (e.X - posX);
-            ////    Top = Top + (e.Y - posY);
-            ////    pnHead.Cursor = Cursors.SizeAll;
-            ////}*/
-        }
-
         //CONEXION DE CARGA
         private void Conectar()
         {
@@ -59,17 +41,20 @@ namespace sercor
                 bdComun.obtenerConexion();
 
                 lblStatus.Text = "Conectado a sercorDB";
-                lblIndiactor.ForeColor = Color.Lime;
+                lblStatus.ForeColor = Color.DarkGreen;
+
+                ptcStatus.BackgroundImage = sercor.Properties.Resources.success16;
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
-                MessageBox.Show("Error en conexión", "Sercor", MessageBoxButtons.OK);
-
                 lblStatus.Text = "Desconectado";
-                lblIndiactor.ForeColor = Color.OrangeRed;
+                lblStatus.ForeColor = Color.Maroon;
+
                 txtPsw.Enabled = false;
                 txtUser.Enabled = false;
                 btnlogin.Enabled = false;
+
+                ptcStatus.BackgroundImage = sercor.Properties.Resources.error16;
             }
         }
 
@@ -81,8 +66,6 @@ namespace sercor
 
             btnlogin.Focus();
         }
-
-
 
         public Usuario UsuarioSeleccionado { get; set; }
 
@@ -113,9 +96,6 @@ namespace sercor
                     //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
                     if (passHashed == passUnhash)
                     {
-                        //MessageBox.Show(nombreUser, "");
-                        //pasar aquí el nivel de usuario
-
                         FormInstance.mainWindow(UsuarioSeleccionado);
                     }
                 }
@@ -136,11 +116,6 @@ namespace sercor
         private void lblStatus_Click(object sender, EventArgs e)
         {
             Conectar();
-        }
-
-        private void login_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
