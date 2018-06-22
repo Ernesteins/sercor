@@ -13,16 +13,17 @@ namespace sercor
         public static int Agregar(Factura pFactura)
         {
             int retorno = 0;
-
+            MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
                 "Insert into clientes (ID_FACTURA, ID_CLIENTE, ID_USUARIO, IVA, " +
                 "TOTAL, FECHA)values ('{0}','{1}','{2}', '{3}', '{4}', '{5}')",
                 pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO, pFactura.IVA,
-                pFactura.TOTAL, pFactura.FECHA), bdComun.obtenerConexion());
+                pFactura.TOTAL, pFactura.FECHA),conexion);
 
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error
+            conexion.Close();
             return retorno;
         }
 

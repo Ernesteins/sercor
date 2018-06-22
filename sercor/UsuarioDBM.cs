@@ -16,6 +16,7 @@ namespace sercor
         {
             int retorno = 0;
 
+            MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
                 "Insert into clientes (ID_USUARIO, TIPO, USUARIO, CONTRASENA, " +
                 "NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILIGEIO1, PRIVILEGIO2) " +
@@ -23,10 +24,11 @@ namespace sercor
                 pUsuario.TIPO, pUsuario.USUARIO, pUsuario.CONTRASENA, pUsuario.NOMBRE,
                 pUsuario.APELLIDO, pUsuario.CEDULA, pUsuario.DIRECCION, pUsuario.TELEFONO,
                 pUsuario.PRIVILEGIO1, pUsuario.PRIVILEGIO2
-                ), bdComun.obtenerConexion());
+                ),conexion);
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error
+            conexion.Close();
             return retorno;
         }
 
@@ -38,8 +40,10 @@ namespace sercor
         {
             List<Usuario> _lista = new List<Usuario>();
 
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_USUARIO, TIPO, USUARIO, CONTRASENA, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO ='{0}'", pUser), bdComun.obtenerConexion());
+           "SELECT ID_USUARIO, TIPO, USUARIO, CONTRASENA, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO ='{0}'", pUser), conexion);
             // or contrasena='{1}' 
             //, pContrasena
 
@@ -62,6 +66,7 @@ namespace sercor
 
                 _lista.Add(pUsuario);
             }
+            conexion.Close();
             return _lista;
         }
 
@@ -92,7 +97,6 @@ namespace sercor
 
             conexion.Close();
             return pUsuario;
-
         }
     }
 }

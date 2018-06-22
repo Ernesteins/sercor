@@ -10,9 +10,9 @@ namespace sercor
 {
     public class FormInstance
     {
-        public static void mainWindow(Usuario _user)
+        public static void mainWindow(Usuario _user, Form form)
         {
-            var main = new sercormain(_user);
+            var main = new sercormain(_user,form);
             main.Show();
         }
     }

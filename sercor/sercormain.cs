@@ -52,12 +52,16 @@ namespace sercor
             lblNumeroFactura.Text = Convert.ToString(nuevoIdFactura);
         }
 
+        Form loginPadre;
+
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
-        public sercormain(Usuario usuario)
+        public sercormain(Usuario usuario, Form form)
         {
             InitializeComponent();
 
             menuToggler(1);
+
+            loginPadre = form;
 
             ultimoIdFactura();
 
@@ -503,10 +507,10 @@ namespace sercor
 
         private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProductosFiltro();
+            ProductosFiltro(cmbFiltro.SelectedIndex);
         }
 
-        private void ProductosFiltro()
+        private void ProductosFiltro(int filtroIndex)
         {
             var pFiltroCod = new AutoCompleteStringCollection();
             var pFiltroName = new AutoCompleteStringCollection();
@@ -531,7 +535,7 @@ namespace sercor
             }
 
 
-            switch (cmbFiltro.SelectedIndex)
+            switch (filtroIndex)
             {
                 case 0://POR CODIGO
                     txtProducto.Enabled = true;
@@ -559,5 +563,14 @@ namespace sercor
                     break;
             }
         }
+
+        private void sercormain_FormClosed(object sender, FormClosedEventArgs e)
+
+        {
+            loginPadre.Enabled = true;
+        }
+
+        //PONER AQUI TODO LO RELACIONADO CON CUENTAS POR COBRAR
+
     }
 }

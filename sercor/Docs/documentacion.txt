@@ -27,6 +27,8 @@ NOTAS
 	https://www.flaticon.com/packs/interaction-assets-2/11
 	https://www.flaticon.com/packs/essential-collection
 
+	https://to-do.microsoft.com/sharing?InvitationToken=JP3l5_eOh-WD4NeTEUKQ3wA07eBENzbaOc4QNHRWuh2YgcB_a87yVyeR82g_-JQxY
+
 PENDIENTE	[......]=Baja Prioridad
 	Fecha constante incluso cambiando
 

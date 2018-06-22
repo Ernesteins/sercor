@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace sercor
 {
@@ -38,12 +39,12 @@ namespace sercor
             try
             {
                 //conexión sercordb
-                bdComun.obtenerConexion();
-
+                MySqlConnection conexion=bdComun.obtenerConexion();
                 lblStatus.Text = "Conectado a sercorDB";
                 lblStatus.ForeColor = Color.DarkGreen;
 
                 ptcStatus.BackgroundImage = sercor.Properties.Resources.success16;
+                conexion.Close();
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
@@ -96,7 +97,8 @@ namespace sercor
                     //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
                     if (passHashed == passUnhash)
                     {
-                        FormInstance.mainWindow(UsuarioSeleccionado);
+                        FormInstance.mainWindow(UsuarioSeleccionado,this);
+                        this.Enabled=false;
                     }
                 }
             }
@@ -116,11 +118,6 @@ namespace sercor
         private void lblStatus_Click(object sender, EventArgs e)
         {
             Conectar();
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
     }
 }
