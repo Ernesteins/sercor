@@ -132,4 +132,15 @@
   <metadata name="colVTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAA9EAAAPRAZiKibQAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAAA0klEQVQ4T2P4//8/yfhNcYLGu8LEs+8KkzIY3r669YIU/P7FuZPfLk3f87Y46TfIEJAB/4nGD7ff
+        e71P9c63J7NvgAwBuYR4Ax7uuPd6t8SL17vE/oMMAbkE5B3iDHi48z5c826Jl0CX3AWKvyDOAKDmV7sw
+        NIPkCBvw7hFOzSBMwIDHux4ANT3HoRmE8RjweDchzSCM04B/bw4b7yOgGYSxG/Dswanrnx7O+fjmkMEB
+        PJpBGLsBZ88cufvswckrb1/d/IMuh4YJBCJhPDwM+M8AALv7dJIB8STbAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

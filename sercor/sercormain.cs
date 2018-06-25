@@ -213,6 +213,7 @@ namespace sercor
         private void btnInventario_Click(object sender, EventArgs e)
         {
             menuToggler(3);
+            btnTodosInventario_Click(null ,null);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
@@ -569,8 +570,14 @@ namespace sercor
         {
             loginPadre.Enabled = true;
         }
-
         //PONER AQUI TODO LO RELACIONADO CON CUENTAS POR COBRAR
 
+
+        //MODULO INVENTARIO
+        private void btnTodosInventario_Click(object sender, EventArgs e)
+        {
+            dgvInventario.DataSource = ProductoDBM.ObtenerProductos();
+            cbmFiltroInventario.SelectedIndex = 0;
+        }
     }
 }

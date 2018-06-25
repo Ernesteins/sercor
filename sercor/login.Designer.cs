@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.pnForm = new System.Windows.Forms.Panel();
+            this.pnBottom = new System.Windows.Forms.Panel();
+            this.ptcStatus = new System.Windows.Forms.PictureBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnBody = new System.Windows.Forms.Panel();
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
@@ -36,16 +40,12 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPsw = new System.Windows.Forms.TextBox();
             this.btnlogin = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pnBottom = new System.Windows.Forms.Panel();
-            this.ptcStatus = new System.Windows.Forms.PictureBox();
             this.pnForm.SuspendLayout();
-            this.pnBody.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptcLogo)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             this.pnBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptcStatus)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.pnBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnForm
@@ -59,6 +59,47 @@
             this.pnForm.Name = "pnForm";
             this.pnForm.Size = new System.Drawing.Size(287, 298);
             this.pnForm.TabIndex = 0;
+            // 
+            // pnBottom
+            // 
+            this.pnBottom.BackColor = System.Drawing.Color.Transparent;
+            this.pnBottom.Controls.Add(this.ptcStatus);
+            this.pnBottom.Controls.Add(this.statusStrip1);
+            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnBottom.Location = new System.Drawing.Point(0, 273);
+            this.pnBottom.Name = "pnBottom";
+            this.pnBottom.Size = new System.Drawing.Size(285, 23);
+            this.pnBottom.TabIndex = 10;
+            // 
+            // ptcStatus
+            // 
+            this.ptcStatus.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ptcStatus.BackgroundImage = global::sercor.Properties.Resources.success16;
+            this.ptcStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ptcStatus.Location = new System.Drawing.Point(262, 3);
+            this.ptcStatus.Name = "ptcStatus";
+            this.ptcStatus.Size = new System.Drawing.Size(20, 20);
+            this.ptcStatus.TabIndex = 2;
+            this.ptcStatus.TabStop = false;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(285, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(125, 17);
+            this.lblStatus.Text = "Conectado a SercorDB";
             // 
             // pnBody
             // 
@@ -147,47 +188,6 @@
             this.btnlogin.UseVisualStyleBackColor = false;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(285, 22);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(125, 17);
-            this.lblStatus.Text = "Conectado a SercorDB";
-            // 
-            // pnBottom
-            // 
-            this.pnBottom.BackColor = System.Drawing.Color.Transparent;
-            this.pnBottom.Controls.Add(this.ptcStatus);
-            this.pnBottom.Controls.Add(this.statusStrip1);
-            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnBottom.Location = new System.Drawing.Point(0, 273);
-            this.pnBottom.Name = "pnBottom";
-            this.pnBottom.Size = new System.Drawing.Size(285, 23);
-            this.pnBottom.TabIndex = 10;
-            // 
-            // ptcStatus
-            // 
-            this.ptcStatus.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ptcStatus.BackgroundImage = global::sercor.Properties.Resources.success16;
-            this.ptcStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ptcStatus.Location = new System.Drawing.Point(262, 3);
-            this.ptcStatus.Name = "ptcStatus";
-            this.ptcStatus.Size = new System.Drawing.Size(20, 20);
-            this.ptcStatus.TabIndex = 2;
-            this.ptcStatus.TabStop = false;
-            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,14 +201,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.pnForm.ResumeLayout(false);
-            this.pnBody.ResumeLayout(false);
-            this.pnBody.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptcLogo)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.pnBottom.ResumeLayout(false);
             this.pnBottom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptcStatus)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.pnBody.ResumeLayout(false);
+            this.pnBody.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
