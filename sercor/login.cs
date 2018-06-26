@@ -23,6 +23,7 @@ namespace sercor
             if (keyData == Keys.Enter)
             {
                 loginVoid();
+                limpiar();
             }
 
             if (keyData == Keys.F2)
@@ -73,6 +74,7 @@ namespace sercor
         private void btnlogin_Click(object sender, EventArgs e)
         {
             loginVoid();
+            limpiar();
         }
 
         private void loginVoid(){
@@ -112,6 +114,12 @@ namespace sercor
         private void btnInfo_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+        private void limpiar()
+        {
+            txtPsw.Text = "";
+            txtUser.Text = "";
+            txtUser.Focus();
         }
 
         //FORZAR RECONEXION
