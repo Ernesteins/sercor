@@ -16,7 +16,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_PRODUCTO, NOMBRE, DESCRIPCION, CATEGORIA, SUBCATEGORIA, EXISTENCIA, PRECIO FROM producto"), conexion);
+           "SELECT ID_PRODUCTO, NOMBRE, DESCRIPCION, CATEGORIA, SUBCATEGORIA, EXISTENCIA, PRECIO, ESTADO FROM producto"), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -29,8 +29,8 @@ namespace sercor
                 pProducto.CATEGORIA= _reader.GetString(3);
                 pProducto.SUBCATEGORIA= _reader.GetString(4);
                 pProducto.EXISTENCIA= _reader.GetInt32(5);
-                pProducto.PRECIO = _reader.GetFloat(6);
-                //pProducto.ESTADO= _reader.GetInt32(7);
+                pProducto.PRECIO = _reader.GetDecimal(6);
+                pProducto.ESTADO= _reader.GetInt32(7);
 
                 _lista.Add(pProducto);
             }
@@ -53,7 +53,7 @@ namespace sercor
                 pProducto.CATEGORIA = _reader.GetString(3);
                 pProducto.SUBCATEGORIA = _reader.GetString(4);
                 pProducto.EXISTENCIA = _reader.GetInt32(5);
-                pProducto.PRECIO = _reader.GetFloat(6);
+                pProducto.PRECIO = _reader.GetDecimal(6);
 
             }
 
@@ -79,11 +79,30 @@ namespace sercor
                 pProducto.CATEGORIA = _reader.GetString(3);
                 pProducto.SUBCATEGORIA = _reader.GetString(4);
                 pProducto.EXISTENCIA = _reader.GetInt32(5);
-                pProducto.PRECIO = _reader.GetFloat(6);
+                pProducto.PRECIO = _reader.GetDecimal(6);
             }
 
             conexion.Close();
             return pProducto;
+        }
+
+        public static int Agregar(Producto pProducto)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "Insert into producto (ID_PRODUCTO, NOMBRE, DESCRIPCION, CATEGORIA, " +
+                "SUBCATEGORIA, EXISTENCIA, PRECIO, ESTADO) " +
+                "values ('{0}','{1}','{2}', '{3}', '{4}', '{5}', '{6}', '{7}')",
+                pProducto.COD, pProducto.NOMBRE, pProducto.DESCRIPCION, pProducto.CATEGORIA,
+                pProducto.SUBCATEGORIA, pProducto.EXISTENCIA, pProducto.PRECIO, pProducto.ESTADO), conexion);
+
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
         }
     }
 }

@@ -14,14 +14,14 @@ namespace sercor
         public string CATEGORIA { get; set; }
         public string SUBCATEGORIA { get; set; }
         public int EXISTENCIA { get; set; }
-        public float PRECIO { get; set; }
-        //public int ESTADO { get; set; }
+        public decimal PRECIO { get; set; }
+        public int ESTADO { get; set; }
 
         //Constructor de objeto
         public Producto() { }
 
         public Producto(string pId, string pNombre, string pDescripcion, string pCategoria,
-            string pSubcategoria, int pExistencia, float pPrecio, float pEstado)
+            string pSubcategoria, int pExistencia, decimal pPrecio, int pEstado)
         {
             this.COD = pId;
             this.NOMBRE = pNombre;
@@ -30,7 +30,7 @@ namespace sercor
             this.SUBCATEGORIA = pSubcategoria;
             this.EXISTENCIA = pExistencia;
             this.PRECIO = pPrecio;
-            //this.ESTADO = pEstado;
+            this.ESTADO = pEstado;
         }
     }
 }
