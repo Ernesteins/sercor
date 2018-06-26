@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="agregar_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="agregar_producto.Designer.cs">
+      <DependentUpon>agregar_producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="bdComun.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteDBM.cs" />
@@ -76,6 +82,9 @@
     </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDBM.cs" />
+    <EmbeddedResource Include="agregar_producto.resx">
+      <DependentUpon>agregar_producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +113,10 @@
     <Content Include="Docs\consultas.sql" />
     <Content Include="Docs\documentacion.txt" />
     <Content Include="Docs\genesis.sql" />
+    <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\alarm16.png" />
+    <None Include="Resources\save16.png" />
+    <None Include="Resources\printer16.png" />
     <None Include="Resources\error16.png" />
     <None Include="Resources\success16.png" />
     <None Include="Resources\dollar16.png" />

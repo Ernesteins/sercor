@@ -14,9 +14,9 @@ namespace sercor
         public static List<Cliente> ObtenerNombres()
         {
             List<Cliente> _lista = new List<Cliente>();
-
+            MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_CLIENTE, NOMBRE, DIRECCION, TELEFONO FROM cliente"), bdComun.obtenerConexion());
+           "SELECT ID_CLIENTE, NOMBRE, DIRECCION, TELEFONO FROM cliente"),conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -30,6 +30,7 @@ namespace sercor
 
                 _lista.Add(pCliente);
             }
+            conexion.Close();
             return _lista;
         }
 

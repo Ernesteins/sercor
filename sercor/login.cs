@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace sercor
 {
     public partial class login : Form
     {
-        //Variables posición de formulario
-        //int posY = 0, posX = 0; 
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
 
@@ -24,6 +23,7 @@ namespace sercor
             if (keyData == Keys.Enter)
             {
                 loginVoid();
+                limpiar();
             }
 
             if (keyData == Keys.F2)
@@ -34,42 +34,29 @@ namespace sercor
             return true;
         }
 
-        private void pnHead_MouseMove(object sender, MouseEventArgs e)
-        {
-            /*////if (e.Button != MouseButtons.Left)
-            ////{
-            ////    pnHead.Cursor = Cursors.Default;
-            ////    posX = e.X;
-            ////    posY = e.Y;
-            ////}
-            ////else
-            ////{
-            ////    Left = Left + (e.X - posX);
-            ////    Top = Top + (e.Y - posY);
-            ////    pnHead.Cursor = Cursors.SizeAll;
-            ////}*/
-        }
-
         //CONEXION DE CARGA
         private void Conectar()
         {
             try
             {
                 //conexión sercordb
-                bdComun.obtenerConexion();
-
+                MySqlConnection conexion=bdComun.obtenerConexion();
                 lblStatus.Text = "Conectado a sercorDB";
-                lblIndiactor.ForeColor = Color.Lime;
+                lblStatus.ForeColor = Color.DarkGreen;
+
+                ptcStatus.BackgroundImage = sercor.Properties.Resources.success16;
+                conexion.Close();
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
-                MessageBox.Show("Error en conexión", "Sercor", MessageBoxButtons.OK);
-
                 lblStatus.Text = "Desconectado";
-                lblIndiactor.ForeColor = Color.OrangeRed;
+                lblStatus.ForeColor = Color.Maroon;
+
                 txtPsw.Enabled = false;
                 txtUser.Enabled = false;
                 btnlogin.Enabled = false;
+
+                ptcStatus.BackgroundImage = sercor.Properties.Resources.error16;
             }
         }
 
@@ -82,13 +69,12 @@ namespace sercor
             btnlogin.Focus();
         }
 
-
-
         public Usuario UsuarioSeleccionado { get; set; }
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
             loginVoid();
+            limpiar();
         }
 
         private void loginVoid(){
@@ -113,10 +99,8 @@ namespace sercor
                     //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
                     if (passHashed == passUnhash)
                     {
-                        //MessageBox.Show(nombreUser, "");
-                        //pasar aquí el nivel de usuario
-
-                        FormInstance.mainWindow(UsuarioSeleccionado);
+                        FormInstance.mainWindow(UsuarioSeleccionado,this);
+                        this.Enabled=false;
                     }
                 }
             }
@@ -131,21 +115,17 @@ namespace sercor
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        private void limpiar()
+        {
+            txtPsw.Text = "";
+            txtUser.Text = "";
+            txtUser.Focus();
+        }
 
         //FORZAR RECONEXION
         private void lblStatus_Click(object sender, EventArgs e)
         {
             Conectar();
-        }
-
-        private void login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
     }
 }

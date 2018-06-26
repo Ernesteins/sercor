@@ -12,8 +12,28 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
-        private void toogleError(bool show, string mensaje)
+        //MUESTRA MENSAJES DES ERROR O NOTIFICACIONES
+        private void toogleError(bool show, string mensaje, int tipo)//mostrar|mensaje a mostrar|1=error 2=aviso
         {
+            lblErrors.Visible = true;
+            ptcError.Visible = true;
+            switch (tipo)
+            {
+                case 1://TIPO ERROR
+                    lblErrors.ForeColor = Color.Maroon;
+                    ptcError.BackgroundImage = sercor.Properties.Resources.error16;
+                    break;
+
+                case 2://TIPO AVISO
+                    lblErrors.ForeColor = Color.FromArgb(255, 128, 0);
+                    ptcError.BackgroundImage = sercor.Properties.Resources.alarm16;
+                    break;
+
+                case 3:
+                    lblErrors.Visible = false;
+                    ptcError.Visible = false;
+                    break;
+            }
             if (show == false)
             {
                 lblErrors.Text = "Salida";
@@ -25,7 +45,8 @@ namespace sercor
         }
 
         public Factura ultimoRegistro { get; set; }
-        private void ultimoIdFactura()
+
+        private void ultimoIdFactura()//ultimo id de factura
         {
             ultimoRegistro = FacturaDBM.UltimoID();
             int idUltimoFactura = ultimoRegistro.ID_FACTURA;
@@ -33,16 +54,23 @@ namespace sercor
             lblNumeroFactura.Text = Convert.ToString(nuevoIdFactura);
         }
 
+        Form loginPadre;
+
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
-        public sercormain(Usuario usuario)
+        public sercormain(Usuario usuario, Form form)
         {
             InitializeComponent();
 
+            //IMPORTANTE
+            FormInstance.puntoDecimal();
+
             menuToggler(1);
+
+            loginPadre = form;
 
             ultimoIdFactura();
 
-            toogleError(false, "");
+            toogleError(false, "",3);
 
             autocompleteRefresh();
 
@@ -92,12 +120,12 @@ namespace sercor
             pnTrabajos.Visible = false;
             pnMovCaja.Visible = false;
 
-            btnVentas.BackColor = Color.LightSkyBlue;
-            btnCxc.BackColor = Color.LightSkyBlue;
-            btnInventario.BackColor = Color.LightSkyBlue;
-            btnReportes.BackColor = Color.LightSkyBlue;
-            btnTrabajos.BackColor = Color.LightSkyBlue;
-            btnMovimientos.BackColor = Color.LightSkyBlue;
+            btnVentas.BackColor = Color.White;
+            btnCxc.BackColor = Color.White;
+            btnInventario.BackColor = Color.White;
+            btnReportes.BackColor = Color.White;
+            btnTrabajos.BackColor = Color.White;
+            btnMovimientos.BackColor = Color.White;
 
             btnVentas.ForeColor = Color.FromArgb(64, 64, 64);
             btnCxc.ForeColor = Color.FromArgb(64, 64, 64);
@@ -112,48 +140,42 @@ namespace sercor
                     pnVentas.Visible = true;
                     pnVentas.Dock = DockStyle.Fill;
 
-                    btnVentas.BackColor = Color.DodgerBlue;
-                    btnVentas.ForeColor = Color.White;
+                    btnVentas.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 2: //CXC
                     pnCxc.Visible = true;
                     pnCxc.Dock = DockStyle.Fill;
 
-                    btnCxc.BackColor = Color.DodgerBlue;
-                    btnCxc.ForeColor = Color.White;
+                    btnCxc.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 3:
                     pnInventario.Visible = true;
                     pnInventario.Dock = DockStyle.Fill;
 
-                    btnInventario.BackColor = Color.DodgerBlue;
-                    btnInventario.ForeColor = Color.White;
+                    btnInventario.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 4:
                     pnReportes.Visible = true;
                     pnReportes.Dock = DockStyle.Fill;
 
-                    btnReportes.BackColor = Color.DodgerBlue;
-                    btnReportes.ForeColor = Color.White;
+                    btnReportes.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 5:
                     pnTrabajos.Visible = true;
                     pnTrabajos.Dock = DockStyle.Fill;
 
-                    btnTrabajos.BackColor = Color.DodgerBlue;
-                    btnTrabajos.ForeColor = Color.White;
+                    btnTrabajos.BackColor = Color.WhiteSmoke;
                     break;
 
                 case 6:
                     pnMovCaja.Visible = true;
                     pnMovCaja.Dock = DockStyle.Fill;
 
-                    btnMovimientos.BackColor = Color.DodgerBlue;
-                    btnMovimientos.ForeColor = Color.White;
+                    btnMovimientos.BackColor = Color.WhiteSmoke;
                     break;
 
                 default:
@@ -164,10 +186,10 @@ namespace sercor
         //REFRESCA EL AUTOCOMPLETE DEL CLIENTE
         private void autocompleteRefresh()
         {
-            //CARGA EN AUTOCOMPLETE DE NOMBRE DESDE BASE DE DATOS
+            //CARGA EN AUTOCOMPLETE DE ID DESDE BASE DE DATOS
             var clienteNombres = new AutoCompleteStringCollection();
             var clienteId = new AutoCompleteStringCollection();
-            //MessageBox.Show(Convert.ToString(ClienteDBM.ObtenerNombres().Count));
+            
             int j = 0;
             for (int i = 0; i <= ClienteDBM.ObtenerNombres().Count; i++)
             {
@@ -178,16 +200,9 @@ namespace sercor
                     j++;
                 }
             }
-            //txtName.AutoCompleteCustomSource = clienteNombres;
+            
             txtId.AutoCompleteCustomSource = clienteId;
         }
-
-        //public sercormain(){
-        //    InitializeComponent();
-        //    menuToggler(1);
-
-        //    autocompleteRefresh();
-        //}
 
         public Cliente clienteNombres { get; set; }
 
@@ -203,6 +218,7 @@ namespace sercor
         private void btnInventario_Click(object sender, EventArgs e)
         {
             menuToggler(3);
+            btnTodosInventario_Click(null ,null);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
@@ -220,7 +236,148 @@ namespace sercor
             menuToggler(6);
         }
 
+        //FUNCION RESTAURADORA DE PRECIOS
+        private void restaurador()
+        {
 
+            int filas = vistaFactura.RowCount;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+
+                vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) / (1 - factorDescuento));
+                vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+            }
+            subtotal();
+            factorDescuento = 0;
+        }
+
+        float factorDescuento;
+
+        private void Multiplicador()//aplica descuento
+        {
+            int filas = vistaFactura.RowCount;
+
+            subtotal();
+            factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
+                , float.Parse(txtSubtotal.Text), ivaConst);
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+
+                vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
+                vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+            }
+
+            subtotal();
+        }
+
+        float ivaConst = 0.12F;//constante iva
+
+        private void subtotal()//calculo de subtotal
+        {
+            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+            int filas = vistaFactura.RowCount;
+
+            float subtotal = 0;
+
+            float iva;
+            float total;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
+            }
+
+            txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString("0.00");
+            iva = ivaConst * subtotal;
+            txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString("0.00");
+            total = subtotal + iva;
+
+            //trocito clave
+            //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
+
+            txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString("0.00");
+
+        }
+
+        private float Calculo_FactorDescuento(float descuento, float total_inicial, float subtotal_inicial, float iva)//calcula el factor de descuento
+        {
+            float factorDescuento = 0;
+            factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
+            return (factorDescuento);
+        }
+
+        private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductosFiltro(cmbFiltro.SelectedIndex, txtProducto);
+        }
+
+        //FILTRO DE BUSQUEDA
+        private void ProductosFiltro(int filtroIndex, TextBox txtBusqueda)
+        {
+            var pFiltroCod = new AutoCompleteStringCollection();
+            var pFiltroName = new AutoCompleteStringCollection();
+            var pFiltroDes = new AutoCompleteStringCollection();
+            var pFiltroCat = new AutoCompleteStringCollection();
+            var pFiltroSubCat = new AutoCompleteStringCollection();
+
+            int j = 0;
+
+            for (int i = 0; i <= ProductoDBM.ObtenerProductos().Count; i++)
+            {
+                if (j != ProductoDBM.ObtenerProductos().Count)
+                {
+                    pFiltroCod.Add(ProductoDBM.ObtenerProductos()[j].COD);
+                    pFiltroName.Add(ProductoDBM.ObtenerProductos()[j].NOMBRE);
+                    pFiltroDes.Add(ProductoDBM.ObtenerProductos()[j].DESCRIPCION);
+                    pFiltroCat.Add(ProductoDBM.ObtenerProductos()[j].CATEGORIA);
+                    pFiltroSubCat.Add(ProductoDBM.ObtenerProductos()[j].SUBCATEGORIA);
+
+                    j++;
+                }
+            }
+
+
+            switch (filtroIndex)
+            {
+                case 0://POR CODIGO
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroCod;
+                    break;
+
+                case 1://POR NOMBRE
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroName;
+                    break;
+
+                case 2://POR DESCRIPCION
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroDes;
+                    break;
+
+                case 3://POR CATEGORIA
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroCat;
+                    break;
+
+                case 4://POR SUBCATEGORIA
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroSubCat;
+                    break;
+            }
+        }
+
+        private void sercormain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginPadre.Enabled = true;
+        }
+
+
+        /////////////////
+        //MODULO VENTAS//
+        ////////////////
         private void txtId_TextChanged(object sender, EventArgs e)
         {
 
@@ -242,9 +399,10 @@ namespace sercor
         {
             dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
 
-            //DataGridViewColumn column = dgvProductos.Columns[0];
-            //column.Width = 50;
+            DataGridViewColumn column = dgvProductos.Columns[0];
+            column.Width = 50;
 
+            cmbFiltro.SelectedIndex = 0;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -257,6 +415,10 @@ namespace sercor
             vistaFactura.Rows.Clear();
 
             txtId.Focus();
+
+            restaurador();
+            aplicarDescuento();
+            toogleError(true,"Nueva factura",2);
         }
 
         private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -283,17 +445,30 @@ namespace sercor
             }
             else
             {
-                vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
-                vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
-                vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
-                vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
+                ImprimirFactura(k,0,productoSeleccionado);
             }
             subtotal();
 
         }
+
+        private void ImprimirFactura(int k, int cantidad, Producto productoSeleccionado)
+        {
+            vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
+            if (cantidad==0)
+            {
+                vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
+            }
+            else
+            {
+                vistaFactura.Rows[k].Cells[2].Value = cantidad;
+            }
+            vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
+            vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            toogleError(false, "");
+            toogleError(false, "",3);
             try
             {
                 if (txtAdd.Text == "")
@@ -302,7 +477,7 @@ namespace sercor
                 }
                 if (Convert.ToInt32(txtAdd.Text) <= 0)
                 {
-                    toogleError(true, "Debe ingresar un número mayor a 0");
+                    toogleError(true, "Debe ingresar un número mayor a 0",1);
                 }
                 else
                 {
@@ -327,110 +502,113 @@ namespace sercor
                         vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
                         cantidad, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
                     }
-                    else
-                    {
-                        vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
-                        vistaFactura.Rows[k].Cells[2].Value = cantidad;
-                        vistaFactura.Rows[k].Cells[3].Value = productoSeleccionado.PRECIO;
-                        vistaFactura.Rows[k].Cells[4].Value = productoSeleccionado.PRECIO * Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value);
-                    }
+                    ImprimirFactura(k, cantidad, productoSeleccionado);
                 }
                 
             }
             catch (System.FormatException)
             {
-                toogleError(true, "Debe ingresar un número");
+                toogleError(true, "Debe ingresar un número",1);
             }
             subtotal();
         }
 
-        private void btnDescuento_Click(object sender, EventArgs e)
-        {
-            multiplicador();
-        }
+        bool togDescuento = true;//Habilita el boton de descuento True = habilitar
 
-        float ivaConst = 0.12F;
-
-        private void subtotal()
-        {
-            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
-
-            int filas = vistaFactura.RowCount;
-
-            float subtotal = 0;
-           
-            float iva;
-            float total;
-
-            for (int j = 0; j <= filas - 1; j++)
-            {
-                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
-            }
-
-            txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString();
-            iva = ivaConst * subtotal;
-            txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString();
-            total = subtotal + iva;
-            //trocito clave
-            //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
-
-            txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString();
-
-        }
-
-        private float  Calculo_FactorDescuento(float descuento,float total_inicial,float subtotal_inicial,float iva)
-        {
-            float factorDescuento = 0;
-            factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
-            return (factorDescuento);
-        }
-
-        private float Calculo_FactorDescuentoINV(float descuento, float total_inicial, float subtotal_inicial, float iva)
-        {
-            float factorDescuento = 0;
-            factorDescuento =  (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial)*-1;
-            return (factorDescuento);
-        }
-
-
-        private void txtDescuento_TextChanged(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void multiplicador()
-        {
+        private void aplicarDescuento() {
+            toogleError(false, "", 3);
             try
             {
-                if (txtDescuento.Text=="")
+                if (txtDescuento.Text == "")
                 {
                     txtDescuento.Text = "0";
+                    toogleError(true, "Ingrese un número mayor a 0", 1);
                 }
-                string descuentito=txtDescuento.Text;
-                txtDescuento.Text = descuentito.Replace(".",",");
 
-                string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+                string descuentito = txtDescuento.Text;
+                txtDescuento.Text = descuentito.Replace(",", ".");
 
-                int filas = vistaFactura.RowCount;
 
-                subtotal();
-                float factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
-                    , float.Parse(txtSubtotal.Text), ivaConst);
-                //MessageBox.Show(factorDescuento.ToString());
-                for (int j = 0; j <= filas - 1; j++)
+                if (togDescuento == true)
                 {
-                    
-                    vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
-                    vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+                    if (float.Parse(txtDescuento.Text) >= float.Parse(txtTotal.Text) * 0.9)
+                    {
+                        toogleError(true, "El descuento no debe ser mayor al 90% del total actual", 1);
+                    }
+                    else
+                    {
+                        Multiplicador();
+
+                        btnDescuento.Text = "Cancelar";
+                        btnDescuento.ForeColor = Color.Maroon;
+
+                        //UNA VEZ APLICADO EL DESCUENTO, NO SE PUEDE AGREGAR PRODUCTOS A MENOS UE CANCELE
+                        txtDescuento.Enabled = false;
+                        btnAdd.Enabled = false;
+                        txtAdd.Enabled = false;
+                        dgvProductos.Enabled = false;
+                        vistaFactura.Enabled = false;
+
+                        togDescuento = false;
+                        toogleError(true, "Descuento aplicado", 2);
+                    }    
                 }
+                else
+                {
+                    btnDescuento.Text = "Descontar";
+                    btnDescuento.ForeColor = Color.FromArgb(64, 64, 64);
+
+                    txtDescuento.Enabled = true;
+                    btnAdd.Enabled = true;
+                    txtAdd.Enabled = true;
+                    dgvProductos.Enabled = true;
+                    vistaFactura.Enabled = true;
+
+                    togDescuento = true;
+
+                    restaurador();
+                }
+
                 
-                subtotal();
             }
             catch (System.FormatException)
             {
-                toogleError(true, "Debe ingresar un número");
+                toogleError(true, "Debe ingresar un número", 1);
             }
+        }
+
+        private void btnDescuento_Click(object sender, EventArgs e)
+        {
+            aplicarDescuento();
+        }
+
+        //////////////////////
+        //CUENTAS POR COBRAR//
+        //////////////////////
+
+
+        /////////////////////
+        //MODULO INVENTARIO//
+        /////////////////////
+        private void btnTodosInventario_Click(object sender, EventArgs e)
+        {
+            dgvInventario.DataSource = ProductoDBM.ObtenerProductos();
+            cbmFiltroInventario.SelectedIndex = 0;
+        }
+
+        private void cbmFiltroInventario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductosFiltro(cbmFiltroInventario.SelectedIndex,txtBusquedaInventario);
+        }
+
+        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            agregar_producto agregarProducto = new agregar_producto();
+            agregarProducto.ShowDialog();
+
+            toogleError(true,agregarProducto.mensaje,2);
+
+            btnTodosInventario_Click(null, null);
         }
     }
 }
