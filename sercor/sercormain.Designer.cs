@@ -1426,7 +1426,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Silver;
             this.pictureBox6.Location = new System.Drawing.Point(137, 257);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1, 1135);
+            this.pictureBox6.Size = new System.Drawing.Size(1, 1322);
             this.pictureBox6.TabIndex = 48;
             this.pictureBox6.TabStop = false;
             // 

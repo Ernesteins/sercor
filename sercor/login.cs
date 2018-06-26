@@ -119,6 +119,9 @@ namespace sercor
         {
             txtPsw.Text = "";
             txtUser.Text = "";
+            
+            //*//
+            txtUser.Select();
             txtUser.Focus();
         }
 
