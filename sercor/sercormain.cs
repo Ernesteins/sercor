@@ -12,7 +12,8 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
-        private void toogleError(bool show, string mensaje, int tipo)
+        //MUESTRA MENSAJES DES ERROR O NOTIFICACIONES
+        private void toogleError(bool show, string mensaje, int tipo)//mostrar|mensaje a mostrar|1=error 2=aviso
         {
             lblErrors.Visible = true;
             ptcError.Visible = true;
@@ -44,7 +45,8 @@ namespace sercor
         }
 
         public Factura ultimoRegistro { get; set; }
-        private void ultimoIdFactura()
+
+        private void ultimoIdFactura()//ultimo id de factura
         {
             ultimoRegistro = FacturaDBM.UltimoID();
             int idUltimoFactura = ultimoRegistro.ID_FACTURA;
@@ -58,6 +60,9 @@ namespace sercor
         public sercormain(Usuario usuario, Form form)
         {
             InitializeComponent();
+
+            //IMPORTANTE
+            FormInstance.puntoDecimal();
 
             menuToggler(1);
 
@@ -231,7 +236,148 @@ namespace sercor
             menuToggler(6);
         }
 
+        //FUNCION RESTAURADORA DE PRECIOS
+        private void restaurador()
+        {
 
+            int filas = vistaFactura.RowCount;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+
+                vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) / (1 - factorDescuento));
+                vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+            }
+            subtotal();
+            factorDescuento = 0;
+        }
+
+        float factorDescuento;
+
+        private void Multiplicador()//aplica descuento
+        {
+            int filas = vistaFactura.RowCount;
+
+            subtotal();
+            factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
+                , float.Parse(txtSubtotal.Text), ivaConst);
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+
+                vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
+                vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
+            }
+
+            subtotal();
+        }
+
+        float ivaConst = 0.12F;//constante iva
+
+        private void subtotal()//calculo de subtotal
+        {
+            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+            int filas = vistaFactura.RowCount;
+
+            float subtotal = 0;
+
+            float iva;
+            float total;
+
+            for (int j = 0; j <= filas - 1; j++)
+            {
+                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
+            }
+
+            txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString("0.00");
+            iva = ivaConst * subtotal;
+            txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString("0.00");
+            total = subtotal + iva;
+
+            //trocito clave
+            //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
+
+            txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString("0.00");
+
+        }
+
+        private float Calculo_FactorDescuento(float descuento, float total_inicial, float subtotal_inicial, float iva)//calcula el factor de descuento
+        {
+            float factorDescuento = 0;
+            factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
+            return (factorDescuento);
+        }
+
+        private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductosFiltro(cmbFiltro.SelectedIndex, txtProducto);
+        }
+
+        //FILTRO DE BUSQUEDA
+        private void ProductosFiltro(int filtroIndex, TextBox txtBusqueda)
+        {
+            var pFiltroCod = new AutoCompleteStringCollection();
+            var pFiltroName = new AutoCompleteStringCollection();
+            var pFiltroDes = new AutoCompleteStringCollection();
+            var pFiltroCat = new AutoCompleteStringCollection();
+            var pFiltroSubCat = new AutoCompleteStringCollection();
+
+            int j = 0;
+
+            for (int i = 0; i <= ProductoDBM.ObtenerProductos().Count; i++)
+            {
+                if (j != ProductoDBM.ObtenerProductos().Count)
+                {
+                    pFiltroCod.Add(ProductoDBM.ObtenerProductos()[j].COD);
+                    pFiltroName.Add(ProductoDBM.ObtenerProductos()[j].NOMBRE);
+                    pFiltroDes.Add(ProductoDBM.ObtenerProductos()[j].DESCRIPCION);
+                    pFiltroCat.Add(ProductoDBM.ObtenerProductos()[j].CATEGORIA);
+                    pFiltroSubCat.Add(ProductoDBM.ObtenerProductos()[j].SUBCATEGORIA);
+
+                    j++;
+                }
+            }
+
+
+            switch (filtroIndex)
+            {
+                case 0://POR CODIGO
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroCod;
+                    break;
+
+                case 1://POR NOMBRE
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroName;
+                    break;
+
+                case 2://POR DESCRIPCION
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroDes;
+                    break;
+
+                case 3://POR CATEGORIA
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroCat;
+                    break;
+
+                case 4://POR SUBCATEGORIA
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = pFiltroSubCat;
+                    break;
+            }
+        }
+
+        private void sercormain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginPadre.Enabled = true;
+        }
+
+
+        /////////////////
+        //MODULO VENTAS//
+        ////////////////
         private void txtId_TextChanged(object sender, EventArgs e)
         {
 
@@ -366,42 +512,6 @@ namespace sercor
             }
             subtotal();
         }
-        
-        //FUNCION RESTAURADORA DE PRECIOS
-        private void restaurador()
-        {
-
-            int filas = vistaFactura.RowCount;
-
-            for (int j = 0; j <= filas - 1; j++)
-            {
-
-                vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) / (1-factorDescuento));
-                vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
-            }
-            subtotal();
-            factorDescuento = 0;
-        }
-
-        float factorDescuento;
-
-        private void Multiplicador()
-        {
-                    int filas = vistaFactura.RowCount;
-
-                    subtotal();
-                    factorDescuento = Calculo_FactorDescuento(float.Parse(txtDescuento.Text), float.Parse(txtTotal.Text)
-                        , float.Parse(txtSubtotal.Text), ivaConst);
-
-                    for (int j = 0; j <= filas - 1; j++)
-                    {
-
-                        vistaFactura.Rows[j].Cells[3].Value = ((float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value))) - (float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[3].Value)) * (factorDescuento)));
-                        vistaFactura.Rows[j].Cells[4].Value = float.Parse(vistaFactura.Rows[j].Cells[3].Value.ToString()) * float.Parse(vistaFactura.Rows[j].Cells[2].Value.ToString());
-                    }
-
-                    subtotal();
-        }
 
         bool togDescuento = true;//Habilita el boton de descuento True = habilitar
 
@@ -416,15 +526,16 @@ namespace sercor
                 }
 
                 string descuentito = txtDescuento.Text;
-                txtDescuento.Text = descuentito.Replace(".", ",");
+                txtDescuento.Text = descuentito.Replace(",", ".");
 
-                if (float.Parse(txtDescuento.Text) >= float.Parse(txtTotal.Text) * 0.9)
+
+                if (togDescuento == true)
                 {
-                    toogleError(true, "El descuento no debe ser mayor al 90% del total actual", 1);
-                }
-                else
-                {
-                    if (togDescuento == true)
+                    if (float.Parse(txtDescuento.Text) >= float.Parse(txtTotal.Text) * 0.9)
+                    {
+                        toogleError(true, "El descuento no debe ser mayor al 90% del total actual", 1);
+                    }
+                    else
                     {
                         Multiplicador();
 
@@ -440,23 +551,25 @@ namespace sercor
 
                         togDescuento = false;
                         toogleError(true, "Descuento aplicado", 2);
-                    }
-                    else
-                    {
-                        btnDescuento.Text = "Descontar";
-                        btnDescuento.ForeColor = Color.FromArgb(64, 64, 64);
-
-                        txtDescuento.Enabled = true;
-                        btnAdd.Enabled = true;
-                        txtAdd.Enabled = true;
-                        dgvProductos.Enabled = true;
-                        vistaFactura.Enabled = true;
-
-                        togDescuento = true;
-
-                        restaurador();
-                    }
+                    }    
                 }
+                else
+                {
+                    btnDescuento.Text = "Descontar";
+                    btnDescuento.ForeColor = Color.FromArgb(64, 64, 64);
+
+                    txtDescuento.Enabled = true;
+                    btnAdd.Enabled = true;
+                    txtAdd.Enabled = true;
+                    dgvProductos.Enabled = true;
+                    vistaFactura.Enabled = true;
+
+                    togDescuento = true;
+
+                    restaurador();
+                }
+
+                
             }
             catch (System.FormatException)
             {
@@ -469,115 +582,33 @@ namespace sercor
             aplicarDescuento();
         }
 
-        float ivaConst = 0.12F;
-
-        private void subtotal()
-        {
-            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
-
-            int filas = vistaFactura.RowCount;
-
-            float subtotal = 0;
-           
-            float iva;
-            float total;
-
-            for (int j = 0; j <= filas - 1; j++)
-            {
-                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
-            }
-
-            txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString("0.00");
-            iva = ivaConst * subtotal;
-            txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString("0.00");
-            total = subtotal + iva;
-
-            //trocito clave
-            //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
-
-            txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString("0.00");
-
-        }
-
-        private float  Calculo_FactorDescuento(float descuento,float total_inicial,float subtotal_inicial,float iva)
-        {
-            float factorDescuento = 0;
-            factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
-            return (factorDescuento);
-        }
-
-        private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ProductosFiltro(cmbFiltro.SelectedIndex);
-        }
-
-        private void ProductosFiltro(int filtroIndex)
-        {
-            var pFiltroCod = new AutoCompleteStringCollection();
-            var pFiltroName = new AutoCompleteStringCollection();
-            var pFiltroDes = new AutoCompleteStringCollection();
-            var pFiltroCat = new AutoCompleteStringCollection();
-            var pFiltroSubCat = new AutoCompleteStringCollection();
-
-            int j = 0;
-
-            for (int i = 0; i <= ProductoDBM.ObtenerProductos().Count; i++)
-            {
-                if (j != ProductoDBM.ObtenerProductos().Count)
-                {
-                    pFiltroCod.Add(ProductoDBM.ObtenerProductos()[j].COD);
-                    pFiltroName.Add(ProductoDBM.ObtenerProductos()[j].NOMBRE);
-                    pFiltroDes.Add(ProductoDBM.ObtenerProductos()[j].DESCRIPCION);
-                    pFiltroCat.Add(ProductoDBM.ObtenerProductos()[j].CATEGORIA);
-                    pFiltroSubCat.Add(ProductoDBM.ObtenerProductos()[j].SUBCATEGORIA);
-
-                    j++;
-                }
-            }
+        //////////////////////
+        //CUENTAS POR COBRAR//
+        //////////////////////
 
 
-            switch (filtroIndex)
-            {
-                case 0://POR CODIGO
-                    txtProducto.Enabled = true;
-                    txtProducto.AutoCompleteCustomSource = pFiltroCod;
-                    break;
-
-                case 1://POR NOMBRE
-                    txtProducto.Enabled = true;
-                    txtProducto.AutoCompleteCustomSource = pFiltroName;
-                    break;
-
-                case 2://POR DESCRIPCION
-                    txtProducto.Enabled = true;
-                    txtProducto.AutoCompleteCustomSource = pFiltroDes;
-                    break;
-
-                case 3://POR CATEGORIA
-                    txtProducto.Enabled = true;
-                    txtProducto.AutoCompleteCustomSource = pFiltroCat;
-                    break;
-
-                case 4://POR SUBCATEGORIA
-                    txtProducto.Enabled = true;
-                    txtProducto.AutoCompleteCustomSource = pFiltroSubCat;
-                    break;
-            }
-        }
-
-        private void sercormain_FormClosed(object sender, FormClosedEventArgs e)
-
-        {
-            loginPadre.Enabled = true;
-        }
-        //PONER AQUI TODO LO RELACIONADO CON CUENTAS POR COBRAR
-
-
-        //MODULO INVENTARIO
+        /////////////////////
+        //MODULO INVENTARIO//
+        /////////////////////
         private void btnTodosInventario_Click(object sender, EventArgs e)
         {
             dgvInventario.DataSource = ProductoDBM.ObtenerProductos();
             cbmFiltroInventario.SelectedIndex = 0;
+        }
+
+        private void cbmFiltroInventario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProductosFiltro(cbmFiltroInventario.SelectedIndex,txtBusquedaInventario);
+        }
+
+        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            agregar_producto agregarProducto = new agregar_producto();
+            agregarProducto.ShowDialog();
+
+            toogleError(true,agregarProducto.mensaje,2);
+
+            btnTodosInventario_Click(null, null);
         }
     }
 }
