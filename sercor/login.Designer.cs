@@ -76,7 +76,7 @@
             this.ptcStatus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ptcStatus.BackgroundImage = global::sercor.Properties.Resources.success16;
             this.ptcStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ptcStatus.Location = new System.Drawing.Point(262, 3);
+            this.ptcStatus.Location = new System.Drawing.Point(125, 3);
             this.ptcStatus.Name = "ptcStatus";
             this.ptcStatus.Size = new System.Drawing.Size(20, 20);
             this.ptcStatus.TabIndex = 2;
@@ -103,7 +103,7 @@
             // 
             // pnBody
             // 
-            this.pnBody.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnBody.BackColor = System.Drawing.Color.White;
             this.pnBody.Controls.Add(this.lblPass);
             this.pnBody.Controls.Add(this.lblUser);
             this.pnBody.Controls.Add(this.ptcLogo);
