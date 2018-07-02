@@ -70,9 +70,13 @@ namespace sercor
 
             ultimoIdFactura();
 
-            toogleError(false, "",3);
+            toogleError(false, "", 3);
 
             autocompleteRefresh();
+
+            metodoDePago(0);
+
+            ordenTipo.SelectedIndex=0;
 
             dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
 
@@ -189,7 +193,7 @@ namespace sercor
             //CARGA EN AUTOCOMPLETE DE ID DESDE BASE DE DATOS
             var clienteNombres = new AutoCompleteStringCollection();
             var clienteId = new AutoCompleteStringCollection();
-            
+
             int j = 0;
             for (int i = 0; i <= ClienteDBM.ObtenerNombres().Count; i++)
             {
@@ -200,7 +204,7 @@ namespace sercor
                     j++;
                 }
             }
-            
+
             txtId.AutoCompleteCustomSource = clienteId;
         }
 
@@ -218,7 +222,7 @@ namespace sercor
         private void btnInventario_Click(object sender, EventArgs e)
         {
             menuToggler(3);
-            btnTodosInventario_Click(null ,null);
+            btnTodosInventario_Click(null, null);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
@@ -374,10 +378,76 @@ namespace sercor
             loginPadre.Enabled = true;
         }
 
+        private List<Producto> buscarFiltro(int index, TextBox _busqueda){
+            List<Producto> filtrado=null;
+            switch (index)
+            {
+                case 0://CODIGO
+                    filtrado = ProductoDBM.ObtenerPorFiltro(_busqueda.Text,null,null,null,null);
+                    break;
 
+                case 1:
+                    filtrado = ProductoDBM.ObtenerPorFiltro(null, _busqueda.Text, null, null, null);
+                    break;
+
+                case 2:
+                    filtrado = ProductoDBM.ObtenerPorFiltro(null, null, _busqueda.Text, null, null);
+                    break;
+
+                case 3:
+                    filtrado = ProductoDBM.ObtenerPorFiltro(null, null, null,_busqueda.Text, null);
+                    break;
+
+                case 4:
+                    filtrado = ProductoDBM.ObtenerPorFiltro(null, null, null, null, _busqueda.Text);
+                    break;
+            }
+            return filtrado;
+        }
         /////////////////
         //MODULO VENTAS//
         ////////////////
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dgvProductos.DataSource = buscarFiltro(cmbFiltro.SelectedIndex,txtProducto);
+        }
+
+
+        private void metodoDePago(int index)//Para metodo de pago
+        {
+            cmbTipo.SelectedIndex = 0;
+
+            txtTarjeta.Enabled = false;
+            txtRef.Enabled = false;
+            cmbTipo.Enabled = false;
+            txtCheque.Enabled = false;
+            txtBanco.Enabled = false;
+
+            switch (index)
+            {
+                case 0:
+                    //nada
+                    break;
+
+                case 1:
+                    txtTarjeta.Enabled = true;
+                    txtRef.Enabled = true;
+                    cmbTipo.Enabled = true;
+                    break;
+                    
+                case 2:
+                    txtCheque.Enabled = true;
+                    txtBanco.Enabled = true;
+                    break;
+            }
+        }
+
+        private void metodoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            metodoDePago(metodoPago.SelectedIndex);
+        }
+
+
         private void txtId_TextChanged(object sender, EventArgs e)
         {
 
@@ -386,6 +456,8 @@ namespace sercor
                 txtName.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).NOMBRE;
                 txtTelefono.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).TELEFONO;
                 txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
+
+                dgvHistorial.DataSource = FacturaDBM.Historial(txtId.Text);
             }
             else
             {
@@ -407,6 +479,8 @@ namespace sercor
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            metodoDePago(0);
+
             txtId.Text = "";
             txtName.Text = "";
             txtTelefono.Text = "";
@@ -609,6 +683,12 @@ namespace sercor
             toogleError(true,agregarProducto.mensaje,2);
 
             btnTodosInventario_Click(null, null);
+            btnAllProducts_Click(null,null);
+        }
+
+        private void btnBusquedaInventario_Click(object sender, EventArgs e)
+        {
+            dgvInventario.DataSource = buscarFiltro(cbmFiltroInventario.SelectedIndex, txtBusquedaInventario);
         }
     }
 }

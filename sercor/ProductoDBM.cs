@@ -62,17 +62,21 @@ namespace sercor
 
         }
 
-        public static Producto ObtenerPorFiltro(string pId, string pNombre, string pDescripcion, string pCategoria,
+
+        public static List<Producto> ObtenerPorFiltro(string pId, string pNombre, string pDescripcion, string pCategoria,
             string pSubcategoria)
         {
-            Producto pProducto = new Producto();
+            List<Producto> _lista = new List<Producto>();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM sercordb.producto where ID_PRODUCTO='{0}' or NOMBRE='{1}' or DESCRIPCION='{2}' or CATEGORIA='{3}' or SUBCATEGORIA='{4}'", pId,
-                pNombre, pDescripcion,pCategoria,pSubcategoria), conexion);
+                 pNombre, pDescripcion, pCategoria, pSubcategoria), conexion);
+
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
+                Producto pProducto = new Producto();
+
                 pProducto.COD = _reader.GetString(0);
                 pProducto.NOMBRE = _reader.GetString(1);
                 pProducto.DESCRIPCION = _reader.GetString(2);
@@ -80,10 +84,12 @@ namespace sercor
                 pProducto.SUBCATEGORIA = _reader.GetString(4);
                 pProducto.EXISTENCIA = _reader.GetInt32(5);
                 pProducto.PRECIO = _reader.GetDecimal(6);
-            }
+                pProducto.ESTADO = _reader.GetInt32(7);
 
+                _lista.Add(pProducto);
+            }
             conexion.Close();
-            return pProducto;
+            return _lista;
         }
 
         public static int Agregar(Producto pProducto)
