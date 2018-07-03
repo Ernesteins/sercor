@@ -690,5 +690,29 @@ namespace sercor
         {
             dgvInventario.DataSource = buscarFiltro(cbmFiltroInventario.SelectedIndex, txtBusquedaInventario);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            modificarProducto();
+        }
+
+        private void modificarProducto()
+        {
+            string codigo = Convert.ToString(dgvInventario.CurrentRow.Cells[0].Value);
+            Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
+
+            editar_producto editarProducto = new editar_producto(productoSeleccionado);
+            editarProducto.ShowDialog();
+
+            toogleError(true, editarProducto.mensaje, 2);
+
+            btnTodosInventario_Click(null, null);
+            btnAllProducts_Click(null, null);
+        }
+
+        private void dgvInventario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            modificarProducto();
+        }
     }
 }

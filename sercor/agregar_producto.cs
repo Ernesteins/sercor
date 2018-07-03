@@ -49,34 +49,45 @@ namespace sercor
             }
             else
             {
-                Producto pProducto = new Producto();
-                pProducto.COD = txtCodigo.Text.Trim();
-                pProducto.NOMBRE = txtNombre.Text.Trim();
-                pProducto.DESCRIPCION = txtDescripcion.Text.Trim();
-                pProducto.CATEGORIA = txtCategoria.Text.Trim();
-                pProducto.SUBCATEGORIA = txtSubcategoria.Text.Trim();
-                pProducto.EXISTENCIA = Convert.ToInt32(txtExistencia.Text);
+                try
+                {
+                    Producto pProducto = new Producto();
+                    pProducto.COD = txtCodigo.Text.Trim();
+                    pProducto.NOMBRE = txtNombre.Text.Trim();
+                    pProducto.DESCRIPCION = txtDescripcion.Text.Trim();
+                    pProducto.CATEGORIA = txtCategoria.Text.Trim();
+                    pProducto.SUBCATEGORIA = txtSubcategoria.Text.Trim();
+                    pProducto.EXISTENCIA = Convert.ToInt32(txtExistencia.Text);
+
+                    txtPrecio.Text = txtPrecio.Text.Replace(",", ".");
+
+                    pProducto.PRECIO = Decimal.Round(Convert.ToDecimal(txtPrecio.Text), 2);
+                    MessageBox.Show(pProducto.PRECIO.ToString());
+
+                    pProducto.ESTADO = 1;
+                    //pCliente.Fecha_Nac = dtpFechaNacimiento.Value.Year + "/" + dtpFechaNacimiento.Value.Month + "/" + dtpFechaNacimiento.Value.Day;
+
+                    int resultado = ProductoDBM.Agregar(pProducto);
+                    if (resultado > 0)
+                    {
+                        //MessageBox.Show("Producto guardado con exito!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mensaje = "Producto guardado con exito";
+                        this.Close();
+                    }
+                    else
+                    {
+                        //MessageBox.Show("No se pudo guardar el producto", "Fallo!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        mensaje = "No es posible guardar el producto";
+                        this.Close();
+                    }
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Valores incorrectos");
+                }
+
 
                 
-                pProducto.PRECIO = Decimal.Round(Convert.ToDecimal(txtPrecio.Text), 2);
-                MessageBox.Show(pProducto.PRECIO.ToString());
-
-                pProducto.ESTADO = 1;
-                //pCliente.Fecha_Nac = dtpFechaNacimiento.Value.Year + "/" + dtpFechaNacimiento.Value.Month + "/" + dtpFechaNacimiento.Value.Day;
-
-                int resultado = ProductoDBM.Agregar(pProducto);
-                if (resultado > 0)
-                {
-                    //MessageBox.Show("Producto guardado con exito!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    mensaje = "Producto guardado con exito";
-                    this.Close();
-                }
-                else
-                {
-                    //MessageBox.Show("No se pudo guardar el producto", "Fallo!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    mensaje = "No es posible guardar el producto";
-                    this.Close();
-                }
             }   
         }
     }

@@ -110,5 +110,24 @@ namespace sercor
             conexion.Close();
             return retorno;
         }
+
+        public static int Modificar(Producto pProducto, string codigo)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update producto set ID_PRODUCTO='{0}', NOMBRE='{1}', DESCRIPCION='{2}', CATEGORIA='{3}', SUBCATEGORIA='{4}'," +
+                "EXISTENCIA='{5}', PRECIO='{6}', ESTADO='{7}' where ID_PRODUCTO='{8}'", pProducto.COD, pProducto.NOMBRE, pProducto.DESCRIPCION, pProducto.CATEGORIA,
+                pProducto.SUBCATEGORIA, pProducto.EXISTENCIA, pProducto.PRECIO, pProducto.ESTADO, codigo),conexion);
+
+
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
     }
 }

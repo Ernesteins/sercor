@@ -55,6 +55,12 @@
     <Compile Include="bdComun.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteDBM.cs" />
+    <Compile Include="editar_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editar_producto.Designer.cs">
+      <DependentUpon>editar_producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factura.cs" />
     <Compile Include="FacturaDBM.cs" />
     <Compile Include="FormInstance.cs" />
@@ -84,6 +90,9 @@
     <Compile Include="UsuarioDBM.cs" />
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editar_producto.resx">
+      <DependentUpon>editar_producto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

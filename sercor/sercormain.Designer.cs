@@ -164,7 +164,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvInventario = new System.Windows.Forms.DataGridView();
             this.pnInventarioMenu = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnBusquedaInventario = new System.Windows.Forms.Button();
             this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.txtBusquedaInventario = new System.Windows.Forms.TextBox();
@@ -374,7 +374,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Silver;
             this.pictureBox6.Location = new System.Drawing.Point(137, 257);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1, 2070);
+            this.pictureBox6.Size = new System.Drawing.Size(1, 3174);
             this.pictureBox6.TabIndex = 48;
             this.pictureBox6.TabStop = false;
             // 
@@ -847,10 +847,10 @@
             this.pnVentas.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnVentas.Controls.Add(this.pnVentasBody);
             this.pnVentas.Controls.Add(this.pnVentasMenu);
-            this.pnVentas.Location = new System.Drawing.Point(14, 453);
+            this.pnVentas.Location = new System.Drawing.Point(23, 85);
             this.pnVentas.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentas.Name = "pnVentas";
-            this.pnVentas.Size = new System.Drawing.Size(270, 155);
+            this.pnVentas.Size = new System.Drawing.Size(974, 523);
             this.pnVentas.TabIndex = 0;
             this.pnVentas.Visible = false;
             // 
@@ -863,7 +863,7 @@
             this.pnVentasBody.Location = new System.Drawing.Point(0, 32);
             this.pnVentasBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasBody.Name = "pnVentasBody";
-            this.pnVentasBody.Size = new System.Drawing.Size(270, 123);
+            this.pnVentasBody.Size = new System.Drawing.Size(974, 491);
             this.pnVentasBody.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -887,7 +887,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(270, 123);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(974, 491);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // vistaFactura
@@ -926,7 +926,7 @@
             this.vistaFactura.ReadOnly = true;
             this.vistaFactura.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.vistaFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.vistaFactura.Size = new System.Drawing.Size(690, 1);
+            this.vistaFactura.Size = new System.Drawing.Size(690, 144);
             this.vistaFactura.TabIndex = 0;
             // 
             // colCodigo
@@ -1210,7 +1210,7 @@
             this.panel8.Controls.Add(this.txtSubtotal);
             this.panel8.Controls.Add(this.label11);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, -41);
+            this.panel8.Location = new System.Drawing.Point(3, 327);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(704, 144);
             this.panel8.TabIndex = 2;
@@ -1401,7 +1401,7 @@
             this.panel9.Location = new System.Drawing.Point(713, 173);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(10);
-            this.panel9.Size = new System.Drawing.Size(493, 1);
+            this.panel9.Size = new System.Drawing.Size(493, 148);
             this.panel9.TabIndex = 3;
             // 
             // dgvProductos
@@ -1448,7 +1448,7 @@
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvProductos.RowTemplate.ReadOnly = true;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(473, 0);
+            this.dgvProductos.Size = new System.Drawing.Size(473, 64);
             this.dgvProductos.TabIndex = 4;
             this.dgvProductos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellDoubleClick);
             // 
@@ -1457,7 +1457,7 @@
             this.panel13.Controls.Add(this.btnAdd);
             this.panel13.Controls.Add(this.txtAdd);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel13.Location = new System.Drawing.Point(10, -41);
+            this.panel13.Location = new System.Drawing.Point(10, 106);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(473, 32);
             this.panel13.TabIndex = 3;
@@ -1757,7 +1757,7 @@
             // 
             this.panel11.Controls.Add(this.dgvHistorial);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(713, -41);
+            this.panel11.Location = new System.Drawing.Point(713, 327);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(10);
             this.panel11.Size = new System.Drawing.Size(493, 144);
@@ -1785,7 +1785,7 @@
             this.pnVentasMenu.Location = new System.Drawing.Point(0, 0);
             this.pnVentasMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasMenu.Name = "pnVentasMenu";
-            this.pnVentasMenu.Size = new System.Drawing.Size(270, 32);
+            this.pnVentasMenu.Size = new System.Drawing.Size(974, 32);
             this.pnVentasMenu.TabIndex = 0;
             // 
             // pictureBox3
@@ -1869,7 +1869,7 @@
             this.pnInventario.Location = new System.Drawing.Point(23, 17);
             this.pnInventario.Margin = new System.Windows.Forms.Padding(0);
             this.pnInventario.Name = "pnInventario";
-            this.pnInventario.Size = new System.Drawing.Size(974, 122);
+            this.pnInventario.Size = new System.Drawing.Size(974, 65);
             this.pnInventario.TabIndex = 2;
             this.pnInventario.Visible = false;
             // 
@@ -1881,7 +1881,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 32);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(974, 90);
+            this.panel3.Size = new System.Drawing.Size(974, 33);
             this.panel3.TabIndex = 2;
             // 
             // dgvInventario
@@ -1928,13 +1928,14 @@
             this.dgvInventario.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvInventario.RowTemplate.ReadOnly = true;
             this.dgvInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventario.Size = new System.Drawing.Size(974, 90);
+            this.dgvInventario.Size = new System.Drawing.Size(974, 33);
             this.dgvInventario.TabIndex = 37;
+            this.dgvInventario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventario_CellDoubleClick);
             // 
             // pnInventarioMenu
             // 
             this.pnInventarioMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnInventarioMenu.Controls.Add(this.button8);
+            this.pnInventarioMenu.Controls.Add(this.btnEdit);
             this.pnInventarioMenu.Controls.Add(this.btnBusquedaInventario);
             this.pnInventarioMenu.Controls.Add(this.btnAgregarProducto);
             this.pnInventarioMenu.Controls.Add(this.txtBusquedaInventario);
@@ -1947,23 +1948,24 @@
             this.pnInventarioMenu.Size = new System.Drawing.Size(974, 32);
             this.pnInventarioMenu.TabIndex = 0;
             // 
-            // button8
+            // btnEdit
             // 
-            this.button8.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(84, 4);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(103, 25);
-            this.button8.TabIndex = 43;
-            this.button8.Text = "Modificar";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnEdit.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(84, 4);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(103, 25);
+            this.btnEdit.TabIndex = 43;
+            this.btnEdit.Text = "Modificar";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnBusquedaInventario
             // 
@@ -2536,7 +2538,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dgvInventario;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnBusquedaInventario;
         private System.Windows.Forms.Button btnAgregarProducto;
         private System.Windows.Forms.TextBox txtBusquedaInventario;
