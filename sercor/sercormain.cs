@@ -78,7 +78,7 @@ namespace sercor
 
             ordenTipo.SelectedIndex=0;
 
-            dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
+            btnAllProducts_Click(null,null);
 
             int tipoUser = usuario.TIPO;
             string usuarioUser = usuario.USUARIO;
@@ -469,7 +469,7 @@ namespace sercor
 
         private void btnAllProducts_Click(object sender, EventArgs e)
         {
-            dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
+            dgvProductos.DataSource = ProductoDBM.ObtenerProductosEstado();
 
             DataGridViewColumn column = dgvProductos.Columns[0];
             column.Width = 50;
