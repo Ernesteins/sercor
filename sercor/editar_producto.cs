@@ -70,7 +70,11 @@ namespace sercor
                 {
                     MessageBox.Show("Valores incorrecto");
                 }
-                
+                catch (MySql.Data.MySqlClient.MySqlException)
+                {
+                    MessageBox.Show("Producto existente");
+                }
+
             }
         }
     }

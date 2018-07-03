@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MySql.Data.MySqlClient;
 namespace sercor
 {
     public partial class agregar_producto : Form
@@ -62,7 +62,7 @@ namespace sercor
                     txtPrecio.Text = txtPrecio.Text.Replace(",", ".");
 
                     pProducto.PRECIO = Decimal.Round(Convert.ToDecimal(txtPrecio.Text), 2);
-                    MessageBox.Show(pProducto.PRECIO.ToString());
+                    //MessageBox.Show(pProducto.PRECIO.ToString());
 
                     pProducto.ESTADO = 1;
                     //pCliente.Fecha_Nac = dtpFechaNacimiento.Value.Year + "/" + dtpFechaNacimiento.Value.Month + "/" + dtpFechaNacimiento.Value.Day;
@@ -84,6 +84,9 @@ namespace sercor
                 catch (System.FormatException)
                 {
                     MessageBox.Show("Valores incorrectos");
+                }
+                catch (MySql.Data.MySqlClient.MySqlException) {
+                    MessageBox.Show("Producto existente");
                 }
 
 
