@@ -233,6 +233,7 @@ namespace sercor
         private void btnTrabajos_Click(object sender, EventArgs e)
         {
             menuToggler(5);
+            btnTodosInventario_Click(null,null);
         }
 
         private void btnMovimientos_Click(object sender, EventArgs e)
@@ -713,6 +714,16 @@ namespace sercor
         private void dgvInventario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             modificarProducto();
+        }
+
+        /////////////////////
+        ///MODULO TRABAJOS///
+        /////////////////////
+
+        private void btnTodosTrabajo_Click(object sender, EventArgs e)
+        {
+            dgvTrabajos.DataSource = TrabajoDBM.ObtenerTrabajos();
+            cbmFiltroInventario.SelectedIndex = 0;
         }
     }
 }

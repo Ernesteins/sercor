@@ -11,6 +11,19 @@ select * from sercordb.producto LIMIT100;
 select * from sercordb.trabajos LIMIT100;
 select * from sercordb.usuario LIMIT100;
 
+/*Seleccionar la fecha y hora actuales*/
+SELECT NOW();
+select * from SERCORDB.trabajos;
+
+/*INSERCIONES*/
+insert into sercordb.usuario values(001, 1, 'Ernesteins','d441d1ee788fc1ffb199621a2e47f88f74ac2eda4598abbdd1c3deb965b94d9d','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
+insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
+insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","99.99","1");
+insert into sercordb.producto values ("002","prod_2","producto 2 de las pruebas","pruebas","pruebas","100","99.99","1");
+insert into sercordb.factura values ("001","1725158123","001",0,0,(SELECT NOW()),0,0);
+insert into sercordb.trabajos values ("001",null,"001",(SELECT NOW()),(SELECT nombre from sercordb.Cliente where id_cliente=(select id_cliente from sercordb.factura where id_factura = "001")),"AR01","LN20",1,(SELECT NOW()));
+/*insert into sercordb.cuenta values ("001","1725158123","001","");*/
+
 /*EDICION DE CLAVES Y TABLAS ERRONEAS*/
 Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE CHAR(32);
 Alter TABLE sercorDB.usuario MODIFY CONTRASENA char varying(64);
@@ -57,11 +70,7 @@ alter table sercordb.factura drop foreign key  FK_FACTURA_FACT_CUEN_CUENTA;
 drop index FACT_CUENTA_FK ON sercordb.factura;
 Alter table sercordb.factura drop ID_CUENTA;
 
+Alter TABLE sercordb.trabajo drop foreign key FK_PRODUCTO_DETALLE_P_DETALLEID_CUENTAID_CUENTA;
+drop index DETALLE_PROD_FK on sercordb.producto;
+Alter TABLE sercordb.producto drop ID_DETALLE;
 
-/*INSERCIONES*/
-
-insert into sercordb.usuario values(001, 1, 'Ernesteins','d441d1ee788fc1ffb199621a2e47f88f74ac2eda4598abbdd1c3deb965b94d9d','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
-insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
-insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","99.99","1");
-insert into sercordb.producto values ("002","prod_2","producto 2 de las pruebas","pruebas","pruebas","100","99.99","1");
-insert into sercordb.factura values ("001","1725158123","001",0,0,(SELECT NOW()));
