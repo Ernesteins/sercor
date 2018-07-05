@@ -272,7 +272,7 @@ ID_DETALLE
 /*==============================================================*/
 create table TRABAJOS (
    ID_TRABAJO           INT4                 not null,
-   ID_CUENTA            INT4                 null,
+   /*ID_CUENTA            INT4                 null,*/
    ID_FACTURA           INT4                 null,
    FECHA_INICIO         DATETIME                 not null,
    NOMBRE_CL            CHAR(32)             not null,
@@ -289,14 +289,14 @@ create table TRABAJOS (
 create unique index TRABAJOS_PK on TRABAJOS (
 ID_TRABAJO
 );
-
+/*
 /*==============================================================*/
 /* Index: CUENTA_TRABAJOS_FK                                   */
 /*==============================================================*/
 create  index CUENTA_TRABAJOS_FK on TRABAJOS (
 ID_CUENTA
 );
-
+*/
 /*==============================================================*/
 /* Index: FACTURA_TRABAJOS_FK                                   */
 /*==============================================================*/
