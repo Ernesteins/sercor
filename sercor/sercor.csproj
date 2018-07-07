@@ -53,6 +53,12 @@
       <DependentUpon>agregar_producto.cs</DependentUpon>
     </Compile>
     <Compile Include="bdComun.cs" />
+    <Compile Include="cambiar_estado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cambiar_estado.Designer.cs">
+      <DependentUpon>cambiar_estado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteDBM.cs" />
     <Compile Include="editar_producto.cs">
@@ -92,6 +98,9 @@
     <Compile Include="UsuarioDBM.cs" />
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cambiar_estado.resx">
+      <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>

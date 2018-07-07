@@ -55,7 +55,7 @@ namespace sercor
         }
 
         Form loginPadre;
-
+        string usuarioUser;
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
         public sercormain(Usuario usuario, Form form)
         {
@@ -81,7 +81,7 @@ namespace sercor
             btnAllProducts_Click(null,null);
 
             int tipoUser = usuario.TIPO;
-            string usuarioUser = usuario.USUARIO;
+            usuarioUser = usuario.USUARIO;
             string nombreUser = usuario.NOMBRE;
             string apellidoUser = usuario.APELLIDO;
             string cedulaUser = usuario.CEDULA;
@@ -233,7 +233,7 @@ namespace sercor
         private void btnTrabajos_Click(object sender, EventArgs e)
         {
             menuToggler(5);
-            btnTodosInventario_Click(null,null);
+            btnTodosTrabajo_Click(null,null);
         }
 
         private void btnMovimientos_Click(object sender, EventArgs e)
@@ -724,6 +724,165 @@ namespace sercor
         {
             dgvTrabajos.DataSource = TrabajoDBM.ObtenerTrabajos();
             cbmFiltroInventario.SelectedIndex = 0;
+        }
+
+        private void cmbFiltroTrabajo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TrabajosFiltro(cbmFiltroInventario.SelectedIndex, txtBusquedaTrabajo);
+            btnBusquedaTrabajo.Enabled = true;
+        }
+        //FILTRO DE TRABAJOS
+
+        private void TrabajosFiltro(int filtroIndex, TextBox txtBusqueda)
+        {
+            var tFiltroFactura = new AutoCompleteStringCollection();
+            var tFiltroEstado = new AutoCompleteStringCollection();
+            
+            int j = 0;
+
+            for (int i = 0; i <= TrabajoDBM.ObtenerTrabajos().Count; i++)
+            {
+                if (j != TrabajoDBM.ObtenerTrabajos().Count)
+                {
+                    tFiltroFactura.Add(TrabajoDBM.ObtenerTrabajos()[j].ID.ToString());
+                    tFiltroEstado.Add(TrabajoDBM.ObtenerTrabajos()[j].ESTADO.ToString());
+                    
+                    j++;
+                }
+            }
+        
+            switch (filtroIndex)
+            {
+                case 0://POR FACTURA
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = tFiltroFactura;
+                    break;
+                case 1://POR ESTADO 
+                    txtBusqueda.Enabled = true;
+                    txtBusqueda.AutoCompleteCustomSource = tFiltroEstado;
+                    break;
+                
+            }
+        }
+
+        private void btnBusquedaTrabajo_Click(object sender, EventArgs e)
+        {
+            try { dgvTrabajos.DataSource = buscarFiltrotr(cmbFiltroTrabajo.SelectedIndex, txtBusquedaTrabajo);
+                toogleError(false,null,1);
+                }catch (FormatException ) { toogleError(true , "NO HAY VALORES QUE BUSCAR" , 2 ); }
+            
+        }
+
+        private List<Trabajo> buscarFiltrotr(int index, TextBox _busqueda)
+        {
+            List<Trabajo> filtrado = null;
+            switch (index)
+            {
+                case 0://ID
+                    //MessageBox.Show(string.Format ("ID de búsqueda = {0}",_busqueda.Text));
+                    filtrado = TrabajoDBM.ObtenerPorFiltro(0, 0, Convert.ToInt32(_busqueda.Text), null, null,null,null,null,1);
+                    break;
+
+                case 1://ESTADO
+                    //MessageBox.Show(string.Format ("Estado de busqueda = {0}", _busqueda.Text));
+                    filtrado = TrabajoDBM.ObtenerPorFiltro(0, 0, 0, null, null, null, null, null, Convert.ToInt32(_busqueda.Text));
+                    break;
+            }
+            return filtrado;
+        }
+
+        private void txtBusquedaTrabajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esNumero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cambiarEstadoTr()
+        {
+            int codigo = Convert.ToInt32(dgvTrabajos.CurrentRow.Cells[0].Value);
+            Trabajo productoSeleccionado = TrabajoDBM.TrabajoID(codigo);
+
+            cambiar_estado cambiarEstadoTrabajo = new cambiar_estado(productoSeleccionado);
+            cambiarEstadoTrabajo.ShowDialog();
+            toogleError(true, cambiarEstadoTrabajo.mensaje, 2);
+
+            btnTodosTrabajo_Click(null, null);
+        }
+
+        private void btnModificarTrabajo_Click(object sender, EventArgs e)
+        {
+            cambiarEstadoTr();
+        }
+        ///////////////
+        ///CONTROLES///
+        ///////////////
+
+        //FUNCION DE ACEPTAR SOLO NUMEROS
+        public bool esNumero(Char c)
+        {
+            if (Char.IsDigit(c) || Char.IsControl(c))
+            {
+                return false;
+            }
+            return true;
+        }
+        //FUNCION DE ACEPTAR NUMEROS
+        public bool esDinero(Char c)
+        {
+            if (Char.IsDigit(c)||Char.IsControl(c)||c=='.'||c==',')
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esNumero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esNumero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+        private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esDinero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAbono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esDinero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {/*
+            Factura nFactura = new Factura();
+            nFactura.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+            nFactura.ID_CLIENTE = txtId.Text;
+            nFactura.ID_USUARIO = Convert.ToInt32(usuarioUser);
+            nFactura.IVA = 
+            nFactura.TOTAL = 
+            nFactura.FECHA =
+            nFactura.FACTOR_DESCUENTO = 
+            nFactura.VALOR_DESCONTADO =*/
+
         }
     }
 }

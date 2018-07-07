@@ -42,3 +42,4 @@ D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.agregar_producto.r
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.editar_producto.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.agregar_producto.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.editar_producto.resources
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.cambiar_estado.resources

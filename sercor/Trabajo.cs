@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sercor
 {
-    class Trabajo
+    public class Trabajo
     {
         public int ID { get; set; }
         public int CUENTA { get; set; }

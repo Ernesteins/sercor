@@ -14,12 +14,14 @@ namespace sercor
         public decimal IVA { get; set; }
         public decimal TOTAL { get; set; }
         public string FECHA { get; set; }
+        public decimal FACTOR_DESCUENTO { get; set; }
+        public decimal  VALOR_DESCONTADO { get; set; }
 
 
         //Constructor de objeto
         public Factura() { }
 
-        public Factura(int pIdFactura, string pIdCliente, int pIdUsuario, decimal pIva, decimal pTotal, string pFecha)
+        public Factura(int pIdFactura, string pIdCliente, int pIdUsuario, decimal pIva, decimal pTotal, string pFecha, decimal pFactDesc, decimal pValorDesc)
         {
             this.ID_FACTURA = pIdFactura;
             this.ID_CLIENTE = pIdCliente;
@@ -27,6 +29,8 @@ namespace sercor
             this.IVA = pIva;
             this.TOTAL = pTotal;
             this.FECHA = pFecha;
+            this.FACTOR_DESCUENTO = pFactDesc;
+            this.VALOR_DESCONTADO = pValorDesc;
 
         }
     }

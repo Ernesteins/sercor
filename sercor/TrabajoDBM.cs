@@ -19,7 +19,6 @@ namespace sercor
             "SELECT * FROM sercordb.trabajos"), conexion);
             
             MySqlDataReader _reader = _comando.ExecuteReader();
-            MessageBox.Show("ejecucion del comando");
             while (_reader.Read())
             {
                 Trabajo trTrabajo = new Trabajo();
@@ -38,16 +37,16 @@ namespace sercor
             conexion.Close();
             return _lista;
         }
-        /*public static Trabajo TrabajoID(string trID)
+        public static Trabajo TrabajoID(int trID)
         {
             Trabajo trTrabajo = new Trabajo();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM trabajos where ID_Trabajo='{0}'",trID), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM trabajos where ID_TRABAJO='{0}'",trID), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                 trTrabajo.ID = _reader.GetInt32(0);
+                trTrabajo.ID = _reader.GetInt32(0);
                 trTrabajo.CUENTA = _reader.GetInt32(1);
                 trTrabajo.FACTURA = _reader.GetInt32(2);
                 trTrabajo.FECHA_INICIO = _reader.GetString(3);                
@@ -63,23 +62,23 @@ namespace sercor
             return trTrabajo;
 
         }
-
+        
         public static List<Trabajo> ObtenerPorFiltro(int trID, int trCUENTA, int trFACTURA, string trFECHA_INICIO,
             string trFECHA_ENTREGA, string trNOMBRE, string trARMAZON, string trLUNA, int trESTADO)
         {
             List<Trabajo> _lista = new List<Trabajo>();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM sercordb.Trabajos where ID_TRABAJO = '{0}' or ID_CUENTA = '{1}' or ID_FACTURA = '{2}' or FECHA_INICIO = '{3}' or NOMBRE_CL = '{4}' or ARMAZON = '{5}' or LUNA = '{6}' or ESTADO = '{7}' or FECHA_ENTREGA = '{8}'",
-                trID, trCUENTA, trFACTURA, trFECHA_INICIO, trFECHA_ENTREGA, trNOMBRE, trARMAZON, trLUNA, trESTADO), conexion);
+            //MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM sercordb.Trabajos where ID_TRABAJO = '{0}' or ID_CUENTA = '{1}' or ID_FACTURA = '{2}' or FECHA_INICIO = '{3}' or NOMBRE_CL = '{4}' or ARMAZON = '{5}' or LUNA = '{6}' or ESTADO = '{7}' or FECHA_ENTREGA = '{8}'",
+            //    trID, trCUENTA, trFACTURA, trFECHA_INICIO, trFECHA_ENTREGA, trNOMBRE, trARMAZON, trLUNA, trESTADO), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM sercordb.Trabajos where ID_FACTURA ='{0}' or ESTADO = '{1}'", trFACTURA, trESTADO), conexion);
             
-
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
                 Trabajo trTrabajo = new Trabajo();
 
-                 trTrabajo.ID = _reader.GetInt32(0);
+                trTrabajo.ID = _reader.GetInt32(0);
                 trTrabajo.CUENTA = _reader.GetInt32(1);
                 trTrabajo.FACTURA = _reader.GetInt32(2);
                 trTrabajo.FECHA_INICIO = _reader.GetString(3);                
@@ -94,6 +93,37 @@ namespace sercor
             }
             conexion.Close();
             return _lista;
-        }*/
+        }
+        public static int Modificar(Trabajo tTrabajo, int codigo)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update trabajos set ESTADO ='{0}'where ID_TRABAJO='{1}'", tTrabajo.ESTADO, codigo), conexion);
+            
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+        public static int Nuevo(Trabajo tTrabajo)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "insert into sercordb.trabajos (ID_TRABAJO, ID_CUENTA, ID_FACTURA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
+                "values ({0},{1},{2},{3},{4},{5},{6},{7},{8});",
+                tTrabajo.ID,tTrabajo.CUENTA,tTrabajo.FACTURA,tTrabajo.FECHA_INICIO,tTrabajo.NOMBRE,tTrabajo.ARMAZON,tTrabajo.LUNA,tTrabajo.ESTADO,tTrabajo.FECHA_ENTREGA), conexion);
+
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
     }
 }
