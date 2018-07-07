@@ -305,7 +305,18 @@ namespace sercor
             //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
 
             txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString("0.00");
+            calculaSaldo();
 
+        }
+        private void calculaSaldo()
+        {
+            string abonito = txtAbono.Text;
+            txtAbono.Text = abonito.Replace(",", ".");
+            decimal Dtotal = Convert.ToDecimal(txtTotal.Text);
+            decimal Dabono = 0;
+            Dabono = Convert.ToDecimal(txtAbono.Text);
+            decimal DSaldo = Dtotal - Dabono;
+            txtSaldo.Text = Decimal.Round(DSaldo, 2).ToString("0.00");
         }
 
         protected float Calculo_FactorDescuento(float descuento, float total_inicial, float subtotal_inicial, float iva)//calcula el factor de descuento
@@ -414,6 +425,7 @@ namespace sercor
             dgvProductos.DataSource = buscarFiltro(cmbFiltro.SelectedIndex,txtProducto);
         }
 
+       
 
         private void metodoDePago(int index)//Para metodo de pago
         {
@@ -881,11 +893,51 @@ namespace sercor
             nFactura.IVA = Convert.ToDecimal(ivaConst);
             nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
             nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
-            MessageBox.Show(nFactura.FECHA);
             nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
             nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
-            FacturaDBM.Agregar(nFactura);
 
+
+            Cuenta nCuenta = new Cuenta();
+            nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
+            nCuenta.ID_CLIENTE = txtId.Text;
+            nCuenta.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+            nCuenta.ID_TRABAJO = "null";
+            nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
+            nCuenta.FORMA_P = cmbTipo.SelectedIndex;
+            nCuenta.SALDO = Convert.ToDecimal(txtSaldo.Text);
+
+            /*
+            Trabajo nTrabajo = new Trabajo();
+            nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
+            nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;
+            nTrabajo.FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+            nTrabajo.FECHA_INICIO = null;
+            nTrabajo.NOMBRE = txtName.Text;
+            nTrabajo.ARMAZON = null;
+            nTrabajo.LUNA = null;
+            nTrabajo.ESTADO = 0;
+            nTrabajo.FECHA_ENTREGA = null;*/
+
+            FacturaDBM.Agregar(nFactura);
+            CuentaDBM.Agregar(nCuenta);
+            
+
+
+
+
+        }
+
+        private void txtAbono_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAbono.Text != "") {
+                calculaSaldo();
+            }
+            
+        }
+
+        private void txtAbono_Enter(object sender, EventArgs e)
+        {
+            txtAbono.SelectAll();
         }
     }
 }

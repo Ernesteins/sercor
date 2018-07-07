@@ -124,6 +124,16 @@ namespace sercor
             conexion.Close();
             return retorno;
         }
+        public static int ultimoTrabajo()
+        {
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand("select max(ID_TRABAJO) from Trabajos;", conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            _reader.Read();
+            int last = _reader.GetInt32(0);
+            conexion.Close();
+            return last;
+        }
 
     }
 }
