@@ -55,7 +55,7 @@ namespace sercor
         }
 
         Form loginPadre;
-        string usuarioUser;
+        int IDUser;
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
         public sercormain(Usuario usuario, Form form)
         {
@@ -80,8 +80,9 @@ namespace sercor
 
             btnAllProducts_Click(null,null);
 
+            IDUser = usuario.ID_USUARIO;
             int tipoUser = usuario.TIPO;
-            usuarioUser = usuario.USUARIO;
+            string usuarioUser = usuario.USUARIO;
             string nombreUser = usuario.NOMBRE;
             string apellidoUser = usuario.APELLIDO;
             string cedulaUser = usuario.CEDULA;
@@ -307,7 +308,7 @@ namespace sercor
 
         }
 
-        private float Calculo_FactorDescuento(float descuento, float total_inicial, float subtotal_inicial, float iva)//calcula el factor de descuento
+        protected float Calculo_FactorDescuento(float descuento, float total_inicial, float subtotal_inicial, float iva)//calcula el factor de descuento
         {
             float factorDescuento = 0;
             factorDescuento = 1 + (((descuento - total_inicial) / (1 + iva)) / subtotal_inicial);
@@ -872,16 +873,18 @@ namespace sercor
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-        {/*
+        {
             Factura nFactura = new Factura();
             nFactura.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
             nFactura.ID_CLIENTE = txtId.Text;
-            nFactura.ID_USUARIO = Convert.ToInt32(usuarioUser);
-            nFactura.IVA = 
-            nFactura.TOTAL = 
-            nFactura.FECHA =
-            nFactura.FACTOR_DESCUENTO = 
-            nFactura.VALOR_DESCONTADO =*/
+            nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
+            nFactura.IVA = Convert.ToDecimal(ivaConst);
+            nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
+            nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
+            MessageBox.Show(nFactura.FECHA);
+            nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
+            nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
+            FacturaDBM.Agregar(nFactura);
 
         }
     }

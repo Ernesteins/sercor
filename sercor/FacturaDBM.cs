@@ -15,16 +15,26 @@ namespace sercor
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "Insert into clientes (ID_FACTURA, ID_CLIENTE, ID_USUARIO, IVA, " +
-                "TOTAL, FECHA)values ('{0}','{1}','{2}', '{3}', '{4}', '{5}')",
+                "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}')",
                 pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO, pFactura.IVA,
-                pFactura.TOTAL, pFactura.FECHA),conexion);
+                pFactura.TOTAL, pFactura.FECHA,pFactura.FACTOR_DESCUENTO,pFactura.VALOR_DESCONTADO),conexion);
 
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error
             conexion.Close();
             return retorno;
+        }
+        public static String  obtenerFechaSistema()
+        {
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand("select date_format(now(),\"%Y-%m-%d %H:%m:%s\")",conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            _reader.Read();
+            String fechaHora = _reader.GetString(0);
+            //fechaHora = fechaHora.Replace("/", "-");
+            conexion.Close();
+            return fechaHora;
         }
 
         public static Factura UltimoID()
