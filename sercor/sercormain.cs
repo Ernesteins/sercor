@@ -929,15 +929,38 @@ namespace sercor
 
         private void txtAbono_TextChanged(object sender, EventArgs e)
         {
-            if (txtAbono.Text != "") {
-                calculaSaldo();
+            try
+            {
+                if (txtAbono.Text == "")
+                {
+                    txtAbono.Text = "0";
+                }
+                if (Convert.ToInt32(txtAdd.Text) <= 0)
+                {
+                    toogleError(true, "Debe ingresar un número mayor a 0", 1);
+                }
+                else
+                {
+                    toogleError(false, "", 3);
+                }
             }
-            
+
+            catch (System.FormatException)
+            {
+                toogleError(true, "Debe ingresar un número", 1);
+            }
+            calculaSaldo();
+
         }
 
         private void txtAbono_Enter(object sender, EventArgs e)
         {
             txtAbono.SelectAll();
+        }
+
+        private void dgvTrabajos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cambiarEstadoTr();
         }
     }
 }

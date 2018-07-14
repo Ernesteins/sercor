@@ -16,7 +16,7 @@ SELECT NOW();
 select * from SERCORDB.trabajos;
 
 /*INSERCIONES*/
-insert into sercordb.usuario values(001, 1, 'Ernesteins','d441d1ee788fc1ffb199621a2e47f88f74ac2eda4598abbdd1c3deb965b94d9d','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
+insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
 insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
 insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","99.99","1");
 insert into sercordb.producto values ("002","prod_2","producto 2 de las pruebas","pruebas","pruebas","100","99.99","1");

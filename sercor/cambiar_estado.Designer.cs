@@ -37,7 +37,7 @@
             // 
             // chklEstado
             // 
-            this.chklEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chklEstado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chklEstado.CheckOnClick = true;
             this.chklEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chklEstado.FormattingEnabled = true;
@@ -46,9 +46,9 @@
             "Laboratorio",
             "Recibido",
             "Retirado"});
-            this.chklEstado.Location = new System.Drawing.Point(11, 46);
+            this.chklEstado.Location = new System.Drawing.Point(12, 40);
             this.chklEstado.Name = "chklEstado";
-            this.chklEstado.Size = new System.Drawing.Size(170, 70);
+            this.chklEstado.Size = new System.Drawing.Size(169, 68);
             this.chklEstado.TabIndex = 0;
             this.chklEstado.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklEstado_ItemCheck);
             this.chklEstado.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chklEstado_MouseDoubleClick);
@@ -65,7 +65,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = global::sercor.Properties.Resources.error16;
-            this.btnCancelar.Location = new System.Drawing.Point(100, 139);
+            this.btnCancelar.Location = new System.Drawing.Point(99, 114);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
             this.btnCancelar.TabIndex = 62;
@@ -83,7 +83,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Image = global::sercor.Properties.Resources.success16;
-            this.btnAceptar.Location = new System.Drawing.Point(12, 139);
+            this.btnAceptar.Location = new System.Drawing.Point(11, 114);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
             this.btnAceptar.TabIndex = 61;
@@ -121,15 +121,20 @@
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(193, 176);
+            this.ClientSize = new System.Drawing.Size(193, 146);
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.chklEstado);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "cambiar_estado";
-            this.Text = "cambiar_estado";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cambiar Estado";
             this.ResumeLayout(false);
             this.PerformLayout();
 
