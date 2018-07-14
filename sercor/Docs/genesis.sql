@@ -293,7 +293,7 @@ ID_TRABAJO
 /*==============================================================*/
 /* Index: CUENTA_TRABAJOS_FK                                   */
 /*==============================================================*/
-create  index CUENTA_TRABAJOS_FK on TRABAJOS (
+/*create  index CUENTA_TRABAJOS_FK on TRABAJOS (
 ID_CUENTA
 );
 */
