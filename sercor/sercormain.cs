@@ -64,6 +64,8 @@ namespace sercor
             //IMPORTANTE
             FormInstance.puntoDecimal();
 
+            dtpEntrega.MinDate = DateTime.Today;
+
             menuToggler(1);
 
             loginPadre = form;
