@@ -76,7 +76,7 @@ Alter TABLE sercordb.trabajo drop foreign key FK_PRODUCTO_DETALLE_P_DETALLEID_CU
 drop index DETALLE_PROD_FK on sercordb.producto;
 Alter TABLE sercordb.producto drop ID_DETALLE;
 
-/*Creación y edición de privilegios al sercoruser*/
+/*CreaciÃ³n y ediciÃ³n de privilegios al sercoruser*/
 CREATE USER 'sercoruser'@'localhost' IDENTIFIED BY 'S3rc0r';
 grant DELETE, INSERT, SELECT, UPDATE on abono 	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on caja	 to 'sercoruser'@'localhost';

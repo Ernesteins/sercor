@@ -71,7 +71,7 @@ namespace sercor
 
                 pFactura.ID_FACTURA = _reader.GetInt32(0);
                 pFactura.ID_CLIENTE = _reader.GetString(1);
-                pFactura.ID_USUARIO = _reader.GetInt32(2);
+                pFactura.ID_USUARIO = _reader.GetInt32(2);               
                 pFactura.IVA =_reader.GetDecimal(3);
                 pFactura.TOTAL = _reader.GetDecimal(4);
                 pFactura.FECHA = _reader.GetString(5);

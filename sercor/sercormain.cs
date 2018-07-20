@@ -897,13 +897,11 @@ namespace sercor
             nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
             nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
             nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
-
-
+            
             Cuenta nCuenta = new Cuenta();
             nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
             nCuenta.ID_CLIENTE = txtId.Text;
             nCuenta.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
-            nCuenta.ID_TRABAJO = "null";
             nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
             nCuenta.FORMA_P = cmbTipo.SelectedIndex;
             nCuenta.SALDO = Convert.ToDecimal(txtSaldo.Text);
@@ -923,10 +921,6 @@ namespace sercor
             FacturaDBM.Agregar(nFactura);
             CuentaDBM.Agregar(nCuenta);
             
-
-
-
-
         }
 
         private void txtAbono_TextChanged(object sender, EventArgs e)
