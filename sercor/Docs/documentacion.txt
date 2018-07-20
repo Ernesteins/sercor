@@ -42,6 +42,7 @@ PENDIENTE	[......]=Baja Prioridad
 
 	impedir el ingreso de letras en el numero telefónico
 	impedir el ingreso de numeros en el nombre
+
 		
 REALIZADO
 	bug primer ingreso multiplicar
@@ -63,3 +64,5 @@ COSAS DESCUBIERTAS
 	
 
 URGENTE
+
+reestructuración de la base de datos - fallas en la lógica detectadas

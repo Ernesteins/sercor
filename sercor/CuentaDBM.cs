@@ -56,8 +56,11 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand("select max(ID_CUENTA) from Cuenta;", conexion);
             MySqlDataReader _reader = comando.ExecuteReader();
+            int last = 0;
             _reader.Read();
-            int last= _reader.GetInt32(0);
+            last = _reader.GetInt32(0);
+            
+            
             conexion.Close();
             return last;
         }
