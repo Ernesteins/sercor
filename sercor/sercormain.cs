@@ -888,38 +888,46 @@ namespace sercor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Factura nFactura = new Factura();
-            nFactura.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
-            nFactura.ID_CLIENTE = txtId.Text;
-            nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
-            nFactura.IVA = Convert.ToDecimal(ivaConst);
-            nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
-            nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
-            nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
-            nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
+            try
+            {
+                Factura nFactura = new Factura();
+                nFactura.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+                nFactura.ID_CLIENTE = txtId.Text;
+                nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
+                nFactura.IVA = Convert.ToDecimal(ivaConst);
+                nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
+                nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
+                nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
+                nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
+
+                Cuenta nCuenta = new Cuenta();
+                nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
+                nCuenta.ID_CLIENTE = txtId.Text;
+                nCuenta.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+                nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
+                nCuenta.FORMA_P = cmbTipo.SelectedIndex;
+                nCuenta.SALDO = Convert.ToDecimal(txtSaldo.Text);
+
+                /*
+                Trabajo nTrabajo = new Trabajo();
+                nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
+                nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;
+                nTrabajo.FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+                nTrabajo.FECHA_INICIO = null;
+                nTrabajo.NOMBRE = txtName.Text;
+                nTrabajo.ARMAZON = null;
+                nTrabajo.LUNA = null;
+                nTrabajo.ESTADO = 0;
+                nTrabajo.FECHA_ENTREGA = null;*/
+
+                FacturaDBM.Agregar(nFactura);
+                CuentaDBM.Agregar(nCuenta);
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Formato incorrecto");
+            }
             
-            Cuenta nCuenta = new Cuenta();
-            nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
-            nCuenta.ID_CLIENTE = txtId.Text;
-            nCuenta.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
-            nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
-            nCuenta.FORMA_P = cmbTipo.SelectedIndex;
-            nCuenta.SALDO = Convert.ToDecimal(txtSaldo.Text);
-
-            /*
-            Trabajo nTrabajo = new Trabajo();
-            nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
-            nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;
-            nTrabajo.FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
-            nTrabajo.FECHA_INICIO = null;
-            nTrabajo.NOMBRE = txtName.Text;
-            nTrabajo.ARMAZON = null;
-            nTrabajo.LUNA = null;
-            nTrabajo.ESTADO = 0;
-            nTrabajo.FECHA_ENTREGA = null;*/
-
-            FacturaDBM.Agregar(nFactura);
-            CuentaDBM.Agregar(nCuenta);
             
         }
 
@@ -957,6 +965,24 @@ namespace sercor
         private void dgvTrabajos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             cambiarEstadoTr();
+        }
+
+        private void btnLoadCsv_Click(object sender, EventArgs e)
+        {
+            SDL _sdl = new SDL();
+            _sdl.ShowDialog();
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            Administrativo adminform = new Administrativo();
+            adminform.ShowDialog();
+        }
+
+        private void dgvHistorial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Detalle _detalle = new Detalle();
+            _detalle.Show();
         }
     }
 }

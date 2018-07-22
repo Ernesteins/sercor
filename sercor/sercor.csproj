@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo.Designer.cs">
+      <DependentUpon>Administrativo.cs</DependentUpon>
+    </Compile>
     <Compile Include="agregar_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,12 @@
     <Compile Include="ClienteDBM.cs" />
     <Compile Include="Cuenta.cs" />
     <Compile Include="CuentaDBM.cs" />
+    <Compile Include="Detalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Detalle.Designer.cs">
+      <DependentUpon>Detalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="editar_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SDL.Designer.cs">
+      <DependentUpon>SDL.cs</DependentUpon>
+    </Compile>
     <Compile Include="sercormain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,11 +116,17 @@
     <Compile Include="TrabajoDBM.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDBM.cs" />
+    <EmbeddedResource Include="Administrativo.resx">
+      <DependentUpon>Administrativo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Detalle.resx">
+      <DependentUpon>Detalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>
@@ -114,6 +138,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SDL.resx">
+      <DependentUpon>SDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sercormain.resx">
       <DependentUpon>sercormain.cs</DependentUpon>
@@ -136,6 +163,8 @@
     <Content Include="Docs\documentacion.txt" />
     <Content Include="Docs\genesis.sql" />
     <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\tabs.png" />
+    <None Include="Resources\server.png" />
     <None Include="Resources\alarm16.png" />
     <None Include="Resources\save16.png" />
     <None Include="Resources\printer16.png" />

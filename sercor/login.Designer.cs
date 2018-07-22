@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             this.pnForm = new System.Windows.Forms.Panel();
             this.pnBottom = new System.Windows.Forms.Panel();
             this.ptcStatus = new System.Windows.Forms.PictureBox();
@@ -74,7 +75,6 @@
             // ptcStatus
             // 
             this.ptcStatus.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ptcStatus.BackgroundImage = global::sercor.Properties.Resources.success16;
             this.ptcStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ptcStatus.Location = new System.Drawing.Point(125, 3);
             this.ptcStatus.Name = "ptcStatus";
@@ -142,9 +142,9 @@
             // ptcLogo
             // 
             this.ptcLogo.BackColor = System.Drawing.Color.Transparent;
+            this.ptcLogo.BackgroundImage = global::sercor.Properties.Resources.server;
             this.ptcLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptcLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ptcLogo.Location = new System.Drawing.Point(86, 10);
+            this.ptcLogo.Location = new System.Drawing.Point(87, 11);
             this.ptcLogo.Name = "ptcLogo";
             this.ptcLogo.Size = new System.Drawing.Size(112, 109);
             this.ptcLogo.TabIndex = 5;
@@ -180,7 +180,7 @@
             this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnlogin.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnlogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnlogin.Location = new System.Drawing.Point(86, 235);
+            this.btnlogin.Location = new System.Drawing.Point(87, 235);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(112, 32);
             this.btnlogin.TabIndex = 2;
@@ -190,16 +190,18 @@
             // 
             // login
             // 
+            this.AcceptButton = this.btnlogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(287, 298);
             this.Controls.Add(this.pnForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Sercor - Login";
             this.pnForm.ResumeLayout(false);
             this.pnBottom.ResumeLayout(false);
             this.pnBottom.PerformLayout();
