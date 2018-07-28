@@ -274,5 +274,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 --TABLA FACTURAS AGREGA EL TIPO Y EL INDICE
 ALTER TABLE sercordb.factura add (
 tipo tinyint(1) NOT NULL,
-indice tinyint(1) default 0
+indice int(11) default 0
 );
