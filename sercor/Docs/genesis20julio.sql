@@ -270,3 +270,12 @@ DEFAULT CHARACTER SET = latin1;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+--TABLA FACTURAS AGREGA EL TIPO Y EL INDICE
+ALTER TABLE sercordb.factura add (
+tipo tinyint(1) NOT NULL,
+indice int(11) default 0
+);
+
+ALTER TABLE sercorDb.usuario MODIFY privilegio1 smallint(6) NOT NULL;
+ALTER TABLE sercorDb.usuario MODIFY privilegio2 smallint(6) NOT NULL;
