@@ -164,6 +164,7 @@ namespace sercor
                 lastUser = UsuarioDBM.UltimoUsuario();
                 nuevoUser.ID_USUARIO = lastUser.ID_USUARIO + 1;
                 nuevoUser.TIPO = 1;
+                nuevoUser.USUARIO = txtUser.Text;
                 nuevoUser.CONTRASENA = Hash.sha256(txtContrasenia.Text);
                 nuevoUser.NOMBRE = txtName.Text;
                 nuevoUser.APELLIDO = txtLastName.Text;

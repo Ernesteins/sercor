@@ -66,7 +66,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = global::sercor.Properties.Resources.error16;
-            this.btnCancelar.Location = new System.Drawing.Point(245, 391);
+            this.btnCancelar.Location = new System.Drawing.Point(232, 353);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(96, 29);
             this.btnCancelar.TabIndex = 103;
@@ -84,7 +84,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Image = global::sercor.Properties.Resources.success16;
-            this.btnAceptar.Location = new System.Drawing.Point(142, 391);
+            this.btnAceptar.Location = new System.Drawing.Point(130, 353);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(96, 29);
             this.btnAceptar.TabIndex = 102;
@@ -98,7 +98,7 @@
             // 
             this.txtUser.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.Location = new System.Drawing.Point(94, 8);
+            this.txtUser.Location = new System.Drawing.Point(83, 10);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(245, 22);
             this.txtUser.TabIndex = 0;
@@ -110,7 +110,7 @@
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(8, 48);
+            this.label6.Location = new System.Drawing.Point(8, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 15);
             this.label6.TabIndex = 100;
@@ -120,7 +120,7 @@
             // 
             this.txtContrasenia.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContrasenia.Location = new System.Drawing.Point(94, 44);
+            this.txtContrasenia.Location = new System.Drawing.Point(83, 38);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.PasswordChar = '•';
             this.txtContrasenia.Size = new System.Drawing.Size(245, 22);
@@ -133,7 +133,7 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(8, 145);
+            this.label4.Location = new System.Drawing.Point(7, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 15);
             this.label4.TabIndex = 99;
@@ -145,7 +145,7 @@
             this.txtLastName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtLastName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(94, 141);
+            this.txtLastName.Location = new System.Drawing.Point(82, 122);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(245, 22);
             this.txtLastName.TabIndex = 4;
@@ -161,9 +161,9 @@
             this.groupBox1.Controls.Add(this.user2);
             this.groupBox1.Controls.Add(this.admin4);
             this.groupBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.groupBox1.Location = new System.Drawing.Point(12, 240);
+            this.groupBox1.Location = new System.Drawing.Point(10, 207);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 144);
+            this.groupBox1.Size = new System.Drawing.Size(318, 140);
             this.groupBox1.TabIndex = 98;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Permisos";
@@ -272,7 +272,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(8, 81);
+            this.label3.Location = new System.Drawing.Point(8, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 15);
             this.label3.TabIndex = 96;
@@ -285,7 +285,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(8, 212);
+            this.label2.Location = new System.Drawing.Point(8, 180);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 15);
             this.label2.TabIndex = 95;
@@ -298,7 +298,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(8, 180);
+            this.label1.Location = new System.Drawing.Point(8, 153);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 15);
             this.label1.TabIndex = 94;
@@ -311,7 +311,7 @@
             this.lblUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUser.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.DimGray;
-            this.lblUser.Location = new System.Drawing.Point(8, 113);
+            this.lblUser.Location = new System.Drawing.Point(7, 97);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(50, 15);
             this.lblUser.TabIndex = 93;
@@ -323,7 +323,7 @@
             this.txtCi.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCi.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtCi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCi.Location = new System.Drawing.Point(94, 76);
+            this.txtCi.Location = new System.Drawing.Point(83, 66);
             this.txtCi.Name = "txtCi";
             this.txtCi.Size = new System.Drawing.Size(245, 22);
             this.txtCi.TabIndex = 2;
@@ -333,7 +333,7 @@
             this.txtDireccion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.Location = new System.Drawing.Point(94, 208);
+            this.txtDireccion.Location = new System.Drawing.Point(82, 179);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(245, 22);
             this.txtDireccion.TabIndex = 6;
@@ -342,9 +342,9 @@
             // 
             this.txtTelefono.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(94, 175);
+            this.txtTelefono.Location = new System.Drawing.Point(83, 151);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(245, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(244, 22);
             this.txtTelefono.TabIndex = 5;
             // 
             // txtName
@@ -353,7 +353,7 @@
             this.txtName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(94, 108);
+            this.txtName.Location = new System.Drawing.Point(82, 94);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(245, 22);
             this.txtName.TabIndex = 3;
@@ -362,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 429);
+            this.ClientSize = new System.Drawing.Size(337, 389);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -382,6 +382,7 @@
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtName);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "nuevoUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo usuario";

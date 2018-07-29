@@ -281,31 +281,36 @@ namespace sercor
 
         private void subtotal()//calculo de subtotal
         {
-            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
-
-            int filas = vistaFactura.RowCount;
-
-            float subtotal = 0;
-
-            float iva;
-            float total;
-
-            for (int j = 0; j <= filas - 1; j++)
+            try
             {
-                subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
+                string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+
+                int filas = vistaFactura.RowCount;
+
+                float subtotal = 0;
+
+                float iva;
+                float total;
+
+                for (int j = 0; j <= filas - 1; j++)
+                {
+                    subtotal = subtotal + float.Parse(Convert.ToString(vistaFactura.Rows[j].Cells[4].Value));
+                }
+
+                txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString("0.00");
+                iva = ivaConst * subtotal;
+                txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString("0.00");
+                total = subtotal + iva;
+
+                //trocito clave
+                //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
+
+                txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString("0.00");
+                calculaSaldo();
             }
-
-            txtSubtotal.Text = Decimal.Round(Convert.ToDecimal(subtotal), 2).ToString("0.00");
-            iva = ivaConst * subtotal;
-            txtIva.Text = Decimal.Round(Convert.ToDecimal(iva), 2).ToString("0.00");
-            total = subtotal + iva;
-
-            //trocito clave
-            //decimal total2 = Decimal.Round(Convert.ToDecimal(total), 2) ;
-
-            txtTotal.Text = Decimal.Round(Convert.ToDecimal(total), 2).ToString("0.00");
-            calculaSaldo();
-
+            catch (System.NullReferenceException) {
+                MessageBox.Show("No existen productos", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         private void calculaSaldo()
         {
@@ -510,32 +515,38 @@ namespace sercor
 
         private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
-            Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
-
-            int filas = vistaFactura.RowCount;
-            bool modif = false;
-            int k = 0;
-
-            for (int j = 0; j <= filas - 1; j++)
+            try
             {
-                if (codigo == Convert.ToString(vistaFactura.Rows[j].Cells[0].Value))
+                string codigo = Convert.ToString(dgvProductos.CurrentRow.Cells[0].Value);
+                Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
+
+                int filas = vistaFactura.RowCount;
+                bool modif = false;
+                int k = 0;
+
+                for (int j = 0; j <= filas - 1; j++)
                 {
-                    k = j;
-                    modif = true;
+                    if (codigo == Convert.ToString(vistaFactura.Rows[j].Cells[0].Value))
+                    {
+                        k = j;
+                        modif = true;
+                    }
                 }
+                if (modif == false)
+                {
+                    vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
+                    1, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                }
+                else
+                {
+                    ImprimirFactura(k, 0, productoSeleccionado);
+                }
+                subtotal();
             }
-            if (modif == false)
+            catch (System.NullReferenceException)
             {
-                vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
-                1, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                MessageBox.Show("No existen productos para agregar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else
-            {
-                ImprimirFactura(k,0,productoSeleccionado);
-            }
-            subtotal();
-
         }
 
         private void ImprimirFactura(int k, int cantidad, Producto productoSeleccionado)
@@ -711,16 +722,24 @@ namespace sercor
 
         private void modificarProducto()
         {
-            string codigo = Convert.ToString(dgvInventario.CurrentRow.Cells[0].Value);
-            Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
+            try
+           {
+                string codigo = Convert.ToString(dgvInventario.CurrentRow.Cells[0].Value);
+                Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
 
-            editar_producto editarProducto = new editar_producto(productoSeleccionado);
-            editarProducto.ShowDialog();
+                editar_producto editarProducto = new editar_producto(productoSeleccionado);
+                editarProducto.ShowDialog();
 
-            toogleError(true, editarProducto.mensaje, 2);
+                toogleError(true, editarProducto.mensaje, 2);
 
-            btnTodosInventario_Click(null, null);
-            btnAllProducts_Click(null, null);
+                btnTodosInventario_Click(null, null);
+                btnAllProducts_Click(null, null);
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("No existen productos para modificar","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            }
+
         }
 
         private void dgvInventario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -811,16 +830,25 @@ namespace sercor
             }
         }
 
+        
         private void cambiarEstadoTr()
         {
-            int codigo = Convert.ToInt32(dgvTrabajos.CurrentRow.Cells[0].Value);
-            Trabajo productoSeleccionado = TrabajoDBM.TrabajoID(codigo);
+            try
+            {
+                int codigo = Convert.ToInt32(dgvTrabajos.CurrentRow.Cells[0].Value);
+                Trabajo productoSeleccionado = TrabajoDBM.TrabajoID(codigo);
 
-            cambiar_estado cambiarEstadoTrabajo = new cambiar_estado(productoSeleccionado);
-            cambiarEstadoTrabajo.ShowDialog();
-            toogleError(true, cambiarEstadoTrabajo.mensaje, 2);
+                cambiar_estado cambiarEstadoTrabajo = new cambiar_estado(productoSeleccionado);
+                cambiarEstadoTrabajo.ShowDialog();
+                toogleError(true, cambiarEstadoTrabajo.mensaje, 2);
 
-            btnTodosTrabajo_Click(null, null);
+                btnTodosTrabajo_Click(null, null);
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("No existen trabajos para modificar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
 
         private void btnModificarTrabajo_Click(object sender, EventArgs e)
@@ -942,7 +970,7 @@ namespace sercor
             }
             catch (System.FormatException)
             {
-                MessageBox.Show("Formato incorrecto");
+                MessageBox.Show("Campos incorrectos en la factura", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
             
