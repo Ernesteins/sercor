@@ -48,6 +48,16 @@ namespace sercor
             conexion.Close();
             return retorno;
         }
+        public static int clientedelacuenta(int idcuenta)
+        {
+            int idcliente = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand("select ID_cliente from Cuenta where id_cuenta = ;", conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            return idcliente;
+        }
+
+
         public static int ultimacuenta()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();

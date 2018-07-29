@@ -946,6 +946,8 @@ namespace sercor
                 nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
                 nFactura.ID_CLIENTE = txtId.Text;
                 nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
+                nFactura.ID_DETALLE = 0;
+                nFactura.ID_CUENTA = 0;//<- cambiar ese cero
                 nFactura.IVA = Convert.ToDecimal(ivaConst);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
                 nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
