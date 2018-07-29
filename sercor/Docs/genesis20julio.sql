@@ -276,3 +276,6 @@ ALTER TABLE sercordb.factura add (
 tipo tinyint(1) NOT NULL,
 indice int(11) default 0
 );
+
+ALTER TABLE sercorDb.usuario MODIFY privilegio1 smallint(6) NOT NULL;
+ALTER TABLE sercorDb.usuario MODIFY privilegio2 smallint(6) NOT NULL;
