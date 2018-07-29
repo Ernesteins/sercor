@@ -46,12 +46,10 @@ namespace sercor
 
         public Factura ultimoRegistro { get; set; }
 
-        private void ultimoIdFactura()//ultimo id de factura
+        private int ultimoIdFactura()//ultimo id de factura
         {
             ultimoRegistro = FacturaDBM.UltimoID();
-            int idUltimoFactura = ultimoRegistro.ID_FACTURA;
-            int nuevoIdFactura = idUltimoFactura + 1;
-            lblNumeroFactura.Text = Convert.ToString(nuevoIdFactura);
+            return ultimoRegistro.ID_FACTURA;
         }
 
         Form loginPadre;
@@ -70,8 +68,6 @@ namespace sercor
 
             loginPadre = form;
 
-            ultimoIdFactura();
-
             toogleError(false, "", 3);
 
             autocompleteRefresh();
@@ -79,6 +75,7 @@ namespace sercor
             metodoDePago(0);
 
             ordenTipo.SelectedIndex=0;
+            metodoPago.SelectedIndex = 0;
 
             btnAllProducts_Click(null,null);
 
@@ -886,12 +883,21 @@ namespace sercor
             }
         }
 
+        public Factura ultimoIndex { get; set; }
+
+        private int ultimoIndice(int tipo)
+        {
+            ultimoIndex = FacturaDBM.UltimoIndice(tipo);
+            return ultimoIndex.INDICE;
+        }
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 Factura nFactura = new Factura();
-                nFactura.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+                nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
                 nFactura.ID_CLIENTE = txtId.Text;
                 nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
                 nFactura.IVA = Convert.ToDecimal(ivaConst);
@@ -899,13 +905,15 @@ namespace sercor
                 nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
                 nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
+                nFactura.TIPO = ordenTipo.SelectedIndex;
+                nFactura.INDICE = ultimoIndice(ordenTipo.SelectedIndex)+1;
 
                 Cuenta nCuenta = new Cuenta();
                 nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
                 nCuenta.ID_CLIENTE = txtId.Text;
-                nCuenta.ID_FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+                nCuenta.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
                 nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
-                nCuenta.FORMA_P = cmbTipo.SelectedIndex;
+                nCuenta.FORMA_P = metodoPago.SelectedIndex;
                 nCuenta.SALDO = Convert.ToDecimal(txtSaldo.Text);
 
                 /*
@@ -933,28 +941,42 @@ namespace sercor
 
         private void txtAbono_TextChanged(object sender, EventArgs e)
         {
+            //if (txtAbono.Text == "")
+            //{
+            //    txtAbono.Text = "0";
+            //}
+            //if (Convert.ToDecimal(txtAdd.Text) <= 0)
+            //{
+            //    toogleError(true, "Debe ingresar un número mayor a 0", 1);
+
+            //}
+            //else
+            //{
+            //    toogleError(false, "", 3);
+            //}
             try
             {
-                if (txtAbono.Text == "")
+                if (Convert.ToDecimal(txtAbono.Text) > Convert.ToDecimal(txtTotal.Text))
                 {
+                    toogleError(true, "El abono no puede ser mayor al total", 1);
                     txtAbono.Text = "0";
                 }
-                if (Convert.ToInt32(txtAdd.Text) <= 0)
-                {
-                    toogleError(true, "Debe ingresar un número mayor a 0", 1);
-                }
-                else
-                {
-                    toogleError(false, "", 3);
-                }
             }
-
             catch (System.FormatException)
             {
-                toogleError(true, "Debe ingresar un número", 1);
+                toogleError(true, "El abono debe ser mayor o igual a 0", 2);
+                txtAbono.Text = "0";
             }
-            calculaSaldo();
+            //try
+            //{
 
+            //}
+
+            //catch (System.FormatException)
+            //{
+            //    toogleError(true, "Debe ingresar un número", 1);
+            //}
+            calculaSaldo();
         }
 
         private void txtAbono_Enter(object sender, EventArgs e)
@@ -983,6 +1005,17 @@ namespace sercor
         {
             Detalle _detalle = new Detalle();
             _detalle.Show();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ordenTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            lblNumeroFactura.Text = Convert.ToString(ultimoIndice(ordenTipo.SelectedIndex)+1);
         }
     }
 }

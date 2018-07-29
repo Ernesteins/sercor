@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,9 @@ namespace sercor
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}')",
+                "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}','{8}','{9}')",
                 pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO, pFactura.IVA,
-                pFactura.TOTAL, pFactura.FECHA,pFactura.FACTOR_DESCUENTO,pFactura.VALOR_DESCONTADO),conexion);
+                pFactura.TOTAL, pFactura.FECHA,pFactura.FACTOR_DESCUENTO,pFactura.VALOR_DESCONTADO,pFactura.TIPO,pFactura.INDICE),conexion);
 
             retorno = comando.ExecuteNonQuery();
 
@@ -25,6 +26,7 @@ namespace sercor
             conexion.Close();
             return retorno;
         }
+
         public static String  obtenerFechaSistema()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
@@ -37,6 +39,8 @@ namespace sercor
             return fechaHora;
         }
 
+
+        //Inutilizada por nuevo metodo
         public static Factura UltimoID()
         {
             Factura pFactura = new Factura();
@@ -75,11 +79,39 @@ namespace sercor
                 pFactura.IVA =_reader.GetDecimal(3);
                 pFactura.TOTAL = _reader.GetDecimal(4);
                 pFactura.FECHA = _reader.GetString(5);
+                pFactura.FACTOR_DESCUENTO = _reader.GetDecimal(6);
+                pFactura.VALOR_DESCONTADO = _reader.GetDecimal(7);
+                pFactura.TIPO = _reader.GetInt32(8);
+                pFactura.INDICE = _reader.GetInt32(9);
 
                 _lista.Add(pFactura);
             }
             conexion.Close();
             return _lista;
+        }
+
+        public static Factura UltimoIndice(int tipo)
+        {
+            Factura pFactura = new Factura();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM factura WHERE tipo='{0}' order by indice DESC LIMIT 1;",tipo), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                pFactura.ID_FACTURA = _reader.GetInt32(0);
+                pFactura.ID_CLIENTE = _reader.GetString(1);
+                pFactura.ID_USUARIO = _reader.GetInt32(2);
+                pFactura.IVA = _reader.GetDecimal(3);
+                pFactura.TOTAL = _reader.GetDecimal(4);
+                pFactura.FECHA = _reader.GetString(5);
+                pFactura.FACTOR_DESCUENTO = _reader.GetDecimal(6);
+                pFactura.VALOR_DESCONTADO = _reader.GetDecimal(7);
+                pFactura.TIPO = _reader.GetInt32(8);
+                pFactura.INDICE = _reader.GetInt32(9);
+            }
+            conexion.Close();
+            return pFactura;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace sercor
 
             StringBuilder sb = new StringBuilder();
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Archivo(*.csv)|*.csv";
+            ofd.Filter = "Archivo(*.serdl)|*.serdl";
             if (ofd.ShowDialog()==System.Windows.Forms.DialogResult.OK)
             {
                 dgvProducto.Rows.Clear();

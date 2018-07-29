@@ -35,15 +35,13 @@ namespace sercor
 
         //PARA OBTENER VARIOS USUARIOS
         public static List<Usuario> Buscar(string pUser)
-        //, string pContrasena
-
         {
             List<Usuario> _lista = new List<Usuario>();
 
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_USUARIO, TIPO, USUARIO, CONTRASENA, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO ='{0}'", pUser), conexion);
+           "SELECT * FROM usuario  where USUARIO ='{0}'", pUser), conexion);
             // or contrasena='{1}' 
             //, pContrasena
 
@@ -53,7 +51,7 @@ namespace sercor
                 Usuario pUsuario = new Usuario();
 
                 pUsuario.ID_USUARIO = _reader.GetInt32(0);
-                pUsuario.TIPO = _reader.GetUInt16(1);
+                pUsuario.TIPO = _reader.GetInt32(1);
                 pUsuario.USUARIO = _reader.GetString(2);
                 pUsuario.CONTRASENA = _reader.GetString(3);
                 pUsuario.NOMBRE = _reader.GetString(4);
@@ -61,8 +59,8 @@ namespace sercor
                 pUsuario.CEDULA = _reader.GetString(6);
                 pUsuario.DIRECCION = _reader.GetString(7);
                 pUsuario.TELEFONO = _reader.GetString(8);
-                pUsuario.PRIVILEGIO1 = _reader.GetUInt16(9);
-                pUsuario.PRIVILEGIO2 = _reader.GetUInt16(10);
+                pUsuario.PRIVILEGIO1 = _reader.GetInt32(9);
+                pUsuario.PRIVILEGIO2 = _reader.GetInt32(10);
 
                 _lista.Add(pUsuario);
             }
@@ -70,6 +68,39 @@ namespace sercor
             return _lista;
         }
 
+        public static List<Usuario> Usuarios()
+        {
+            List<Usuario> _lista = new List<Usuario>();
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM usuario"), conexion);
+            // or contrasena='{1}' 
+            //, pContrasena
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Usuario pUsuario = new Usuario();
+
+                pUsuario.ID_USUARIO = _reader.GetInt32(0);
+                pUsuario.TIPO = _reader.GetInt32(1);
+                pUsuario.USUARIO = _reader.GetString(2);
+                pUsuario.CONTRASENA = _reader.GetString(3);
+                pUsuario.NOMBRE = _reader.GetString(4);
+                pUsuario.APELLIDO = _reader.GetString(5);
+                pUsuario.CEDULA = _reader.GetString(6);
+                pUsuario.DIRECCION = _reader.GetString(7);
+                pUsuario.TELEFONO = _reader.GetString(8);
+                pUsuario.PRIVILEGIO1 = _reader.GetInt32(9);
+                pUsuario.PRIVILEGIO2 = _reader.GetInt32(10);
+
+                _lista.Add(pUsuario);
+            }
+            conexion.Close();
+            return _lista;
+        }
 
         //OBTENER UN SOLO USUARIO
         public static Usuario ObtenerUsuario(string pId)
@@ -77,7 +108,7 @@ namespace sercor
             Usuario pUsuario = new Usuario();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT ID_USUARIO, TIPO, USUARIO, CONTRASENA, NOMBRE, APELLIDO, CEDULA, DIRECCION, TELEFONO, PRIVILEGIO1, PRIVILEGIO2 FROM usuario  where USUARIO='{0}'", pId), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM usuario where USUARIO='{0}'", pId), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -90,8 +121,8 @@ namespace sercor
                 pUsuario.CEDULA = _reader.GetString(6);
                 pUsuario.DIRECCION = _reader.GetString(7);
                 pUsuario.TELEFONO = _reader.GetString(8);
-                pUsuario.PRIVILEGIO1 = _reader.GetInt16(9);
-                pUsuario.PRIVILEGIO2 = _reader.GetInt16(10);
+                pUsuario.PRIVILEGIO1 = _reader.GetInt32(9);
+                pUsuario.PRIVILEGIO2 = _reader.GetInt32(10);
 
             }
 
