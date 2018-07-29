@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace sercor
 {
@@ -25,7 +26,6 @@ namespace sercor
                 cxcCuenta.ID_CUENTA = _reader.GetInt32(0);
                 cxcCuenta.ID_CLIENTE= _reader.GetString(1);
                 cxcCuenta.TOTAL = _reader.GetDecimal(4);
-                cxcCuenta.FORMA_P = _reader.GetInt32(5);
                 cxcCuenta.SALDO= _reader.GetDecimal(6);
                 cxcCuenta.ESTADO_P = _reader.GetInt32(7);
                 
@@ -39,12 +39,11 @@ namespace sercor
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion(); 
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "Insert into Cuenta values ({0},'{1}',{2},{3},'{4}','{5}','{6}')",
-                cxcCuenta.ID_CUENTA, cxcCuenta.ID_CLIENTE, cxcCuenta.ID_FACTURA, 
-                cxcCuenta.TOTAL, cxcCuenta.FORMA_P, cxcCuenta.SALDO, cxcCuenta.ESTADO_P), conexion);
+                "Insert into Cuenta values ('{0}','{1}','{2}','{3}','{4}')",
+                cxcCuenta.ID_CUENTA, cxcCuenta.ID_CLIENTE,cxcCuenta.TOTAL, 
+                cxcCuenta.SALDO, cxcCuenta.ESTADO_P), conexion);
 
             retorno = comando.ExecuteNonQuery();
-
             //1 insertado | 0 error
             conexion.Close();
             return retorno;
@@ -55,11 +54,17 @@ namespace sercor
             MySqlCommand comando = new MySqlCommand("select max(ID_CUENTA) from Cuenta;", conexion);
             MySqlDataReader _reader = comando.ExecuteReader();
             int last = 0;
-            try {
-                _reader.Read();
-                last = _reader.GetInt32(0);
-            } catch(System.Data.SqlTypes.SqlNullValueException) { last = 0; }
+            _reader.Read();
 
+            if (_reader.HasRows)
+            {
+                last = _reader.GetInt32(0);
+                MessageBox.Show("Cuenta = ",last.ToString());
+            }
+            else
+            {
+                last = 0;
+            }
             conexion.Close();
             return last;
         }

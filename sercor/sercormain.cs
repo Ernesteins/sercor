@@ -892,10 +892,28 @@ namespace sercor
         }
 
 
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
+                if (ClienteDBM.ExisteCliente(txtId.Text) == false)
+                {
+                    Cliente nCliente = new Cliente();
+                    nCliente.ID_CLIENTE = txtId.Text;
+                    nCliente.NOMBRE = txtName.Text;
+                    nCliente.DIRECCION = txtDireccion.Text;
+                    nCliente.TELEFONO = txtTelefono.Text;
+                    ClienteDBM.Agregar(nCliente);
+                    Cuenta nCuenta = new Cuenta();
+                    nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
+                    nCuenta.ID_CLIENTE = txtId.Text;
+                    nCuenta.TOTAL = 0;//meter el total del sercormain
+                    nCuenta.SALDO = 0;//meter el saldo del sercormain
+                    MessageBox.Show("Cuenta ", nCuenta.ToString());
+                    CuentaDBM.Agregar(nCuenta);
+                }
+
                 Factura nFactura = new Factura();
                 nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
                 nFactura.ID_CLIENTE = txtId.Text;
@@ -907,14 +925,6 @@ namespace sercor
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
                 nFactura.INDICE = ultimoIndice(ordenTipo.SelectedIndex)+1;
-
-                Cuenta nCuenta = new Cuenta();
-                nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
-                nCuenta.ID_CLIENTE = txtId.Text;
-                nCuenta.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
-                nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
-                nCuenta.FORMA_P = metodoPago.SelectedIndex;
-                nCuenta.SALDO = Convert.ToDecimal(txtSaldo.Text);
 
                 /*
                 Trabajo nTrabajo = new Trabajo();
@@ -929,7 +939,6 @@ namespace sercor
                 nTrabajo.FECHA_ENTREGA = null;*/
 
                 FacturaDBM.Agregar(nFactura);
-                CuentaDBM.Agregar(nCuenta);
             }
             catch (System.FormatException)
             {

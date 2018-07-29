@@ -1,10 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using MySql.Data.MySqlClient;
 
 namespace sercor
@@ -16,8 +12,8 @@ namespace sercor
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}','{8}','{9}')",
-                pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO, pFactura.IVA,
+                "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
+                pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO,pFactura.ID_DETALLE, pFactura.ID_CUENTA, pFactura.IVA,
                 pFactura.TOTAL, pFactura.FECHA,pFactura.FACTOR_DESCUENTO,pFactura.VALOR_DESCONTADO,pFactura.TIPO,pFactura.INDICE),conexion);
 
             retorno = comando.ExecuteNonQuery();
@@ -75,14 +71,16 @@ namespace sercor
 
                 pFactura.ID_FACTURA = _reader.GetInt32(0);
                 pFactura.ID_CLIENTE = _reader.GetString(1);
-                pFactura.ID_USUARIO = _reader.GetInt32(2);               
-                pFactura.IVA =_reader.GetDecimal(3);
-                pFactura.TOTAL = _reader.GetDecimal(4);
-                pFactura.FECHA = _reader.GetString(5);
-                pFactura.FACTOR_DESCUENTO = _reader.GetDecimal(6);
-                pFactura.VALOR_DESCONTADO = _reader.GetDecimal(7);
-                pFactura.TIPO = _reader.GetInt32(8);
-                pFactura.INDICE = _reader.GetInt32(9);
+                pFactura.ID_USUARIO = _reader.GetInt32(2);
+                pFactura.ID_DETALLE = _reader.GetInt32(3);
+                pFactura.ID_CUENTA = _reader.GetInt32(4);
+                pFactura.IVA =_reader.GetDecimal(5);
+                pFactura.TOTAL = _reader.GetDecimal(6);
+                pFactura.FECHA = _reader.GetString(7);
+                pFactura.FACTOR_DESCUENTO = _reader.GetDecimal(8);
+                pFactura.VALOR_DESCONTADO = _reader.GetDecimal(9);
+                pFactura.TIPO = _reader.GetInt32(10);
+                pFactura.INDICE = _reader.GetInt32(11);
 
                 _lista.Add(pFactura);
             }
@@ -102,13 +100,15 @@ namespace sercor
                 pFactura.ID_FACTURA = _reader.GetInt32(0);
                 pFactura.ID_CLIENTE = _reader.GetString(1);
                 pFactura.ID_USUARIO = _reader.GetInt32(2);
-                pFactura.IVA = _reader.GetDecimal(3);
-                pFactura.TOTAL = _reader.GetDecimal(4);
-                pFactura.FECHA = _reader.GetString(5);
-                pFactura.FACTOR_DESCUENTO = _reader.GetDecimal(6);
-                pFactura.VALOR_DESCONTADO = _reader.GetDecimal(7);
-                pFactura.TIPO = _reader.GetInt32(8);
-                pFactura.INDICE = _reader.GetInt32(9);
+                pFactura.ID_DETALLE = _reader.GetInt32(3);
+                pFactura.ID_CUENTA = _reader.GetInt32(4);
+                pFactura.IVA = _reader.GetDecimal(5);
+                pFactura.TOTAL = _reader.GetDecimal(6);
+                pFactura.FECHA = _reader.GetString(7);
+                pFactura.FACTOR_DESCUENTO = _reader.GetDecimal(8);
+                pFactura.VALOR_DESCONTADO = _reader.GetDecimal(9);
+                pFactura.TIPO = _reader.GetInt32(10);
+                pFactura.INDICE = _reader.GetInt32(11);
             }
             conexion.Close();
             return pFactura;

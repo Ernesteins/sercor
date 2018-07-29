@@ -77,11 +77,18 @@
     <Compile Include="Cuenta.cs" />
     <Compile Include="CuentaDBM.cs" />
     <Compile Include="Detalle.cs" />
+    <Compile Include="DetalleDBM.cs" />
     <Compile Include="detalleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="detalleForm.Designer.cs">
       <DependentUpon>detalleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editarUsuario.Designer.cs">
+      <DependentUpon>editarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="editar_producto.cs">
       <SubType>Form</SubType>
@@ -104,6 +111,12 @@
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nuevoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nuevoUsuario.Designer.cs">
+      <DependentUpon>nuevoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs" />
     <Compile Include="ProductoDBM.cs" />
@@ -142,6 +155,9 @@
     <EmbeddedResource Include="detalleForm.resx">
       <DependentUpon>detalleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editarUsuario.resx">
+      <DependentUpon>editarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nuevoUsuario.resx">
+      <DependentUpon>nuevoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,6 +201,7 @@
     <Content Include="Docs\genesis29julio.sql" />
     <Content Include="Docs\modelo sercor 29-Julio.png" />
     <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\edit1.png" />
     <None Include="Resources\tabs.png" />
     <None Include="Resources\server.png" />
     <None Include="Resources\alarm16.png" />

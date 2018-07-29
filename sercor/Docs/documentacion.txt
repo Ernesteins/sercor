@@ -65,5 +65,4 @@ COSAS DESCUBIERTAS
 
 URGENTE
 
-reestructuración de la base de datos - fallas en la lógica detectadas
-EJECUTAR "GENESIS20JULIO" y ejecutar otra vez los codigos de ingreso producto no cambia en nada eso
+valores predeterminados del formulario sercormain deben ser '0' en total, subtotal, iva, etc..

@@ -18,8 +18,10 @@ namespace sercor
 
             refreshUsers();
         }
+
         private void refreshUsers()
         {
+            cbmUsuario.Items.Clear();
             int j = 0;
             for (int i = 0; i <= UsuarioDBM.Usuarios().Count; i++)
             {
@@ -29,6 +31,7 @@ namespace sercor
                     j++;
                 }
             }
+            cbmUsuario.SelectedIndex = 0;
         }
 
         private void uncheck()
@@ -234,128 +237,19 @@ namespace sercor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int pri1, pri2;
-
-            if (admin1.Checked == true && admin2.Checked==true && admin3.Checked==true && admin4.Checked==true)
-            {
-                pri1 = 15;
-            }
-            else if(admin2.Checked==true && admin3.Checked==true && admin4.Checked==true)
-            {
-                pri1=14;
-            }else if (admin1.Checked==true && admin3.Checked==true && admin4.Checked==true)
-            {
-                pri1 = 13;
-            }else if (admin1.Checked==true && admin2.Checked==true && admin4.Checked==true)
-            {
-                pri1 = 12;
-            }else if (admin1.Checked==true && admin2.Checked==true && admin3.Checked==true)
-            {
-                pri1 = 11;
-            }else if (admin3.Checked==true && admin4.Checked==true)
-            {
-                pri1 = 10;
-            }else if(admin2.Checked==true && admin4.Checked == true)
-            {
-                pri1 = 9;
-            }else if(admin2.Checked==true && admin3.Checked == true)
-            {
-                pri1 = 8;
-            }else if(admin1.Checked==true && admin4.Checked == true)
-            {
-                pri1 = 7;
-            }else if(admin1.Checked==true && admin3.Checked == true)
-            {
-                pri1 = 6;
-            }else if(admin1.Checked==true && admin2.Checked == true)
-            {
-                pri1 = 5;
-            }else if (admin4.Checked == true)
-            {
-                pri1 = 4;
-            }else if (admin3.Checked == true)
-            {
-                pri1 = 3;
-            }else if (admin2.Checked == true)
-            {
-                pri1 = 2;
-            }else if (admin1.Checked == true)
-            {
-                pri1 = 1;
-            }
-            else
-            {
-                pri1 = 0;
-            }
-
-
-            if (user1.Checked == true && user2.Checked == true && user3.Checked == true && user4.Checked == true)
-            {
-                pri2 = 15;
-            }
-            else if (user2.Checked == true && user3.Checked == true && user4.Checked == true)
-            {
-                pri2 = 14;
-            }
-            else if (user1.Checked == true && user3.Checked == true && user4.Checked == true)
-            {
-                pri2 = 13;
-            }
-            else if (user1.Checked == true && user2.Checked == true && user4.Checked == true)
-            {
-                pri2 = 12;
-            }
-            else if (user1.Checked == true && user2.Checked == true && user3.Checked == true)
-            {
-                pri2 = 11;
-            }
-            else if (user3.Checked == true && user4.Checked == true)
-            {
-                pri2 = 10;
-            }
-            else if (user2.Checked == true && user4.Checked == true)
-            {
-                pri2 = 9;
-            }
-            else if (user2.Checked == true && user3.Checked == true)
-            {
-                pri2 = 8;
-            }
-            else if (user1.Checked == true && user4.Checked == true)
-            {
-                pri2 = 7;
-            }
-            else if (user1.Checked == true && user3.Checked == true)
-            {
-                pri2 = 6;
-            }
-            else if (user1.Checked == true && user2.Checked == true)
-            {
-                pri2 = 5;
-            }
-            else if (user4.Checked == true)
-            {
-                pri2 = 4;
-            }
-            else if (user3.Checked == true)
-            {
-                pri2 = 3;
-            }
-            else if (user2.Checked == true)
-            {
-                pri2 = 2;
-            }
-            else if (user1.Checked == true)
-            {
-                pri2 = 1;
-            }
-            else
-            {
-                pri2 = 0;
-            }
+            editarUsuario _editarUsuario = new editarUsuario(selectedUser);
+            _editarUsuario.ShowDialog();
+            refreshUsers();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
+        {
+            nuevoUsuario nuevoUser = new nuevoUsuario();
+            nuevoUser.ShowDialog();
+            refreshUsers();
+        }
+
+        private void txtContrasenia_TextChanged(object sender, EventArgs e)
         {
             
         }
