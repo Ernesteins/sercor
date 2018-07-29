@@ -76,11 +76,12 @@
     <Compile Include="ClienteDBM.cs" />
     <Compile Include="Cuenta.cs" />
     <Compile Include="CuentaDBM.cs" />
-    <Compile Include="Detalle.cs">
+    <Compile Include="Detalle.cs" />
+    <Compile Include="detalleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Detalle.Designer.cs">
-      <DependentUpon>Detalle.cs</DependentUpon>
+    <Compile Include="detalleForm.Designer.cs">
+      <DependentUpon>detalleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="editar_producto.cs">
       <SubType>Form</SubType>
@@ -138,8 +139,8 @@
     <EmbeddedResource Include="cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Detalle.resx">
-      <DependentUpon>Detalle.cs</DependentUpon>
+    <EmbeddedResource Include="detalleForm.resx">
+      <DependentUpon>detalleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>
@@ -178,6 +179,8 @@
     <Content Include="Docs\consultas.sql" />
     <Content Include="Docs\documentacion.txt" />
     <Content Include="Docs\genesis.sql" />
+    <Content Include="Docs\genesis29julio.sql" />
+    <Content Include="Docs\modelo sercor 29-Julio.png" />
     <Content Include="Docs\Respaldos.txt" />
     <None Include="Resources\tabs.png" />
     <None Include="Resources\server.png" />
