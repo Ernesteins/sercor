@@ -67,3 +67,5 @@ D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\ShockwaveFlashObjects.dll
 D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\stdole.dll
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.imprimir.resources
+D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.editarUsuario.resources
+D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.nuevoUsuario.resources
