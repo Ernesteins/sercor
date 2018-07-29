@@ -46,7 +46,6 @@ C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.cambiar_estado.resour
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.cambiar_estado.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.SDL.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.Administrativo.resources
-D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.Detalle.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\CrystalDecisions.ReportSource.dll
 D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\CrystalDecisions.Shared.dll
@@ -69,3 +68,4 @@ D:\Documentos\Proyectos\sercor\sercor\sercor\bin\Debug\stdole.dll
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.imprimir.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.editarUsuario.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.nuevoUsuario.resources
+D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.detalleForm.resources
