@@ -1,6 +1,6 @@
 ﻿namespace sercor
 {
-    partial class Detalle
+    partial class detalleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Detalle));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(detalleForm));
             this.SuspendLayout();
             // 
             // Detalle

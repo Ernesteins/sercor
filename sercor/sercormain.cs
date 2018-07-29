@@ -1003,7 +1003,7 @@ namespace sercor
 
         private void dgvHistorial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Detalle _detalle = new Detalle();
+            detalleForm _detalle = new detalleForm();
             _detalle.Show();
         }
 
