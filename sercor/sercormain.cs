@@ -961,7 +961,7 @@ namespace sercor
             }
             catch (System.FormatException)
             {
-                MessageBox.Show("Formato incorrecto");
+                MessageBox.Show("Campos incorrectos en la factura", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
             
