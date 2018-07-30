@@ -61,6 +61,8 @@ COSAS DESCUBIERTAS
                 clienteNombres.Add(ClienteDBM.ObtenerNombres()[0].NOMBRE);
             }
             txtName.AutoCompleteCustomSource = clienteNombres;
+
+	select Descripcion from producto where Descripcion REGEXP "pr*";
 	
 
 URGENTE
