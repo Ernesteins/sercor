@@ -45,6 +45,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rd2 = new System.Windows.Forms.RadioButton();
+            this.rd1 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rd5 = new System.Windows.Forms.RadioButton();
+            this.rd4 = new System.Windows.Forms.RadioButton();
+            this.rd3 = new System.Windows.Forms.RadioButton();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCodigo
@@ -207,7 +216,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Image = global::sercor.Properties.Resources.success16;
-            this.btnAceptar.Location = new System.Drawing.Point(112, 206);
+            this.btnAceptar.Location = new System.Drawing.Point(241, 206);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
             this.btnAceptar.TabIndex = 43;
@@ -227,7 +236,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = global::sercor.Properties.Resources.error16;
-            this.btnCancelar.Location = new System.Drawing.Point(200, 206);
+            this.btnCancelar.Location = new System.Drawing.Point(329, 206);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
             this.btnCancelar.TabIndex = 44;
@@ -236,6 +245,93 @@
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rd2);
+            this.groupBox2.Controls.Add(this.rd1);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox2.Location = new System.Drawing.Point(288, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(123, 77);
+            this.groupBox2.TabIndex = 95;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Estado de producto";
+            // 
+            // rd2
+            // 
+            this.rd2.AutoSize = true;
+            this.rd2.Checked = true;
+            this.rd2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rd2.Location = new System.Drawing.Point(6, 50);
+            this.rd2.Name = "rd2";
+            this.rd2.Size = new System.Drawing.Size(55, 17);
+            this.rd2.TabIndex = 8;
+            this.rd2.TabStop = true;
+            this.rd2.Text = "Activo";
+            this.rd2.UseVisualStyleBackColor = true;
+            // 
+            // rd1
+            // 
+            this.rd1.AutoSize = true;
+            this.rd1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rd1.Location = new System.Drawing.Point(6, 23);
+            this.rd1.Name = "rd1";
+            this.rd1.Size = new System.Drawing.Size(63, 17);
+            this.rd1.TabIndex = 7;
+            this.rd1.TabStop = true;
+            this.rd1.Text = "Inactivo";
+            this.rd1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rd5);
+            this.groupBox1.Controls.Add(this.rd4);
+            this.groupBox1.Controls.Add(this.rd3);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox1.Location = new System.Drawing.Point(288, 98);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(123, 102);
+            this.groupBox1.TabIndex = 94;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tipo de producto";
+            // 
+            // rd5
+            // 
+            this.rd5.AutoSize = true;
+            this.rd5.Checked = true;
+            this.rd5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rd5.Location = new System.Drawing.Point(6, 76);
+            this.rd5.Name = "rd5";
+            this.rd5.Size = new System.Drawing.Size(45, 17);
+            this.rd5.TabIndex = 11;
+            this.rd5.TabStop = true;
+            this.rd5.Text = "Otro";
+            this.rd5.UseVisualStyleBackColor = true;
+            // 
+            // rd4
+            // 
+            this.rd4.AutoSize = true;
+            this.rd4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rd4.Location = new System.Drawing.Point(6, 50);
+            this.rd4.Name = "rd4";
+            this.rd4.Size = new System.Drawing.Size(49, 17);
+            this.rd4.TabIndex = 10;
+            this.rd4.TabStop = true;
+            this.rd4.Text = "Luna";
+            this.rd4.UseVisualStyleBackColor = true;
+            // 
+            // rd3
+            // 
+            this.rd3.AutoSize = true;
+            this.rd3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rd3.Location = new System.Drawing.Point(6, 24);
+            this.rd3.Name = "rd3";
+            this.rd3.Size = new System.Drawing.Size(66, 17);
+            this.rd3.TabIndex = 9;
+            this.rd3.TabStop = true;
+            this.rd3.Text = "Armazón";
+            this.rd3.UseVisualStyleBackColor = true;
+            // 
             // agregar_producto
             // 
             this.AcceptButton = this.btnAceptar;
@@ -243,7 +339,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(294, 240);
+            this.ClientSize = new System.Drawing.Size(420, 238);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label7);
@@ -267,6 +365,10 @@
             this.Name = "agregar_producto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar producto";
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +392,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rd2;
+        private System.Windows.Forms.RadioButton rd1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rd5;
+        private System.Windows.Forms.RadioButton rd4;
+        private System.Windows.Forms.RadioButton rd3;
     }
 }

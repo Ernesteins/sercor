@@ -54,7 +54,24 @@ namespace sercor
                     Producto pProducto = new Producto();
                     pProducto.COD = txtCodigo.Text.Trim();
                     pProducto.NOMBRE = txtNombre.Text.Trim();
-                    pProducto.DESCRIPCION = txtDescripcion.Text.Trim();
+
+                    string concat;
+                    if (rd3.Checked == true)
+                    {
+                        concat = "ARMA|";
+                    }
+                    else if (rd4.Checked == true)
+                    {
+                        concat = "LUNA|";
+                    }
+                    else
+                    {
+                        concat = "";
+                    }
+
+                    pProducto.DESCRIPCION = concat+txtDescripcion.Text.Trim();
+
+
                     pProducto.CATEGORIA = txtCategoria.Text.Trim();
                     pProducto.SUBCATEGORIA = txtSubcategoria.Text.Trim();
                     pProducto.EXISTENCIA = Convert.ToInt32(txtExistencia.Text);
@@ -64,7 +81,17 @@ namespace sercor
                     pProducto.PRECIO = Decimal.Round(Convert.ToDecimal(txtPrecio.Text), 2);
                     //MessageBox.Show(pProducto.PRECIO.ToString());
 
-                    pProducto.ESTADO = 1;
+                    int estado;
+                    if (rd1.Checked == true)
+                    {
+                        estado = 1;
+                    }
+                    else
+                    {
+                        estado = 0;
+                    }
+
+                    pProducto.ESTADO = estado;
                     //pCliente.Fecha_Nac = dtpFechaNacimiento.Value.Year + "/" + dtpFechaNacimiento.Value.Month + "/" + dtpFechaNacimiento.Value.Day;
 
                     int resultado = ProductoDBM.Agregar(pProducto);
