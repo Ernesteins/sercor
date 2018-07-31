@@ -18,12 +18,17 @@ select * from SERCORDB.trabajos;
 /*INSERCIONES*/
 insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
 insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
-insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","99.99","1");
+
+insert into cuenta values("1","1725158123",0,0,0);
+
+insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","49.99","1");
 insert into sercordb.producto values ("002","prod_2","producto 2 de las pruebas","pruebas","pruebas","100","99.99","1");
+
 insert into sercordb.factura values ("001","1725158123","001",0,0,(SELECT NOW()),0,0);
 insert into sercordb.factura values ("002","1725158123","001",0,0,"2018-07-03 19:39:29",0,0);
-delete from SERCORDB.trabajos where ID_TRABAJO="001";
+
 insert into sercordb.trabajos values ("001","0","001",(SELECT NOW()),(SELECT nombre from sercordb.Cliente where id_cliente=(select id_cliente from sercordb.factura where id_factura = "001")),"AR01","LN20",1,(SELECT NOW()));
+
 /*insert into sercordb.cuenta values ("001","1725158123","001","");*/
 
 /*EDICION DE CLAVES Y TABLAS ERRONEAS*/
