@@ -385,7 +385,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Silver;
             this.pictureBox6.Location = new System.Drawing.Point(138, 257);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1, 8279);
+            this.pictureBox6.Size = new System.Drawing.Size(1, 8568);
             this.pictureBox6.TabIndex = 48;
             this.pictureBox6.TabStop = false;
             // 
@@ -1270,6 +1270,7 @@
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(71, 22);
             this.txtDescuento.TabIndex = 29;
+            this.txtDescuento.Text = "0";
             this.txtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
             // 

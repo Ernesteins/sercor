@@ -68,3 +68,9 @@ COSAS DESCUBIERTAS
 URGENTE
 
 valores predeterminados del formulario sercormain deben ser '0' en total, subtotal, iva, etc..
+modificar los permisos de sercorUSER con:
+	"grant select on sercordb.pago to 'sercoruser'@'localhost';"
+	"grant insert on sercordb.pago to 'sercoruser'@'localhost';"
+	"grant update on sercordb.cuenta to 'sercoruser'@'localhost';"
+refrescar las facturas una vez creadas
+CORREGIR IVA (no va el porcentaje es el valor del iva en esa factura)

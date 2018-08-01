@@ -25,14 +25,19 @@ namespace sercor
 
         public static int UltimoDetalle()
         {
-            int last = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
-
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM detalle;"), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT MAX(ID_DETALLE) FROM detalle;"), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
-            while (_reader.Read())
+            int last = 0;
+            _reader.Read();
+
+            if (!_reader.IsDBNull(0))
             {
                 last = _reader.GetInt32(0);
+            }
+            else
+            {
+                last = 0;
             }
             conexion.Close();
             return last;

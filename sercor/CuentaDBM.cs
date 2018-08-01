@@ -52,9 +52,19 @@ namespace sercor
         {
             int idcliente = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
-            MySqlCommand comando = new MySqlCommand("select ID_cliente from Cuenta where id_cuenta = ;", conexion);
+            MySqlCommand comando = new MySqlCommand(string.Format("select ID_cliente from Cuenta where id_cuenta = {0};",idcuenta), conexion);
             MySqlDataReader _reader = comando.ExecuteReader();
+            idcliente = _reader.GetInt32(0);
             return idcliente;
+        }
+        public static int cuentadelcliente(int idcliente)
+        {
+            int idcuenta = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format("select ID_cuenta from Cuenta where id_cliente = ;",idcliente), conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            idcuenta = _reader.GetInt32(0);
+            return idcuenta;
         }
 
 
@@ -66,10 +76,9 @@ namespace sercor
             int last = 0;
             _reader.Read();
 
-            if (_reader.HasRows)
+            if (!_reader.IsDBNull(0))
             {
                 last = _reader.GetInt32(0);
-                MessageBox.Show("Cuenta = ",last.ToString());
             }
             else
             {
@@ -77,6 +86,78 @@ namespace sercor
             }
             conexion.Close();
             return last;
+        }
+
+        public static decimal consultarsaldo(int idcuenta)
+        {
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format("select saldo from Cuenta where id_cuenta = '{0}';",idcuenta), conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            decimal saldo = 0;
+            _reader.Read();
+
+            if (!_reader.IsDBNull(0))
+            {
+                saldo = _reader.GetDecimal(0);
+            }
+            conexion.Close();
+
+            return saldo;
+        }
+
+        public static decimal abono(int idcuenta, decimal abono)
+        {
+            int retorno = 1;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format("select saldo from Cuenta where id_cuenta = '{0}';", idcuenta), conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            decimal saldo = 0;
+            _reader.Read();
+            
+            if (!_reader.IsDBNull(0))
+            {
+                saldo = _reader.GetDecimal(0);
+            }
+            else
+            {
+                return -1;
+            }
+            conexion.Close();
+
+            saldo= saldo - abono;
+            MySqlConnection conexion1 = bdComun.obtenerConexion();
+            MySqlCommand comando1 = new MySqlCommand(string.Format("update cuenta set saldo = '{0}' where id_cuenta = '{1}';", saldo, idcuenta), conexion1);
+             retorno = comando1.ExecuteNonQuery();
+            conexion.Close();
+
+            return retorno;
+        }
+        public static decimal ultimototal(int idcuenta)
+        {
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format("select total from Cuenta where id_cuenta = '{0}';", idcuenta), conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            decimal total = 0;
+            _reader.Read();
+            if (!_reader.IsDBNull(0))
+            {
+                total = _reader.GetDecimal(0);
+            }
+            conexion.Close();
+            return total;
+        }
+        public static int actualizarcuenta(int idcuenta, decimal saldo, decimal total)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update cuenta set saldo = '{0}', total = '{1}' where id_cuenta = '{2}';",
+                saldo,total,idcuenta), conexion);
+
+            retorno = comando.ExecuteNonQuery();
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
         }
 
     }
