@@ -72,7 +72,6 @@ namespace sercor
         public static Boolean ExisteCliente (string pId)
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
-
             MySqlCommand _comando = new MySqlCommand(String.Format(
                 "SELECT ID_CLIENTE FROM cliente where ID_CLIENTE='';", pId),
                 conexion);
@@ -81,7 +80,6 @@ namespace sercor
 
             if (_reader.HasRows)
             {
-                MessageBox.Show(_reader.GetString(0));
                 return true;
             }
             return false;

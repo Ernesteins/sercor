@@ -919,35 +919,48 @@ namespace sercor
             return ultimoIndex.INDICE;
         }
 
-
+        //primero se crea el CLiente 
+        //luego la cuenta 
+        //luego el detalle (con sus productos) 
+        //y finalmente la factura.
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (ClienteDBM.ExisteCliente(txtId.Text) == false)
+                //Variable de cliente
+                Cliente nCliente = new Cliente();
+                nCliente.ID_CLIENTE = txtId.Text;
+                nCliente.NOMBRE = txtName.Text;
+                nCliente.DIRECCION = txtDireccion.Text;
+                nCliente.TELEFONO = txtTelefono.Text;
+
+                //Variable de cuenta
+                Cuenta nCuenta = new Cuenta();
+                nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta();
+                nCuenta.ID_CLIENTE = txtId.Text;
+                nCuenta.TOTAL = 0;//meter el total del sercormain
+                nCuenta.SALDO = 0;//meter el saldo del sercormain
+
+                if (ClienteDBM.ExisteCliente(txtId.Text))
                 {
-                    Cliente nCliente = new Cliente();
-                    nCliente.ID_CLIENTE = txtId.Text;
-                    nCliente.NOMBRE = txtName.Text;
-                    nCliente.DIRECCION = txtDireccion.Text;
-                    nCliente.TELEFONO = txtTelefono.Text;
+                    nCuenta.ID_CUENTA += 1;
                     ClienteDBM.Agregar(nCliente);
-                    Cuenta nCuenta = new Cuenta();
-                    nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
-                    nCuenta.ID_CLIENTE = txtId.Text;
-                    nCuenta.TOTAL = 0;//meter el total del sercormain
-                    nCuenta.SALDO = 0;//meter el saldo del sercormain
-                    MessageBox.Show("Cuenta ", nCuenta.ToString());
                     CuentaDBM.Agregar(nCuenta);
                 }
+                //Variable de Detalle
+                Detalle nDetalle = new Detalle();
+                nDetalle.ID_DETALLE = DetalleDBM.UltimoDetalle()+1;
+                nDetalle.SUBTOTAL = Convert.ToDecimal(txtSubtotal.Text);
+                DetalleDBM.Agregar(nDetalle);
 
+                //Variable de Factura
                 Factura nFactura = new Factura();
                 nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
                 nFactura.ID_CLIENTE = txtId.Text;
                 nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
-                nFactura.ID_DETALLE = 0;
-                nFactura.ID_CUENTA = 0;//<- cambiar ese cero
+                nFactura.ID_DETALLE = nDetalle.ID_DETALLE;
+                nFactura.ID_CUENTA = nCuenta.ID_CUENTA;
                 nFactura.IVA = Convert.ToDecimal(ivaConst);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
                 nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
@@ -955,6 +968,8 @@ namespace sercor
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
                 nFactura.INDICE = ultimoIndice(ordenTipo.SelectedIndex)+1;
+
+                //variable de Producto vendido (repetir)
 
                 /*
                 Trabajo nTrabajo = new Trabajo();

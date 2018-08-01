@@ -69,7 +69,6 @@ namespace sercor
             if (_reader.HasRows)
             {
                 last = _reader.GetInt32(0);
-                MessageBox.Show("Cuenta = ",last.ToString());
             }
             else
             {
