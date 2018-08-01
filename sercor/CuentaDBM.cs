@@ -76,7 +76,7 @@ namespace sercor
             int last = 0;
             _reader.Read();
 
-            if (_reader.HasRows)
+            if (!_reader.IsDBNull(0))
             {
                 last = _reader.GetInt32(0);
             }

@@ -68,3 +68,4 @@ COSAS DESCUBIERTAS
 URGENTE
 
 valores predeterminados del formulario sercormain deben ser '0' en total, subtotal, iva, etc..
+modificar los permisos de sercorUSER con  grant select on sercordb.pago to 'sercoruser'@'localhost';

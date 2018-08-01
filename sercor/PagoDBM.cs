@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace sercor
 {
@@ -47,12 +48,11 @@ namespace sercor
         public static int UltimoPagoID()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
-            MySqlCommand comando = new MySqlCommand("select max(ID_PAGO) from PAGO;", conexion);
+            MySqlCommand comando = new MySqlCommand("select MAX(ID_PAGO) from PAGO;", conexion);
             MySqlDataReader _reader = comando.ExecuteReader();
             int last = 0;
             _reader.Read();
-
-            if (_reader.HasRows)
+            if (!_reader.IsDBNull(0))
             {
                 last = _reader.GetInt32(0);
             }
