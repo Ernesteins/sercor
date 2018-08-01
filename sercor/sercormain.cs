@@ -939,14 +939,20 @@ namespace sercor
                 Cuenta nCuenta = new Cuenta();
                 nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta();
                 nCuenta.ID_CLIENTE = txtId.Text;
-                nCuenta.TOTAL = 0;//meter el total del sercormain
-                nCuenta.SALDO = 0;//meter el saldo del sercormain
+                nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
+                nCuenta.SALDO = nCuenta.TOTAL;
 
                 if (ClienteDBM.ExisteCliente(txtId.Text))
                 {
                     nCuenta.ID_CUENTA += 1;
                     ClienteDBM.Agregar(nCliente);
                     CuentaDBM.Agregar(nCuenta);
+                }
+                else
+                {
+                    nCuenta.TOTAL = nCuenta.TOTAL + CuentaDBM.ultimototal(nCuenta.ID_CUENTA);
+                    nCuenta.SALDO = nCuenta.SALDO + CuentaDBM.consultarsaldo(nCuenta.ID_CUENTA);
+                    CuentaDBM.actualizarcuenta(nCuenta.ID_CUENTA,nCuenta.SALDO,nCuenta.TOTAL);
                 }
                 //Variable de Detalle
                 Detalle nDetalle = new Detalle();
@@ -975,13 +981,15 @@ namespace sercor
                 if (Convert.ToDecimal(txtAbono.Text) > 0)
                 {
                     Pago nPago = new Pago();
-                    nPago.ID_PAGO = PagoDBM.UltimoPagoID();
+                    nPago.ID_PAGO = PagoDBM.UltimoPagoID()+1;
                     nPago.ID_CUENTA = nCuenta.ID_CUENTA;
                     nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
                     nPago.TIPO_PAGO = 0;//tipo de pago de las casillas
                     nPago.MONTO = Convert.ToDecimal(txtAbono.Text);
                     nPago.DESCRIPCION = "inserte aqui la descripcion";//usar la descripcion de la zona de pago
+                    CuentaDBM.abono(nCuenta.ID_CUENTA,nPago.MONTO);
                     PagoDBM.Pagar(nPago);
+
                 }
                 //crear condición de generación de trabajos por items encontrados
 

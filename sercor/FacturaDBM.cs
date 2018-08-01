@@ -16,10 +16,6 @@ namespace sercor
                 "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
                 pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO, pFactura.ID_DETALLE, pFactura.ID_CUENTA, pFactura.IVA,
                 pFactura.TOTAL, pFactura.FECHA, pFactura.FACTOR_DESCUENTO, pFactura.VALOR_DESCONTADO, pFactura.TIPO, pFactura.INDICE), conexion);
-            MessageBox.Show(string.Format(
-                "Insert into factura values ('{0}','{1}','{2}', '{3}', '{4}', '{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
-                pFactura.ID_FACTURA, pFactura.ID_CLIENTE, pFactura.ID_USUARIO, pFactura.ID_DETALLE, pFactura.ID_CUENTA, pFactura.IVA,
-                pFactura.TOTAL, pFactura.FECHA, pFactura.FACTOR_DESCUENTO, pFactura.VALOR_DESCONTADO, pFactura.TIPO, pFactura.INDICE));
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error
