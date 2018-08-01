@@ -118,6 +118,8 @@
     <Compile Include="nuevoUsuario.Designer.cs">
       <DependentUpon>nuevoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pago.cs" />
+    <Compile Include="PagoDBM.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="ProductoDBM.cs" />
     <Compile Include="ProductoVendido.cs" />

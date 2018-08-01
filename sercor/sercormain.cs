@@ -974,9 +974,18 @@ namespace sercor
                 ProductoVendido nProducto = new ProductoVendido();
                 if (Convert.ToDecimal(txtAbono.Text) > 0)
                 {
-
+                    Pago nPago = new Pago();
+                    nPago.ID_PAGO = PagoDBM.UltimoPagoID();
+                    nPago.ID_CUENTA = nCuenta.ID_CUENTA;
+                    nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+                    nPago.TIPO_PAGO = 0;//tipo de pago de las casillas
+                    nPago.MONTO = Convert.ToDecimal(txtAbono.Text);
+                    nPago.DESCRIPCION = "inserte aqui la descripcion";//usar la descripcion de la zona de pago
+                    PagoDBM.Pagar(nPago);
                 }
-                /*
+                //crear condición de generación de trabajos por items encontrados
+
+               /* 
                 Trabajo nTrabajo = new Trabajo();
                 nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
                 nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;

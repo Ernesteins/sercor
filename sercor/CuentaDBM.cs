@@ -52,9 +52,19 @@ namespace sercor
         {
             int idcliente = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
-            MySqlCommand comando = new MySqlCommand("select ID_cliente from Cuenta where id_cuenta = ;", conexion);
+            MySqlCommand comando = new MySqlCommand(string.Format("select ID_cliente from Cuenta where id_cuenta = {0};",idcuenta), conexion);
             MySqlDataReader _reader = comando.ExecuteReader();
+            idcliente = _reader.GetInt32(0);
             return idcliente;
+        }
+        public static int cuentadelcliente(int idcliente)
+        {
+            int idcuenta = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format("select ID_cuenta from Cuenta where id_cliente = ;",idcliente), conexion);
+            MySqlDataReader _reader = comando.ExecuteReader();
+            idcuenta = _reader.GetInt32(0);
+            return idcuenta;
         }
 
 
