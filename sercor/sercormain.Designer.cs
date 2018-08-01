@@ -385,7 +385,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Silver;
             this.pictureBox6.Location = new System.Drawing.Point(138, 257);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1, 7990);
+            this.pictureBox6.Size = new System.Drawing.Size(1, 8279);
             this.pictureBox6.TabIndex = 48;
             this.pictureBox6.TabStop = false;
             // 
@@ -861,7 +861,7 @@
             this.pnVentas.Location = new System.Drawing.Point(8, 11);
             this.pnVentas.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentas.Name = "pnVentas";
-            this.pnVentas.Size = new System.Drawing.Size(857, 596);
+            this.pnVentas.Size = new System.Drawing.Size(322, 596);
             this.pnVentas.TabIndex = 0;
             this.pnVentas.Visible = false;
             // 
@@ -874,7 +874,7 @@
             this.pnVentasBody.Location = new System.Drawing.Point(0, 32);
             this.pnVentasBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasBody.Name = "pnVentasBody";
-            this.pnVentasBody.Size = new System.Drawing.Size(857, 564);
+            this.pnVentasBody.Size = new System.Drawing.Size(322, 564);
             this.pnVentasBody.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -898,7 +898,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(857, 564);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(322, 564);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // vistaFactura
@@ -1816,7 +1816,7 @@
             this.pnVentasMenu.Location = new System.Drawing.Point(0, 0);
             this.pnVentasMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasMenu.Name = "pnVentasMenu";
-            this.pnVentasMenu.Size = new System.Drawing.Size(857, 32);
+            this.pnVentasMenu.Size = new System.Drawing.Size(322, 32);
             this.pnVentasMenu.TabIndex = 0;
             // 
             // btnPrint
@@ -1881,10 +1881,10 @@
             this.pnInventario.BackColor = System.Drawing.Color.Gainsboro;
             this.pnInventario.Controls.Add(this.panel3);
             this.pnInventario.Controls.Add(this.pnInventarioMenu);
-            this.pnInventario.Location = new System.Drawing.Point(928, 4);
+            this.pnInventario.Location = new System.Drawing.Point(380, 4);
             this.pnInventario.Margin = new System.Windows.Forms.Padding(0);
             this.pnInventario.Name = "pnInventario";
-            this.pnInventario.Size = new System.Drawing.Size(315, 250);
+            this.pnInventario.Size = new System.Drawing.Size(863, 250);
             this.pnInventario.TabIndex = 2;
             this.pnInventario.Visible = false;
             // 
@@ -1896,7 +1896,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 32);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(315, 218);
+            this.panel3.Size = new System.Drawing.Size(863, 218);
             this.panel3.TabIndex = 2;
             // 
             // dgvInventario
@@ -1943,7 +1943,7 @@
             this.dgvInventario.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvInventario.RowTemplate.ReadOnly = true;
             this.dgvInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventario.Size = new System.Drawing.Size(315, 218);
+            this.dgvInventario.Size = new System.Drawing.Size(863, 218);
             this.dgvInventario.TabIndex = 37;
             this.dgvInventario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventario_CellDoubleClick);
             // 
@@ -1961,7 +1961,7 @@
             this.pnInventarioMenu.Location = new System.Drawing.Point(0, 0);
             this.pnInventarioMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnInventarioMenu.Name = "pnInventarioMenu";
-            this.pnInventarioMenu.Size = new System.Drawing.Size(315, 32);
+            this.pnInventarioMenu.Size = new System.Drawing.Size(863, 32);
             this.pnInventarioMenu.TabIndex = 0;
             // 
             // btnLoadCsv

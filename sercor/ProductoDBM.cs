@@ -67,12 +67,13 @@ namespace sercor
             return _lista;
         }
 
+        //usar esto para comparaciones
         public static Producto ObtenerProductoCod(string pCod)
         {
             Producto pProducto = new Producto();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT ID_PRODUCTO, NOMBRE, DESCRIPCION, CATEGORIA, SUBCATEGORIA, EXISTENCIA, PRECIO FROM producto  where ID_PRODUCTO='{0}'", pCod), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM producto  where ID_PRODUCTO='{0}'", pCod), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -83,7 +84,7 @@ namespace sercor
                 pProducto.SUBCATEGORIA = _reader.GetString(4);
                 pProducto.EXISTENCIA = _reader.GetInt32(5);
                 pProducto.PRECIO = _reader.GetDecimal(6);
-
+                pProducto.ESTADO = _reader.GetInt32(7);
             }
 
             conexion.Close();
