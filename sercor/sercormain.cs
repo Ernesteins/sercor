@@ -968,9 +968,14 @@ namespace sercor
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
                 nFactura.INDICE = ultimoIndice(ordenTipo.SelectedIndex)+1;
+                FacturaDBM.Agregar(nFactura);
 
                 //variable de Producto vendido (repetir)
+                ProductoVendido nProducto = new ProductoVendido();
+                if (Convert.ToDecimal(txtAbono.Text) > 0)
+                {
 
+                }
                 /*
                 Trabajo nTrabajo = new Trabajo();
                 nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
@@ -983,14 +988,15 @@ namespace sercor
                 nTrabajo.ESTADO = 0;
                 nTrabajo.FECHA_ENTREGA = null;*/
 
-                FacturaDBM.Agregar(nFactura);
+                
             }
             catch (System.FormatException)
             {
                 MessageBox.Show("Campos incorrectos en la factura", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //Cambiar éste mensaje de error
             }
-            
-            
+
+
         }
 
         private void txtAbono_TextChanged(object sender, EventArgs e)
