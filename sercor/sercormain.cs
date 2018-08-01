@@ -1032,6 +1032,8 @@ namespace sercor
         {
             SDL _sdl = new SDL();
             _sdl.ShowDialog();
+            toogleError(true, _sdl.mensaje,2);
+            
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
