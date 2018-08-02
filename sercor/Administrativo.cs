@@ -58,6 +58,18 @@ namespace sercor
             txtDireccion.Text = selectedUser.DIRECCION;
             txtContrasenia.Text = selectedUser.CONTRASENA;
             uncheck();
+
+            if (cbmUsuario.SelectedItem.ToString() == "admin")
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+            }
+            else
+            {
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+
             switch (selectedUser.PRIVILEGIO1)
             {
                 case 0:
@@ -252,6 +264,21 @@ namespace sercor
         private void txtContrasenia_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Se eliminará el usuario " + selectedUser.USUARIO + " ¿Desea proceder?", "Eliminar usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                UsuarioDBM.Delete(selectedUser.ID_USUARIO);
+                MessageBox.Show("Por favor, a continuación reinicie Sercor","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                Application.Exit();
+            }
+            else
+            {
+
+            } 
         }
     }
 }

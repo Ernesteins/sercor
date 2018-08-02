@@ -54,8 +54,9 @@ namespace sercor
 
         Form loginPadre;
         int IDUser;
+
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
-        public sercormain(Usuario usuario, Form form)
+        public sercormain(Usuario usuario, Form form, bool[] _privilegio1, bool[] _privilegio2)
         {
             InitializeComponent();
 
@@ -93,6 +94,52 @@ namespace sercor
             btnUser.Text = nombreUser + " " + apellidoUser;
 
             //CARACTERISTICAS SEGUN TIPO DE USUARIO
+
+            //0 Adminitracion
+            //1 Inventario
+            //2 Movimiento
+            //3 Reportes
+
+            //0 Ventas 
+            //1 Cuentas
+            //2 Trabajos
+            //3 Sesion
+
+            if (_privilegio1[0]==false)
+            {
+                btnAdmin.Enabled = false;
+            }
+            if (_privilegio1[1] == false)
+            {
+                pnInventario.Enabled = false;
+            }
+            if (_privilegio1[2] == false)
+            {
+                pnMovCaja.Enabled = false;
+            }
+            if (_privilegio1[3] == false)
+            {
+                pnReportes.Enabled = false;
+            }
+
+            if (_privilegio2[0] == false)
+            {
+                pnVentas.Enabled = false;
+            }
+            if (_privilegio2[1] == false)
+            {
+                pnCxc.Enabled = false;
+            }
+            if (_privilegio2[2] == false)
+            {
+                pnTrabajos.Enabled = false;
+            }
+            if (_privilegio2[3] == false)
+            {
+                //pnReportes.Enabled = false;
+            }
+
+
             switch (tipoUser)
             {
                 case 1:

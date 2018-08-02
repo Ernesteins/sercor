@@ -77,6 +77,101 @@ namespace sercor
             limpiar();
         }
 
+        
+
+        private bool[] Privilegio(int _privilegio)
+        {
+            bool[] arrayPrivilegio = new bool[4];
+            switch (_privilegio)
+            {
+                case 0:
+                    
+                    break;
+
+                case 1:
+                    arrayPrivilegio[0] = true;
+                    break;
+
+                case 2:
+                    arrayPrivilegio[1] = true;
+                    break;
+
+                case 3:
+                    arrayPrivilegio[2] = true;
+                    break;
+
+                case 4:
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 5:
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[1] = true;
+                    break;
+
+                case 6:
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[2] = true;
+                    break;
+
+                case 7:
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 8:
+                    arrayPrivilegio[1] = true;
+                    arrayPrivilegio[2] = true;
+                    break;
+
+                case 9:
+                    arrayPrivilegio[1] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 10:
+                    arrayPrivilegio[2] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 11://
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[1] = true;
+                    arrayPrivilegio[2] = true;
+                    break;
+
+                case 12://
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[1] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 13://
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[2] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 14://
+                    arrayPrivilegio[1] = true;
+                    arrayPrivilegio[2] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                case 15://
+                    arrayPrivilegio[0] = true;
+                    arrayPrivilegio[1] = true;
+                    arrayPrivilegio[2] = true;
+                    arrayPrivilegio[3] = true;
+                    break;
+
+                default:
+                    
+                    break;
+            }
+            return arrayPrivilegio;
+        }
+
         private void loginVoid(){
             if (txtUser.Text == "")
             {
@@ -99,8 +194,15 @@ namespace sercor
                     //crear temporalmente una app aparte, para al momento de presentar registrar usuario con Hash
                     if (passHashed == passUnhash)
                     {
-                        FormInstance.mainWindow(UsuarioSeleccionado,this);
+                        bool[] privilegio1=Privilegio(UsuarioSeleccionado.PRIVILEGIO1);
+                        bool[] privilegio2=Privilegio(UsuarioSeleccionado.PRIVILEGIO2);
+
+                        FormInstance.mainWindow(UsuarioSeleccionado,this,privilegio1,privilegio2);
                         this.Enabled=false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciales erróneas", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
             }
