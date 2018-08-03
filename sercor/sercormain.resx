@@ -117,17 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAD
-        0QAAA9EBmIqJtAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADSSURBVDhPY/j/
-        /z/J+E1xgsa7wsSz7wqTMhjevrr1ghT8/sW5k98uTd/ztjjpN8gQkAH/icYPt997vU/1zrcns2+ADAG5
-        hHgDHu6493q3xIvXu8T+gwwBuQTkHeIMeLjzPlzzbomXQJfcBYq/IM4AoOZXuzA0g+QIG/DuEU7NIEzA
-        gMe7HgA1PcehGYTxGPB4NyHNIIzTgH9vDhvvI6AZhLEb8OzBqeufHs75+OaQwQE8mkEYuwFnzxy5++zB
-        yStvX938gy6HhgkEImE8PAz4zwAAu/t0kgHxJNsAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="colCodigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -143,6 +132,17 @@
   <metadata name="colVTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAD
+        0QAAA9EBmIqJtAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADSSURBVDhPY/j/
+        /z/J+E1xgsa7wsSz7wqTMhjevrr1ghT8/sW5k98uTd/ztjjpN8gQkAH/icYPt997vU/1zrcns2+ADAG5
+        hHgDHu6493q3xIvXu8T+gwwBuQTkHeIMeLjzPlzzbomXQJfcBYq/IM4AoOZXuzA0g+QIG/DuEU7NIEzA
+        gMe7HgA1PcehGYTxGPB4NyHNIIzTgH9vDhvvI6AZhLEb8OzBqeufHs75+OaQwQE8mkEYuwFnzxy5++zB
+        yStvX938gy6HhgkEImE8PAz4zwAAu/t0kgHxJNsAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnModificarTrabajo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAD
