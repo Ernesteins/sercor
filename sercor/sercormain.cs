@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace sercor
 {
@@ -54,8 +55,9 @@ namespace sercor
 
         Form loginPadre;
         int IDUser;
+
         //CARGA DATOS DEL USUARIO ACTUAL EN EL FORMULRIO
-        public sercormain(Usuario usuario, Form form)
+        public sercormain(Usuario usuario, Form form, bool[] _privilegio1, bool[] _privilegio2)
         {
             InitializeComponent();
 
@@ -93,6 +95,52 @@ namespace sercor
             btnUser.Text = nombreUser + " " + apellidoUser;
 
             //CARACTERISTICAS SEGUN TIPO DE USUARIO
+
+            //0 Adminitracion
+            //1 Inventario
+            //2 Movimiento
+            //3 Reportes
+
+            //0 Ventas 
+            //1 Cuentas
+            //2 Trabajos
+            //3 Fecha factura
+
+            if (_privilegio1[0]==false)
+            {
+                btnAdmin.Enabled = false;
+            }
+            if (_privilegio1[1] == false)
+            {
+                pnInventario.Enabled = false;
+            }
+            if (_privilegio1[2] == false)
+            {
+                pnMovCaja.Enabled = false;
+            }
+            if (_privilegio1[3] == false)
+            {
+                pnReportes.Enabled = false;
+            }
+
+            if (_privilegio2[0] == false)
+            {
+                pnVentas.Enabled = false;
+            }
+            if (_privilegio2[1] == false)
+            {
+                pnCxc.Enabled = false;
+            }
+            if (_privilegio2[2] == false)
+            {
+                pnTrabajos.Enabled = false;
+            }
+            if (_privilegio2[3] == false)
+            {
+                dateTime.Enabled = false;
+            }
+
+
             switch (tipoUser)
             {
                 case 1:
@@ -277,7 +325,12 @@ namespace sercor
             subtotal();
         }
 
+        //IVA
+        //-------------------------------------
         float ivaConst = 0.12F;//constante iva
+        
+        //-------------------------------------
+
 
         private void subtotal()//calculo de subtotal
         {
@@ -386,6 +439,14 @@ namespace sercor
                 case 4://POR SUBCATEGORIA
                     txtBusqueda.Enabled = true;
                     txtBusqueda.AutoCompleteCustomSource = pFiltroSubCat;
+                    break;
+
+                case 5://ARMAZONES
+
+                    break;
+
+                case 6://LUNAS
+
                     break;
             }
         }
@@ -613,6 +674,11 @@ namespace sercor
 
         bool togDescuento = true;//Habilita el boton de descuento True = habilitar
 
+        //DESCUENTO
+        //-----------------
+        float desc = 0.9F;
+        //-----------------
+
         private void aplicarDescuento() {
             toogleError(false, "", 3);
             try
@@ -629,7 +695,7 @@ namespace sercor
 
                 if (togDescuento == true)
                 {
-                    if (float.Parse(txtDescuento.Text) >= float.Parse(txtTotal.Text) * 0.9)
+                    if (float.Parse(txtDescuento.Text) >= float.Parse(txtTotal.Text) * desc)
                     {
                         toogleError(true, "El descuento no debe ser mayor al 90% del total actual", 1);
                     }
