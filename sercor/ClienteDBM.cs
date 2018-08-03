@@ -73,7 +73,7 @@ namespace sercor
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-                "SELECT ID_CLIENTE FROM cliente where ID_CLIENTE='';", pId),
+                "SELECT ID_CLIENTE FROM cliente where ID_CLIENTE='{0}';", pId),
                 conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             _reader.Read();

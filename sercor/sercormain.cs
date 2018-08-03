@@ -941,9 +941,10 @@ namespace sercor
                 nCuenta.ID_CLIENTE = txtId.Text;
                 nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
                 nCuenta.SALDO = nCuenta.TOTAL;
-
-                if (ClienteDBM.ExisteCliente(txtId.Text))
+                MessageBox.Show(ClienteDBM.ExisteCliente(txtId.Text).ToString());
+                if (!ClienteDBM.ExisteCliente(txtId.Text))
                 {
+                    
                     nCuenta.ID_CUENTA += 1;
                     ClienteDBM.Agregar(nCliente);
                     CuentaDBM.Agregar(nCuenta);
