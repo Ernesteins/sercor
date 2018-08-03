@@ -127,9 +127,9 @@
             this.user4.AutoSize = true;
             this.user4.Location = new System.Drawing.Point(144, 97);
             this.user4.Name = "user4";
-            this.user4.Size = new System.Drawing.Size(62, 19);
+            this.user4.Size = new System.Drawing.Size(101, 19);
             this.user4.TabIndex = 17;
-            this.user4.Text = "Sesión";
+            this.user4.Text = "Fecha factura";
             this.user4.UseVisualStyleBackColor = true;
             // 
             // admin3

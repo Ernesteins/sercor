@@ -77,6 +77,7 @@ namespace sercor
             _reader.Read();
 
             if (!_reader.IsDBNull(0))
+            //if (_reader.Read())
             {
                 last = _reader.GetInt32(0);
             }
@@ -97,6 +98,7 @@ namespace sercor
             _reader.Read();
 
             if (!_reader.IsDBNull(0))
+            //if (_reader.Read())
             {
                 saldo = _reader.GetDecimal(0);
             }
@@ -113,8 +115,9 @@ namespace sercor
             MySqlDataReader _reader = comando.ExecuteReader();
             decimal saldo = 0;
             _reader.Read();
-            
+
             if (!_reader.IsDBNull(0))
+            //if (_reader.Read())
             {
                 saldo = _reader.GetDecimal(0);
             }
@@ -140,6 +143,7 @@ namespace sercor
             decimal total = 0;
             _reader.Read();
             if (!_reader.IsDBNull(0))
+            //if (_reader.Read())
             {
                 total = _reader.GetDecimal(0);
             }
