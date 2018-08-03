@@ -32,6 +32,19 @@ namespace sercor
             return retorno;
         }
 
+        public static int Delete(int pUsuario)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format("DELETE FROM usuario WHERE `ID_USUARIO`='{0}'", pUsuario), conexion);
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
+
         public static Usuario UltimoUsuario()
         {
             Usuario pUsuario = new Usuario();

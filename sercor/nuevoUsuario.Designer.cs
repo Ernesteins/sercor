@@ -66,7 +66,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = global::sercor.Properties.Resources.error16;
-            this.btnCancelar.Location = new System.Drawing.Point(232, 353);
+            this.btnCancelar.Location = new System.Drawing.Point(202, 338);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(96, 29);
             this.btnCancelar.TabIndex = 103;
@@ -84,7 +84,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Image = global::sercor.Properties.Resources.success16;
-            this.btnAceptar.Location = new System.Drawing.Point(130, 353);
+            this.btnAceptar.Location = new System.Drawing.Point(100, 338);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(96, 29);
             this.btnAceptar.TabIndex = 102;
@@ -100,7 +100,7 @@
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(83, 10);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(245, 22);
+            this.txtUser.Size = new System.Drawing.Size(216, 22);
             this.txtUser.TabIndex = 0;
             // 
             // label6
@@ -123,7 +123,7 @@
             this.txtContrasenia.Location = new System.Drawing.Point(83, 38);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.PasswordChar = '•';
-            this.txtContrasenia.Size = new System.Drawing.Size(245, 22);
+            this.txtContrasenia.Size = new System.Drawing.Size(216, 22);
             this.txtContrasenia.TabIndex = 1;
             // 
             // label4
@@ -147,7 +147,7 @@
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(82, 122);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(245, 22);
+            this.txtLastName.Size = new System.Drawing.Size(216, 22);
             this.txtLastName.TabIndex = 4;
             // 
             // groupBox1
@@ -163,7 +163,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.DimGray;
             this.groupBox1.Location = new System.Drawing.Point(10, 207);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 140);
+            this.groupBox1.Size = new System.Drawing.Size(289, 125);
             this.groupBox1.TabIndex = 98;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Permisos";
@@ -171,18 +171,18 @@
             // user4
             // 
             this.user4.AutoSize = true;
-            this.user4.Location = new System.Drawing.Point(168, 112);
+            this.user4.Location = new System.Drawing.Point(148, 100);
             this.user4.Name = "user4";
-            this.user4.Size = new System.Drawing.Size(62, 19);
+            this.user4.Size = new System.Drawing.Size(101, 19);
             this.user4.TabIndex = 14;
-            this.user4.Text = "Sesión";
+            this.user4.Text = "Fecha factura";
             this.user4.UseVisualStyleBackColor = true;
             // 
             // admin3
             // 
             this.admin3.AutoSize = true;
             this.admin3.ForeColor = System.Drawing.Color.Tomato;
-            this.admin3.Location = new System.Drawing.Point(7, 83);
+            this.admin3.Location = new System.Drawing.Point(6, 75);
             this.admin3.Name = "admin3";
             this.admin3.Size = new System.Drawing.Size(135, 19);
             this.admin3.TabIndex = 9;
@@ -192,7 +192,7 @@
             // user3
             // 
             this.user3.AutoSize = true;
-            this.user3.Location = new System.Drawing.Point(168, 83);
+            this.user3.Location = new System.Drawing.Point(148, 75);
             this.user3.Name = "user3";
             this.user3.Size = new System.Drawing.Size(74, 19);
             this.user3.TabIndex = 13;
@@ -203,7 +203,7 @@
             // 
             this.admin2.AutoSize = true;
             this.admin2.ForeColor = System.Drawing.Color.Tomato;
-            this.admin2.Location = new System.Drawing.Point(7, 54);
+            this.admin2.Location = new System.Drawing.Point(6, 50);
             this.admin2.Name = "admin2";
             this.admin2.Size = new System.Drawing.Size(83, 19);
             this.admin2.TabIndex = 8;
@@ -224,7 +224,7 @@
             // user1
             // 
             this.user1.AutoSize = true;
-            this.user1.Location = new System.Drawing.Point(168, 25);
+            this.user1.Location = new System.Drawing.Point(148, 25);
             this.user1.Name = "user1";
             this.user1.Size = new System.Drawing.Size(62, 19);
             this.user1.TabIndex = 11;
@@ -234,7 +234,7 @@
             // user2
             // 
             this.user2.AutoSize = true;
-            this.user2.Location = new System.Drawing.Point(168, 54);
+            this.user2.Location = new System.Drawing.Point(148, 50);
             this.user2.Name = "user2";
             this.user2.Size = new System.Drawing.Size(132, 19);
             this.user2.TabIndex = 12;
@@ -245,7 +245,7 @@
             // 
             this.admin4.AutoSize = true;
             this.admin4.ForeColor = System.Drawing.Color.Tomato;
-            this.admin4.Location = new System.Drawing.Point(7, 112);
+            this.admin4.Location = new System.Drawing.Point(6, 100);
             this.admin4.Name = "admin4";
             this.admin4.Size = new System.Drawing.Size(74, 19);
             this.admin4.TabIndex = 10;
@@ -325,7 +325,7 @@
             this.txtCi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCi.Location = new System.Drawing.Point(83, 66);
             this.txtCi.Name = "txtCi";
-            this.txtCi.Size = new System.Drawing.Size(245, 22);
+            this.txtCi.Size = new System.Drawing.Size(216, 22);
             this.txtCi.TabIndex = 2;
             // 
             // txtDireccion
@@ -335,7 +335,7 @@
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.Location = new System.Drawing.Point(82, 179);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(245, 22);
+            this.txtDireccion.Size = new System.Drawing.Size(216, 22);
             this.txtDireccion.TabIndex = 6;
             // 
             // txtTelefono
@@ -344,7 +344,7 @@
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.Location = new System.Drawing.Point(83, 151);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(244, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(215, 22);
             this.txtTelefono.TabIndex = 5;
             // 
             // txtName
@@ -355,14 +355,16 @@
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(82, 94);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(245, 22);
+            this.txtName.Size = new System.Drawing.Size(216, 22);
             this.txtName.TabIndex = 3;
             // 
             // nuevoUsuario
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 389);
+            this.CancelButton = this.btnCancelar;
+            this.ClientSize = new System.Drawing.Size(310, 375);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);

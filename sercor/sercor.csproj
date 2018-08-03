@@ -97,7 +97,14 @@
       <DependentUpon>editar_producto.cs</DependentUpon>
     </Compile>
     <Compile Include="Factura.cs" />
+    <Compile Include="factura1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>factura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FacturaDBM.cs" />
+    <Compile Include="FacturaImpresion.cs" />
     <Compile Include="FormInstance.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="imprimir.cs">
@@ -164,6 +171,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="factura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>factura1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="imprimir.resx">
       <DependentUpon>imprimir.cs</DependentUpon>
