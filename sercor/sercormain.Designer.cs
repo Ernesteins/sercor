@@ -308,10 +308,10 @@
             this.pnCxc.BackColor = System.Drawing.Color.Gainsboro;
             this.pnCxc.Controls.Add(this.panel2);
             this.pnCxc.Controls.Add(this.pnCxcMenu);
-            this.pnCxc.Location = new System.Drawing.Point(537, 4);
+            this.pnCxc.Location = new System.Drawing.Point(66, 4);
             this.pnCxc.Margin = new System.Windows.Forms.Padding(0);
             this.pnCxc.Name = "pnCxc";
-            this.pnCxc.Size = new System.Drawing.Size(657, 603);
+            this.pnCxc.Size = new System.Drawing.Size(1128, 603);
             this.pnCxc.TabIndex = 1;
             this.pnCxc.Visible = false;
             // 
@@ -323,7 +323,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(657, 571);
+            this.panel2.Size = new System.Drawing.Size(1128, 571);
             this.panel2.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -338,7 +338,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(657, 571);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1128, 571);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel14
@@ -374,7 +374,7 @@
             this.panel14.Controls.Add(this.label6);
             this.panel14.Controls.Add(this.textBox5);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(159, 3);
+            this.panel14.Location = new System.Drawing.Point(630, 3);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(495, 565);
             this.panel14.TabIndex = 1;
@@ -569,7 +569,7 @@
             this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.DimGray;
-            this.label27.Location = new System.Drawing.Point(135, 15);
+            this.label27.Location = new System.Drawing.Point(140, 15);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(50, 16);
             this.label27.TabIndex = 24;
@@ -622,7 +622,7 @@
             this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.DimGray;
-            this.label25.Location = new System.Drawing.Point(9, 91);
+            this.label25.Location = new System.Drawing.Point(145, 81);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(39, 16);
             this.label25.TabIndex = 20;
@@ -637,9 +637,9 @@
             this.textBox11.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox11.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(72, 87);
+            this.textBox11.Location = new System.Drawing.Point(190, 77);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(188, 22);
+            this.textBox11.Size = new System.Drawing.Size(268, 22);
             this.textBox11.TabIndex = 19;
             // 
             // label24
@@ -717,7 +717,7 @@
             this.label21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.DimGray;
-            this.label21.Location = new System.Drawing.Point(135, 44);
+            this.label21.Location = new System.Drawing.Point(137, 43);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(53, 16);
             this.label21.TabIndex = 12;
@@ -773,7 +773,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(156, 571);
+            this.dataGridView1.Size = new System.Drawing.Size(627, 571);
             this.dataGridView1.TabIndex = 0;
             // 
             // pnCxcMenu
@@ -787,7 +787,7 @@
             this.pnCxcMenu.Location = new System.Drawing.Point(0, 0);
             this.pnCxcMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnCxcMenu.Name = "pnCxcMenu";
-            this.pnCxcMenu.Size = new System.Drawing.Size(657, 32);
+            this.pnCxcMenu.Size = new System.Drawing.Size(1128, 32);
             this.pnCxcMenu.TabIndex = 0;
             // 
             // button3
@@ -861,7 +861,7 @@
             this.pnVentas.Location = new System.Drawing.Point(8, 11);
             this.pnVentas.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentas.Name = "pnVentas";
-            this.pnVentas.Size = new System.Drawing.Size(322, 596);
+            this.pnVentas.Size = new System.Drawing.Size(38, 596);
             this.pnVentas.TabIndex = 0;
             this.pnVentas.Visible = false;
             // 
@@ -874,7 +874,7 @@
             this.pnVentasBody.Location = new System.Drawing.Point(0, 32);
             this.pnVentasBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasBody.Name = "pnVentasBody";
-            this.pnVentasBody.Size = new System.Drawing.Size(322, 564);
+            this.pnVentasBody.Size = new System.Drawing.Size(38, 564);
             this.pnVentasBody.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -898,7 +898,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(322, 564);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(38, 564);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // vistaFactura
@@ -1817,7 +1817,7 @@
             this.pnVentasMenu.Location = new System.Drawing.Point(0, 0);
             this.pnVentasMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasMenu.Name = "pnVentasMenu";
-            this.pnVentasMenu.Size = new System.Drawing.Size(322, 32);
+            this.pnVentasMenu.Size = new System.Drawing.Size(38, 32);
             this.pnVentasMenu.TabIndex = 0;
             // 
             // btnPrint
