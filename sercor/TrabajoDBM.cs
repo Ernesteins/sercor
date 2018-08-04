@@ -114,10 +114,13 @@ namespace sercor
 
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "insert into sercordb.trabajos (ID_TRABAJO, ID_CUENTA, ID_FACTURA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
-                "values ({0},{1},{2},{3},{4},{5},{6},{7},{8});",
-                tTrabajo.ID,tTrabajo.CUENTA,tTrabajo.FACTURA,tTrabajo.FECHA_INICIO,tTrabajo.NOMBRE,tTrabajo.ARMAZON,tTrabajo.LUNA,tTrabajo.ESTADO,tTrabajo.FECHA_ENTREGA), conexion);
-
+                "insert into sercordb.trabajos (ID_TRABAJO, ID_FACTURA, ID_CUENTA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
+                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
+                tTrabajo.ID,tTrabajo.FACTURA,tTrabajo.CUENTA, tTrabajo.FECHA_INICIO,tTrabajo.NOMBRE,tTrabajo.ARMAZON,tTrabajo.LUNA,tTrabajo.ESTADO,tTrabajo.FECHA_ENTREGA), conexion);
+            MessageBox.Show(string.Format(
+                "insert into sercordb.trabajos (ID_TRABAJO, ID_FACTURA, ID_CUENTA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
+                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
+                tTrabajo.ID, tTrabajo.FACTURA, tTrabajo.CUENTA, tTrabajo.FECHA_INICIO, tTrabajo.NOMBRE, tTrabajo.ARMAZON, tTrabajo.LUNA, tTrabajo.ESTADO, tTrabajo.FECHA_ENTREGA));
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error
@@ -127,10 +130,19 @@ namespace sercor
         public static int ultimoTrabajo()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
-            MySqlCommand comando = new MySqlCommand("select max(ID_TRABAJO) from Trabajos;", conexion);
-            MySqlDataReader _reader = comando.ExecuteReader();
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT MAX(ID_TRABAJO) FROM TRABAJOS;"), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            int last = 0;
             _reader.Read();
-            int last = _reader.GetInt32(0);
+
+            if (!_reader.IsDBNull(0))
+            {
+                last = _reader.GetInt32(0);
+            }
+            else
+            {
+                last = 0;
+            }
             conexion.Close();
             return last;
         }

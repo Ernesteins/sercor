@@ -21,8 +21,8 @@ insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","099
 
 insert into cuenta values("1","1725158123",0,0,0);
 
-insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","49.99","1");
-insert into sercordb.producto values ("002","prod_2","producto 2 de las pruebas","pruebas","pruebas","100","99.99","1");
+insert into sercordb.producto values ("L01","prod_1","LUNA|descripcion de producto luna","luna_pruebas","lune_pruebas","100","49.50","1");
+insert into sercordb.producto values ("A02","prod_2","ARMA|descripcion de producto armazon","armazon_pruebas","armazon_pruebas","100","99.99","1");
 
 insert into sercordb.factura values ("001","1725158123","001",0,0,(SELECT NOW()),0,0);
 insert into sercordb.factura values ("002","1725158123","001",0,0,"2018-07-03 19:39:29",0,0);

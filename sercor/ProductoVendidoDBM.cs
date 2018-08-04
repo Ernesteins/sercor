@@ -102,6 +102,52 @@ namespace sercor
             conexion.Close();
             return _lista;
         }
+         public static bool productoArmazon(string id_producto)
+        {
+            List<ProductoVendido> _lista = new List<ProductoVendido>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "select Descripcion from producto where Descripcion REGEXP 'ARMA' AND ID_PRODUCTO = '{0}';",id_producto), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            bool last = false;
+            _reader.Read();
+
+            if (_reader.HasRows)
+            {
+                last = true;
+            }
+            else
+            {
+                last = false;
+            }
+            conexion.Close();
+
+
+            return last;
+        }
+        public static bool productoLuna(string id_producto)
+        {
+            List<ProductoVendido> _lista = new List<ProductoVendido>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "select Descripcion from producto where Descripcion REGEXP 'LUNA' AND ID_PRODUCTO = '{0}';", id_producto), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            bool last = false;
+            _reader.Read();
+
+            if (_reader.HasRows)
+            {
+                last = true;
+            }
+            else
+            {
+                last = false;
+            }
+            conexion.Close();
+
+
+            return last;
+        }
 
 
     }

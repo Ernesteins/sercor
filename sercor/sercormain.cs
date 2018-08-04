@@ -76,10 +76,10 @@ namespace sercor
 
             metodoDePago(0);
 
-            ordenTipo.SelectedIndex=0;
+            ordenTipo.SelectedIndex = 0;
             metodoPago.SelectedIndex = 0;
 
-            btnAllProducts_Click(null,null);
+            btnAllProducts_Click(null, null);
 
             IDUser = usuario.ID_USUARIO;
             int tipoUser = usuario.TIPO;
@@ -106,7 +106,7 @@ namespace sercor
             //2 Trabajos
             //3 Fecha factura
 
-            if (_privilegio1[0]==false)
+            if (_privilegio1[0] == false)
             {
                 btnAdmin.Enabled = false;
             }
@@ -281,7 +281,7 @@ namespace sercor
         private void btnTrabajos_Click(object sender, EventArgs e)
         {
             menuToggler(5);
-            btnTodosTrabajo_Click(null,null);
+            btnTodosTrabajo_Click(null, null);
         }
 
         private void btnMovimientos_Click(object sender, EventArgs e)
@@ -328,7 +328,7 @@ namespace sercor
         //IVA
         //-------------------------------------
         float ivaConst = 0.12F;//constante iva
-        
+
         //-------------------------------------
 
 
@@ -456,12 +456,12 @@ namespace sercor
             loginPadre.Enabled = true;
         }
 
-        private List<Producto> buscarFiltro(int index, TextBox _busqueda){
-            List<Producto> filtrado=null;
+        private List<Producto> buscarFiltro(int index, TextBox _busqueda) {
+            List<Producto> filtrado = null;
             switch (index)
             {
                 case 0://CODIGO
-                    filtrado = ProductoDBM.ObtenerPorFiltro(_busqueda.Text,null,null,null,null);
+                    filtrado = ProductoDBM.ObtenerPorFiltro(_busqueda.Text, null, null, null, null);
                     break;
 
                 case 1:
@@ -473,7 +473,7 @@ namespace sercor
                     break;
 
                 case 3:
-                    filtrado = ProductoDBM.ObtenerPorFiltro(null, null, null,_busqueda.Text, null);
+                    filtrado = ProductoDBM.ObtenerPorFiltro(null, null, null, _busqueda.Text, null);
                     break;
 
                 case 4:
@@ -487,10 +487,10 @@ namespace sercor
         ////////////////
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dgvProductos.DataSource = buscarFiltro(cmbFiltro.SelectedIndex,txtProducto);
+            dgvProductos.DataSource = buscarFiltro(cmbFiltro.SelectedIndex, txtProducto);
         }
 
-       
+
 
         private void metodoDePago(int index)//Para metodo de pago
         {
@@ -513,7 +513,7 @@ namespace sercor
                     txtRef.Enabled = true;
                     cmbTipo.Enabled = true;
                     break;
-                    
+
                 case 2:
                     txtCheque.Enabled = true;
                     txtBanco.Enabled = true;
@@ -571,7 +571,7 @@ namespace sercor
 
             restaurador();
             aplicarDescuento();
-            toogleError(true,"Nueva factura",2);
+            toogleError(true, "Nueva factura", 2);
         }
 
         private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -613,7 +613,7 @@ namespace sercor
         private void ImprimirFactura(int k, int cantidad, Producto productoSeleccionado)
         {
             vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
-            if (cantidad==0)
+            if (cantidad == 0)
             {
                 vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
             }
@@ -627,7 +627,7 @@ namespace sercor
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            toogleError(false, "",3);
+            toogleError(false, "", 3);
             try
             {
                 if (txtAdd.Text == "")
@@ -636,7 +636,7 @@ namespace sercor
                 }
                 if (Convert.ToInt32(txtAdd.Text) <= 0)
                 {
-                    toogleError(true, "Debe ingresar un número mayor a 0",1);
+                    toogleError(true, "Debe ingresar un número mayor a 0", 1);
                 }
                 else
                 {
@@ -663,11 +663,11 @@ namespace sercor
                     }
                     ImprimirFactura(k, cantidad, productoSeleccionado);
                 }
-                
+
             }
             catch (System.FormatException)
             {
-                toogleError(true, "Debe ingresar un número",1);
+                toogleError(true, "Debe ingresar un número", 1);
             }
             subtotal();
         }
@@ -715,7 +715,7 @@ namespace sercor
 
                         togDescuento = false;
                         toogleError(true, "Descuento aplicado", 2);
-                    }    
+                    }
                 }
                 else
                 {
@@ -733,7 +733,7 @@ namespace sercor
                     restaurador();
                 }
 
-                
+
             }
             catch (System.FormatException)
             {
@@ -762,7 +762,7 @@ namespace sercor
 
         private void cbmFiltroInventario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProductosFiltro(cbmFiltroInventario.SelectedIndex,txtBusquedaInventario);
+            ProductosFiltro(cbmFiltroInventario.SelectedIndex, txtBusquedaInventario);
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
@@ -770,10 +770,10 @@ namespace sercor
             agregar_producto agregarProducto = new agregar_producto();
             agregarProducto.ShowDialog();
 
-            toogleError(true,agregarProducto.mensaje,2);
+            toogleError(true, agregarProducto.mensaje, 2);
 
             btnTodosInventario_Click(null, null);
-            btnAllProducts_Click(null,null);
+            btnAllProducts_Click(null, null);
         }
 
         private void btnBusquedaInventario_Click(object sender, EventArgs e)
@@ -789,7 +789,7 @@ namespace sercor
         private void modificarProducto()
         {
             try
-           {
+            {
                 string codigo = Convert.ToString(dgvInventario.CurrentRow.Cells[0].Value);
                 Producto productoSeleccionado = ProductoDBM.ObtenerProductoCod(codigo);
 
@@ -803,7 +803,7 @@ namespace sercor
             }
             catch (System.NullReferenceException)
             {
-                MessageBox.Show("No existen productos para modificar","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("No existen productos para modificar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -834,7 +834,7 @@ namespace sercor
         {
             var tFiltroFactura = new AutoCompleteStringCollection();
             var tFiltroEstado = new AutoCompleteStringCollection();
-            
+
             int j = 0;
 
             for (int i = 0; i <= TrabajoDBM.ObtenerTrabajos().Count; i++)
@@ -843,11 +843,11 @@ namespace sercor
                 {
                     tFiltroFactura.Add(TrabajoDBM.ObtenerTrabajos()[j].ID.ToString());
                     tFiltroEstado.Add(TrabajoDBM.ObtenerTrabajos()[j].ESTADO.ToString());
-                    
+
                     j++;
                 }
             }
-        
+
             switch (filtroIndex)
             {
                 case 0://POR FACTURA
@@ -858,16 +858,16 @@ namespace sercor
                     txtBusqueda.Enabled = true;
                     txtBusqueda.AutoCompleteCustomSource = tFiltroEstado;
                     break;
-                
+
             }
         }
 
         private void btnBusquedaTrabajo_Click(object sender, EventArgs e)
         {
             try { dgvTrabajos.DataSource = buscarFiltrotr(cmbFiltroTrabajo.SelectedIndex, txtBusquedaTrabajo);
-                toogleError(false,null,1);
-                }catch (FormatException ) { toogleError(true , "NO HAY VALORES QUE BUSCAR" , 2 ); }
-            
+                toogleError(false, null, 1);
+            } catch (FormatException) { toogleError(true, "NO HAY VALORES QUE BUSCAR", 2); }
+
         }
 
         private List<Trabajo> buscarFiltrotr(int index, TextBox _busqueda)
@@ -877,7 +877,7 @@ namespace sercor
             {
                 case 0://ID
                     //MessageBox.Show(string.Format ("ID de búsqueda = {0}",_busqueda.Text));
-                    filtrado = TrabajoDBM.ObtenerPorFiltro(0, 0, Convert.ToInt32(_busqueda.Text), null, null,null,null,null,1);
+                    filtrado = TrabajoDBM.ObtenerPorFiltro(0, 0, Convert.ToInt32(_busqueda.Text), null, null, null, null, null, 1);
                     break;
 
                 case 1://ESTADO
@@ -896,7 +896,7 @@ namespace sercor
             }
         }
 
-        
+
         private void cambiarEstadoTr()
         {
             try
@@ -914,7 +914,7 @@ namespace sercor
             {
                 MessageBox.Show("No existen trabajos para modificar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
+
         }
 
         private void btnModificarTrabajo_Click(object sender, EventArgs e)
@@ -937,7 +937,7 @@ namespace sercor
         //FUNCION DE ACEPTAR NUMEROS
         public bool esDinero(Char c)
         {
-            if (Char.IsDigit(c)||Char.IsControl(c)||c=='.'||c==',')
+            if (Char.IsDigit(c) || Char.IsControl(c) || c == '.' || c == ',')
             {
                 return false;
             }
@@ -960,7 +960,7 @@ namespace sercor
             }
         }
 
-        
+
         private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (esDinero(e.KeyChar))
@@ -1007,33 +1007,37 @@ namespace sercor
                 nCuenta.ID_CLIENTE = txtId.Text;
                 nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
                 nCuenta.SALDO = nCuenta.TOTAL;
-                MessageBox.Show(ClienteDBM.ExisteCliente(txtId.Text).ToString());
-                if (!ClienteDBM.ExisteCliente(txtId.Text))
+                if (nCliente.ID_CLIENTE != null)
                 {
-                    
-                    nCuenta.ID_CUENTA += 1;
-                    ClienteDBM.Agregar(nCliente);
-                    CuentaDBM.Agregar(nCuenta);
+                    if (!ClienteDBM.ExisteCliente(txtId.Text))
+                    {
+                        nCuenta.ID_CUENTA += 1;
+                        ClienteDBM.Agregar(nCliente);
+                        CuentaDBM.Agregar(nCuenta);
+                    }
+                    else
+                    {
+                        nCuenta.TOTAL = nCuenta.TOTAL + CuentaDBM.ultimototal(nCuenta.ID_CUENTA);
+                        nCuenta.SALDO = nCuenta.SALDO + CuentaDBM.consultarsaldo(nCuenta.ID_CUENTA);
+                        CuentaDBM.actualizarcuenta(nCuenta.ID_CUENTA, nCuenta.SALDO, nCuenta.TOTAL);
+                    }
                 }
                 else
                 {
-                    nCuenta.TOTAL = nCuenta.TOTAL + CuentaDBM.ultimototal(nCuenta.ID_CUENTA);
-                    nCuenta.SALDO = nCuenta.SALDO + CuentaDBM.consultarsaldo(nCuenta.ID_CUENTA);
-                    CuentaDBM.actualizarcuenta(nCuenta.ID_CUENTA,nCuenta.SALDO,nCuenta.TOTAL);
+                    MessageBox.Show("Cliente no especificado","sercor",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
                 }
+                
+
                 //Variable de Detalle
                 Detalle nDetalle = new Detalle();
-                nDetalle.ID_DETALLE = DetalleDBM.UltimoDetalle()+1;
+                nDetalle.ID_DETALLE = DetalleDBM.UltimoDetalle() + 1;
                 nDetalle.SUBTOTAL = Convert.ToDecimal(txtSubtotal.Text);
                 DetalleDBM.Agregar(nDetalle);
 
-
-
-
-
                 //Variable de Factura
                 Factura nFactura = new Factura();
-                nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
+                nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura() + 1);
                 nFactura.ID_CLIENTE = txtId.Text;
                 nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
                 nFactura.ID_DETALLE = nDetalle.ID_DETALLE;
@@ -1044,64 +1048,104 @@ namespace sercor
                 nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
-                nFactura.INDICE = ultimoIndice(ordenTipo.SelectedIndex)+1;
+                nFactura.INDICE = ultimoIndice(ordenTipo.SelectedIndex) + 1;
                 FacturaDBM.Agregar(nFactura);
 
-                //variable de Producto vendido (repetir)
-                
-                for (int i=0; i<vistaFactura.Rows.Count;i++)
+                //variable de Producto vendido (repetir)             
+                for (int i = 0; i < vistaFactura.Rows.Count; i++)
                 {
                     ProductoVendido nProducto = new ProductoVendido();
                     string codigoInventario = vistaFactura.Rows[i].Cells[0].Value.ToString();
-
                     Producto productoInventario = new Producto();
-
                     productoInventario = ProductoDBM.ObtenerProductoCod(codigoInventario);
-
                     nProducto.COD = ProductoVendidoDBM.ObtenerUltimoProducto().COD + 1;
-                    nProducto.ID_DETALLE=nDetalle.ID_DETALLE;
-                    nProducto.ID_PRODUCTOINVENTARIO =codigoInventario ;
+                    nProducto.ID_DETALLE = nDetalle.ID_DETALLE;
+                    nProducto.ID_PRODUCTOINVENTARIO = codigoInventario;
                     nProducto.NOMBRE = ProductoDBM.ObtenerProductoCod(nProducto.ID_PRODUCTOINVENTARIO.ToString()).NOMBRE;
-                    nProducto.DESCRIPCION= vistaFactura.Rows[i].Cells[1].Value.ToString();
-
+                    nProducto.DESCRIPCION = vistaFactura.Rows[i].Cells[1].Value.ToString();
                     nProducto.CATEGORIA = productoInventario.CATEGORIA;
-                    nProducto.SUBCATEGORIA =productoInventario.SUBCATEGORIA;
-
-                    nProducto.PRECIO= Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
-                    nProducto.CANTIDAD= Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
-
+                    nProducto.SUBCATEGORIA = productoInventario.SUBCATEGORIA;
+                    nProducto.PRECIO = Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
+                    nProducto.CANTIDAD = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
                     ProductoVendidoDBM.Agregar(nProducto);
                 }
 
+                //variable de Trabajo (repetir)
+                Boolean analizartrabajo = false;
+                int cantidadluna = 0;
+                int cantidadarmazon = 0;
+                int cantidadlunainterna = 0;
+                int cantidadarmazoninterna = 0;
+                while (analizartrabajo!=true)
+                {
+                    Trabajo nTrabajo = new Trabajo();
+                    int contador = 0;
+                    nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
+                    nTrabajo.FACTURA = nFactura.ID_FACTURA;
+                    nTrabajo.CUENTA = nCuenta.ID_CUENTA;
+                    nTrabajo.FECHA_INICIO = nFactura.FECHA;
+                    nTrabajo.NOMBRE = txtId.Text;
+                    nTrabajo.ESTADO = 0;
+                    nTrabajo.FECHA_ENTREGA = dtpEntrega.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                    for (int i = contador; i < vistaFactura.Rows.Count; i++)
+                    {
+                        string codigoInventario = vistaFactura.Rows[i].Cells[0].Value.ToString();
+                        
+                        if (ProductoVendidoDBM.productoArmazon(codigoInventario) == true && nTrabajo.ARMAZON == null)
+                        {
+                            cantidadarmazoninterna = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value.ToString());
+                            if (cantidadarmazon < cantidadarmazoninterna)
+                            {
+                                nTrabajo.ARMAZON = codigoInventario;
+                                contador = i;
+                                cantidadarmazon++;
+                            }
+                        }
+                        else if (ProductoVendidoDBM.productoLuna(codigoInventario) == true && nTrabajo.LUNA == null)
+                        {
+                            cantidadlunainterna = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value.ToString());
+                            if (cantidadluna < cantidadlunainterna)
+                            {
+                                nTrabajo.LUNA = codigoInventario;
+                                contador = i;
+                                cantidadluna++;
+                            }
+                                
+                        }
+                        if (nTrabajo.ARMAZON != null && nTrabajo.LUNA != null)
+                        {
+                            contador = i;
+                            break;
+                        }
+                        contador = i;
+                    }
+                    if (nTrabajo.ARMAZON != null || nTrabajo.LUNA != null)
+                    {                        
+                        TrabajoDBM.Nuevo(nTrabajo);
+                    }
+                    if (contador == vistaFactura.Rows.Count - 1 && cantidadluna==cantidadlunainterna && cantidadarmazon==cantidadarmazoninterna)
+                    {
+                        analizartrabajo = true;
+                    }
+                    else if (contador == vistaFactura.Rows.Count - 1 && cantidadluna != cantidadlunainterna && cantidadarmazon != cantidadarmazoninterna)
+                    {
+                        contador = 0;
+                    }
+                }
                 
+                //en caso de un abono en el momento de crear la factura
                 if (Convert.ToDecimal(txtAbono.Text) > 0)
                 {
                     Pago nPago = new Pago();
-                    nPago.ID_PAGO = PagoDBM.UltimoPagoID()+1;
+                    nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
                     nPago.ID_CUENTA = nCuenta.ID_CUENTA;
                     nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
-                    nPago.TIPO_PAGO = 0;//tipo de pago de las casillas
+                    nPago.TIPO_PAGO = metodoPago.SelectedIndex;
                     nPago.MONTO = Convert.ToDecimal(txtAbono.Text);
-                    nPago.DESCRIPCION = "inserte aqui la descripcion";//usar la descripcion de la zona de pago
-                    CuentaDBM.abono(nCuenta.ID_CUENTA,nPago.MONTO);
+                    if(nPago.TIPO_PAGO==0)nPago.DESCRIPCION = "EFECTIVO";//usar la descripcion de la zona de pago
+                    CuentaDBM.abono(nCuenta.ID_CUENTA, nPago.MONTO);
                     PagoDBM.Pagar(nPago);
-
                 }
-                //crear condición de generación de trabajos por items encontrados
-
-               /* 
-                Trabajo nTrabajo = new Trabajo();
-                nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
-                nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;
-                nTrabajo.FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
-                nTrabajo.FECHA_INICIO = null;
-                nTrabajo.NOMBRE = txtName.Text;
-                nTrabajo.ARMAZON = null;
-                nTrabajo.LUNA = null;
-                nTrabajo.ESTADO = 0;
-                nTrabajo.FECHA_ENTREGA = null;*/
-
-                
             }
             catch (System.FormatException)
             {
@@ -1109,6 +1153,10 @@ namespace sercor
                 //Cambiar éste mensaje de error
             }
 
+        }
+
+        private void CrearTrabajo()
+        {
 
         }
 
