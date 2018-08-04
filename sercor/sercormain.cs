@@ -1240,5 +1240,10 @@ namespace sercor
 
             lblNumeroFactura.Text = Convert.ToString(ultimoIndice(ordenTipo.SelectedIndex)+1);
         }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
