@@ -16,7 +16,7 @@ SELECT NOW();
 select * from SERCORDB.trabajos;
 
 /*INSERCIONES*/
-insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
+insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',15,15);
 insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
 
 insert into cuenta values("1","1725158123",0,0,0);
@@ -83,7 +83,6 @@ Alter TABLE sercordb.producto drop ID_DETALLE;
 
 /*Creación y edición de privilegios al sercoruser*/
 CREATE USER 'sercoruser'@'localhost' IDENTIFIED BY 'S3rc0r';
-grant DELETE, INSERT, SELECT, UPDATE on abono 	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on caja	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cambio_precios	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cliente	 to 'sercoruser'@'localhost';
@@ -94,4 +93,4 @@ grant DELETE, INSERT, SELECT, UPDATE on factura	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
-
+grant INSERT, SELECT on pago to 'sercoruser'@'localhost';
