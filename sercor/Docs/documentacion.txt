@@ -62,7 +62,8 @@ COSAS DESCUBIERTAS
             }
             txtName.AutoCompleteCustomSource = clienteNombres;
 
-	select Descripcion from producto where Descripcion REGEXP "pr*";
+	select Descripcion from producto where Descripcion REGEXP 'ARMA' AND ID_PRODUCTO = 'A01';
+	select Descripcion from producto where Descripcion REGEXP 'LUNA' AND ID_PRODUCTO = 'A01';
 	
 
 URGENTE
