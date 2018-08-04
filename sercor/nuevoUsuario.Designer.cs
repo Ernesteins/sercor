@@ -97,6 +97,7 @@
             // txtUser
             // 
             this.txtUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(83, 10);
             this.txtUser.Name = "txtUser";

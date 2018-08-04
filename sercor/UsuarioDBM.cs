@@ -169,6 +169,33 @@ namespace sercor
             return pUsuario;
         }
 
+        public static Usuario ObtenerUsuarioPorUsuario(string pUser)
+        {
+            Usuario pUsuario = new Usuario();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM usuario where USUARIO='{0}'", pUser), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                pUsuario.ID_USUARIO = _reader.GetInt32(0);
+                pUsuario.TIPO = _reader.GetInt32(1);
+                pUsuario.USUARIO = _reader.GetString(2);
+                pUsuario.CONTRASENA = _reader.GetString(3);
+                pUsuario.NOMBRE = _reader.GetString(4);
+                pUsuario.APELLIDO = _reader.GetString(5);
+                pUsuario.CEDULA = _reader.GetString(6);
+                pUsuario.DIRECCION = _reader.GetString(7);
+                pUsuario.TELEFONO = _reader.GetString(8);
+                pUsuario.PRIVILEGIO1 = _reader.GetInt32(9);
+                pUsuario.PRIVILEGIO2 = _reader.GetInt32(10);
+
+            }
+
+            conexion.Close();
+            return pUsuario;
+        }
+
 
         public static int Modificar(Usuario pUsuario, int id)
         {
