@@ -265,6 +265,8 @@ namespace sercor
         private void btnCxc_Click(object sender, EventArgs e)
         {
             menuToggler(2);
+            llenarcxc();
+
         }
 
         private void btnInventario_Click(object sender, EventArgs e)
@@ -1001,33 +1003,18 @@ namespace sercor
                 nCliente.DIRECCION = txtDireccion.Text;
                 nCliente.TELEFONO = txtTelefono.Text;
 
-                //Variable de cuenta
-                Cuenta nCuenta = new Cuenta();
-                nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta();
-                nCuenta.ID_CLIENTE = txtId.Text;
-                nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
-                nCuenta.SALDO = nCuenta.TOTAL;
                 if (nCliente.ID_CLIENTE != null)
                 {
                     if (!ClienteDBM.ExisteCliente(txtId.Text))
                     {
-                        nCuenta.ID_CUENTA += 1;
                         ClienteDBM.Agregar(nCliente);
-                        CuentaDBM.Agregar(nCuenta);
-                    }
-                    else
-                    {
-                        nCuenta.TOTAL = nCuenta.TOTAL + CuentaDBM.ultimototal(nCuenta.ID_CUENTA);
-                        nCuenta.SALDO = nCuenta.SALDO + CuentaDBM.consultarsaldo(nCuenta.ID_CUENTA);
-                        CuentaDBM.actualizarcuenta(nCuenta.ID_CUENTA, nCuenta.SALDO, nCuenta.TOTAL);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Cliente no especificado","sercor",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Cliente no especificado", "sercor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                
 
                 //Variable de Detalle
                 Detalle nDetalle = new Detalle();
@@ -1035,12 +1022,29 @@ namespace sercor
                 nDetalle.SUBTOTAL = Convert.ToDecimal(txtSubtotal.Text);
                 DetalleDBM.Agregar(nDetalle);
 
-                //Variable de Factura
+                //Variable de cuenta
+                Cuenta nCuenta = new Cuenta();
+                nCuenta.ID_CUENTA = CuentaDBM.ultimacuenta() + 1;
+                nCuenta.ID_CLIENTE = txtId.Text;
+                
+                nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
+                nCuenta.SALDO = nCuenta.TOTAL;
+                nCuenta.ESTADO_P = 0;
+                
+                /*nCuenta.TOTAL = nCuenta.TOTAL + CuentaDBM.ultimototal(nCuenta.ID_CUENTA);
+                nCuenta.SALDO = nCuenta.SALDO + CuentaDBM.consultarsaldo(nCuenta.ID_CUENTA);
+                CuentaDBM.actualizarcuenta(nCuenta.ID_CUENTA, nCuenta.SALDO, nCuenta.TOTAL);*/
+
+                //Variable de Factura y fin creacion de cuenta
                 Factura nFactura = new Factura();
                 nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura() + 1);
                 nFactura.ID_CLIENTE = txtId.Text;
                 nFactura.ID_USUARIO = Convert.ToInt32(IDUser);
                 nFactura.ID_DETALLE = nDetalle.ID_DETALLE;
+
+                nCuenta.ID_FACTURA = nFactura.ID_FACTURA;
+                CuentaDBM.Agregar(nCuenta);
+
                 nFactura.ID_CUENTA = nCuenta.ID_CUENTA;
                 nFactura.IVA = Convert.ToDecimal(ivaConst);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
@@ -1200,6 +1204,23 @@ namespace sercor
             calculaSaldo();
         }
 
+
+        //////////////////////////
+        ////CUENTAS POR COBRAR////
+        //////////////////////////
+        private void llenarcxc()
+        {
+            dgvCXC.DataSource = CuentaDBM.ObtenerCuentasN();
+        }
+        private void llenarcxcdetalle(string idcliente)
+        {
+            dgvCXCdetalle.DataSource = FacturaDBM.Historial(idcliente);
+        }
+
+        //////////////////////////
+        ////      FIN CXC     ////
+        //////////////////////////
+
         private void txtAbono_Enter(object sender, EventArgs e)
         {
             txtAbono.SelectAll();
@@ -1244,6 +1265,57 @@ namespace sercor
         private void panel10_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Cuenta cxcCuenta = new Cuenta();
+            cxcCuenta.ID_CUENTA = Convert.ToInt32(label_idcuenta.Text);
+            cxcCuenta = CuentaDBM.ObtenerCuentaporID_cuenta(cxcCuenta.ID_CUENTA);
+            Pago nPago = new Pago();
+            nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
+            nPago.ID_CUENTA = cxcCuenta.ID_CUENTA;
+            nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+            nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
+            nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
+            if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "EFECTIVO";//usar la descripcion de la zona de pago
+            CuentaDBM.abono(cxcCuenta.ID_CUENTA, nPago.MONTO);
+            PagoDBM.Pagar(nPago);
+            dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cxcCuenta.ID_CUENTA);
+            llenarcxc();
+
+        }
+
+        private void dgvCXC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+        }
+
+        private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            detalleForm _detalle = new detalleForm();
+            _detalle.Show();
+        }
+
+        private void dgvCXC_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Cuenta cxcCuenta = new Cuenta();
+            try
+            {
+                int codigo = Convert.ToInt32(dgvCXC.CurrentRow.Cells[0].Value);
+                CuentaN cuentaseleccionada = CuentaDBM.ObtenerCuentaNporID_cuenta(codigo);
+                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cuentaseleccionada.ID_CUENTA);
+                label_idcuenta.Text = cuentaseleccionada.ID_CUENTA.ToString();
+                label_idcliente.Text = cuentaseleccionada.ID_CLIENTE;
+                label_Nombre.Text = cuentaseleccionada.NOMBRE_CLIENTE;
+                label_TipoDoc.Text = cuentaseleccionada.TIPO.ToString();
+                label_iddoc.Text = cuentaseleccionada.ID_DOCUMENTO.ToString();
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("No existen Cuentas para agregar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

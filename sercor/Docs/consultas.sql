@@ -15,21 +15,10 @@ select * from sercordb.usuario LIMIT100;
 SELECT NOW();
 select * from SERCORDB.trabajos;
 
-/*INSERCIONES*/
+/*INSERCIONES INICIALES*/
 insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',15,15);
-insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
-
-insert into cuenta values("1","1725158123",0,0,0);
-
 insert into sercordb.producto values ("L01","prod_1","LUNA|descripcion de producto luna","luna_pruebas","lune_pruebas","100","49.50","1");
 insert into sercordb.producto values ("A02","prod_2","ARMA|descripcion de producto armazon","armazon_pruebas","armazon_pruebas","100","99.99","1");
-
-insert into sercordb.factura values ("001","1725158123","001",0,0,(SELECT NOW()),0,0);
-insert into sercordb.factura values ("002","1725158123","001",0,0,"2018-07-03 19:39:29",0,0);
-
-insert into sercordb.trabajos values ("001","0","001",(SELECT NOW()),(SELECT nombre from sercordb.Cliente where id_cliente=(select id_cliente from sercordb.factura where id_factura = "001")),"AR01","LN20",1,(SELECT NOW()));
-
-/*insert into sercordb.cuenta values ("001","1725158123","001","");*/
 
 /*EDICION DE CLAVES Y TABLAS ERRONEAS*/
 Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE CHAR(32);
@@ -88,7 +77,7 @@ grant DELETE, INSERT, SELECT, UPDATE on cambio_precios	 to 'sercoruser'@'localho
 grant DELETE, INSERT, SELECT, UPDATE on cliente	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cuenta	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on detalle	 to 'sercoruser'@'localhost';
-grant DELETE, INSERT, SELECT, UPDATE on egresos	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on egreso	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on factura	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
