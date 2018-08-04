@@ -565,6 +565,7 @@ namespace sercor
             txtTelefono.Text = "";
             txtDireccion.Text = "";
 
+            ordenTipo.SelectedIndex = 0;
             vistaFactura.Rows.Clear();
 
             txtId.Focus();
@@ -1089,18 +1090,36 @@ namespace sercor
                 }
                 //crear condición de generación de trabajos por items encontrados
 
-               /* 
-                Trabajo nTrabajo = new Trabajo();
-                nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
-                nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;
-                nTrabajo.FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
-                nTrabajo.FECHA_INICIO = null;
-                nTrabajo.NOMBRE = txtName.Text;
-                nTrabajo.ARMAZON = null;
-                nTrabajo.LUNA = null;
-                nTrabajo.ESTADO = 0;
-                nTrabajo.FECHA_ENTREGA = null;*/
+                /* 
+                 Trabajo nTrabajo = new Trabajo();
+                 nTrabajo.ID = TrabajoDBM.ultimoTrabajo() + 1;
+                 nTrabajo.CUENTA = CuentaDBM.ultimacuenta() + 1;
+                 nTrabajo.FACTURA = Convert.ToInt32(lblNumeroFactura.Text);
+                 nTrabajo.FECHA_INICIO = null;
+                 nTrabajo.NOMBRE = txtName.Text;
+                 nTrabajo.ARMAZON = null;
+                 nTrabajo.LUNA = null;
+                 nTrabajo.ESTADO = 0;
+                 nTrabajo.FECHA_ENTREGA = null;*/
+                List<FacturaImpresion> prodImprimir = new List<FacturaImpresion>();
 
+                for(int i=0; i < vistaFactura.Rows.Count; i++)
+                {
+                    FacturaImpresion vistaImpresion = new FacturaImpresion();
+                    vistaImpresion.Codigo = vistaFactura.Rows[i].Cells[0].Value.ToString();
+                    vistaImpresion.Descripcion = vistaFactura.Rows[i].Cells[1].Value.ToString();
+                    vistaImpresion.Cantidad = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
+                    vistaImpresion.ValorUnitario = Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
+                    vistaImpresion.ValorTotal = Convert.ToDecimal(vistaFactura.Rows[i].Cells[0].Value);
+
+                    prodImprimir.Add(vistaImpresion);
+                }
+
+                imprimir _imprimir = new imprimir(prodImprimir,1,txtName.Text,txtId.Text,dateTime.Value.Date,txtDireccion.Text
+                    ,txtTelefono.Text,Convert.ToDecimal(txtSubtotal.Text),0,Convert.ToDecimal(txtIva.Text),Convert.ToDecimal(txtTotal.Text)
+                    ,Convert.ToDecimal(txtAbono.Text),Convert.ToDecimal(txtSaldo.Text),dtpEntrega.Value.Date);
+                _imprimir.ShowDialog();
+                btnNew_Click(null,null);
                 
             }
             catch (System.FormatException)
@@ -1191,6 +1210,11 @@ namespace sercor
         {
 
             lblNumeroFactura.Text = Convert.ToString(ultimoIndice(ordenTipo.SelectedIndex)+1);
+        }
+
+        private void panel14_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

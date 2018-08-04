@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.factura1 = new sercor.factura();
             this.SuspendLayout();
             // 
             // crystalReportViewer
@@ -65,5 +66,6 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
+        private factura factura1;
     }
 }

@@ -91,3 +91,4 @@ C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.editarUsuario.resourc
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.imprimir.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.nuevoUsuario.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.SDL.resources
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.csprojAssemblyReference.cache
