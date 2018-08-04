@@ -1027,6 +1027,10 @@ namespace sercor
                 nDetalle.SUBTOTAL = Convert.ToDecimal(txtSubtotal.Text);
                 DetalleDBM.Agregar(nDetalle);
 
+
+
+
+
                 //Variable de Factura
                 Factura nFactura = new Factura();
                 nFactura.ID_FACTURA = Convert.ToInt32(ultimoIdFactura()+1);
@@ -1044,7 +1048,32 @@ namespace sercor
                 FacturaDBM.Agregar(nFactura);
 
                 //variable de Producto vendido (repetir)
-                ProductoVendido nProducto = new ProductoVendido();
+                
+                for (int i=0; i<vistaFactura.Rows.Count;i++)
+                {
+                    ProductoVendido nProducto = new ProductoVendido();
+                    string codigoInventario = vistaFactura.Rows[i].Cells[0].Value.ToString();
+
+                    Producto productoInventario = new Producto();
+
+                    productoInventario = ProductoDBM.ObtenerProductoCod(codigoInventario);
+
+                    nProducto.COD = ProductoVendidoDBM.ObtenerUltimoProducto().COD + 1;
+                    nProducto.ID_DETALLE=nDetalle.ID_DETALLE;
+                    nProducto.ID_PRODUCTOINVENTARIO =codigoInventario ;
+                    nProducto.NOMBRE = ProductoDBM.ObtenerProductoCod(nProducto.ID_PRODUCTOINVENTARIO.ToString()).NOMBRE;
+                    nProducto.DESCRIPCION= vistaFactura.Rows[i].Cells[1].Value.ToString();
+
+                    nProducto.CATEGORIA = productoInventario.CATEGORIA;
+                    nProducto.SUBCATEGORIA =productoInventario.SUBCATEGORIA;
+
+                    nProducto.PRECIO= Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
+                    nProducto.CANTIDAD= Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
+
+                    ProductoVendidoDBM.Agregar(nProducto);
+                }
+
+                
                 if (Convert.ToDecimal(txtAbono.Text) > 0)
                 {
                     Pago nPago = new Pago();

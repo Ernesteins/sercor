@@ -93,4 +93,5 @@ grant DELETE, INSERT, SELECT, UPDATE on factura	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on producto_vendido to 'sercoruser'@'localhost';
 grant INSERT, SELECT on pago to 'sercoruser'@'localhost';

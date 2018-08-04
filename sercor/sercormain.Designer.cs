@@ -385,7 +385,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Silver;
             this.pictureBox6.Location = new System.Drawing.Point(138, 257);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1, 10013);
+            this.pictureBox6.Size = new System.Drawing.Size(1, 10302);
             this.pictureBox6.TabIndex = 48;
             this.pictureBox6.TabStop = false;
             // 
@@ -861,7 +861,7 @@
             this.pnVentas.Location = new System.Drawing.Point(8, 11);
             this.pnVentas.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentas.Name = "pnVentas";
-            this.pnVentas.Size = new System.Drawing.Size(357, 596);
+            this.pnVentas.Size = new System.Drawing.Size(414, 596);
             this.pnVentas.TabIndex = 0;
             this.pnVentas.Visible = false;
             // 
@@ -874,7 +874,7 @@
             this.pnVentasBody.Location = new System.Drawing.Point(0, 32);
             this.pnVentasBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasBody.Name = "pnVentasBody";
-            this.pnVentasBody.Size = new System.Drawing.Size(357, 564);
+            this.pnVentasBody.Size = new System.Drawing.Size(414, 564);
             this.pnVentasBody.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -898,7 +898,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(357, 564);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(414, 564);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // vistaFactura
@@ -1817,7 +1817,7 @@
             this.pnVentasMenu.Location = new System.Drawing.Point(0, 0);
             this.pnVentasMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasMenu.Name = "pnVentasMenu";
-            this.pnVentasMenu.Size = new System.Drawing.Size(357, 32);
+            this.pnVentasMenu.Size = new System.Drawing.Size(414, 32);
             this.pnVentasMenu.TabIndex = 0;
             // 
             // btnPrint
