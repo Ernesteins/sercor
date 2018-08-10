@@ -17,7 +17,7 @@ namespace sercor
             string server = "127.0.0.1";
             string databaseName = "sercorDB";
             string user = "sercoruser";
-            string password = "S3rc0r";
+            string password = "f9f524bf";
 
             MySqlConnection conectar = new MySqlConnection("server="+server+";" +
                 "database="+databaseName+";" +

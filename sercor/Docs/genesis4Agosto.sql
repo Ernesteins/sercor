@@ -154,6 +154,12 @@ CREATE TABLE IF NOT EXISTS `sercordb`.`pago` (
   `TIPO_PAGO` TINYINT(1) NOT NULL,
   `MONTO` FLOAT(12,2) NOT NULL,
   `DESCRIPCION` VARCHAR(256) NULL DEFAULT NULL,
+  `TARJETA` VARCHAR(16) NULL DEFAULT NULL,
+  `TIPO` VARCHAR(32) NULL DEFAULT NULL,
+  `REF` VARCHAR(32) NULL DEFAULT NULL,
+  `BANCO` VARCHAR(128) NULL DEFAULT NULL,
+  `CHEQUE` VARCHAR(32) NULL DEFAULT NULL,
+
   PRIMARY KEY (`ID_PAGO`),
   INDEX `fk_pago_cuenta1_idx` (`ID_CUENTA` ASC),
   CONSTRAINT `fk_pago_cuenta1`
@@ -264,3 +270,18 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+insert into sercordb.usuario values(000, 0, 'ADMIN','a82a8f1fd4ef1f2e42a0798868f8445ff9f524bfb6df460fb256f84ee8588e1b','Administrador','del sistema','0000000001','-Sercor-','0000000000',15,15);
+CREATE USER 'sercoruser'@'localhost' IDENTIFIED BY 'f9f524bf';
+grant DELETE, INSERT, SELECT, UPDATE on caja	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on cambio_precios	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on cliente	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on cuenta	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on detalle	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on egreso	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on factura	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on producto to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on producto_vendido to 'sercoruser'@'localhost';
+grant INSERT, SELECT on pago to 'sercoruser'@'localhost';	

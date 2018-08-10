@@ -81,3 +81,5 @@ CREAR LOS REPORTES EN BASE A LAS CONSULTAS PERSONALIZADAS, POR EJEMPLO:
 
 refrescar las facturas una vez creadas
 CORREGIR IVA (no va el porcentaje es el valor del iva en esa factura)
+
+modificar la BD para los valores de las tarjetas y los bancos, beneficio estadístico 
