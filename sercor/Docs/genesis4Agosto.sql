@@ -271,10 +271,8 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-insert into sercordb.usuario values(000, 0, 'ADMIN','a82a8f1fd4ef1f2e42a0798868f8445ff9f524bfb6df460fb256f84ee8588e1b','Administrador','del sistema','0000000001','-Sercor-','0000000000',15,15);
+insert into sercordb.usuario values(000, 0, 'admin','a82a8f1fd4ef1f2e42a0798868f8445ff9f524bfb6df460fb256f84ee8588e1b','Administrador','del sistema','0000000001','-Sercor-','0000000000',15,15);
 CREATE USER 'sercoruser'@'localhost' IDENTIFIED BY 'f9f524bf';
-grant DELETE, INSERT, SELECT, UPDATE on caja	 to 'sercoruser'@'localhost';
-grant DELETE, INSERT, SELECT, UPDATE on cambio_precios	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cliente	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cuenta	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on detalle	 to 'sercoruser'@'localhost';

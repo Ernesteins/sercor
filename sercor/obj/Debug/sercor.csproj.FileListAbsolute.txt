@@ -92,3 +92,7 @@ C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.imprimir.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.nuevoUsuario.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.SDL.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.csprojAssemblyReference.cache
+C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\sercor.exe.manifest
+C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\sercor.application
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.exe.manifest
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.application

@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
+
 
 namespace sercor
 {
@@ -1142,6 +1137,7 @@ namespace sercor
                 {
                     Pago nPago = new Pago();
                     nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
+                    MessageBox.Show("ultimo pago = ", nPago.ID_PAGO.ToString());
                     nPago.ID_CUENTA = nCuenta.ID_CUENTA;
                     nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
                     nPago.TIPO_PAGO = metodoPago.SelectedIndex;
