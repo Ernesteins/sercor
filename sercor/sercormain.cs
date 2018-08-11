@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
+
 namespace sercor
 {
     public partial class sercormain : Form
@@ -546,7 +547,7 @@ namespace sercor
 
         private void btnAllProducts_Click(object sender, EventArgs e)
         {
-            dgvProductos.DataSource = ProductoDBM.ObtenerProductosEstado();
+            dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
 
             DataGridViewColumn column = dgvProductos.Columns[0];
             column.Width = 50;
@@ -593,8 +594,14 @@ namespace sercor
                 }
                 if (modif == false)
                 {
-                    vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
-                    1, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                    if (productoSeleccionado.EXISTENCIA==0)
+                    {
+                        toogleError(true, "Producto agotado", 2);
+                    }
+                    else
+                    {
+                        vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,1, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                    }
                 }
                 else
                 {
@@ -604,7 +611,7 @@ namespace sercor
             }
             catch (System.NullReferenceException)
             {
-                MessageBox.Show("No existen productos para agregar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                toogleError(true, "No hay productos para agregar", 2);
             }
         }
 
@@ -613,7 +620,14 @@ namespace sercor
             vistaFactura.Rows[k].Cells[1].Value = productoSeleccionado.DESCRIPCION;
             if (cantidad == 0)
             {
-                vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
+                if (productoSeleccionado.EXISTENCIA==Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value))
+                {
+                    toogleError(true, "No hay suficiente stock", 2);
+                }
+                else
+                {
+                    vistaFactura.Rows[k].Cells[2].Value = Convert.ToInt32(vistaFactura.Rows[k].Cells[2].Value) + 1;
+                }
             }
             else
             {
@@ -656,10 +670,26 @@ namespace sercor
                     }
                     if (modif == false)
                     {
-                        vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
-                        cantidad, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                        if (cantidad>productoSeleccionado.EXISTENCIA)
+                        {
+                            toogleError(true, "No hay suficiente stock", 2);
+                        }
+                        else
+                        {
+                            vistaFactura.Rows.Insert(0, productoSeleccionado.COD, productoSeleccionado.DESCRIPCION,
+                            cantidad, productoSeleccionado.PRECIO, productoSeleccionado.PRECIO);
+                        }
                     }
-                    ImprimirFactura(k, cantidad, productoSeleccionado);
+                    if (cantidad>productoSeleccionado.EXISTENCIA)
+                    {
+                        toogleError(true, "No hay suficiente stock", 2);
+                    }
+                    else
+                    {
+                        ImprimirFactura(k, cantidad, productoSeleccionado);
+                    }
+
+                    
                 }
 
             }
@@ -1055,7 +1085,9 @@ namespace sercor
                 for (int i = 0; i < vistaFactura.Rows.Count; i++)
                 {
                     ProductoVendido nProducto = new ProductoVendido();
+
                     string codigoInventario = vistaFactura.Rows[i].Cells[0].Value.ToString();
+
                     Producto productoInventario = new Producto();
                     productoInventario = ProductoDBM.ObtenerProductoCod(codigoInventario);
                     nProducto.COD = ProductoVendidoDBM.ObtenerUltimoProducto().COD + 1;
@@ -1068,6 +1100,8 @@ namespace sercor
                     nProducto.PRECIO = Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
                     nProducto.CANTIDAD = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
                     ProductoVendidoDBM.Agregar(nProducto);
+
+                    ProductoDBM.ActualizarStock(ProductoDBM.ObtenerProductoCod(codigoInventario).EXISTENCIA-nProducto.CANTIDAD, codigoInventario);
                 }
 
                 //variable de Trabajo (repetir)
@@ -1179,6 +1213,7 @@ namespace sercor
                 //Cambiar éste mensaje de error
             }
 
+            btnAllProducts_Click(null, null); 
         }
 
   

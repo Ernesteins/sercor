@@ -305,10 +305,10 @@
             this.pnCxc.BackColor = System.Drawing.Color.Gainsboro;
             this.pnCxc.Controls.Add(this.panel2);
             this.pnCxc.Controls.Add(this.pnCxcMenu);
-            this.pnCxc.Location = new System.Drawing.Point(429, 4);
+            this.pnCxc.Location = new System.Drawing.Point(659, 4);
             this.pnCxc.Margin = new System.Windows.Forms.Padding(0);
             this.pnCxc.Name = "pnCxc";
-            this.pnCxc.Size = new System.Drawing.Size(765, 603);
+            this.pnCxc.Size = new System.Drawing.Size(535, 603);
             this.pnCxc.TabIndex = 1;
             this.pnCxc.Visible = false;
             // 
@@ -320,7 +320,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(765, 571);
+            this.panel2.Size = new System.Drawing.Size(535, 571);
             this.panel2.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -336,7 +336,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 571F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(765, 571);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(535, 571);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel14
@@ -369,7 +369,7 @@
             this.panel14.Controls.Add(this.metodoPagocxc);
             this.panel14.Controls.Add(this.label24);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(267, 3);
+            this.panel14.Location = new System.Drawing.Point(37, 3);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(495, 565);
             this.panel14.TabIndex = 1;
@@ -733,7 +733,7 @@
             this.dgvCXC.Location = new System.Drawing.Point(0, 0);
             this.dgvCXC.Margin = new System.Windows.Forms.Padding(0);
             this.dgvCXC.Name = "dgvCXC";
-            this.dgvCXC.Size = new System.Drawing.Size(264, 571);
+            this.dgvCXC.Size = new System.Drawing.Size(34, 571);
             this.dgvCXC.TabIndex = 0;
             this.dgvCXC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCXC_CellClick);
             this.dgvCXC.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCXC_CellDoubleClick);
@@ -749,7 +749,7 @@
             this.pnCxcMenu.Location = new System.Drawing.Point(0, 0);
             this.pnCxcMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnCxcMenu.Name = "pnCxcMenu";
-            this.pnCxcMenu.Size = new System.Drawing.Size(765, 32);
+            this.pnCxcMenu.Size = new System.Drawing.Size(535, 32);
             this.pnCxcMenu.TabIndex = 0;
             // 
             // button3
@@ -823,7 +823,7 @@
             this.pnVentas.Location = new System.Drawing.Point(8, 11);
             this.pnVentas.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentas.Name = "pnVentas";
-            this.pnVentas.Size = new System.Drawing.Size(414, 596);
+            this.pnVentas.Size = new System.Drawing.Size(631, 596);
             this.pnVentas.TabIndex = 0;
             this.pnVentas.Visible = false;
             // 
@@ -836,7 +836,7 @@
             this.pnVentasBody.Location = new System.Drawing.Point(0, 32);
             this.pnVentasBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasBody.Name = "pnVentasBody";
-            this.pnVentasBody.Size = new System.Drawing.Size(414, 564);
+            this.pnVentasBody.Size = new System.Drawing.Size(631, 564);
             this.pnVentasBody.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -860,7 +860,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(414, 564);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(631, 564);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // vistaFactura
@@ -1779,7 +1779,7 @@
             this.pnVentasMenu.Location = new System.Drawing.Point(0, 0);
             this.pnVentasMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasMenu.Name = "pnVentasMenu";
-            this.pnVentasMenu.Size = new System.Drawing.Size(414, 32);
+            this.pnVentasMenu.Size = new System.Drawing.Size(631, 32);
             this.pnVentasMenu.TabIndex = 0;
             // 
             // btnPrint
