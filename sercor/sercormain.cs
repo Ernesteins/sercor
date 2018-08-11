@@ -671,7 +671,7 @@ namespace sercor
                     {
                         if (cantidad>productoSeleccionado.EXISTENCIA)
                         {
-                            toogleError(true, "No hay suficiente stock", 1);
+                            toogleError(true, "No hay suficiente stock", 2);
                         }
                         else
                         {
@@ -681,7 +681,7 @@ namespace sercor
                     }
                     if (cantidad>productoSeleccionado.EXISTENCIA)
                     {
-                        toogleError(true, "No hay suficiente stock", 1);
+                        toogleError(true, "No hay suficiente stock", 2);
                     }
                     else
                     {
