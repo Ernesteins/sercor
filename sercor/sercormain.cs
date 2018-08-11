@@ -155,6 +155,10 @@ namespace sercor
                     btnUser.BackColor = Color.FromArgb(128, 128, 255);
                     break;
             }
+            cmbTipo.SelectedIndex = 0;
+            cmbTipocxc.SelectedIndex = 0;
+            cmbEstadocxc.SelectedIndex = 0;
+            metodoPagocxc.SelectedIndex = 0;
         }
 
         //CAMBIO DE MENU
@@ -492,14 +496,17 @@ namespace sercor
 
         private void metodoDePago(int index)//Para metodo de pago
         {
-            cmbTipo.SelectedIndex = 0;
-            cmbTipocxc.SelectedIndex = 0;
 
             txtTarjeta.Enabled = false;
+            txtTarjetacxc.Enabled = false;
             txtRef.Enabled = false;
+            txtRefcxc.Enabled = false;
             cmbTipo.Enabled = false;
+            cmbTipocxc.Enabled = false;
             txtCheque.Enabled = false;
+            txtChequecxc.Enabled = false;
             txtBanco.Enabled = false;
+            txtBancocxc.Enabled = false;
 
             switch (index)
             {
@@ -509,13 +516,18 @@ namespace sercor
 
                 case 1:
                     txtTarjeta.Enabled = true;
+                    txtTarjetacxc.Enabled = true;
                     txtRef.Enabled = true;
+                    txtRefcxc.Enabled = true;
                     cmbTipo.Enabled = true;
+                    cmbTipocxc.Enabled = true;
                     break;
 
                 case 2:
                     txtCheque.Enabled = true;
+                    txtChequecxc.Enabled = true;
                     txtBanco.Enabled = true;
+                    txtBancocxc.Enabled = true;
                     break;
             }
         }
@@ -1361,6 +1373,20 @@ namespace sercor
             PagoDBM.Pagar(nPago);
             dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cxcCuenta.ID_CUENTA);
             llenarcxc();
+            vaciarcxc();
+        }
+        private void vaciarcxc()
+        {
+            txt_Abonocxc.Text = "0";
+            txtTarjetacxc.Text = "";
+            txtRefcxc.Text = "";
+            txtBancocxc.Text = "";
+            txtChequecxc.Text = "";
+            label_Nombre.Text = "Nombre Del Cliente";
+            label_TipoDoc.Text = "Doc";
+            label_iddoc.Text = "####";
+            label_idcliente.Text = "#Id cliente";
+            label_idcuenta.Text = "#Id cuenta";
         }
 
         private void dgvCXC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1412,6 +1438,52 @@ namespace sercor
                 toogleError(true, "El abono debe ser mayor o igual a 0", 2);
                 txt_Abonocxc.Text = "0";
             }
+        }
+
+        private void txt_Abonocxc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esDinero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_Abonocxc_Enter(object sender, EventArgs e)
+        {
+            txtAbono.SelectAll();
+        }
+
+        private List<CuentaN> buscarCXC(int index)
+        {
+            List<CuentaN> filtrado = null;
+            switch (index)
+            {
+                case 0://TODOS
+                    filtrado = CuentaDBM.ObtenerFiltro(index);
+                    break;
+                case 1://NO PAGADOS
+                    filtrado = CuentaDBM.ObtenerFiltro(index);
+                    break;
+                case 2://PAGADOS
+                    filtrado = CuentaDBM.ObtenerFiltro(index);
+                    break;
+            }
+            return filtrado;
+        }
+
+        private void cmbEstadocxc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvCXC.DataSource = buscarCXC(cmbEstadocxc.SelectedIndex);
+                toogleError(false, null, 1);
+            }
+            catch (FormatException) { toogleError(true, "NO HAY VALORES QUE BUSCAR", 2); }
+        }
+
+        private void metodoPagocxc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            metodoDePago(metodoPagocxc.SelectedIndex);
         }
     }
 }

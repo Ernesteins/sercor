@@ -91,7 +91,6 @@ C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.editarUsuario.resourc
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.imprimir.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.nuevoUsuario.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.SDL.resources
-C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.csprojAssemblyReference.cache
 C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\obj\Debug\sercor.csprojAssemblyReference.cache
 C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\obj\Debug\sercor.Administrativo.resources
 C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\obj\Debug\sercor.agregar_producto.resources
@@ -132,3 +131,7 @@ C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\bin\Debug\Shockwav
 C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\bin\Debug\stdole.dll
 C:\Users\gabri\OneDrive\Documentos\Repositorios\Sercor\sercor\obj\Debug\sercor.csproj.CopyComplete
+C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\sercor.exe.manifest
+C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\sercor.application
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.exe.manifest
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.application

@@ -11,7 +11,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-            "select ID_CUENTA, ID_CLIENTE, (SELECT NOMBRE FROM CLIENTE WHERE ID_CLIENTE = ID_CLIENTE) AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA;"), conexion);
+            "select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE;"), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -32,14 +32,51 @@ namespace sercor
             return _lista;
         }
 
+        public static List<CuentaN> ObtenerFiltro(int SaldoEstado)
+        {
+            List<CuentaN> _lista = new List<CuentaN>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando;
+            if (SaldoEstado == 1)
+            {
+                _comando = new MySqlCommand(String.Format("select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE and saldo != '0' ;"), conexion);
+            }
+            else if (SaldoEstado == 2)
+            {
+                _comando = new MySqlCommand(String.Format("select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE and saldo = '0' ;"), conexion);
+            }
+            else
+            {
+                _comando = new MySqlCommand(String.Format("select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE;"), conexion);
+            }
+            
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                CuentaN cxcCuenta = new CuentaN();
+
+                cxcCuenta.ID_CUENTA = _reader.GetInt32(0);
+                cxcCuenta.ID_CLIENTE = _reader.GetString(1);
+                cxcCuenta.NOMBRE_CLIENTE = _reader.GetString(2);
+                cxcCuenta.ID_DOCUMENTO = _reader.GetInt32(3);
+                cxcCuenta.TOTAL = _reader.GetDecimal(4);
+                cxcCuenta.SALDO = _reader.GetDecimal(5);
+                cxcCuenta.ESTADO_P = _reader.GetInt32(6);
+
+                _lista.Add(cxcCuenta);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static CuentaN ObtenerCuentaNporID_cuenta(int codigo)
         {
             CuentaN cxcCuenta = new CuentaN();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-            "select ID_CUENTA, ID_CLIENTE, (SELECT NOMBRE FROM CLIENTE WHERE ID_CLIENTE = ID_CLIENTE) AS NOMBRE_CLIENTE, " +
-            "ID_FACTURA AS ID_DOCUMENTO,(SELECT TIPO FROM FACTURA WHERE ID_FACTURA = ID_DOCUMENTO) AS TIPO, TOTAL, SALDO, ESTADO_P FROM CUENTA WHERE ID_CUENTA ='{0}';",codigo), conexion);
+            "select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, CUENTA.ID_FACTURA AS ID_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO, ESTADO_P FROM CUENTA, CLIENTE, FACTURA WHERE FACTURA.ID_FACTURA = CUENTA.ID_FACTURA AND CUENTA.ID_CLIENTE= CLIENTE.ID_CLIENTE AND CUENTA.ID_CUENTA ='{0}';", codigo), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             _reader.Read();
 
@@ -54,6 +91,9 @@ namespace sercor
 
             return cxcCuenta;
         }
+
+
+
         public static Cuenta ObtenerCuentaporID_cuenta(int codigo)
         {
             Cuenta cxcCuenta = new Cuenta();
@@ -221,6 +261,8 @@ namespace sercor
             conexion.Close();
             return retorno;
         }
+
+        
 
     }
 }
