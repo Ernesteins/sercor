@@ -521,6 +521,7 @@
             this.txt_Abonocxc.TabIndex = 40;
             this.txt_Abonocxc.Text = "0";
             this.txt_Abonocxc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_Abonocxc.TextChanged += new System.EventHandler(this.txt_Abonocxc_TextChanged);
             // 
             // label25
             // 

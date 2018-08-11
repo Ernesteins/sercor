@@ -492,6 +492,7 @@ namespace sercor
         private void metodoDePago(int index)//Para metodo de pago
         {
             cmbTipo.SelectedIndex = 0;
+            cmbTipocxc.SelectedIndex = 0;
 
             txtTarjeta.Enabled = false;
             txtRef.Enabled = false;
@@ -1361,5 +1362,21 @@ namespace sercor
             }
         }
 
+        private void txt_Abonocxc_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToDecimal(txt_Abonocxc.Text) > Convert.ToDecimal(txtSaldocxc.Text))
+                {
+                    toogleError(true, "El abono no puede ser mayor al saldo", 1);
+                    txt_Abonocxc.Text = "0";
+                }
+            }
+            catch (System.FormatException)
+            {
+                toogleError(true, "El abono debe ser mayor o igual a 0", 2);
+                txt_Abonocxc.Text = "0";
+            }
+        }
     }
 }
