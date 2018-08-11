@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -117,10 +114,6 @@ namespace sercor
                 "insert into sercordb.trabajos (ID_TRABAJO, ID_FACTURA, ID_CUENTA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
                 "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
                 tTrabajo.ID,tTrabajo.FACTURA,tTrabajo.CUENTA, tTrabajo.FECHA_INICIO,tTrabajo.NOMBRE,tTrabajo.ARMAZON,tTrabajo.LUNA,tTrabajo.ESTADO,tTrabajo.FECHA_ENTREGA), conexion);
-            MessageBox.Show(string.Format(
-                "insert into sercordb.trabajos (ID_TRABAJO, ID_FACTURA, ID_CUENTA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
-                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
-                tTrabajo.ID, tTrabajo.FACTURA, tTrabajo.CUENTA, tTrabajo.FECHA_INICIO, tTrabajo.NOMBRE, tTrabajo.ARMAZON, tTrabajo.LUNA, tTrabajo.ESTADO, tTrabajo.FECHA_ENTREGA));
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error

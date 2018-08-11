@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
+
 
 
 namespace sercor
@@ -1174,15 +1169,41 @@ namespace sercor
                 //en caso de un abono en el momento de crear la factura
                 if (Convert.ToDecimal(txtAbono.Text) > 0)
                 {
-                    Pago nPago = new Pago();
-                    nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
-                    nPago.ID_CUENTA = nCuenta.ID_CUENTA;
-                    nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
-                    nPago.TIPO_PAGO = metodoPago.SelectedIndex;
-                    nPago.MONTO = Convert.ToDecimal(txtAbono.Text);
-                    if(nPago.TIPO_PAGO==0)nPago.DESCRIPCION = "EFECTIVO";//usar la descripcion de la zona de pago
-                    CuentaDBM.abono(nCuenta.ID_CUENTA, nPago.MONTO);
-                    PagoDBM.Pagar(nPago);
+                    if (metodoPago.SelectedIndex >= 0|| metodoPago.SelectedIndex < 2)
+                    {
+                        Pago nPago = new Pago();
+                        nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
+                        nPago.ID_CUENTA = nCuenta.ID_CUENTA;
+                        nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+                        nPago.TIPO_PAGO = metodoPago.SelectedIndex;
+                        nPago.MONTO = Convert.ToDecimal(txtAbono.Text);
+                        if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
+                        else if (nPago.TIPO_PAGO == 1)
+                        {
+                            nPago.TARJETA = txtTarjeta.Text;
+                            nPago.REF = txtRef.Text;
+                            nPago.DESCRIPCION = "PAGO CON TARJETA DE CREDITO";
+                            switch (cmbTipo.SelectedIndex)
+                            {
+                                case 0: nPago.TIPO = "Corriente";break;
+                                case 1: nPago.TIPO = "Diferido";break;
+                                default: MessageBox.Show("Tipo de Pago con tarjeta no seleccionado", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); break;
+                            }
+                                
+                        }
+                        else if (nPago.TIPO_PAGO == 2)
+                        {
+                            nPago.BANCO = txtBanco.Text;
+                            nPago.CHEQUE = txtCheque.Text;
+                            nPago.DESCRIPCION = "PAGO CON CHEQUE";
+                        }
+                        CuentaDBM.abono(nCuenta.ID_CUENTA, nPago.MONTO);
+                        PagoDBM.Pagar(nPago);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Modo de Pago no seleccionado", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch (System.FormatException)
@@ -1194,6 +1215,7 @@ namespace sercor
             btnAllProducts_Click(null, null); 
         }
 
+  
         private void CrearTrabajo()
         {
 

@@ -1,10 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace sercor
 {
@@ -15,8 +11,8 @@ namespace sercor
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "INSERT INTO PAGO VALUES ('{0}','{1}','{2}', '{3}','{4}','{5}')",
-                pPago.ID_PAGO,pPago.ID_CUENTA, pPago.FECHA_ABONO, pPago.TIPO_PAGO, pPago.MONTO, pPago.DESCRIPCION),
+                "INSERT INTO PAGO VALUES ('{0}','{1}','{2}', '{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
+                pPago.ID_PAGO,pPago.ID_CUENTA, pPago.FECHA_ABONO, pPago.TIPO_PAGO, pPago.MONTO, pPago.DESCRIPCION, pPago.TARJETA, pPago.TIPO, pPago.REF, pPago.BANCO, pPago.CHEQUE),
                 conexion);
             retorno = comando.ExecuteNonQuery();
             //1 insertado | 0 error
@@ -89,5 +85,47 @@ namespace sercor
             conexion.Close();
             return last;
         }
+
+        /*public static int PagarCheque(Pago pPago)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "INSERT INTO PAGO VALUES ('{0}','{1}','{2}', '2','{4}','{5}','{6}','{7}')",
+                pPago.ID_PAGO, pPago.ID_CUENTA, pPago.FECHA_ABONO, pPago.TIPO_PAGO, pPago.MONTO, pPago.DESCRIPCION, pPago.BANCO, pPago.CHEQUE),
+                conexion);
+            retorno = comando.ExecuteNonQuery();
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
+        public static int PagarTarjeta(Pago pPago)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "INSERT INTO PAGO VALUES ('{0}','{1}','{2}', '1','{4}','{5}','{6}','{7}','{8}')",
+                pPago.ID_PAGO, pPago.ID_CUENTA, pPago.FECHA_ABONO, pPago.TIPO_PAGO, pPago.MONTO, pPago.DESCRIPCION, pPago.TARJETA, pPago.TIPO,pPago.REF),
+                conexion);
+            retorno = comando.ExecuteNonQuery();
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
+        public static int PagarEfectivo(Pago pPago)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "INSERT INTO PAGO VALUES ('{0}','{1}','{2}', '0','{4}','{5}')",
+                pPago.ID_PAGO, pPago.ID_CUENTA, pPago.FECHA_ABONO, pPago.TIPO_PAGO, pPago.MONTO, pPago.DESCRIPCION),
+                conexion);
+            retorno = comando.ExecuteNonQuery();
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }*/
     }
 }
