@@ -1339,42 +1339,50 @@ namespace sercor
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Cuenta cxcCuenta = new Cuenta();
-            cxcCuenta.ID_CUENTA = Convert.ToInt32(label_idcuenta.Text);
-            cxcCuenta = CuentaDBM.ObtenerCuentaporID_cuenta(cxcCuenta.ID_CUENTA);
-            Pago nPago = new Pago();
-            nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
-            nPago.ID_CUENTA = cxcCuenta.ID_CUENTA;
-            nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
-            nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
-            nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
-            if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
-            else if (nPago.TIPO_PAGO == 1)
+            try
             {
-                nPago.TARJETA = txtTarjetacxc.Text;
-                nPago.REF = txtRefcxc.Text;
-                nPago.DESCRIPCION = "PAGO CON TARJETA DE CREDITO";
-                switch (cmbTipocxc.SelectedIndex)
+                Cuenta cxcCuenta = new Cuenta();
+                cxcCuenta.ID_CUENTA = Convert.ToInt32(label_idcuenta.Text);
+                cxcCuenta = CuentaDBM.ObtenerCuentaporID_cuenta(cxcCuenta.ID_CUENTA);
+                Pago nPago = new Pago();
+                nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
+                nPago.ID_CUENTA = cxcCuenta.ID_CUENTA;
+                nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+                nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
+                nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
+                if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
+                else if (nPago.TIPO_PAGO == 1)
                 {
-                    case 0: nPago.TIPO = "Corriente"; break;
-                    case 1: nPago.TIPO = "Diferido"; break;
-                    default: MessageBox.Show("Tipo de Pago con tarjeta no seleccionado", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); break;
+                    nPago.TARJETA = txtTarjetacxc.Text;
+                    nPago.REF = txtRefcxc.Text;
+                    nPago.DESCRIPCION = "PAGO CON TARJETA DE CREDITO";
+                    switch (cmbTipocxc.SelectedIndex)
+                    {
+                        case 0: nPago.TIPO = "Corriente"; break;
+                        case 1: nPago.TIPO = "Diferido"; break;
+                        default: MessageBox.Show("Tipo de Pago con tarjeta no seleccionado", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); break;
+                    }
+
+                }
+                else if (nPago.TIPO_PAGO == 2)
+                {
+                    nPago.BANCO = txtBancocxc.Text;
+                    nPago.CHEQUE = txtChequecxc.Text;
+                    nPago.DESCRIPCION = "PAGO CON CHEQUE";
                 }
 
+                CuentaDBM.abono(cxcCuenta.ID_CUENTA, nPago.MONTO);
+                PagoDBM.Pagar(nPago);
+                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cxcCuenta.ID_CUENTA);
+                llenarcxc();
+                vaciarcxc();
             }
-            else if (nPago.TIPO_PAGO == 2)
+            catch (System.FormatException)
             {
-                nPago.BANCO = txtBancocxc.Text;
-                nPago.CHEQUE = txtChequecxc.Text;
-                nPago.DESCRIPCION = "PAGO CON CHEQUE";
+                MessageBox.Show("Seleccione una cuenta por cobrar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            CuentaDBM.abono(cxcCuenta.ID_CUENTA, nPago.MONTO);
-            PagoDBM.Pagar(nPago);
-            dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cxcCuenta.ID_CUENTA);
-            llenarcxc();
-            vaciarcxc();
         }
+
         private void vaciarcxc()
         {
             txt_Abonocxc.Text = "0";
@@ -1387,12 +1395,6 @@ namespace sercor
             label_iddoc.Text = "####";
             label_idcliente.Text = "#Id cliente";
             label_idcuenta.Text = "#Id cuenta";
-        }
-
-        private void dgvCXC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-
         }
 
         private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
