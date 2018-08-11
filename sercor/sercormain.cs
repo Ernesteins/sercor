@@ -1335,12 +1335,31 @@ namespace sercor
             nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
             nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
             nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
-            if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "EFECTIVO";//usar la descripcion de la zona de pago
+            if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
+            else if (nPago.TIPO_PAGO == 1)
+            {
+                nPago.TARJETA = txtTarjetacxc.Text;
+                nPago.REF = txtRefcxc.Text;
+                nPago.DESCRIPCION = "PAGO CON TARJETA DE CREDITO";
+                switch (cmbTipocxc.SelectedIndex)
+                {
+                    case 0: nPago.TIPO = "Corriente"; break;
+                    case 1: nPago.TIPO = "Diferido"; break;
+                    default: MessageBox.Show("Tipo de Pago con tarjeta no seleccionado", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); break;
+                }
+
+            }
+            else if (nPago.TIPO_PAGO == 2)
+            {
+                nPago.BANCO = txtBancocxc.Text;
+                nPago.CHEQUE = txtChequecxc.Text;
+                nPago.DESCRIPCION = "PAGO CON CHEQUE";
+            }
+
             CuentaDBM.abono(cxcCuenta.ID_CUENTA, nPago.MONTO);
             PagoDBM.Pagar(nPago);
             dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cxcCuenta.ID_CUENTA);
             llenarcxc();
-
         }
 
         private void dgvCXC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1368,11 +1387,14 @@ namespace sercor
                 label_Nombre.Text = cuentaseleccionada.NOMBRE_CLIENTE;
                 label_TipoDoc.Text = cuentaseleccionada.TIPO.ToString();
                 label_iddoc.Text = cuentaseleccionada.ID_DOCUMENTO.ToString();
+                txtTotalcxc.Text = cuentaseleccionada.TOTAL.ToString();
+                txtSaldocxc.Text = cuentaseleccionada.SALDO.ToString();
             }
             catch (System.NullReferenceException)
             {
                 MessageBox.Show("No existen Cuentas para agregar", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
     }
 }

@@ -68,20 +68,20 @@
             this.label_Nombre = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtSaldocxc = new System.Windows.Forms.TextBox();
             this.txt_Abonocxc = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtTotalcxc = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBancocxc = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtChequecxc = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbTipocxc = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTarjetacxc = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtRefcxc = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.metodoPagocxc = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -351,20 +351,20 @@
             this.panel14.Controls.Add(this.label_Nombre);
             this.panel14.Controls.Add(this.label26);
             this.panel14.Controls.Add(this.label23);
-            this.panel14.Controls.Add(this.textBox6);
+            this.panel14.Controls.Add(this.txtSaldocxc);
             this.panel14.Controls.Add(this.txt_Abonocxc);
             this.panel14.Controls.Add(this.label25);
-            this.panel14.Controls.Add(this.textBox8);
+            this.panel14.Controls.Add(this.txtTotalcxc);
             this.panel14.Controls.Add(this.label6);
-            this.panel14.Controls.Add(this.textBox1);
+            this.panel14.Controls.Add(this.txtBancocxc);
             this.panel14.Controls.Add(this.label8);
-            this.panel14.Controls.Add(this.textBox2);
+            this.panel14.Controls.Add(this.txtChequecxc);
             this.panel14.Controls.Add(this.label17);
-            this.panel14.Controls.Add(this.comboBox1);
+            this.panel14.Controls.Add(this.cmbTipocxc);
             this.panel14.Controls.Add(this.label21);
-            this.panel14.Controls.Add(this.textBox3);
+            this.panel14.Controls.Add(this.txtTarjetacxc);
             this.panel14.Controls.Add(this.label22);
-            this.panel14.Controls.Add(this.textBox5);
+            this.panel14.Controls.Add(this.txtRefcxc);
             this.panel14.Controls.Add(this.dateTimePicker1);
             this.panel14.Controls.Add(this.metodoPagocxc);
             this.panel14.Controls.Add(this.label24);
@@ -496,18 +496,18 @@
             this.label23.TabIndex = 43;
             this.label23.Text = "Saldo";
             // 
-            // textBox6
+            // txtSaldocxc
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(381, 270);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(77, 22);
-            this.textBox6.TabIndex = 42;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSaldocxc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtSaldocxc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSaldocxc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSaldocxc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldocxc.Location = new System.Drawing.Point(381, 270);
+            this.txtSaldocxc.Name = "txtSaldocxc";
+            this.txtSaldocxc.ReadOnly = true;
+            this.txtSaldocxc.Size = new System.Drawing.Size(77, 22);
+            this.txtSaldocxc.TabIndex = 42;
+            this.txtSaldocxc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_Abonocxc
             // 
@@ -535,18 +535,18 @@
             this.label25.TabIndex = 41;
             this.label25.Text = "Total";
             // 
-            // textBox8
+            // txtTotalcxc
             // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox8.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(87, 270);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(77, 22);
-            this.textBox8.TabIndex = 39;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalcxc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtTotalcxc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalcxc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtTotalcxc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalcxc.Location = new System.Drawing.Point(87, 270);
+            this.txtTotalcxc.Name = "txtTotalcxc";
+            this.txtTotalcxc.ReadOnly = true;
+            this.txtTotalcxc.Size = new System.Drawing.Size(77, 22);
+            this.txtTotalcxc.TabIndex = 39;
+            this.txtTotalcxc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -562,18 +562,18 @@
             this.label6.TabIndex = 38;
             this.label6.Text = "Banco";
             // 
-            // textBox1
+            // txtBancocxc
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(307, 164);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 22);
-            this.textBox1.TabIndex = 37;
+            this.txtBancocxc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtBancocxc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBancocxc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtBancocxc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBancocxc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtBancocxc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBancocxc.Location = new System.Drawing.Point(307, 164);
+            this.txtBancocxc.Name = "txtBancocxc";
+            this.txtBancocxc.Size = new System.Drawing.Size(151, 22);
+            this.txtBancocxc.TabIndex = 37;
             // 
             // label8
             // 
@@ -589,18 +589,18 @@
             this.label8.TabIndex = 36;
             this.label8.Text = "Cheque";
             // 
-            // textBox2
+            // txtChequecxc
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(307, 192);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 22);
-            this.textBox2.TabIndex = 35;
+            this.txtChequecxc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtChequecxc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtChequecxc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtChequecxc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtChequecxc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtChequecxc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChequecxc.Location = new System.Drawing.Point(307, 192);
+            this.txtChequecxc.Name = "txtChequecxc";
+            this.txtChequecxc.Size = new System.Drawing.Size(151, 22);
+            this.txtChequecxc.TabIndex = 35;
             // 
             // label17
             // 
@@ -616,18 +616,18 @@
             this.label17.TabIndex = 34;
             this.label17.Text = "Tipo";
             // 
-            // comboBox1
+            // cmbTipocxc
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbTipocxc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cmbTipocxc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipocxc.FormattingEnabled = true;
+            this.cmbTipocxc.Items.AddRange(new object[] {
             "Corriente",
             "Diferido"});
-            this.comboBox1.Location = new System.Drawing.Point(87, 219);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 24);
-            this.comboBox1.TabIndex = 33;
+            this.cmbTipocxc.Location = new System.Drawing.Point(87, 219);
+            this.cmbTipocxc.Name = "cmbTipocxc";
+            this.cmbTipocxc.Size = new System.Drawing.Size(151, 24);
+            this.cmbTipocxc.TabIndex = 33;
             // 
             // label21
             // 
@@ -643,18 +643,18 @@
             this.label21.TabIndex = 32;
             this.label21.Text = "Tarjeta";
             // 
-            // textBox3
+            // txtTarjetacxc
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(87, 163);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(151, 22);
-            this.textBox3.TabIndex = 31;
+            this.txtTarjetacxc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtTarjetacxc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtTarjetacxc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtTarjetacxc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTarjetacxc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtTarjetacxc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTarjetacxc.Location = new System.Drawing.Point(87, 163);
+            this.txtTarjetacxc.Name = "txtTarjetacxc";
+            this.txtTarjetacxc.Size = new System.Drawing.Size(151, 22);
+            this.txtTarjetacxc.TabIndex = 31;
             // 
             // label22
             // 
@@ -670,18 +670,18 @@
             this.label22.TabIndex = 30;
             this.label22.Text = "Ref:";
             // 
-            // textBox5
+            // txtRefcxc
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox5.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(87, 191);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(151, 22);
-            this.textBox5.TabIndex = 29;
+            this.txtRefcxc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtRefcxc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtRefcxc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtRefcxc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtRefcxc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtRefcxc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRefcxc.Location = new System.Drawing.Point(87, 191);
+            this.txtRefcxc.Name = "txtRefcxc";
+            this.txtRefcxc.Size = new System.Drawing.Size(151, 22);
+            this.txtRefcxc.TabIndex = 29;
             // 
             // dateTimePicker1
             // 
@@ -2665,20 +2665,20 @@
         private System.Windows.Forms.Label label_Nombre;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtSaldocxc;
         private System.Windows.Forms.TextBox txt_Abonocxc;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtTotalcxc;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBancocxc;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtChequecxc;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbTipocxc;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTarjetacxc;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtRefcxc;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dgvCXCdetalle;
         private System.Windows.Forms.Label label_iddoc;
