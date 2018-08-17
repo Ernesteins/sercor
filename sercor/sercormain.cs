@@ -1025,6 +1025,22 @@ namespace sercor
             return ultimoIndex.INDICE;
         }
 
+        private void limpiaformfactura()
+        {
+            txtId.Text = "";
+            txtName.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+            ordenTipo.SelectedIndex = 0;
+            metodoPago.SelectedIndex = 0;
+            txtSubtotal.Text = "";
+            txtIva.Text = "";
+            txtTotal.Text = "";
+            txtAbono.Text = "0";
+            txtSaldo.Text = "";
+            txtDescuento.Text = "0";
+        }
+
         //primero se crea el CLiente 
         //luego la cuenta 
         //luego el detalle (con sus productos) 
@@ -1225,7 +1241,9 @@ namespace sercor
                 //Cambiar éste mensaje de error
             }
 
-            btnAllProducts_Click(null, null); 
+            btnAllProducts_Click(null, null);
+            limpiaformfactura();
+            
         }
 
   
