@@ -270,14 +270,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="745440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="747488">
       <assemblyIdentity name="sercor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hWI0i/CRedSJEFKdUIgueem+805nXB6ynO1Tdetg+Qo=</dsig:DigestValue>
+        <dsig:DigestValue>bRp10vNgdOLUoLgqAyNd9/VqTUAlvRhVnVBRu5VbZ9s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -350,13 +350,13 @@
       <dsig:DigestValue>r8t40zTpx/Tmb/siU5qFzwDqmqogZNZmyaVFRIYOv+k=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Docs\genesis4Agosto.sql" size="10814">
+  <file name="Docs\genesis4Agosto.sql" size="10980">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>gCLmSwFa07G5EUu21tVSWDMMutU+AnEu1BPp0JNjBXw=</dsig:DigestValue>
+      <dsig:DigestValue>Rt42ujdahpz0GTuv5HddtvQsUJmNCxA8k/R1qKQlVxw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Docs\modelo sercor 29-Julio.png" size="93889">

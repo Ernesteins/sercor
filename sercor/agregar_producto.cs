@@ -41,6 +41,8 @@ namespace sercor
             }
             else
             {
+                
+                
                 try
                 {
                     Producto pProducto = new Producto();
@@ -89,6 +91,13 @@ namespace sercor
                     int resultado = ProductoDBM.Agregar(pProducto);
                     if (resultado > 0)
                     {
+                        Registro nregistro = new Registro();
+                        nregistro.ID_PRODUCTO = pProducto.COD;
+                        nregistro.FECHA = FacturaDBM.obtenerFechaSistema();
+                        nregistro.CANTIDAD = pProducto.EXISTENCIA;
+                        nregistro.IDREGISTRO = RegistroDBM.UltimoRegistro() + 1;
+                        RegistroDBM.Agregar(nregistro);
+
                         //MessageBox.Show("Producto guardado con exito!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         mensaje = "Producto guardado con exito";
                         this.Close();
@@ -106,10 +115,7 @@ namespace sercor
                 }
                 catch (MySql.Data.MySqlClient.MySqlException) {
                     MessageBox.Show("Producto existente");
-                }
-
-
-                
+                }              
             }   
         }
     }

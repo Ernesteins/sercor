@@ -1129,6 +1129,12 @@ namespace sercor
                     nProducto.CANTIDAD = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
                     ProductoVendidoDBM.Agregar(nProducto);
 
+                    Registro nRegistro = new Registro();
+                    nRegistro.IDREGISTRO = RegistroDBM.UltimoRegistro() + 1;
+                    nRegistro.FECHA = FacturaDBM.obtenerFechaSistema();
+                    nRegistro.ID_PRODUCTO_V = nProducto.COD;
+                    nRegistro.CANTIDAD = nProducto.CANTIDAD;
+                    RegistroDBM.Agregar(nRegistro);
                     ProductoDBM.ActualizarStock(ProductoDBM.ObtenerProductoCod(codigoInventario).EXISTENCIA-nProducto.CANTIDAD, codigoInventario);
                 }
 

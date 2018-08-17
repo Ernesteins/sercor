@@ -2,6 +2,7 @@
 -- Sat Aug  4 05:06:18 2018
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
+-- Created by: CKPD Systems
 drop database sercordb;
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -283,5 +284,6 @@ grant DELETE, INSERT, SELECT, UPDATE on producto to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto_vendido to 'sercoruser'@'localhost';
-grant INSERT, SELECT on pago to 'sercoruser'@'localhost';	
+grant DELETE, INSERT, SELECT, UPDATE on registro_inventario to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on pago to 'sercoruser'@'localhost';	
 	

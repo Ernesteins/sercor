@@ -166,8 +166,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="registro.cs" />
-    <Compile Include="registroDBM.cs" />
+    <Compile Include="Registro.cs" />
+    <Compile Include="RegistroDBM.cs" />
     <Compile Include="SDL.cs">
       <SubType>Form</SubType>
     </Compile>

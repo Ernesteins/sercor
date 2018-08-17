@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sercor
 {
-    class registro
+    class Registro
     {
         public int IDREGISTRO { get; set; }
         public string FECHA { get; set; }
@@ -14,7 +14,7 @@ namespace sercor
         public int ID_PRODUCTO_V { get; set; }
         public int CANTIDAD{ get; set; }
 
-        public registro(int iDREGISTRO, string fECHA, string iD_PRODUCTO, int iD_PRODUCTO_V, int cantidad)
+        public Registro(int iDREGISTRO, string fECHA, string iD_PRODUCTO, int iD_PRODUCTO_V, int cantidad)
         {
             this.IDREGISTRO = iDREGISTRO;
             this.FECHA = fECHA;
@@ -23,7 +23,7 @@ namespace sercor
             this.CANTIDAD= cantidad;
         }
 
-        public registro() { }
+        public Registro() { }
     }
     
 }
