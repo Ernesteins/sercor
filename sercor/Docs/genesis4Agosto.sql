@@ -251,6 +251,7 @@ CREATE TABLE IF NOT EXISTS `sercordb`.`REGISTRO_INVENTARIO` (
   `FECHA` DATETIME NOT NULL,
   `ID_PRODUCTO` CHAR(16) NULL,
   `ID_PRODUCTO_V` INT(11) NULL,
+  `CANTIDAD` INT(11) NULL,
   PRIMARY KEY (`IDREGISTRO`),
   INDEX `fk_REGISTRO_INVENTARIO_producto1_idx` (`ID_PRODUCTO` ASC),
   INDEX `fk_REGISTRO_INVENTARIO_producto_vendido1_idx` (`ID_PRODUCTO_V` ASC),
@@ -283,3 +284,4 @@ grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto_vendido to 'sercoruser'@'localhost';
 grant INSERT, SELECT on pago to 'sercoruser'@'localhost';	
+	
