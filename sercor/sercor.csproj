@@ -124,6 +124,8 @@
     <Compile Include="editar_producto.Designer.cs">
       <DependentUpon>editar_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Egreso.cs" />
+    <Compile Include="EgresoDBM.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="factura1.cs">
       <AutoGen>True</AutoGen>

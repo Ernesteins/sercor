@@ -36,3 +36,9 @@ grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto_vendido to 'sercoruser'@'localhost';
 grant INSERT, SELECT on pago to 'sercoruser'@'localhost';
+
+
+/*CONSULTAS DE REPORTES*/
+INVENTARIO :  "select IDREGISTRO, FECHA, registro_inventario.ID_PRODUCTO, ID_PRODUCTOINVENTARIO, registro_inventario.CANTIDAD from registro_inventario, producto_vendido where ID_PRODUCTO_V = producto_vendido.ID_PRODUCTO;"
+FACTURACION:  "select TIPO AS TIPO_DE_DOCUMENTO, ID_FACTURA AS ID_DOCUMENTO, ID_CLIENTE, ID_USUARIO, IVA, TOTAL, FECHA FROM FACTURA;"
+MOVIMIENTO DE CAJA: /*2 secciones*/ /*-ingresos arriba*/"select * pago" /*-egresos abajo*/"select * from egresos"

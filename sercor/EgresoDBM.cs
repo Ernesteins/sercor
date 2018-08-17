@@ -4,29 +4,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace sercor
 {
-    class RegistroDBM
+    class EgresoDBM
     {
-        public static int Agregar(Registro pregistro)
+        public static int Agregar(Egreso pEgreso)
         {
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "INSERT INTO REGISTRO_INVENTARIO VALUES ('{0}','{1}','{2}', '{3}', '{4}')",
-                pregistro.IDREGISTRO, pregistro.FECHA, pregistro.ID_PRODUCTO, pregistro.ID_PRODUCTO_V,pregistro.CANTIDAD),
+                "INSERT INTO EGRESO VALUES ('{0}','{1}','{2}', '{3}', '{4}','{5}')",
+                 pEgreso.ID_CAJA, pEgreso.FECHA_EGRESO, pEgreso.TIPO_EGRESO, pEgreso.MONTO, pEgreso.BENEFICIARIO, pEgreso.DESCRIPCION),
                 conexion);
             retorno = comando.ExecuteNonQuery();
             //1 insertado | 0 error
             conexion.Close();
             return retorno;
         }
-        public static int UltimoRegistro()
+
+        public static int UltimoEgreso()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
-            MySqlCommand comando = new MySqlCommand("select MAX(IDREGISTRO) from REGISTRO_INVENTARIO;", conexion);
+            MySqlCommand comando = new MySqlCommand("select MAX(ID_CAJA) from EGRESO;", conexion);
             MySqlDataReader _reader = comando.ExecuteReader();
             int last = 0;
             _reader.Read();
@@ -43,5 +43,6 @@ namespace sercor
             conexion.Close();
             return last;
         }
+
     }
 }

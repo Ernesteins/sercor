@@ -11,10 +11,10 @@ namespace sercor
         public int IDREGISTRO { get; set; }
         public string FECHA { get; set; }
         public string ID_PRODUCTO { get; set; }
-        public int ID_PRODUCTO_V { get; set; }
+        public string ID_PRODUCTO_V { get; set; }
         public int CANTIDAD{ get; set; }
 
-        public Registro(int iDREGISTRO, string fECHA, string iD_PRODUCTO, int iD_PRODUCTO_V, int cantidad)
+        public Registro(int iDREGISTRO, string fECHA, string iD_PRODUCTO, string iD_PRODUCTO_V, int cantidad)
         {
             this.IDREGISTRO = iDREGISTRO;
             this.FECHA = fECHA;

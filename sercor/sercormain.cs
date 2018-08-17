@@ -1033,12 +1033,12 @@ namespace sercor
             txtDireccion.Text = "";
             ordenTipo.SelectedIndex = 0;
             metodoPago.SelectedIndex = 0;
-            txtSubtotal.Text = "";
-            txtIva.Text = "";
-            txtTotal.Text = "";
-            txtAbono.Text = "0";
-            txtSaldo.Text = "";
-            txtDescuento.Text = "0";
+            txtSubtotal.Text = "0.00";
+            txtIva.Text = "0.00";
+            txtTotal.Text = "0.00";
+            txtAbono.Text = "0.00";
+            txtSaldo.Text = "0.00";
+            txtDescuento.Text = "0.00";
         }
 
         //primero se crea el CLiente 
@@ -1100,7 +1100,7 @@ namespace sercor
                 CuentaDBM.Agregar(nCuenta);
 
                 nFactura.ID_CUENTA = nCuenta.ID_CUENTA;
-                nFactura.IVA = Convert.ToDecimal(ivaConst);
+                nFactura.IVA = Convert.ToDecimal(txtIva.Text);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
                 nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
                 nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
@@ -1132,7 +1132,7 @@ namespace sercor
                     Registro nRegistro = new Registro();
                     nRegistro.IDREGISTRO = RegistroDBM.UltimoRegistro() + 1;
                     nRegistro.FECHA = FacturaDBM.obtenerFechaSistema();
-                    nRegistro.ID_PRODUCTO_V = nProducto.COD;
+                    nRegistro.ID_PRODUCTO_V = nProducto.COD.ToString();
                     nRegistro.CANTIDAD = nProducto.CANTIDAD;
                     RegistroDBM.Agregar(nRegistro);
                     ProductoDBM.ActualizarStock(ProductoDBM.ObtenerProductoCod(codigoInventario).EXISTENCIA-nProducto.CANTIDAD, codigoInventario);

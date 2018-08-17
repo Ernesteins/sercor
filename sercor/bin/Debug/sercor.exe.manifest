@@ -277,7 +277,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bRp10vNgdOLUoLgqAyNd9/VqTUAlvRhVnVBRu5VbZ9s=</dsig:DigestValue>
+        <dsig:DigestValue>wZLXK+zC0r3WXQShBRLwdf365ckmoxfZN05N6/a5XoY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -305,13 +305,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Docs\consultas.sql" size="2342">
+  <file name="Docs\consultas.sql" size="2727">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qokWjpRIngkF637GulrhRyiPRBqjx5a/bEH1ax9ofSw=</dsig:DigestValue>
+      <dsig:DigestValue>CnaT3ngPo3dmUTTRXf8/Y1G10+ddPZcujgS2baGBDdc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Docs\documentacion.txt" size="3012">
