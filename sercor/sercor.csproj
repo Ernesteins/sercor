@@ -133,6 +133,12 @@
       <DependentUpon>factura.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="facturacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>facturacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FacturaDBM.cs" />
     <Compile Include="FacturaImpresion.cs" />
     <Compile Include="FormInstance.cs" />
@@ -143,11 +149,22 @@
     <Compile Include="imprimir.Designer.cs">
       <DependentUpon>imprimir.cs</DependentUpon>
     </Compile>
+    <Compile Include="inventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inventario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="movimientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>movimientos.rpt</DependentUpon>
     </Compile>
     <Compile Include="nuevoUsuario.cs">
       <SubType>Form</SubType>
@@ -208,11 +225,23 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>factura1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="facturacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>facturacion.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="imprimir.resx">
       <DependentUpon>imprimir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="inventario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inventario.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="movimientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>movimientos.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="nuevoUsuario.resx">
       <DependentUpon>nuevoUsuario.cs</DependentUpon>

@@ -270,14 +270,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="747488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="749024">
       <assemblyIdentity name="sercor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wZLXK+zC0r3WXQShBRLwdf365ckmoxfZN05N6/a5XoY=</dsig:DigestValue>
+        <dsig:DigestValue>jjTr2SyYFrl4Hpha/0ML6KWA1Zc9xr9SkvB6UcG7+IM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -305,22 +305,22 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Docs\consultas.sql" size="2727">
+  <file name="Docs\consultas.sql" size="2844">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>CnaT3ngPo3dmUTTRXf8/Y1G10+ddPZcujgS2baGBDdc=</dsig:DigestValue>
+      <dsig:DigestValue>vYW3tNLUmn15UxeJQ2UB5rtvnvFc1o1xl/ybSDEkf2g=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Docs\documentacion.txt" size="3012">
+  <file name="Docs\documentacion.txt" size="2938">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tHP1RCopbR5mfrTvbkY6qHTKnp3AZQtadZYxJGyOGto=</dsig:DigestValue>
+      <dsig:DigestValue>UMEVfRzrCwlStf3vvJ8CU2aODnTU8UU2UgDKhqjXAk4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Docs\genesis.sql" size="17478">

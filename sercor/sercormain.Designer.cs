@@ -2146,10 +2146,10 @@
             // 
             this.pnReportes.BackColor = System.Drawing.Color.Gainsboro;
             this.pnReportes.Controls.Add(this.panel4);
-            this.pnReportes.Location = new System.Drawing.Point(943, 213);
+            this.pnReportes.Location = new System.Drawing.Point(60, 370);
             this.pnReportes.Margin = new System.Windows.Forms.Padding(0);
             this.pnReportes.Name = "pnReportes";
-            this.pnReportes.Size = new System.Drawing.Size(303, 93);
+            this.pnReportes.Size = new System.Drawing.Size(655, 93);
             this.pnReportes.TabIndex = 3;
             this.pnReportes.Visible = false;
             // 
@@ -2163,7 +2163,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(303, 93);
+            this.panel4.Size = new System.Drawing.Size(655, 93);
             this.panel4.TabIndex = 2;
             // 
             // button5
@@ -2176,7 +2176,7 @@
             this.button5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button5.Image = global::sercor.Properties.Resources.repeat;
-            this.button5.Location = new System.Drawing.Point(257, -18);
+            this.button5.Location = new System.Drawing.Point(433, -18);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(202, 123);
             this.button5.TabIndex = 45;
@@ -2195,7 +2195,7 @@
             this.button2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button2.Image = global::sercor.Properties.Resources.notepad;
-            this.button2.Location = new System.Drawing.Point(49, -18);
+            this.button2.Location = new System.Drawing.Point(225, -18);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 123);
             this.button2.TabIndex = 44;
@@ -2214,7 +2214,7 @@
             this.button1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Image = global::sercor.Properties.Resources.box;
-            this.button1.Location = new System.Drawing.Point(-159, -18);
+            this.button1.Location = new System.Drawing.Point(17, -18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(202, 123);
             this.button1.TabIndex = 43;
