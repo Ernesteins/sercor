@@ -1247,6 +1247,33 @@ namespace sercor
                 //Cambiar éste mensaje de error
             }
 
+            
+            List<FacturaImpresion> recibo = new List<FacturaImpresion>();
+
+            for (int i=0; i<vistaFactura.Rows.Count; i++)
+            {
+                FacturaImpresion elemento = new FacturaImpresion();
+                elemento.Codigo = vistaFactura.Rows[i].Cells[0].Value.ToString();
+                elemento.Descripcion= vistaFactura.Rows[i].Cells[1].Value.ToString();
+                elemento.Cantidad = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
+                elemento.ValorUnitario = Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
+                elemento.ValorTotal = Convert.ToDecimal(vistaFactura.Rows[i].Cells[4].Value);
+
+                recibo.Add(elemento);
+
+                MessageBox.Show(elemento.Codigo.ToString());
+            }
+
+
+
+
+            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value.Date, txtDireccion.Text, txtTelefono.Text,
+                Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
+                Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value.Date);
+            impresion.Show();
+
+            recibo.Clear();
+
             btnAllProducts_Click(null, null);
             limpiaformfactura();
             
