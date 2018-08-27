@@ -15,6 +15,9 @@ namespace sercor
         public Añadir_egreso()
         {
             InitializeComponent();
+            Autocomplete();
+            //SUPER IMPORTANTE D:
+            FormInstance.puntoDecimal();
         }
     }
 }
