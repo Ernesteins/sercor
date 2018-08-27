@@ -67,9 +67,9 @@ namespace sercor
             return pPago;
         }
 
-        public static Pago ReportePagos()
+        public static List<Pago> ReportePagos()
         {
-            Pago pPago = new Pago();
+            List<Pago> _lista = new List<Pago>();
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
                 "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION FROM PAGO ;"),
@@ -77,6 +77,7 @@ namespace sercor
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
+                Pago pPago = new Pago();
                 pPago.ID_CUENTA = _reader.GetInt32(0);
                 pPago.ID_CUENTA = _reader.GetInt32(1);
                 pPago.FECHA_ABONO = _reader.GetString(2);
@@ -85,7 +86,7 @@ namespace sercor
                 pPago.DESCRIPCION = _reader.GetString(5);
             }
             conexion.Close();
-            return pPago;
+            return _lista;
         }
 
         public static int UltimoPagoID()
