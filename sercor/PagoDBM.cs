@@ -84,6 +84,7 @@ namespace sercor
                 pPago.TIPO_PAGO = _reader.GetInt32(3);
                 pPago.MONTO = _reader.GetDecimal(4);
                 pPago.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pPago);
             }
             conexion.Close();
             return _lista;

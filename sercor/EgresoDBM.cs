@@ -42,6 +42,7 @@ namespace sercor
                 pEgreso.MONTO = _reader.GetDecimal(3);
                 pEgreso.BENEFICIARIO = _reader.GetString(4);
                 pEgreso.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pEgreso);
             }
             conexion.Close();
             return _lista;

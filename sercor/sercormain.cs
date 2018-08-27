@@ -289,7 +289,7 @@ namespace sercor
         private void btnMovimientos_Click(object sender, EventArgs e)
         {
             menuToggler(6);
-
+            llenareportes();
         }
 
         //Funcion de llenado de reportes
@@ -1552,7 +1552,7 @@ namespace sercor
             Añadir_egreso añadirEgreso = new Añadir_egreso();
             añadirEgreso.ShowDialog();
 
-            toogleError(true, añadirEgreso.mensaje, 2);
+            //toogleError(true, añadirEgreso.mensaje, 2);
         }
     }
 }
