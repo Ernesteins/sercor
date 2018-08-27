@@ -1554,5 +1554,21 @@ namespace sercor
 
             //toogleError(true, añadirEgreso.mensaje, 2);
         }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+        }
+
+        private void dtpReportefin_ValueChanged(object sender, EventArgs e)
+        {
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+        }
     }
 }
