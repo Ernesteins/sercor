@@ -22,7 +22,7 @@ namespace sercor
 
         private void carga()
         {
-            txtID.Text = EgresoDBM.UltimoEgreso().ToString()+1;
+            txtID.Text = EgresoDBM.UltimoEgreso()+1.ToString();
             ddltipo.SelectedIndex = 0;
             txtBeneficiario.Text = "";
             txtMonto.Text = "";
