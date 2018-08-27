@@ -1538,5 +1538,6 @@ namespace sercor
         {
             metodoDePago(metodoPagocxc.SelectedIndex);
         }
+
     }
 }
