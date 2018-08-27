@@ -93,6 +93,12 @@
     <Compile Include="agregar_producto.Designer.cs">
       <DependentUpon>agregar_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Añadir egreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Añadir egreso.Designer.cs">
+      <DependentUpon>Añadir egreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="bdComun.cs" />
     <Compile Include="cambiar_estado.cs">
       <SubType>Form</SubType>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Añadir egreso.resx">
+      <DependentUpon>Añadir egreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
