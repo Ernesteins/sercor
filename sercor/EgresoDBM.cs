@@ -30,7 +30,7 @@ namespace sercor
             
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-                "Select ID_PAGO, ID_CUENTA, FECHA_ABONO  , TIPO_PAGO, MONTO, DESCRIPCION, TARJETA, TIPO, REF , BANCO, CHEQUE from PAGO;"),
+                "Select ID_CAJA,FECHA_EGRESO,TIPO_EGRESO,BENEFICIARIO,MONTO,DESCRIPCION from egreso;"),
                 conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
