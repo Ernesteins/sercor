@@ -39,8 +39,8 @@ namespace sercor
                 pEgreso.ID_CAJA = _reader.GetInt32(0);
                 pEgreso.FECHA_EGRESO = _reader.GetString(1);
                 pEgreso.TIPO_EGRESO = _reader.GetString(2);
-                pEgreso.MONTO = _reader.GetDecimal(3);
-                pEgreso.BENEFICIARIO = _reader.GetString(4);
+                pEgreso.MONTO = _reader.GetDecimal(4);
+                pEgreso.BENEFICIARIO = _reader.GetString(3);
                 pEgreso.DESCRIPCION = _reader.GetString(5);
                 _lista.Add(pEgreso);
             }
@@ -62,8 +62,8 @@ namespace sercor
                 pEgreso.ID_CAJA = _reader.GetInt32(0);
                 pEgreso.FECHA_EGRESO = _reader.GetString(1);
                 pEgreso.TIPO_EGRESO = _reader.GetString(2);
-                pEgreso.MONTO = _reader.GetDecimal(3);
-                pEgreso.BENEFICIARIO = _reader.GetString(4);
+                pEgreso.MONTO = _reader.GetDecimal(4);
+                pEgreso.BENEFICIARIO = _reader.GetString(3);
                 pEgreso.DESCRIPCION = _reader.GetString(5);
                 _lista.Add(pEgreso);
             }

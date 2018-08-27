@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTime = new System.Windows.Forms.DateTimePicker();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.fecha = new System.Windows.Forms.DateTimePicker();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtMonto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtBeneficiario = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.metodoPago = new System.Windows.Forms.ComboBox();
+            this.ddltipo = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -56,24 +58,25 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "ID CAJA";
             // 
-            // dateTime
+            // fecha
             // 
-            this.dateTime.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
-            this.dateTime.CustomFormat = "yyyy-MM-dd";
-            this.dateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTime.Location = new System.Drawing.Point(99, 155);
-            this.dateTime.Name = "dateTime";
-            this.dateTime.Size = new System.Drawing.Size(254, 20);
-            this.dateTime.TabIndex = 15;
+            this.fecha.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
+            this.fecha.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.fecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.fecha.Location = new System.Drawing.Point(142, 157);
+            this.fecha.Name = "fecha";
+            this.fecha.Size = new System.Drawing.Size(254, 20);
+            this.fecha.TabIndex = 15;
             // 
-            // txtTelefono
+            // txtID
             // 
-            this.txtTelefono.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(99, 12);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(254, 22);
-            this.txtTelefono.TabIndex = 14;
+            this.txtID.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(142, 14);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(254, 22);
+            this.txtID.TabIndex = 14;
             // 
             // label2
             // 
@@ -95,20 +98,21 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(13, 69);
+            this.label4.Location = new System.Drawing.Point(13, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 22;
             this.label4.Text = "Monto";
             // 
-            // textBox3
+            // txtMonto
             // 
-            this.textBox3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(99, 67);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 22);
-            this.textBox3.TabIndex = 21;
+            this.txtMonto.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.Location = new System.Drawing.Point(142, 70);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(254, 22);
+            this.txtMonto.TabIndex = 21;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // label5
             // 
@@ -123,23 +127,23 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "Beneficiario";
             // 
-            // textBox4
+            // txtBeneficiario
             // 
-            this.textBox4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(99, 99);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(254, 22);
-            this.textBox4.TabIndex = 23;
+            this.txtBeneficiario.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBeneficiario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBeneficiario.Location = new System.Drawing.Point(142, 100);
+            this.txtBeneficiario.Name = "txtBeneficiario";
+            this.txtBeneficiario.Size = new System.Drawing.Size(254, 22);
+            this.txtBeneficiario.TabIndex = 23;
             // 
-            // textBox5
+            // txtDescripcion
             // 
-            this.textBox5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(99, 127);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(254, 22);
-            this.textBox5.TabIndex = 21;
+            this.txtDescripcion.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(142, 129);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(254, 22);
+            this.txtDescripcion.TabIndex = 21;
             // 
             // label6
             // 
@@ -154,19 +158,19 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Descripcion";
             // 
-            // metodoPago
+            // ddltipo
             // 
-            this.metodoPago.BackColor = System.Drawing.SystemColors.Window;
-            this.metodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.metodoPago.FormattingEnabled = true;
-            this.metodoPago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Tarjeta",
-            "Cheque"});
-            this.metodoPago.Location = new System.Drawing.Point(99, 41);
-            this.metodoPago.Name = "metodoPago";
-            this.metodoPago.Size = new System.Drawing.Size(251, 21);
-            this.metodoPago.TabIndex = 25;
+            this.ddltipo.BackColor = System.Drawing.SystemColors.Window;
+            this.ddltipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddltipo.FormattingEnabled = true;
+            this.ddltipo.Items.AddRange(new object[] {
+            "1A",
+            "2B",
+            "3C"});
+            this.ddltipo.Location = new System.Drawing.Point(142, 43);
+            this.ddltipo.Name = "ddltipo";
+            this.ddltipo.Size = new System.Drawing.Size(254, 21);
+            this.ddltipo.TabIndex = 25;
             // 
             // btnCancelar
             // 
@@ -178,7 +182,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = global::sercor.Properties.Resources.error16;
-            this.btnCancelar.Location = new System.Drawing.Point(271, 185);
+            this.btnCancelar.Location = new System.Drawing.Point(314, 183);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
             this.btnCancelar.TabIndex = 88;
@@ -186,6 +190,7 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
@@ -196,7 +201,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Image = global::sercor.Properties.Resources.success16;
-            this.btnAceptar.Location = new System.Drawing.Point(183, 185);
+            this.btnAceptar.Location = new System.Drawing.Point(226, 183);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
             this.btnAceptar.TabIndex = 87;
@@ -204,25 +209,55 @@
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
+            this.label3.Location = new System.Drawing.Point(13, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 16);
+            this.label3.TabIndex = 89;
+            this.label3.Text = "Fecha";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.Location = new System.Drawing.Point(90, 133);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 12);
+            this.label7.TabIndex = 90;
+            this.label7.Text = "(MAX 128)";
             // 
             // Añadir_egreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 222);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(408, 222);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.metodoPago);
+            this.Controls.Add(this.ddltipo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtBeneficiario);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTime);
-            this.Controls.Add(this.txtTelefono);
+            this.Controls.Add(this.fecha);
+            this.Controls.Add(this.txtID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Añadir_egreso";
             this.Text = "Añadir_egreso";
@@ -234,17 +269,19 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTime;
-        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.DateTimePicker fecha;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtBeneficiario;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox metodoPago;
+        private System.Windows.Forms.ComboBox ddltipo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
     }
 }
