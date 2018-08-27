@@ -289,6 +289,14 @@ namespace sercor
         private void btnMovimientos_Click(object sender, EventArgs e)
         {
             menuToggler(6);
+            llenareportes();
+        }
+
+        //Funcion de llenado de reportes
+        private void llenareportes()
+        {
+            dgvIngresos.DataSource = EgresoDBM.ReporteEgresos();
+            dgvIngresos.DataSource = PagoDBM.ReportePagos();
         }
 
         //FUNCION RESTAURADORA DE PRECIOS
@@ -1539,5 +1547,12 @@ namespace sercor
             metodoDePago(metodoPagocxc.SelectedIndex);
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Añadir_egreso añadirEgreso = new Añadir_egreso();
+            añadirEgreso.ShowDialog();
+
+            //toogleError(true, añadirEgreso.mensaje, 2);
+        }
     }
 }

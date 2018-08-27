@@ -23,6 +23,31 @@ namespace sercor
             return retorno;
         }
 
+
+        public static List<Egreso> ReporteEgresos()
+        {
+            List<Egreso> _lista = new List<Egreso>();
+            
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "Select ID_PAGO, ID_CUENTA, FECHA_ABONO  , TIPO_PAGO, MONTO, DESCRIPCION, TARJETA, TIPO, REF , BANCO, CHEQUE from PAGO;"),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Egreso pEgreso = new Egreso();
+                pEgreso.ID_CAJA = _reader.GetInt32(0);
+                pEgreso.FECHA_EGRESO = _reader.GetString(1);
+                pEgreso.TIPO_EGRESO = _reader.GetString(2);
+                pEgreso.MONTO = _reader.GetDecimal(3);
+                pEgreso.BENEFICIARIO = _reader.GetString(4);
+                pEgreso.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pEgreso);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static int UltimoEgreso()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();

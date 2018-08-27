@@ -67,6 +67,29 @@ namespace sercor
             return pPago;
         }
 
+        public static List<Pago> ReportePagos()
+        {
+            List<Pago> _lista = new List<Pago>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION FROM PAGO ;"),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Pago pPago = new Pago();
+                pPago.ID_CUENTA = _reader.GetInt32(0);
+                pPago.ID_CUENTA = _reader.GetInt32(1);
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pPago);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static int UltimoPagoID()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
