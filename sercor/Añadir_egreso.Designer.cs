@@ -61,9 +61,9 @@
             this.dateTime.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
             this.dateTime.CustomFormat = "yyyy-MM-dd";
             this.dateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTime.Location = new System.Drawing.Point(91, 165);
+            this.dateTime.Location = new System.Drawing.Point(99, 155);
             this.dateTime.Name = "dateTime";
-            this.dateTime.Size = new System.Drawing.Size(262, 20);
+            this.dateTime.Size = new System.Drawing.Size(254, 20);
             this.dateTime.TabIndex = 15;
             // 
             // txtTelefono
@@ -178,7 +178,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = global::sercor.Properties.Resources.error16;
-            this.btnCancelar.Location = new System.Drawing.Point(271, 191);
+            this.btnCancelar.Location = new System.Drawing.Point(271, 185);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
             this.btnCancelar.TabIndex = 88;
@@ -196,7 +196,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAceptar.Image = global::sercor.Properties.Resources.success16;
-            this.btnAceptar.Location = new System.Drawing.Point(183, 191);
+            this.btnAceptar.Location = new System.Drawing.Point(183, 185);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
             this.btnAceptar.TabIndex = 87;
