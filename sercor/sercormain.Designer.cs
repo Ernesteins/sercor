@@ -71,8 +71,8 @@
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.pnMovCajaMenu = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpReportefin = new System.Windows.Forms.DateTimePicker();
+            this.dtpReporte = new System.Windows.Forms.DateTimePicker();
             this.pnCxc = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -215,6 +215,7 @@
             this.btnInventario = new System.Windows.Forms.Button();
             this.btnCxc = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.pnForm.SuspendLayout();
             this.pnBody.SuspendLayout();
             this.pnMovCaja.SuspendLayout();
@@ -296,10 +297,10 @@
             this.pnMovCaja.BackColor = System.Drawing.Color.Gainsboro;
             this.pnMovCaja.Controls.Add(this.panel6);
             this.pnMovCaja.Controls.Add(this.pnMovCajaMenu);
-            this.pnMovCaja.Location = new System.Drawing.Point(735, 331);
+            this.pnMovCaja.Location = new System.Drawing.Point(649, 331);
             this.pnMovCaja.Margin = new System.Windows.Forms.Padding(0);
             this.pnMovCaja.Name = "pnMovCaja";
-            this.pnMovCaja.Size = new System.Drawing.Size(519, 223);
+            this.pnMovCaja.Size = new System.Drawing.Size(605, 223);
             this.pnMovCaja.TabIndex = 4;
             this.pnMovCaja.Visible = false;
             // 
@@ -311,7 +312,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 32);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(519, 191);
+            this.panel6.Size = new System.Drawing.Size(605, 191);
             this.panel6.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -326,7 +327,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(519, 191);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(605, 191);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // dgvEgresos
@@ -373,7 +374,7 @@
             this.dgvEgresos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEgresos.RowTemplate.ReadOnly = true;
             this.dgvEgresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEgresos.Size = new System.Drawing.Size(513, 90);
+            this.dgvEgresos.Size = new System.Drawing.Size(599, 90);
             this.dgvEgresos.TabIndex = 42;
             // 
             // dgvIngresos
@@ -420,20 +421,21 @@
             this.dgvIngresos.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvIngresos.RowTemplate.ReadOnly = true;
             this.dgvIngresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvIngresos.Size = new System.Drawing.Size(513, 89);
+            this.dgvIngresos.Size = new System.Drawing.Size(599, 89);
             this.dgvIngresos.TabIndex = 41;
             // 
             // pnMovCajaMenu
             // 
             this.pnMovCajaMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnMovCajaMenu.Controls.Add(this.button6);
             this.pnMovCajaMenu.Controls.Add(this.button7);
-            this.pnMovCajaMenu.Controls.Add(this.dateTimePicker3);
-            this.pnMovCajaMenu.Controls.Add(this.dateTimePicker2);
+            this.pnMovCajaMenu.Controls.Add(this.dtpReportefin);
+            this.pnMovCajaMenu.Controls.Add(this.dtpReporte);
             this.pnMovCajaMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnMovCajaMenu.Location = new System.Drawing.Point(0, 0);
             this.pnMovCajaMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnMovCajaMenu.Name = "pnMovCajaMenu";
-            this.pnMovCajaMenu.Size = new System.Drawing.Size(519, 32);
+            this.pnMovCajaMenu.Size = new System.Drawing.Size(605, 32);
             this.pnMovCajaMenu.TabIndex = 0;
             // 
             // button7
@@ -456,19 +458,21 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // dateTimePicker3
+            // dtpReportefin
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(210, 4);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker3.TabIndex = 1;
+            this.dtpReportefin.Location = new System.Drawing.Point(210, 4);
+            this.dtpReportefin.Name = "dtpReportefin";
+            this.dtpReportefin.Size = new System.Drawing.Size(200, 22);
+            this.dtpReportefin.TabIndex = 1;
+            this.dtpReportefin.ValueChanged += new System.EventHandler(this.dtpReportefin_ValueChanged);
             // 
-            // dateTimePicker2
+            // dtpReporte
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(4, 4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 0;
+            this.dtpReporte.Location = new System.Drawing.Point(4, 4);
+            this.dtpReporte.Name = "dtpReporte";
+            this.dtpReporte.Size = new System.Drawing.Size(200, 22);
+            this.dtpReporte.TabIndex = 0;
+            this.dtpReporte.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // pnCxc
             // 
@@ -985,7 +989,7 @@
             this.pnVentas.Location = new System.Drawing.Point(8, 11);
             this.pnVentas.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentas.Name = "pnVentas";
-            this.pnVentas.Size = new System.Drawing.Size(699, 443);
+            this.pnVentas.Size = new System.Drawing.Size(526, 443);
             this.pnVentas.TabIndex = 0;
             this.pnVentas.Visible = false;
             // 
@@ -998,7 +1002,7 @@
             this.pnVentasBody.Location = new System.Drawing.Point(0, 32);
             this.pnVentasBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasBody.Name = "pnVentasBody";
-            this.pnVentasBody.Size = new System.Drawing.Size(699, 411);
+            this.pnVentasBody.Size = new System.Drawing.Size(526, 411);
             this.pnVentasBody.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -1022,7 +1026,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(699, 411);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 411);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // vistaFactura
@@ -1940,7 +1944,7 @@
             this.pnVentasMenu.Location = new System.Drawing.Point(0, 0);
             this.pnVentasMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnVentasMenu.Name = "pnVentasMenu";
-            this.pnVentasMenu.Size = new System.Drawing.Size(699, 32);
+            this.pnVentasMenu.Size = new System.Drawing.Size(526, 32);
             this.pnVentasMenu.TabIndex = 0;
             // 
             // btnSave
@@ -2200,7 +2204,7 @@
             this.pnReportes.Location = new System.Drawing.Point(52, 475);
             this.pnReportes.Margin = new System.Windows.Forms.Padding(0);
             this.pnReportes.Name = "pnReportes";
-            this.pnReportes.Size = new System.Drawing.Size(655, 93);
+            this.pnReportes.Size = new System.Drawing.Size(482, 93);
             this.pnReportes.TabIndex = 3;
             this.pnReportes.Visible = false;
             // 
@@ -2214,7 +2218,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(655, 93);
+            this.panel4.Size = new System.Drawing.Size(482, 93);
             this.panel4.TabIndex = 2;
             // 
             // button5
@@ -2227,7 +2231,7 @@
             this.button5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button5.Image = global::sercor.Properties.Resources.repeat;
-            this.button5.Location = new System.Drawing.Point(433, -18);
+            this.button5.Location = new System.Drawing.Point(347, -18);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(202, 123);
             this.button5.TabIndex = 45;
@@ -2246,7 +2250,7 @@
             this.button2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button2.Image = global::sercor.Properties.Resources.notepad;
-            this.button2.Location = new System.Drawing.Point(225, -18);
+            this.button2.Location = new System.Drawing.Point(139, -18);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 123);
             this.button2.TabIndex = 44;
@@ -2265,7 +2269,7 @@
             this.button1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Image = global::sercor.Properties.Resources.box;
-            this.button1.Location = new System.Drawing.Point(17, -18);
+            this.button1.Location = new System.Drawing.Point(-69, -18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(202, 123);
             this.button1.TabIndex = 43;
@@ -2655,6 +2659,25 @@
             this.btnVentas.UseVisualStyleBackColor = false;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button6.Image = global::sercor.Properties.Resources.package16;
+            this.button6.Location = new System.Drawing.Point(497, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(71, 25);
+            this.button6.TabIndex = 44;
+            this.button6.Text = "Todos";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // sercormain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2882,10 +2905,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpReportefin;
+        private System.Windows.Forms.DateTimePicker dtpReporte;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.DataGridView dgvEgresos;
         private System.Windows.Forms.DataGridView dgvIngresos;
+        private System.Windows.Forms.Button button6;
     }
 }

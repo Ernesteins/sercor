@@ -295,8 +295,12 @@ namespace sercor
         //Funcion de llenado de reportes
         private void llenareportes()
         {
-            dgvIngresos.DataSource = EgresoDBM.ReporteEgresos();
-            dgvIngresos.DataSource = PagoDBM.ReportePagos();
+            dtpReporte.Value = System.DateTime.Today;
+            dtpReportefin.Value = System.DateTime.Now;
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
         }
 
         //FUNCION RESTAURADORA DE PRECIOS
@@ -982,7 +986,8 @@ namespace sercor
             }
             return true;
         }
-        //FUNCION DE ACEPTAR NUMEROS
+        //FIN FUNCION
+        //FUNCION DE ACEPTAR DINERO
         public bool esDinero(Char c)
         {
             if (Char.IsDigit(c) || Char.IsControl(c) || c == '.' || c == ',')
@@ -991,6 +996,7 @@ namespace sercor
             }
             return true;
         }
+        //FIN FUNCION
 
         private void txtId_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1551,8 +1557,28 @@ namespace sercor
         {
             Añadir_egreso añadirEgreso = new Añadir_egreso();
             añadirEgreso.ShowDialog();
+            toogleError(true, añadirEgreso.mensaje, 2);
+        }
 
-            //toogleError(true, añadirEgreso.mensaje, 2);
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+        }
+
+        private void dtpReportefin_ValueChanged(object sender, EventArgs e)
+        {
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            llenareportes();
         }
     }
 }
