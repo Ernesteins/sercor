@@ -82,12 +82,40 @@ namespace sercor
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                pPago.ID_CUENTA = _reader.GetInt32(0);
+                pPago.ID_PAGO = _reader.GetInt32(0);
                 pPago.ID_CUENTA= _reader.GetInt32(1);
                 pPago.FECHA_ABONO= _reader.GetString(2);
                 pPago.TIPO_PAGO = _reader.GetInt32(3);
                 pPago.MONTO = _reader.GetDecimal(4);
                 pPago.DESCRIPCION = _reader.GetString(5);
+            }
+            conexion.Close();
+            return pPago;
+        }
+
+
+
+        public static Pago ConsultarUnicoPago(int ID_CUENTA)
+        {
+            Pago pPago = new Pago();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "SELECT * FROM PAGO where ID_CUENTA ='{0}' ", ID_CUENTA),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                pPago.ID_PAGO = _reader.GetInt32(0);
+                pPago.ID_CUENTA = _reader.GetInt32(1);
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+                pPago.TARJETA = _reader.GetString(6);
+                pPago.TIPO = _reader.GetString(7);
+                pPago.REF = _reader.GetString(8);
+                pPago.BANCO = _reader.GetString(9);
+                pPago.CHEQUE = _reader.GetString(10);
             }
             conexion.Close();
             return pPago;
@@ -104,7 +132,7 @@ namespace sercor
             while (_reader.Read())
             {
                 Pago pPago = new Pago();
-                pPago.ID_CUENTA = _reader.GetInt32(0);
+                pPago.ID_PAGO = _reader.GetInt32(0);
                 pPago.ID_CUENTA = _reader.GetInt32(1);
                 pPago.FECHA_ABONO = _reader.GetString(2);
                 pPago.TIPO_PAGO = _reader.GetInt32(3);

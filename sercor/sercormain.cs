@@ -1382,7 +1382,22 @@ namespace sercor
 
         private void dgvHistorial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            detalleForm _detalle = new detalleForm();
+            Factura _factura = new Factura();
+
+            _factura.ID_FACTURA = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[0].Value);
+            _factura.ID_CLIENTE= dgvHistorial.SelectedRows[0].Cells[1].Value.ToString();
+            _factura.ID_USUARIO= Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[2].Value);
+            _factura.ID_DETALLE= Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[3].Value);
+            _factura.ID_CUENTA = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[4].Value);
+            _factura.IVA = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[5].Value);
+            _factura.TOTAL = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[6].Value);
+            _factura.FECHA =dgvHistorial.SelectedRows[0].Cells[7].Value.ToString();
+            _factura.FACTOR_DESCUENTO = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[8].Value);
+            _factura.VALOR_DESCONTADO = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[9].Value);
+            _factura.TIPO = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[10].Value);
+            _factura.INDICE = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[11].Value);
+
+            detalleForm _detalle = new detalleForm(_factura);
             _detalle.Show();
         }
 
@@ -1464,8 +1479,8 @@ namespace sercor
 
         private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            detalleForm _detalle = new detalleForm();
-            _detalle.Show();
+            //detalleForm _detalle = new detalleForm(_factura);
+            //_detalle.Show();
         }
 
         private void dgvCXC_CellClick(object sender, DataGridViewCellEventArgs e)
