@@ -98,7 +98,38 @@ namespace sercor
             conexion.Close();
             return _lista;
         }
-         public static bool productoArmazon(string id_producto)
+
+        public static List<ProductoVendidoCustom> ObtenerProductosDetalle(int pDetalle)
+        {
+            List<ProductoVendidoCustom> _lista = new List<ProductoVendidoCustom>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM producto_vendido where ID_DETALLE='{0}'",pDetalle), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                ProductoVendidoCustom pProducto = new ProductoVendidoCustom();
+
+                //pProducto.COD = _reader.GetInt32(0);
+                //pProducto.ID_DETALLE = _reader.GetInt32(1);
+                pProducto.ID_PRODUCTOINVENTARIO = _reader.GetString(2);
+                //pProducto.NOMBRE = _reader.GetString(3);
+                pProducto.DESCRIPCION = _reader.GetString(4);
+                //pProducto.CATEGORIA = _reader.GetString(5);
+                //pProducto.SUBCATEGORIA = _reader.GetString(6);
+                pProducto.PRECIO = _reader.GetDecimal(7);
+                pProducto.CANTIDAD = _reader.GetInt32(8);
+
+                _lista.Add(pProducto);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
+
+        public static bool productoArmazon(string id_producto)
         {
             List<ProductoVendido> _lista = new List<ProductoVendido>();
             MySqlConnection conexion = bdComun.obtenerConexion();

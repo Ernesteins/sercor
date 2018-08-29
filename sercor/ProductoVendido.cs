@@ -28,5 +28,22 @@
             this.CANTIDAD = pCantidad;
         }
     }
-    
+
+    class ProductoVendidoCustom
+    {
+        public string ID_PRODUCTOINVENTARIO { get; set; }
+        public string DESCRIPCION { get; set; }
+        public decimal PRECIO { get; set; }
+        public int CANTIDAD { get; set; }
+
+        public ProductoVendidoCustom() { }
+
+        public ProductoVendidoCustom(string pProductoInventario, string pDescripcion, decimal pPrecio, int pCantidad)
+        {
+            this.ID_PRODUCTOINVENTARIO = pProductoInventario;
+            this.DESCRIPCION = pDescripcion;
+            this.PRECIO = pPrecio;
+            this.CANTIDAD = pCantidad;
+        }
+    }
 }
