@@ -1116,7 +1116,7 @@ namespace sercor
                 nFactura.ID_CUENTA = nCuenta.ID_CUENTA;
                 nFactura.IVA = Convert.ToDecimal(txtIva.Text);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
-                nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
+                nFactura.FECHA = dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
@@ -1275,15 +1275,15 @@ namespace sercor
 
                 recibo.Add(elemento);
 
-                MessageBox.Show(elemento.Codigo.ToString());
+                //MessageBox.Show(elemento.Codigo.ToString());
             }
 
 
 
 
-            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value.Date, txtDireccion.Text, txtTelefono.Text,
+            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
                 Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
-                Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value.Date);
+                Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value);
             impresion.Show();
 
             recibo.Clear();
@@ -1427,7 +1427,7 @@ namespace sercor
                 Pago nPago = new Pago();
                 nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
                 nPago.ID_CUENTA = cxcCuenta.ID_CUENTA;
-                nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+                nPago.FECHA_ABONO = dtAbono.Value.ToString("yyyy-MM-dd HH-mm-ss");
                 nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
                 nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
                 if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago

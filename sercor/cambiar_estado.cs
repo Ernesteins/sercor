@@ -75,12 +75,6 @@ namespace sercor
             chklEstado.SetItemChecked(1, false);
             chklEstado.SetItemChecked(2, false);
             chklEstado.SetItemChecked(3, false);
-
-        }
-
-        private void chklEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

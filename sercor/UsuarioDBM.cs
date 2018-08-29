@@ -139,12 +139,12 @@ namespace sercor
         }
 
         //OBTENER UN SOLO USUARIO
-        public static Usuario ObtenerUsuario(string pId)
+        public static Usuario ObtenerUsuario(int pId)
         {
             Usuario pUsuario = new Usuario();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM usuario where USUARIO='{0}'", pId), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM usuario where ID_USUARIO='{0}'", pId), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {

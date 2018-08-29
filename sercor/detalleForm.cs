@@ -9,6 +9,7 @@ namespace sercor
         Cuenta _cuenta = new Cuenta();
         Detalle _detalle = new Detalle();
         Trabajo _trabajo = new Trabajo();
+        Usuario _usuario = new Usuario();
         
         public detalleForm(Factura _factura)
         {
@@ -18,6 +19,7 @@ namespace sercor
             _cuenta = CuentaDBM.ObtenerCuentaporID_cuenta(_factura.ID_CUENTA);
             _detalle = DetalleDBM.ObtenerDetalle(_factura.ID_DETALLE);
             _trabajo = TrabajoDBM.TrabajoFecha(_factura.ID_FACTURA);
+            _usuario = UsuarioDBM.ObtenerUsuario(_factura.ID_USUARIO);
 
             vistaFactura.DataSource = ProductoVendidoDBM.ObtenerProductosDetalle(_factura.ID_DETALLE);
 
@@ -46,6 +48,7 @@ namespace sercor
             txtSubtotal.Text = _detalle.SUBTOTAL.ToString();
 
             txtFechaEntrega.Text = _trabajo.FECHA_ENTREGA;
+            txtResponsable.Text = _usuario.NOMBRE + " " + _usuario.APELLIDO;
         }
     }
 }

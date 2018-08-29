@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             this.pnForm = new System.Windows.Forms.Panel();
             this.pnBottom = new System.Windows.Forms.Panel();
@@ -41,6 +42,7 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPsw = new System.Windows.Forms.TextBox();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnForm.SuspendLayout();
             this.pnBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptcStatus)).BeginInit();
@@ -160,6 +162,7 @@
             this.txtUser.Size = new System.Drawing.Size(263, 27);
             this.txtUser.TabIndex = 0;
             this.txtUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtUser, "Ingrese su identificador de usuario");
             // 
             // txtPsw
             // 
@@ -172,6 +175,7 @@
             this.txtPsw.Size = new System.Drawing.Size(263, 27);
             this.txtPsw.TabIndex = 1;
             this.txtPsw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtPsw, "Ingrese su contraseña");
             // 
             // btnlogin
             // 
@@ -185,8 +189,13 @@
             this.btnlogin.Size = new System.Drawing.Size(112, 32);
             this.btnlogin.TabIndex = 2;
             this.btnlogin.Text = "Acceder";
+            this.toolTip1.SetToolTip(this.btnlogin, "Inicia sesión en Sercor");
             this.btnlogin.UseVisualStyleBackColor = false;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Asistente Secor";
             // 
             // login
             // 
@@ -229,6 +238,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.PictureBox ptcStatus;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
