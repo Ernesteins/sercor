@@ -101,6 +101,12 @@ namespace sercor
                         ProductoDBM.Agregar(cargarProducto);
                         //MessageBox.Show("Es nulo");
                     }
+                    Registro nregistro = new Registro();
+                    nregistro.ID_PRODUCTO = cargarProducto.COD;
+                    nregistro.FECHA = FacturaDBM.obtenerFechaSistema();
+                    nregistro.CANTIDAD = cargarProducto.EXISTENCIA;
+                    nregistro.IDREGISTRO = RegistroDBM.UltimoRegistro() + 1;
+                    RegistroDBM.Agregar(nregistro);
                 }
                 mensaje = "Se modificaron "+contador.ToString()+" productos existentes";
                 this.Close();

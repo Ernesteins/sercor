@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editarUsuario));
             this.label6 = new System.Windows.Forms.Label();
             this.txtContrasenia = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,6 +55,7 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +80,7 @@
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.PasswordChar = '•';
             this.txtContrasenia.Size = new System.Drawing.Size(211, 22);
-            this.txtContrasenia.TabIndex = 70;
+            this.txtContrasenia.TabIndex = 1;
             this.txtContrasenia.TextChanged += new System.EventHandler(this.txtContrasenia_TextChanged);
             // 
             // label4
@@ -102,7 +105,7 @@
             this.txtLastName.Location = new System.Drawing.Point(86, 127);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(211, 22);
-            this.txtLastName.TabIndex = 73;
+            this.txtLastName.TabIndex = 4;
             // 
             // groupBox1
             // 
@@ -128,7 +131,7 @@
             this.user4.Location = new System.Drawing.Point(144, 97);
             this.user4.Name = "user4";
             this.user4.Size = new System.Drawing.Size(101, 19);
-            this.user4.TabIndex = 17;
+            this.user4.TabIndex = 14;
             this.user4.Text = "Fecha factura";
             this.user4.UseVisualStyleBackColor = true;
             // 
@@ -139,7 +142,7 @@
             this.admin3.Location = new System.Drawing.Point(6, 72);
             this.admin3.Name = "admin3";
             this.admin3.Size = new System.Drawing.Size(135, 19);
-            this.admin3.TabIndex = 12;
+            this.admin3.TabIndex = 9;
             this.admin3.Text = "Movimiento de caja";
             this.admin3.UseVisualStyleBackColor = true;
             // 
@@ -149,7 +152,7 @@
             this.user3.Location = new System.Drawing.Point(144, 72);
             this.user3.Name = "user3";
             this.user3.Size = new System.Drawing.Size(74, 19);
-            this.user3.TabIndex = 16;
+            this.user3.TabIndex = 13;
             this.user3.Text = "Trabajos";
             this.user3.UseVisualStyleBackColor = true;
             // 
@@ -160,7 +163,7 @@
             this.admin2.Location = new System.Drawing.Point(6, 47);
             this.admin2.Name = "admin2";
             this.admin2.Size = new System.Drawing.Size(83, 19);
-            this.admin2.TabIndex = 11;
+            this.admin2.TabIndex = 8;
             this.admin2.Text = "Inventario";
             this.admin2.UseVisualStyleBackColor = true;
             // 
@@ -171,7 +174,7 @@
             this.admin1.Location = new System.Drawing.Point(6, 22);
             this.admin1.Name = "admin1";
             this.admin1.Size = new System.Drawing.Size(107, 19);
-            this.admin1.TabIndex = 10;
+            this.admin1.TabIndex = 7;
             this.admin1.Text = "Administrativo";
             this.admin1.UseVisualStyleBackColor = true;
             // 
@@ -181,7 +184,7 @@
             this.user1.Location = new System.Drawing.Point(144, 22);
             this.user1.Name = "user1";
             this.user1.Size = new System.Drawing.Size(62, 19);
-            this.user1.TabIndex = 14;
+            this.user1.TabIndex = 11;
             this.user1.Text = "Ventas";
             this.user1.UseVisualStyleBackColor = true;
             // 
@@ -191,7 +194,7 @@
             this.user2.Location = new System.Drawing.Point(144, 47);
             this.user2.Name = "user2";
             this.user2.Size = new System.Drawing.Size(132, 19);
-            this.user2.TabIndex = 15;
+            this.user2.TabIndex = 12;
             this.user2.Text = "Cuentas por cobrar";
             this.user2.UseVisualStyleBackColor = true;
             // 
@@ -202,7 +205,7 @@
             this.admin4.Location = new System.Drawing.Point(6, 97);
             this.admin4.Name = "admin4";
             this.admin4.Size = new System.Drawing.Size(74, 19);
-            this.admin4.TabIndex = 13;
+            this.admin4.TabIndex = 10;
             this.admin4.Text = "Reportes";
             this.admin4.UseVisualStyleBackColor = true;
             // 
@@ -280,7 +283,7 @@
             this.txtCi.Location = new System.Drawing.Point(86, 71);
             this.txtCi.Name = "txtCi";
             this.txtCi.Size = new System.Drawing.Size(211, 22);
-            this.txtCi.TabIndex = 71;
+            this.txtCi.TabIndex = 2;
             // 
             // txtDireccion
             // 
@@ -289,7 +292,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(86, 185);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(211, 22);
-            this.txtDireccion.TabIndex = 75;
+            this.txtDireccion.TabIndex = 6;
             // 
             // txtTelefono
             // 
@@ -298,7 +301,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(86, 157);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(211, 22);
-            this.txtTelefono.TabIndex = 74;
+            this.txtTelefono.TabIndex = 5;
             // 
             // txtName
             // 
@@ -309,7 +312,7 @@
             this.txtName.Location = new System.Drawing.Point(86, 99);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(211, 22);
-            this.txtName.TabIndex = 72;
+            this.txtName.TabIndex = 3;
             // 
             // txtUser
             // 
@@ -318,7 +321,7 @@
             this.txtUser.Location = new System.Drawing.Point(86, 12);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(211, 22);
-            this.txtUser.TabIndex = 84;
+            this.txtUser.TabIndex = 0;
             // 
             // btnCancelar
             // 
@@ -333,7 +336,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(215, 344);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
-            this.btnCancelar.TabIndex = 86;
+            this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -351,12 +354,16 @@
             this.btnAceptar.Location = new System.Drawing.Point(127, 344);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnAceptar.TabIndex = 85;
+            this.btnAceptar.TabIndex = 15;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Asistente Secor";
             // 
             // editarUsuario
             // 
@@ -365,7 +372,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(310, 375);
-            this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtUser);
@@ -385,6 +391,9 @@
             this.Controls.Add(this.txtName);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "editarUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar usuario";
@@ -422,5 +431,6 @@
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

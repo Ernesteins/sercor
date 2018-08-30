@@ -59,7 +59,36 @@ namespace sercor
             return trTrabajo;
 
         }
-        
+
+
+
+        public static Trabajo TrabajoFecha(int idFactura)
+        {
+            Trabajo trTrabajo = new Trabajo();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM trabajos where ID_FACTURA='{0}' limit 1", idFactura), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                trTrabajo.ID = _reader.GetInt32(0);
+                trTrabajo.CUENTA = _reader.GetInt32(1);
+                trTrabajo.FACTURA = _reader.GetInt32(2);
+                trTrabajo.FECHA_INICIO = _reader.GetString(3);
+                trTrabajo.NOMBRE = _reader.GetString(4);
+                trTrabajo.ARMAZON = _reader.GetString(5);
+                trTrabajo.LUNA = _reader.GetString(6);
+                trTrabajo.ESTADO = _reader.GetInt32(7);
+                trTrabajo.FECHA_ENTREGA = _reader.GetString(8);
+
+            }
+
+            conexion.Close();
+            return trTrabajo;
+
+        }
+
+
         public static List<Trabajo> ObtenerPorFiltro(int trID, int trCUENTA, int trFACTURA, string trFECHA_INICIO,
             string trFECHA_ENTREGA, string trNOMBRE, string trARMAZON, string trLUNA, int trESTADO)
         {

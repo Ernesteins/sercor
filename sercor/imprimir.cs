@@ -7,7 +7,6 @@ namespace sercor
     
     public partial class imprimir : Form
     {
-        List<FacturaImpresion> _list;
         public imprimir(List<FacturaImpresion> list, int tipo, string nombre, string ruc, DateTime fecha, string direccion, string telefono, decimal subtotal,
             decimal iva0, decimal iva12, decimal total, decimal abono, decimal saldo, DateTime fechaEntrega)
         {
@@ -15,13 +14,12 @@ namespace sercor
             switch (tipo)
             {
                 case 1:
-                    _list = list;
-                    factura1.SetDataSource(_list);
+                    factura1.SetDataSource(list);
                     crystalReportViewer.ReportSource = factura1;
 
                     factura1.SetParameterValue(0, nombre);
                     factura1.SetParameterValue(1, ruc);
-                    factura1.SetParameterValue(2, fecha);
+                    factura1.SetParameterValue(2, fecha.ToString("yyyy-MM-dd"));
                     factura1.SetParameterValue(3, direccion);
                     factura1.SetParameterValue(4, telefono);
                     factura1.SetParameterValue(5, subtotal);
@@ -31,11 +29,11 @@ namespace sercor
                     factura1.SetParameterValue(9, abono);
                     factura1.SetParameterValue(10, saldo);
 
-                    factura1.SetParameterValue(11, fechaEntrega.Date);
+                    factura1.SetParameterValue(11, fechaEntrega.ToString("yyyy-MM-dd"));
 
                     MessageBox.Show(fechaEntrega.Date.Hour.ToString());
 
-                    factura1.SetParameterValue(12, fechaEntrega.Date.ToString("HH:mm"));
+                    factura1.SetParameterValue(12, fechaEntrega.ToString("HH:mm"));
 
                     crystalReportViewer.Refresh();
 

@@ -46,6 +46,32 @@ namespace sercor
             return _lista;
         }
 
+        public static List<Pago> ObtenerPagosFecha(string FechaInicio, String FechaFin)
+        {
+            List<Pago> _lista = new List<Pago>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           " SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION FROM PAGO WHERE FECHA_ABONO >'{0}' AND FECHA_ABONO < '{1}';",FechaInicio, FechaFin), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Pago pPago = new Pago();
+
+                pPago.ID_PAGO = _reader.GetInt32(0);
+                pPago.ID_CUENTA = _reader.GetInt32(1);
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+
+                _lista.Add(pPago);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static Pago ConsultarPagos(int ID_CUENTA)
         {
             Pago pPago = new Pago();
@@ -56,7 +82,7 @@ namespace sercor
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                pPago.ID_CUENTA = _reader.GetInt32(0);
+                pPago.ID_PAGO = _reader.GetInt32(0);
                 pPago.ID_CUENTA= _reader.GetInt32(1);
                 pPago.FECHA_ABONO= _reader.GetString(2);
                 pPago.TIPO_PAGO = _reader.GetInt32(3);
@@ -65,6 +91,57 @@ namespace sercor
             }
             conexion.Close();
             return pPago;
+        }
+
+
+
+        public static Pago ConsultarUnicoPago(int ID_CUENTA)
+        {
+            Pago pPago = new Pago();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "SELECT * FROM PAGO where ID_CUENTA ='{0}' ", ID_CUENTA),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                pPago.ID_PAGO = _reader.GetInt32(0);
+                pPago.ID_CUENTA = _reader.GetInt32(1);
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+                pPago.TARJETA = _reader.GetString(6);
+                pPago.TIPO = _reader.GetString(7);
+                pPago.REF = _reader.GetString(8);
+                pPago.BANCO = _reader.GetString(9);
+                pPago.CHEQUE = _reader.GetString(10);
+            }
+            conexion.Close();
+            return pPago;
+        }
+
+        public static List<Pago> ReportePagos()
+        {
+            List<Pago> _lista = new List<Pago>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION FROM PAGO ;"),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Pago pPago = new Pago();
+                pPago.ID_PAGO = _reader.GetInt32(0);
+                pPago.ID_CUENTA = _reader.GetInt32(1);
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pPago);
+            }
+            conexion.Close();
+            return _lista;
         }
 
         public static int UltimoPagoID()

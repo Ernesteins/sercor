@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -93,6 +93,12 @@
     <Compile Include="agregar_producto.Designer.cs">
       <DependentUpon>agregar_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Añadir_egreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Añadir_egreso.Designer.cs">
+      <DependentUpon>Añadir_egreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="bdComun.cs" />
     <Compile Include="cambiar_estado.cs">
       <SubType>Form</SubType>
@@ -133,6 +139,12 @@
       <DependentUpon>factura.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="facturacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>facturacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FacturaDBM.cs" />
     <Compile Include="FacturaImpresion.cs" />
     <Compile Include="FormInstance.cs" />
@@ -143,11 +155,23 @@
     <Compile Include="imprimir.Designer.cs">
       <DependentUpon>imprimir.cs</DependentUpon>
     </Compile>
+    <Compile Include="inventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inventario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="movimientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>movimientos.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="nuevoUsuario.cs">
       <SubType>Form</SubType>
@@ -192,6 +216,9 @@
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Añadir_egreso.resx">
+      <DependentUpon>Añadir_egreso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,11 +235,23 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>factura1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="facturacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>facturacion.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="imprimir.resx">
       <DependentUpon>imprimir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="inventario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inventario.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="movimientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>movimientos.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="nuevoUsuario.resx">
       <DependentUpon>nuevoUsuario.cs</DependentUpon>
@@ -304,6 +343,9 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

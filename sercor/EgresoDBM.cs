@@ -23,6 +23,54 @@ namespace sercor
             return retorno;
         }
 
+
+        public static List<Egreso> ReporteEgresos()
+        {
+            List<Egreso> _lista = new List<Egreso>();
+            
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "Select ID_CAJA,FECHA_EGRESO,TIPO_EGRESO,BENEFICIARIO,MONTO,DESCRIPCION from egreso;"),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Egreso pEgreso = new Egreso();
+                pEgreso.ID_CAJA = _reader.GetInt32(0);
+                pEgreso.FECHA_EGRESO = _reader.GetString(1);
+                pEgreso.TIPO_EGRESO = _reader.GetString(2);
+                pEgreso.MONTO = _reader.GetDecimal(4);
+                pEgreso.BENEFICIARIO = _reader.GetString(3);
+                pEgreso.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pEgreso);
+            }
+            conexion.Close();
+            return _lista;
+        }
+        public static List<Egreso> ReporteEgresosFecha(String fechainicio, string fechafin)
+        {
+            List<Egreso> _lista = new List<Egreso>();
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "Select ID_CAJA,FECHA_EGRESO,TIPO_EGRESO,BENEFICIARIO,MONTO,DESCRIPCION from egreso  WHERE FECHA_EGRESO >'{0}' AND FECHA_EGRESO < '{1}';",fechainicio,fechafin),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Egreso pEgreso = new Egreso();
+                pEgreso.ID_CAJA = _reader.GetInt32(0);
+                pEgreso.FECHA_EGRESO = _reader.GetString(1);
+                pEgreso.TIPO_EGRESO = _reader.GetString(2);
+                pEgreso.MONTO = _reader.GetDecimal(4);
+                pEgreso.BENEFICIARIO = _reader.GetString(3);
+                pEgreso.DESCRIPCION = _reader.GetString(5);
+                _lista.Add(pEgreso);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static int UltimoEgreso()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
