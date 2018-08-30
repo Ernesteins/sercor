@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Añadir_egreso));
             this.label1 = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -43,6 +45,7 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -62,11 +65,13 @@
             // 
             this.fecha.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
             this.fecha.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.fecha.Enabled = false;
             this.fecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fecha.Location = new System.Drawing.Point(142, 157);
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(254, 20);
-            this.fecha.TabIndex = 15;
+            this.fecha.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.fecha, "Fecha del egreso");
             // 
             // txtID
             // 
@@ -76,7 +81,8 @@
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(254, 22);
-            this.txtID.TabIndex = 14;
+            this.txtID.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.txtID, "Identificador de caja para la base de datos");
             // 
             // label2
             // 
@@ -111,7 +117,8 @@
             this.txtMonto.Location = new System.Drawing.Point(142, 70);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(254, 22);
-            this.txtMonto.TabIndex = 21;
+            this.txtMonto.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtMonto, "Cantidad monetaria a egresar en caja");
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // label5
@@ -134,7 +141,7 @@
             this.txtBeneficiario.Location = new System.Drawing.Point(142, 100);
             this.txtBeneficiario.Name = "txtBeneficiario";
             this.txtBeneficiario.Size = new System.Drawing.Size(254, 22);
-            this.txtBeneficiario.TabIndex = 23;
+            this.txtBeneficiario.TabIndex = 3;
             // 
             // txtDescripcion
             // 
@@ -143,7 +150,8 @@
             this.txtDescripcion.Location = new System.Drawing.Point(142, 129);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(254, 22);
-            this.txtDescripcion.TabIndex = 21;
+            this.txtDescripcion.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtDescripcion, "Descripción del egreso");
             // 
             // label6
             // 
@@ -170,7 +178,8 @@
             this.ddltipo.Location = new System.Drawing.Point(142, 43);
             this.ddltipo.Name = "ddltipo";
             this.ddltipo.Size = new System.Drawing.Size(254, 21);
-            this.ddltipo.TabIndex = 25;
+            this.ddltipo.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.ddltipo, "Tipo de egreso");
             // 
             // btnCancelar
             // 
@@ -185,7 +194,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(314, 183);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
-            this.btnCancelar.TabIndex = 88;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -204,7 +213,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(226, 183);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnAceptar.TabIndex = 87;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -237,12 +246,18 @@
             this.label7.TabIndex = 90;
             this.label7.Text = "(MAX 128)";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Asistente Sercor";
+            // 
             // Añadir_egreso
             // 
+            this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(408, 222);
+            this.CancelButton = this.btnCancelar;
+            this.ClientSize = new System.Drawing.Size(408, 215);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
@@ -259,6 +274,9 @@
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.txtID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Añadir_egreso";
             this.Text = "Añadir_egreso";
             this.ResumeLayout(false);
@@ -283,5 +301,6 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

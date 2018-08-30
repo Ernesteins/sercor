@@ -1116,7 +1116,7 @@ namespace sercor
                 nFactura.ID_CUENTA = nCuenta.ID_CUENTA;
                 nFactura.IVA = Convert.ToDecimal(txtIva.Text);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
-                nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
+                nFactura.FECHA = dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
@@ -1275,15 +1275,15 @@ namespace sercor
 
                 recibo.Add(elemento);
 
-                MessageBox.Show(elemento.Codigo.ToString());
+                //MessageBox.Show(elemento.Codigo.ToString());
             }
 
 
 
 
-            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value.Date, txtDireccion.Text, txtTelefono.Text,
+            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
                 Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
-                Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value.Date);
+                Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value);
             impresion.Show();
 
             recibo.Clear();
@@ -1382,7 +1382,22 @@ namespace sercor
 
         private void dgvHistorial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            detalleForm _detalle = new detalleForm();
+            Factura _factura = new Factura();
+
+            _factura.ID_FACTURA = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[0].Value);
+            _factura.ID_CLIENTE= dgvHistorial.SelectedRows[0].Cells[1].Value.ToString();
+            _factura.ID_USUARIO= Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[2].Value);
+            _factura.ID_DETALLE= Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[3].Value);
+            _factura.ID_CUENTA = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[4].Value);
+            _factura.IVA = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[5].Value);
+            _factura.TOTAL = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[6].Value);
+            _factura.FECHA =dgvHistorial.SelectedRows[0].Cells[7].Value.ToString();
+            _factura.FACTOR_DESCUENTO = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[8].Value);
+            _factura.VALOR_DESCONTADO = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[9].Value);
+            _factura.TIPO = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[10].Value);
+            _factura.INDICE = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[11].Value);
+
+            detalleForm _detalle = new detalleForm(_factura);
             _detalle.Show();
         }
 
@@ -1412,7 +1427,7 @@ namespace sercor
                 Pago nPago = new Pago();
                 nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
                 nPago.ID_CUENTA = cxcCuenta.ID_CUENTA;
-                nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+                nPago.FECHA_ABONO = dtAbono.Value.ToString("yyyy-MM-dd HH-mm-ss");
                 nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
                 nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
                 if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
@@ -1464,8 +1479,8 @@ namespace sercor
 
         private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            detalleForm _detalle = new detalleForm();
-            _detalle.Show();
+            //detalleForm _detalle = new detalleForm(_factura);
+            //_detalle.Show();
         }
 
         private void dgvCXC_CellClick(object sender, DataGridViewCellEventArgs e)

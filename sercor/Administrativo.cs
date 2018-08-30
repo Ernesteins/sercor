@@ -43,7 +43,7 @@ namespace sercor
 
         private void cbmUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedUser = UsuarioDBM.ObtenerUsuario(cbmUsuario.SelectedItem.ToString());
+            selectedUser = UsuarioDBM.ObtenerUsuarioPorUsuario(cbmUsuario.SelectedItem.ToString());
             txtCi.Text = selectedUser.CEDULA;
             txtName.Text = selectedUser.NOMBRE;
             txtLastName.Text = selectedUser.APELLIDO;

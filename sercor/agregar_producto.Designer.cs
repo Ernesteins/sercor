@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(agregar_producto));
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -52,6 +53,7 @@
             this.rd5 = new System.Windows.Forms.RadioButton();
             this.rd4 = new System.Windows.Forms.RadioButton();
             this.rd3 = new System.Windows.Forms.RadioButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +67,8 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(175, 22);
             this.txtCodigo.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.txtCodigo, "Ingrese el código correcpondiente al producto.\r\nNo debe pasar de los 5 caracteres" +
+        "");
             // 
             // txtNombre
             // 
@@ -75,6 +79,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(175, 22);
             this.txtNombre.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtNombre, "Ingrese un nombre para el producto.");
             // 
             // txtDescripcion
             // 
@@ -85,6 +90,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(175, 22);
             this.txtDescripcion.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtDescripcion, "Describa el producto que va a ingresar");
             // 
             // txtCategoria
             // 
@@ -97,6 +103,7 @@
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(175, 22);
             this.txtCategoria.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtCategoria, "La categoría principal del producto");
             // 
             // txtSubcategoria
             // 
@@ -109,6 +116,7 @@
             this.txtSubcategoria.Name = "txtSubcategoria";
             this.txtSubcategoria.Size = new System.Drawing.Size(175, 22);
             this.txtSubcategoria.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtSubcategoria, "La categoría secundaria del producto");
             // 
             // txtExistencia
             // 
@@ -119,6 +127,7 @@
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.Size = new System.Drawing.Size(175, 22);
             this.txtExistencia.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.txtExistencia, "Ingrese el valor de unidades que ingresará al inventario");
             // 
             // txtPrecio
             // 
@@ -129,6 +138,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(175, 22);
             this.txtPrecio.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.txtPrecio, "Ingrese el preció que tendrá el producto");
             // 
             // label1
             // 
@@ -138,7 +148,7 @@
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 16);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 14;
             this.label1.Text = "Código";
             // 
             // label2
@@ -149,7 +159,7 @@
             this.label2.Location = new System.Drawing.Point(12, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 16);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 14;
             this.label2.Text = "Nombre";
             // 
             // label3
@@ -160,7 +170,7 @@
             this.label3.Location = new System.Drawing.Point(12, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 16);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 14;
             this.label3.Text = "Descripción";
             // 
             // label4
@@ -171,7 +181,7 @@
             this.label4.Location = new System.Drawing.Point(12, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 16);
-            this.label4.TabIndex = 10;
+            this.label4.TabIndex = 14;
             this.label4.Text = "Categoría";
             // 
             // label5
@@ -182,7 +192,7 @@
             this.label5.Location = new System.Drawing.Point(12, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 16);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 14;
             this.label5.Text = "Subcategoría";
             // 
             // label6
@@ -193,7 +203,7 @@
             this.label6.Location = new System.Drawing.Point(12, 153);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 16);
-            this.label6.TabIndex = 12;
+            this.label6.TabIndex = 14;
             this.label6.Text = "Existencia";
             // 
             // label7
@@ -204,7 +214,7 @@
             this.label7.Location = new System.Drawing.Point(12, 181);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 16);
-            this.label7.TabIndex = 13;
+            this.label7.TabIndex = 14;
             this.label7.Text = "Precio";
             // 
             // btnAceptar
@@ -219,7 +229,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(241, 206);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnAceptar.TabIndex = 43;
+            this.btnAceptar.TabIndex = 12;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -239,7 +249,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(329, 206);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
-            this.btnCancelar.TabIndex = 44;
+            this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -268,6 +278,7 @@
             this.rd2.TabIndex = 8;
             this.rd2.TabStop = true;
             this.rd2.Text = "Activo";
+            this.toolTip1.SetToolTip(this.rd2, "El producto permanecerá activo");
             this.rd2.UseVisualStyleBackColor = true;
             // 
             // rd1
@@ -280,6 +291,7 @@
             this.rd1.TabIndex = 7;
             this.rd1.TabStop = true;
             this.rd1.Text = "Inactivo";
+            this.toolTip1.SetToolTip(this.rd1, "El producto premanecerá inactivo");
             this.rd1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -306,6 +318,7 @@
             this.rd5.TabIndex = 11;
             this.rd5.TabStop = true;
             this.rd5.Text = "Otro";
+            this.toolTip1.SetToolTip(this.rd5, "Un producto normal");
             this.rd5.UseVisualStyleBackColor = true;
             // 
             // rd4
@@ -318,6 +331,7 @@
             this.rd4.TabIndex = 10;
             this.rd4.TabStop = true;
             this.rd4.Text = "Luna";
+            this.toolTip1.SetToolTip(this.rd4, "El producto es una Luna");
             this.rd4.UseVisualStyleBackColor = true;
             // 
             // rd3
@@ -330,7 +344,12 @@
             this.rd3.TabIndex = 9;
             this.rd3.TabStop = true;
             this.rd3.Text = "Armazón";
+            this.toolTip1.SetToolTip(this.rd3, "El producto es un armazón");
             this.rd3.UseVisualStyleBackColor = true;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Asistente Sercor";
             // 
             // agregar_producto
             // 
@@ -399,5 +418,6 @@
         private System.Windows.Forms.RadioButton rd5;
         private System.Windows.Forms.RadioButton rd4;
         private System.Windows.Forms.RadioButton rd3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

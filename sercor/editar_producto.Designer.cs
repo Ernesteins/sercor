@@ -141,7 +141,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(108, 179);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(175, 22);
-            this.txtPrecio.TabIndex = 51;
+            this.txtPrecio.TabIndex = 6;
             // 
             // txtExistencia
             // 
@@ -151,7 +151,7 @@
             this.txtExistencia.Location = new System.Drawing.Point(108, 151);
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.Size = new System.Drawing.Size(175, 22);
-            this.txtExistencia.TabIndex = 50;
+            this.txtExistencia.TabIndex = 5;
             // 
             // txtSubcategoria
             // 
@@ -163,7 +163,7 @@
             this.txtSubcategoria.Location = new System.Drawing.Point(108, 124);
             this.txtSubcategoria.Name = "txtSubcategoria";
             this.txtSubcategoria.Size = new System.Drawing.Size(175, 22);
-            this.txtSubcategoria.TabIndex = 49;
+            this.txtSubcategoria.TabIndex = 4;
             // 
             // txtCategoria
             // 
@@ -175,7 +175,7 @@
             this.txtCategoria.Location = new System.Drawing.Point(108, 96);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(175, 22);
-            this.txtCategoria.TabIndex = 48;
+            this.txtCategoria.TabIndex = 3;
             // 
             // txtDescripcion
             // 
@@ -185,7 +185,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(108, 69);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(175, 22);
-            this.txtDescripcion.TabIndex = 47;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -195,7 +195,7 @@
             this.txtNombre.Location = new System.Drawing.Point(108, 41);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(175, 22);
-            this.txtNombre.TabIndex = 46;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -204,7 +204,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(108, 13);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(175, 22);
-            this.txtCodigo.TabIndex = 45;
+            this.txtCodigo.TabIndex = 0;
             // 
             // btnAceptar
             // 
@@ -218,7 +218,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(242, 207);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnAceptar.TabIndex = 59;
+            this.btnAceptar.TabIndex = 12;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -238,7 +238,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(330, 207);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
-            this.btnCancelar.TabIndex = 60;
+            this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
