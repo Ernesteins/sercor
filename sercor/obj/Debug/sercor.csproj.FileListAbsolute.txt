@@ -182,3 +182,4 @@ C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.pdb
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.csprojAssemblyReference.cache
 C:\Users\eyase\source\repos\sercor\sercor\obj\Debug\sercor.Añadir_egreso.resources
 C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.Añadir_egreso.resources
+C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.AboutBox1.resources

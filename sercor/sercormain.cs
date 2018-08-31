@@ -1627,11 +1627,123 @@ namespace sercor
                     btnOkReporte.Visible = true;
                     break;
 
-                case 3:
+                case 2:
                     //Facturacion del día
-
+                    dtpReporteInicial.Visible = true;
+                    dtpReporteFinal.Visible = true;
+                    btnOkReporte.Visible = true;
                     break;
             }
+        }
+
+        private void btnTodoInventarioReporte_Click(object sender, EventArgs e)
+        {
+            List < Producto > _list;
+
+            _list = ProductoDBM.ObtenerProductos();
+
+            inventarioReporte1.SetDataSource(_list);
+            inventarioReporte1.SetParameterValue(1, "de todos los productos");
+            crystalReportViewer1.ReportSource = inventarioReporte1;
+            crystalReportViewer1.Refresh();
+        }
+
+        private void btnDisponibleInventario_Click(object sender, EventArgs e)
+        {
+            List<Producto> _list;
+
+            _list = ProductoDBM.ObtenerProductosAgotados();
+
+            inventarioReporte1.SetDataSource(_list);
+            inventarioReporte1.SetParameterValue(1, "de productos disponibles");
+            crystalReportViewer1.ReportSource = inventarioReporte1;
+            crystalReportViewer1.Refresh();
+        }
+
+        private void btnAgotadoInventario_Click(object sender, EventArgs e)
+        {
+            List<Producto> _list;
+
+            _list = ProductoDBM.ObtenerProductosDisponibles();
+
+            inventarioReporte1.SetDataSource(_list);
+            inventarioReporte1.SetParameterValue(1, "de productos agotados");
+            crystalReportViewer1.ReportSource = inventarioReporte1;
+            crystalReportViewer1.Refresh();
+        }
+
+        private void btnOkReporte_Click(object sender, EventArgs e)
+        {
+            
+
+            switch (cmbReporte.SelectedIndex)
+            {
+                case 1:
+                    string fecha1 = dtpReporteInicial.Value.ToString("yyyy-MM-dd");
+                    string fecha2 = dtpReporteFinal.Value.ToString("yyyy-MM-dd");
+                    List<PagoReporte> _list;
+
+
+                    decimal totalEfectivo = PagoDBM.suma(0, fecha1, fecha2);
+                    decimal totalTarjeta = PagoDBM.suma(1, fecha1, fecha2);
+                    decimal totalCheque = PagoDBM.suma(2, fecha1, fecha2);
+                    decimal totalEgreso = PagoDBM.sumaEgreso(fecha1, fecha2);
+                    decimal totalNeto = totalEfectivo + totalTarjeta + totalCheque - totalEgreso;
+
+                    _list = PagoDBM.ObtenerPagosReporte(fecha1, fecha2);
+
+                    movimientos1.SetDataSource(_list);
+                    //movimientos1.Database.Tables[1].SetDataSource(_list2);
+
+                    movimientos1.SetParameterValue(1, "movimiento de caja");
+                    movimientos1.SetParameterValue(2, totalNeto);
+                    movimientos1.SetParameterValue(6, totalEfectivo);
+                    movimientos1.SetParameterValue(7, totalTarjeta);
+                    movimientos1.SetParameterValue(8, totalCheque);
+                    movimientos1.SetParameterValue(9, totalEgreso * -1);
+
+
+                    crystalReportViewer1.ReportSource = movimientos1;
+                    crystalReportViewer1.Refresh();
+                    break;
+
+                case 2:
+                    fecha1 = dtpReporteInicial.Value.ToString("yyyy-MM-dd");
+                    fecha2 = dtpReporteFinal.Value.ToString("yyyy-MM-dd");
+
+
+                    totalEfectivo = PagoDBM.suma(0, fecha1, fecha2);
+                    totalTarjeta = PagoDBM.suma(1, fecha1, fecha2);
+                    totalCheque = PagoDBM.suma(2, fecha1, fecha2);
+                    totalEgreso = 0;
+
+                    totalNeto = totalEfectivo + totalTarjeta + totalCheque - totalEgreso;
+                    _list = PagoDBM.ObtenerPagosReporteFactura(fecha1, fecha2);
+
+                    movimientos1.SetDataSource(_list);
+                    //movimientos1.Database.Tables[1].SetDataSource(_list2);
+
+                    movimientos1.SetParameterValue(1, "movimiento de caja");
+                    movimientos1.SetParameterValue(2, totalNeto);
+                    movimientos1.SetParameterValue(6, totalEfectivo);
+                    movimientos1.SetParameterValue(7, totalTarjeta);
+                    movimientos1.SetParameterValue(8, totalCheque);
+                    movimientos1.SetParameterValue(9, 0);
+
+
+                    crystalReportViewer1.ReportSource = movimientos1;
+                    crystalReportViewer1.Refresh();
+                    break;
+
+            }
+
+            
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox1 = new AboutBox1();
+            aboutBox1.ShowDialog();
         }
     }
 }

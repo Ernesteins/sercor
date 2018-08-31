@@ -39,6 +39,62 @@ namespace sercor
         }
 
 
+        public static List<Producto> ObtenerProductosAgotados()
+        {
+            List<Producto> _lista = new List<Producto>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM producto where EXISTENCIA=0"), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Producto pProducto = new Producto();
+
+                pProducto.COD = _reader.GetString(0);
+                pProducto.NOMBRE = _reader.GetString(1);
+                pProducto.DESCRIPCION = _reader.GetString(2);
+                pProducto.CATEGORIA = _reader.GetString(3);
+                pProducto.SUBCATEGORIA = _reader.GetString(4);
+                pProducto.EXISTENCIA = _reader.GetInt32(5);
+                pProducto.PRECIO = _reader.GetDecimal(6);
+                pProducto.ESTADO = _reader.GetInt32(7);
+
+                _lista.Add(pProducto);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
+        public static List<Producto> ObtenerProductosDisponibles()
+        {
+            List<Producto> _lista = new List<Producto>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM producto where EXISTENCIA<>0"), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Producto pProducto = new Producto();
+
+                pProducto.COD = _reader.GetString(0);
+                pProducto.NOMBRE = _reader.GetString(1);
+                pProducto.DESCRIPCION = _reader.GetString(2);
+                pProducto.CATEGORIA = _reader.GetString(3);
+                pProducto.SUBCATEGORIA = _reader.GetString(4);
+                pProducto.EXISTENCIA = _reader.GetInt32(5);
+                pProducto.PRECIO = _reader.GetDecimal(6);
+                pProducto.ESTADO = _reader.GetInt32(7);
+
+                _lista.Add(pProducto);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static List<ProductoEstado> ObtenerProductosEstado()//sin estado
         {
             List<ProductoEstado> _lista = new List<ProductoEstado>();
