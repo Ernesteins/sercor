@@ -77,6 +77,8 @@ namespace sercor
 
             btnAllProducts_Click(null, null);
 
+            reporteElementos();
+
             IDUser = usuario.ID_USUARIO;
             int tipoUser = usuario.TIPO;
             string usuarioUser = usuario.USUARIO;
@@ -1594,6 +1596,39 @@ namespace sercor
         private void button6_Click(object sender, EventArgs e)
         {
             llenareportes();
+        }
+
+        private void reporteElementos()
+        {
+            dtpReporteInicial.Visible = false;
+            dtpReporteFinal.Visible = false;
+            btnOkReporte.Visible = false;
+
+            btnTodoInventarioReporte.Visible = false;
+            btnDisponibleInventario.Visible = false;
+            btnAgotadoInventario.Visible = false;
+        }
+
+        private void cmbReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            reporteElementos();
+
+            switch (cmbReporte.SelectedIndex)
+            {
+                case 0:
+                    btnTodoInventarioReporte.Visible = true;
+                    btnDisponibleInventario.Visible = true;
+                    btnAgotadoInventario.Visible = true;
+                    break;
+
+
+
+                case 1:
+                    dtpReporteInicial.Visible = true;
+                    dtpReporteFinal.Visible = true;
+                    btnOkReporte.Visible = true;
+                    break;
+            }
         }
     }
 }

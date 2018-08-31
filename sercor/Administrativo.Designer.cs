@@ -194,7 +194,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDelete.BackColor = System.Drawing.Color.Gainsboro;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDelete.Enabled = false;
             this.btnDelete.FlatAppearance.BorderSize = 0;
@@ -216,7 +216,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEdit.BackColor = System.Drawing.Color.Gainsboro;
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -237,7 +237,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNew.BackColor = System.Drawing.Color.Gainsboro;
             this.btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
