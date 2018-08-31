@@ -190,6 +190,15 @@
             this.btnTodosInventario = new System.Windows.Forms.Button();
             this.pnReportes = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.btnAgotadoInventario = new System.Windows.Forms.Button();
+            this.btnDisponibleInventario = new System.Windows.Forms.Button();
+            this.btnTodoInventarioReporte = new System.Windows.Forms.Button();
+            this.btnOkReporte = new System.Windows.Forms.Button();
+            this.dtpReporteFinal = new System.Windows.Forms.DateTimePicker();
+            this.dtpReporteInicial = new System.Windows.Forms.DateTimePicker();
+            this.cmbReporte = new System.Windows.Forms.ComboBox();
             this.pnTrabajos = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvTrabajos = new System.Windows.Forms.DataGridView();
@@ -215,15 +224,6 @@
             this.btnCxc = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.cmbReporte = new System.Windows.Forms.ComboBox();
-            this.dtpReporteFinal = new System.Windows.Forms.DateTimePicker();
-            this.dtpReporteInicial = new System.Windows.Forms.DateTimePicker();
-            this.btnOkReporte = new System.Windows.Forms.Button();
-            this.btnTodoInventarioReporte = new System.Windows.Forms.Button();
-            this.btnDisponibleInventario = new System.Windows.Forms.Button();
-            this.btnAgotadoInventario = new System.Windows.Forms.Button();
             this.pnForm.SuspendLayout();
             this.pnBody.SuspendLayout();
             this.pnMovCaja.SuspendLayout();
@@ -261,6 +261,7 @@
             this.pnInventarioMenu.SuspendLayout();
             this.pnReportes.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel15.SuspendLayout();
             this.pnTrabajos.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajos)).BeginInit();
@@ -270,7 +271,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnMenu.SuspendLayout();
-            this.panel15.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnForm
@@ -515,10 +515,10 @@
             this.pnCxc.BackColor = System.Drawing.Color.Gainsboro;
             this.pnCxc.Controls.Add(this.panel2);
             this.pnCxc.Controls.Add(this.pnCxcMenu);
-            this.pnCxc.Location = new System.Drawing.Point(19, 277);
+            this.pnCxc.Location = new System.Drawing.Point(19, 275);
             this.pnCxc.Margin = new System.Windows.Forms.Padding(0);
             this.pnCxc.Name = "pnCxc";
-            this.pnCxc.Size = new System.Drawing.Size(1232, 135);
+            this.pnCxc.Size = new System.Drawing.Size(1232, 136);
             this.pnCxc.TabIndex = 1;
             this.pnCxc.Visible = false;
             // 
@@ -530,7 +530,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1232, 103);
+            this.panel2.Size = new System.Drawing.Size(1232, 104);
             this.panel2.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -545,8 +545,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 223F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1232, 103);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1232, 104);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel14
@@ -581,19 +581,20 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(734, 3);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(495, 97);
+            this.panel14.Size = new System.Drawing.Size(495, 98);
             this.panel14.TabIndex = 1;
             // 
             // label_idcuenta
             // 
             this.label_idcuenta.AutoSize = true;
             this.label_idcuenta.BackColor = System.Drawing.Color.Transparent;
+            this.label_idcuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_idcuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_idcuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_idcuenta.ForeColor = System.Drawing.Color.DimGray;
             this.label_idcuenta.Location = new System.Drawing.Point(385, 91);
             this.label_idcuenta.Name = "label_idcuenta";
-            this.label_idcuenta.Size = new System.Drawing.Size(85, 20);
+            this.label_idcuenta.Size = new System.Drawing.Size(87, 22);
             this.label_idcuenta.TabIndex = 53;
             this.label_idcuenta.Text = "#Id cuenta";
             // 
@@ -601,12 +602,13 @@
             // 
             this.label_idcliente.AutoSize = true;
             this.label_idcliente.BackColor = System.Drawing.Color.Transparent;
+            this.label_idcliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_idcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_idcliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_idcliente.ForeColor = System.Drawing.Color.DimGray;
             this.label_idcliente.Location = new System.Drawing.Point(385, 45);
             this.label_idcliente.Name = "label_idcliente";
-            this.label_idcliente.Size = new System.Drawing.Size(82, 20);
+            this.label_idcliente.Size = new System.Drawing.Size(84, 22);
             this.label_idcliente.TabIndex = 52;
             this.label_idcliente.Text = "#Id cliente";
             // 
@@ -614,12 +616,13 @@
             // 
             this.label_iddoc.AutoSize = true;
             this.label_iddoc.BackColor = System.Drawing.Color.Transparent;
+            this.label_iddoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_iddoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_iddoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_iddoc.ForeColor = System.Drawing.Color.DimGray;
             this.label_iddoc.Location = new System.Drawing.Point(88, 82);
             this.label_iddoc.Name = "label_iddoc";
-            this.label_iddoc.Size = new System.Drawing.Size(65, 29);
+            this.label_iddoc.Size = new System.Drawing.Size(67, 31);
             this.label_iddoc.TabIndex = 51;
             this.label_iddoc.Text = "####";
             // 
@@ -627,12 +630,13 @@
             // 
             this.label_TipoDoc.AutoSize = true;
             this.label_TipoDoc.BackColor = System.Drawing.Color.Transparent;
+            this.label_TipoDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_TipoDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_TipoDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_TipoDoc.ForeColor = System.Drawing.Color.DimGray;
             this.label_TipoDoc.Location = new System.Drawing.Point(26, 82);
             this.label_TipoDoc.Name = "label_TipoDoc";
-            this.label_TipoDoc.Size = new System.Drawing.Size(56, 29);
+            this.label_TipoDoc.Size = new System.Drawing.Size(58, 31);
             this.label_TipoDoc.TabIndex = 50;
             this.label_TipoDoc.Text = "Doc";
             // 
@@ -672,12 +676,13 @@
             // 
             this.label_Nombre.AutoSize = true;
             this.label_Nombre.BackColor = System.Drawing.Color.Transparent;
+            this.label_Nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_Nombre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Nombre.ForeColor = System.Drawing.Color.DimGray;
             this.label_Nombre.Location = new System.Drawing.Point(26, 36);
             this.label_Nombre.Name = "label_Nombre";
-            this.label_Nombre.Size = new System.Drawing.Size(178, 29);
+            this.label_Nombre.Size = new System.Drawing.Size(180, 31);
             this.label_Nombre.TabIndex = 45;
             this.label_Nombre.Text = "Nombre cliente";
             // 
@@ -929,9 +934,9 @@
             "Efectivo",
             "Tarjeta",
             "Cheque"});
-            this.metodoPagocxc.Location = new System.Drawing.Point(136, 133);
+            this.metodoPagocxc.Location = new System.Drawing.Point(129, 128);
             this.metodoPagocxc.Name = "metodoPagocxc";
-            this.metodoPagocxc.Size = new System.Drawing.Size(0, 24);
+            this.metodoPagocxc.Size = new System.Drawing.Size(58, 24);
             this.metodoPagocxc.TabIndex = 25;
             this.metodoPagocxc.SelectedIndexChanged += new System.EventHandler(this.metodoPagocxc_SelectedIndexChanged);
             // 
@@ -942,7 +947,7 @@
             this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.DimGray;
-            this.label24.Location = new System.Drawing.Point(5, 136);
+            this.label24.Location = new System.Drawing.Point(13, 131);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(101, 16);
             this.label24.TabIndex = 18;
@@ -979,7 +984,7 @@
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCXC.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvCXC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCXC.Size = new System.Drawing.Size(731, 103);
+            this.dgvCXC.Size = new System.Drawing.Size(731, 104);
             this.dgvCXC.TabIndex = 0;
             this.dgvCXC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCXC_CellClick);
             // 
@@ -1113,7 +1118,7 @@
             this.vistaFactura.ReadOnly = true;
             this.vistaFactura.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.vistaFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.vistaFactura.Size = new System.Drawing.Size(690, 134);
+            this.vistaFactura.Size = new System.Drawing.Size(690, 1);
             this.vistaFactura.TabIndex = 0;
             // 
             // colCodigo
@@ -1402,7 +1407,7 @@
             this.panel8.Controls.Add(this.txtSubtotal);
             this.panel8.Controls.Add(this.label11);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 317);
+            this.panel8.Location = new System.Drawing.Point(3, -53);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(704, 144);
             this.panel8.TabIndex = 2;
@@ -1604,7 +1609,7 @@
             this.panel9.Location = new System.Drawing.Point(713, 173);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(10);
-            this.panel9.Size = new System.Drawing.Size(704, 138);
+            this.panel9.Size = new System.Drawing.Size(704, 1);
             this.panel9.TabIndex = 3;
             // 
             // dgvProductos
@@ -1651,7 +1656,7 @@
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.dgvProductos.RowTemplate.ReadOnly = true;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(684, 54);
+            this.dgvProductos.Size = new System.Drawing.Size(684, 0);
             this.dgvProductos.TabIndex = 4;
             this.dgvProductos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellDoubleClick);
             // 
@@ -1660,7 +1665,7 @@
             this.panel13.Controls.Add(this.btnAdd);
             this.panel13.Controls.Add(this.txtAdd);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel13.Location = new System.Drawing.Point(10, 96);
+            this.panel13.Location = new System.Drawing.Point(10, -41);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(684, 32);
             this.panel13.TabIndex = 3;
@@ -1966,7 +1971,7 @@
             // 
             this.panel11.Controls.Add(this.dgvHistorial);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(713, 317);
+            this.panel11.Location = new System.Drawing.Point(713, -53);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(10);
             this.panel11.Size = new System.Drawing.Size(704, 144);
@@ -2281,6 +2286,143 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(715, 92);
             this.panel4.TabIndex = 2;
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 32);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.ShowCloseButton = false;
+            this.crystalReportViewer1.ShowGroupTreeButton = false;
+            this.crystalReportViewer1.ShowLogo = false;
+            this.crystalReportViewer1.ShowParameterPanelButton = false;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(715, 60);
+            this.crystalReportViewer1.TabIndex = 2;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel15.Controls.Add(this.btnAgotadoInventario);
+            this.panel15.Controls.Add(this.btnDisponibleInventario);
+            this.panel15.Controls.Add(this.btnTodoInventarioReporte);
+            this.panel15.Controls.Add(this.btnOkReporte);
+            this.panel15.Controls.Add(this.dtpReporteFinal);
+            this.panel15.Controls.Add(this.dtpReporteInicial);
+            this.panel15.Controls.Add(this.cmbReporte);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel15.Location = new System.Drawing.Point(0, 0);
+            this.panel15.Margin = new System.Windows.Forms.Padding(0);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(715, 32);
+            this.panel15.TabIndex = 1;
+            // 
+            // btnAgotadoInventario
+            // 
+            this.btnAgotadoInventario.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAgotadoInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAgotadoInventario.FlatAppearance.BorderSize = 0;
+            this.btnAgotadoInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgotadoInventario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgotadoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgotadoInventario.Location = new System.Drawing.Point(371, 3);
+            this.btnAgotadoInventario.Name = "btnAgotadoInventario";
+            this.btnAgotadoInventario.Size = new System.Drawing.Size(94, 25);
+            this.btnAgotadoInventario.TabIndex = 48;
+            this.btnAgotadoInventario.TabStop = false;
+            this.btnAgotadoInventario.Text = "Agotados";
+            this.btnAgotadoInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAgotadoInventario.UseVisualStyleBackColor = false;
+            // 
+            // btnDisponibleInventario
+            // 
+            this.btnDisponibleInventario.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnDisponibleInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDisponibleInventario.FlatAppearance.BorderSize = 0;
+            this.btnDisponibleInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDisponibleInventario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisponibleInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDisponibleInventario.Location = new System.Drawing.Point(262, 3);
+            this.btnDisponibleInventario.Name = "btnDisponibleInventario";
+            this.btnDisponibleInventario.Size = new System.Drawing.Size(103, 25);
+            this.btnDisponibleInventario.TabIndex = 46;
+            this.btnDisponibleInventario.TabStop = false;
+            this.btnDisponibleInventario.Text = "Disponibles";
+            this.btnDisponibleInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDisponibleInventario.UseVisualStyleBackColor = false;
+            // 
+            // btnTodoInventarioReporte
+            // 
+            this.btnTodoInventarioReporte.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnTodoInventarioReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnTodoInventarioReporte.FlatAppearance.BorderSize = 0;
+            this.btnTodoInventarioReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTodoInventarioReporte.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTodoInventarioReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTodoInventarioReporte.Location = new System.Drawing.Point(167, 3);
+            this.btnTodoInventarioReporte.Name = "btnTodoInventarioReporte";
+            this.btnTodoInventarioReporte.Size = new System.Drawing.Size(89, 25);
+            this.btnTodoInventarioReporte.TabIndex = 45;
+            this.btnTodoInventarioReporte.TabStop = false;
+            this.btnTodoInventarioReporte.Text = "Todos";
+            this.btnTodoInventarioReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTodoInventarioReporte.UseVisualStyleBackColor = false;
+            // 
+            // btnOkReporte
+            // 
+            this.btnOkReporte.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnOkReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnOkReporte.FlatAppearance.BorderSize = 0;
+            this.btnOkReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOkReporte.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOkReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOkReporte.Image = global::sercor.Properties.Resources.success16;
+            this.btnOkReporte.Location = new System.Drawing.Point(471, 3);
+            this.btnOkReporte.Name = "btnOkReporte";
+            this.btnOkReporte.Size = new System.Drawing.Size(89, 25);
+            this.btnOkReporte.TabIndex = 44;
+            this.btnOkReporte.TabStop = false;
+            this.btnOkReporte.Text = "Aceptar";
+            this.btnOkReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOkReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOkReporte.UseVisualStyleBackColor = false;
+            // 
+            // dtpReporteFinal
+            // 
+            this.dtpReporteFinal.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtpReporteFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpReporteFinal.Location = new System.Drawing.Point(319, 5);
+            this.dtpReporteFinal.Name = "dtpReporteFinal";
+            this.dtpReporteFinal.Size = new System.Drawing.Size(146, 22);
+            this.dtpReporteFinal.TabIndex = 43;
+            this.dtpReporteFinal.TabStop = false;
+            // 
+            // dtpReporteInicial
+            // 
+            this.dtpReporteInicial.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtpReporteInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpReporteInicial.Location = new System.Drawing.Point(167, 5);
+            this.dtpReporteInicial.Name = "dtpReporteInicial";
+            this.dtpReporteInicial.Size = new System.Drawing.Size(146, 22);
+            this.dtpReporteInicial.TabIndex = 42;
+            this.dtpReporteInicial.TabStop = false;
+            // 
+            // cmbReporte
+            // 
+            this.cmbReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbReporte.FormattingEnabled = true;
+            this.cmbReporte.Items.AddRange(new object[] {
+            "Inventario",
+            "Caja"});
+            this.cmbReporte.Location = new System.Drawing.Point(3, 4);
+            this.cmbReporte.Name = "cmbReporte";
+            this.cmbReporte.Size = new System.Drawing.Size(158, 24);
+            this.cmbReporte.TabIndex = 41;
+            this.cmbReporte.TabStop = false;
+            this.cmbReporte.SelectedIndexChanged += new System.EventHandler(this.cmbReporte_SelectedIndexChanged);
             // 
             // pnTrabajos
             // 
@@ -2678,142 +2820,6 @@
             // 
             this.toolTip1.ToolTipTitle = "Asistente Secor";
             // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel15.Controls.Add(this.btnAgotadoInventario);
-            this.panel15.Controls.Add(this.btnDisponibleInventario);
-            this.panel15.Controls.Add(this.btnTodoInventarioReporte);
-            this.panel15.Controls.Add(this.btnOkReporte);
-            this.panel15.Controls.Add(this.dtpReporteFinal);
-            this.panel15.Controls.Add(this.dtpReporteInicial);
-            this.panel15.Controls.Add(this.cmbReporte);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(0, 0);
-            this.panel15.Margin = new System.Windows.Forms.Padding(0);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(715, 32);
-            this.panel15.TabIndex = 1;
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 32);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ShowCloseButton = false;
-            this.crystalReportViewer1.ShowGroupTreeButton = false;
-            this.crystalReportViewer1.ShowLogo = false;
-            this.crystalReportViewer1.ShowParameterPanelButton = false;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(715, 60);
-            this.crystalReportViewer1.TabIndex = 2;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
-            // cmbReporte
-            // 
-            this.cmbReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbReporte.FormattingEnabled = true;
-            this.cmbReporte.Items.AddRange(new object[] {
-            "Inventario",
-            "Caja"});
-            this.cmbReporte.Location = new System.Drawing.Point(3, 4);
-            this.cmbReporte.Name = "cmbReporte";
-            this.cmbReporte.Size = new System.Drawing.Size(158, 24);
-            this.cmbReporte.TabIndex = 41;
-            this.cmbReporte.TabStop = false;
-            this.cmbReporte.SelectedIndexChanged += new System.EventHandler(this.cmbReporte_SelectedIndexChanged);
-            // 
-            // dtpReporteFinal
-            // 
-            this.dtpReporteFinal.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dtpReporteFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReporteFinal.Location = new System.Drawing.Point(319, 5);
-            this.dtpReporteFinal.Name = "dtpReporteFinal";
-            this.dtpReporteFinal.Size = new System.Drawing.Size(146, 22);
-            this.dtpReporteFinal.TabIndex = 43;
-            this.dtpReporteFinal.TabStop = false;
-            // 
-            // dtpReporteInicial
-            // 
-            this.dtpReporteInicial.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dtpReporteInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReporteInicial.Location = new System.Drawing.Point(167, 5);
-            this.dtpReporteInicial.Name = "dtpReporteInicial";
-            this.dtpReporteInicial.Size = new System.Drawing.Size(146, 22);
-            this.dtpReporteInicial.TabIndex = 42;
-            this.dtpReporteInicial.TabStop = false;
-            // 
-            // btnOkReporte
-            // 
-            this.btnOkReporte.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnOkReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnOkReporte.FlatAppearance.BorderSize = 0;
-            this.btnOkReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOkReporte.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOkReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnOkReporte.Image = global::sercor.Properties.Resources.success16;
-            this.btnOkReporte.Location = new System.Drawing.Point(471, 3);
-            this.btnOkReporte.Name = "btnOkReporte";
-            this.btnOkReporte.Size = new System.Drawing.Size(89, 25);
-            this.btnOkReporte.TabIndex = 44;
-            this.btnOkReporte.TabStop = false;
-            this.btnOkReporte.Text = "Aceptar";
-            this.btnOkReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOkReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnOkReporte.UseVisualStyleBackColor = false;
-            // 
-            // btnTodoInventarioReporte
-            // 
-            this.btnTodoInventarioReporte.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnTodoInventarioReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnTodoInventarioReporte.FlatAppearance.BorderSize = 0;
-            this.btnTodoInventarioReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTodoInventarioReporte.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTodoInventarioReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnTodoInventarioReporte.Location = new System.Drawing.Point(167, 3);
-            this.btnTodoInventarioReporte.Name = "btnTodoInventarioReporte";
-            this.btnTodoInventarioReporte.Size = new System.Drawing.Size(89, 25);
-            this.btnTodoInventarioReporte.TabIndex = 45;
-            this.btnTodoInventarioReporte.TabStop = false;
-            this.btnTodoInventarioReporte.Text = "Todos";
-            this.btnTodoInventarioReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTodoInventarioReporte.UseVisualStyleBackColor = false;
-            // 
-            // btnDisponibleInventario
-            // 
-            this.btnDisponibleInventario.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnDisponibleInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDisponibleInventario.FlatAppearance.BorderSize = 0;
-            this.btnDisponibleInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDisponibleInventario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisponibleInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnDisponibleInventario.Location = new System.Drawing.Point(262, 3);
-            this.btnDisponibleInventario.Name = "btnDisponibleInventario";
-            this.btnDisponibleInventario.Size = new System.Drawing.Size(103, 25);
-            this.btnDisponibleInventario.TabIndex = 46;
-            this.btnDisponibleInventario.TabStop = false;
-            this.btnDisponibleInventario.Text = "Disponibles";
-            this.btnDisponibleInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDisponibleInventario.UseVisualStyleBackColor = false;
-            // 
-            // btnAgotadoInventario
-            // 
-            this.btnAgotadoInventario.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnAgotadoInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAgotadoInventario.FlatAppearance.BorderSize = 0;
-            this.btnAgotadoInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgotadoInventario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgotadoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAgotadoInventario.Location = new System.Drawing.Point(371, 3);
-            this.btnAgotadoInventario.Name = "btnAgotadoInventario";
-            this.btnAgotadoInventario.Size = new System.Drawing.Size(94, 25);
-            this.btnAgotadoInventario.TabIndex = 48;
-            this.btnAgotadoInventario.TabStop = false;
-            this.btnAgotadoInventario.Text = "Agotados";
-            this.btnAgotadoInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgotadoInventario.UseVisualStyleBackColor = false;
-            // 
             // sercormain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2875,6 +2881,7 @@
             this.pnInventarioMenu.PerformLayout();
             this.pnReportes.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
             this.pnTrabajos.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajos)).EndInit();
@@ -2887,7 +2894,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnMenu.ResumeLayout(false);
             this.pnMenu.PerformLayout();
-            this.panel15.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
