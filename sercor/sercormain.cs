@@ -1621,12 +1621,15 @@ namespace sercor
                     btnAgotadoInventario.Visible = true;
                     break;
 
-
-
                 case 1:
                     dtpReporteInicial.Visible = true;
                     dtpReporteFinal.Visible = true;
                     btnOkReporte.Visible = true;
+                    break;
+
+                case 3:
+                    //Facturacion del día
+
                     break;
             }
         }
