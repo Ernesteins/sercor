@@ -83,9 +83,19 @@ namespace sercor.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dollar_symbol16 {
+        internal static System.Drawing.Bitmap cerdo {
             get {
-                object obj = ResourceManager.GetObject("dollar-symbol16", resourceCulture);
+                object obj = ResourceManager.GetObject("cerdo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ckpd {
+            get {
+                object obj = ResourceManager.GetObject("ckpd", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

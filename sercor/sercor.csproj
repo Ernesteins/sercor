@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\eyase\Desktop\SercorPUB\</PublishUrl>
+    <PublishUrl>C:\Users\eyase\Desktop\sercorPUB1\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,9 +22,15 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ProductName>Sercor</ProductName>
+    <PublisherName>CKPDsoft</PublisherName>
+    <SuiteName>Sercor DBM</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -81,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,12 @@
     </Compile>
     <Compile Include="agregar_producto.Designer.cs">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Añadir_egreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Añadir_egreso.Designer.cs">
+      <DependentUpon>Añadir_egreso.cs</DependentUpon>
     </Compile>
     <Compile Include="bdComun.cs" />
     <Compile Include="cambiar_estado.cs">
@@ -133,6 +151,12 @@
       <DependentUpon>factura.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="facturacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>facturacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FacturaDBM.cs" />
     <Compile Include="FacturaImpresion.cs" />
     <Compile Include="FormInstance.cs" />
@@ -143,11 +167,23 @@
     <Compile Include="imprimir.Designer.cs">
       <DependentUpon>imprimir.cs</DependentUpon>
     </Compile>
+    <Compile Include="inventarioReporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inventarioReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="movimientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>movimientos.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="nuevoUsuario.cs">
       <SubType>Form</SubType>
@@ -186,11 +222,17 @@
     <Compile Include="TrabajoDBM.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDBM.cs" />
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrativo.resx">
       <DependentUpon>Administrativo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Añadir_egreso.resx">
+      <DependentUpon>Añadir_egreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
@@ -208,11 +250,23 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>factura1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="facturacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>facturacion.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="imprimir.resx">
       <DependentUpon>imprimir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="inventarioReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inventarioReporte.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="movimientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>movimientos.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="nuevoUsuario.resx">
       <DependentUpon>nuevoUsuario.cs</DependentUpon>
@@ -252,6 +306,7 @@
     <Content Include="Docs\modelo sercor 29-Julio.png" />
     <Content Include="Docs\modelo sercor 4-Agosto.png" />
     <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\CKPD %281%29.jpg" />
     <None Include="Resources\box.png" />
     <None Include="Resources\notepad.png" />
     <None Include="Resources\repeat.png" />
@@ -294,6 +349,106 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PublishFile Include="CrystalDecisions.Shared">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\consultas.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\documentacion.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis29julio.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis3Agosto.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis4Agosto.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\modelo sercor 29-Julio.png">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\modelo sercor 4-Agosto.png">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\Respaldos.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
       <Group>
@@ -304,6 +459,19 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="sercor.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

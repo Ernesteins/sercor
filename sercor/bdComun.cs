@@ -13,7 +13,7 @@ namespace sercor
             string user = "sercoruser";
             string password = "f9f524bf";
 
-            try{
+            //try{
                 MySqlConnection conectar = new MySqlConnection("server=" + server + ";" +
                 "database=" + databaseName + ";" +
                 "Uid=" + user + ";" +
@@ -21,13 +21,13 @@ namespace sercor
                 "SslMode=none;");
                 conectar.Open();
                 return conectar;
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
+            //}
+            //catch (MySql.Data.MySqlClient.MySqlException)
+            //{
                 //MySqlConnection conectar = new MySqlConnection(null);
                 //conectar.Open();
-                return null;
-            } 
+              //  return null;
+            //} 
         }
     }
 }

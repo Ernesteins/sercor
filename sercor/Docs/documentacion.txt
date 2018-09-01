@@ -19,11 +19,6 @@ TIPO USUARIO
 INVESTIGAR
 	clienteNombres.Add(ClienteDBM.ObtenerNombres()[j].NOMBRE);
 
-NOTAS
-	servicio Mysql automatico al inicio
-	crisGRA1996_
-	30doorDIE
-
 	https://www.flaticon.com/packs/interaction-assets-2/11
 	https://www.flaticon.com/packs/essential-collection
 

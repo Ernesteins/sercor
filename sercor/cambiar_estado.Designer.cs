@@ -38,6 +38,7 @@
             // 
             // chklEstado
             // 
+            this.chklEstado.BackColor = System.Drawing.SystemColors.Control;
             this.chklEstado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chklEstado.CheckOnClick = true;
             this.chklEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -47,18 +48,17 @@
             "Laboratorio",
             "Recibido",
             "Retirado"});
-            this.chklEstado.Location = new System.Drawing.Point(12, 40);
+            this.chklEstado.Location = new System.Drawing.Point(12, 39);
             this.chklEstado.Name = "chklEstado";
             this.chklEstado.Size = new System.Drawing.Size(169, 68);
-            this.chklEstado.TabIndex = 0;
+            this.chklEstado.TabIndex = 1;
             this.chklEstado.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklEstado_ItemCheck);
             this.chklEstado.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chklEstado_MouseDoubleClick);
-            this.chklEstado.SelectedIndexChanged += new System.EventHandler(this.chklEstado_SelectedIndexChanged);
             this.chklEstado.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chklEstado_MouseDoubleClick);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancelar.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
@@ -69,7 +69,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(99, 114);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 25);
-            this.btnCancelar.TabIndex = 62;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -77,7 +77,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAceptar.BackColor = System.Drawing.Color.Gainsboro;
             this.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -87,7 +87,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(11, 114);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnAceptar.TabIndex = 61;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -99,7 +99,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 64;
@@ -111,10 +111,11 @@
             this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(100, 12);
+            this.txtCodigo.Location = new System.Drawing.Point(100, 9);
             this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(81, 22);
-            this.txtCodigo.TabIndex = 63;
+            this.txtCodigo.TabIndex = 0;
             this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cambiar_estado
@@ -122,10 +123,9 @@
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(193, 146);
-            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnCancelar);

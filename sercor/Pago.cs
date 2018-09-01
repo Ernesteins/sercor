@@ -66,4 +66,20 @@ namespace sercor
         }
 
     }
+    class PagoReporte
+    {
+        public string FECHA_ABONO { get; set; }
+        public Decimal MONTO { get; set; }
+        public string DESCRIPCION { get; set; }
+
+        public PagoReporte() { }
+
+        //pago con tarjeta
+        public PagoReporte(string pFECHA_ABONO, Decimal pMONTO, string pDESCRIPCION)
+        {
+            this.FECHA_ABONO = pFECHA_ABONO;
+            this.MONTO = pMONTO;
+            this.DESCRIPCION = pDESCRIPCION;
+        }
+    }
 }

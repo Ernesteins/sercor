@@ -77,6 +77,8 @@ namespace sercor
 
             btnAllProducts_Click(null, null);
 
+            reporteElementos();
+
             IDUser = usuario.ID_USUARIO;
             int tipoUser = usuario.TIPO;
             string usuarioUser = usuario.USUARIO;
@@ -289,6 +291,18 @@ namespace sercor
         private void btnMovimientos_Click(object sender, EventArgs e)
         {
             menuToggler(6);
+            llenareportes();
+        }
+
+        //Funcion de llenado de reportes
+        private void llenareportes()
+        {
+            dtpReporte.Value = System.DateTime.Today;
+            dtpReportefin.Value = System.DateTime.Now;
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
         }
 
         //FUNCION RESTAURADORA DE PRECIOS
@@ -974,7 +988,8 @@ namespace sercor
             }
             return true;
         }
-        //FUNCION DE ACEPTAR NUMEROS
+        //FIN FUNCION
+        //FUNCION DE ACEPTAR DINERO
         public bool esDinero(Char c)
         {
             if (Char.IsDigit(c) || Char.IsControl(c) || c == '.' || c == ',')
@@ -983,6 +998,7 @@ namespace sercor
             }
             return true;
         }
+        //FIN FUNCION
 
         private void txtId_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1102,7 +1118,7 @@ namespace sercor
                 nFactura.ID_CUENTA = nCuenta.ID_CUENTA;
                 nFactura.IVA = Convert.ToDecimal(txtIva.Text);
                 nFactura.TOTAL = Convert.ToDecimal(txtTotal.Text);
-                nFactura.FECHA = FacturaDBM.obtenerFechaSistema();
+                nFactura.FECHA = dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 nFactura.FACTOR_DESCUENTO = Convert.ToDecimal(factorDescuento);
                 nFactura.VALOR_DESCONTADO = Convert.ToDecimal(txtDescuento.Text);
                 nFactura.TIPO = ordenTipo.SelectedIndex;
@@ -1247,6 +1263,33 @@ namespace sercor
                 //Cambiar éste mensaje de error
             }
 
+            
+            List<FacturaImpresion> recibo = new List<FacturaImpresion>();
+
+            for (int i=0; i<vistaFactura.Rows.Count; i++)
+            {
+                FacturaImpresion elemento = new FacturaImpresion();
+                elemento.Codigo = vistaFactura.Rows[i].Cells[0].Value.ToString();
+                elemento.Descripcion= vistaFactura.Rows[i].Cells[1].Value.ToString();
+                elemento.Cantidad = Convert.ToInt32(vistaFactura.Rows[i].Cells[2].Value);
+                elemento.ValorUnitario = Convert.ToDecimal(vistaFactura.Rows[i].Cells[3].Value);
+                elemento.ValorTotal = Convert.ToDecimal(vistaFactura.Rows[i].Cells[4].Value);
+
+                recibo.Add(elemento);
+
+                //MessageBox.Show(elemento.Codigo.ToString());
+            }
+
+
+
+
+            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
+                Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
+                Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value);
+            impresion.Show();
+
+            recibo.Clear();
+
             btnAllProducts_Click(null, null);
             limpiaformfactura();
             
@@ -1341,7 +1384,22 @@ namespace sercor
 
         private void dgvHistorial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            detalleForm _detalle = new detalleForm();
+            Factura _factura = new Factura();
+
+            _factura.ID_FACTURA = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[0].Value);
+            _factura.ID_CLIENTE= dgvHistorial.SelectedRows[0].Cells[1].Value.ToString();
+            _factura.ID_USUARIO= Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[2].Value);
+            _factura.ID_DETALLE= Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[3].Value);
+            _factura.ID_CUENTA = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[4].Value);
+            _factura.IVA = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[5].Value);
+            _factura.TOTAL = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[6].Value);
+            _factura.FECHA =dgvHistorial.SelectedRows[0].Cells[7].Value.ToString();
+            _factura.FACTOR_DESCUENTO = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[8].Value);
+            _factura.VALOR_DESCONTADO = Convert.ToDecimal(dgvHistorial.SelectedRows[0].Cells[9].Value);
+            _factura.TIPO = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[10].Value);
+            _factura.INDICE = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[11].Value);
+
+            detalleForm _detalle = new detalleForm(_factura);
             _detalle.Show();
         }
 
@@ -1371,7 +1429,7 @@ namespace sercor
                 Pago nPago = new Pago();
                 nPago.ID_PAGO = PagoDBM.UltimoPagoID() + 1;
                 nPago.ID_CUENTA = cxcCuenta.ID_CUENTA;
-                nPago.FECHA_ABONO = FacturaDBM.obtenerFechaSistema();
+                nPago.FECHA_ABONO = dtAbono.Value.ToString("yyyy-MM-dd HH-mm-ss");
                 nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
                 nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
                 if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
@@ -1423,8 +1481,8 @@ namespace sercor
 
         private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            detalleForm _detalle = new detalleForm();
-            _detalle.Show();
+            //detalleForm _detalle = new detalleForm(_factura);
+            //_detalle.Show();
         }
 
         private void dgvCXC_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1510,6 +1568,182 @@ namespace sercor
         private void metodoPagocxc_SelectedIndexChanged(object sender, EventArgs e)
         {
             metodoDePago(metodoPagocxc.SelectedIndex);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Añadir_egreso añadirEgreso = new Añadir_egreso();
+            añadirEgreso.ShowDialog();
+            toogleError(true, añadirEgreso.mensaje, 2);
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+        }
+
+        private void dtpReportefin_ValueChanged(object sender, EventArgs e)
+        {
+            String inicio = dtpReporte.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            String fin = dtpReportefin.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            dgvIngresos.DataSource = PagoDBM.ObtenerPagosFecha(inicio, fin);
+            dgvEgresos.DataSource = EgresoDBM.ReporteEgresosFecha(inicio, fin);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            llenareportes();
+        }
+
+        private void reporteElementos()
+        {
+            dtpReporteInicial.Visible = false;
+            dtpReporteFinal.Visible = false;
+            btnOkReporte.Visible = false;
+
+            btnTodoInventarioReporte.Visible = false;
+            btnDisponibleInventario.Visible = false;
+            btnAgotadoInventario.Visible = false;
+        }
+
+        private void cmbReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            reporteElementos();
+
+            switch (cmbReporte.SelectedIndex)
+            {
+                case 0:
+                    btnTodoInventarioReporte.Visible = true;
+                    btnDisponibleInventario.Visible = true;
+                    btnAgotadoInventario.Visible = true;
+                    break;
+
+                case 1:
+                    dtpReporteInicial.Visible = true;
+                    dtpReporteFinal.Visible = true;
+                    btnOkReporte.Visible = true;
+                    break;
+
+                case 2:
+                    //Facturacion del día
+                    dtpReporteInicial.Visible = true;
+                    dtpReporteFinal.Visible = true;
+                    btnOkReporte.Visible = true;
+                    break;
+            }
+        }
+
+        private void btnTodoInventarioReporte_Click(object sender, EventArgs e)
+        {
+            List < Producto > _list;
+
+            _list = ProductoDBM.ObtenerProductos();
+
+            inventarioReporte1.SetDataSource(_list);
+            inventarioReporte1.SetParameterValue(1, "de todos los productos");
+            crystalReportViewer1.ReportSource = inventarioReporte1;
+            crystalReportViewer1.Refresh();
+        }
+
+        private void btnDisponibleInventario_Click(object sender, EventArgs e)
+        {
+            List<Producto> _list;
+
+            _list = ProductoDBM.ObtenerProductosAgotados();
+
+            inventarioReporte1.SetDataSource(_list);
+            inventarioReporte1.SetParameterValue(1, "de productos disponibles");
+            crystalReportViewer1.ReportSource = inventarioReporte1;
+            crystalReportViewer1.Refresh();
+        }
+
+        private void btnAgotadoInventario_Click(object sender, EventArgs e)
+        {
+            List<Producto> _list;
+
+            _list = ProductoDBM.ObtenerProductosDisponibles();
+
+            inventarioReporte1.SetDataSource(_list);
+            inventarioReporte1.SetParameterValue(1, "de productos agotados");
+            crystalReportViewer1.ReportSource = inventarioReporte1;
+            crystalReportViewer1.Refresh();
+        }
+
+        private void btnOkReporte_Click(object sender, EventArgs e)
+        {
+            
+
+            switch (cmbReporte.SelectedIndex)
+            {
+                case 1:
+                    string fecha1 = dtpReporteInicial.Value.ToString("yyyy-MM-dd");
+                    string fecha2 = dtpReporteFinal.Value.ToString("yyyy-MM-dd");
+                    List<PagoReporte> _list;
+
+
+                    decimal totalEfectivo = PagoDBM.suma(0, fecha1, fecha2);
+                    decimal totalTarjeta = PagoDBM.suma(1, fecha1, fecha2);
+                    decimal totalCheque = PagoDBM.suma(2, fecha1, fecha2);
+                    decimal totalEgreso = PagoDBM.sumaEgreso(fecha1, fecha2);
+                    decimal totalNeto = totalEfectivo + totalTarjeta + totalCheque - totalEgreso;
+
+                    _list = PagoDBM.ObtenerPagosReporte(fecha1, fecha2);
+
+                    movimientos1.SetDataSource(_list);
+                    //movimientos1.Database.Tables[1].SetDataSource(_list2);
+
+                    movimientos1.SetParameterValue(1, "movimiento de caja");
+                    movimientos1.SetParameterValue(2, totalNeto);
+                    movimientos1.SetParameterValue(6, totalEfectivo);
+                    movimientos1.SetParameterValue(7, totalTarjeta);
+                    movimientos1.SetParameterValue(8, totalCheque);
+                    movimientos1.SetParameterValue(9, totalEgreso * -1);
+
+
+                    crystalReportViewer1.ReportSource = movimientos1;
+                    crystalReportViewer1.Refresh();
+                    break;
+
+                case 2:
+                    fecha1 = dtpReporteInicial.Value.ToString("yyyy-MM-dd");
+                    fecha2 = dtpReporteFinal.Value.ToString("yyyy-MM-dd");
+
+
+                    totalEfectivo = PagoDBM.suma(0, fecha1, fecha2);
+                    totalTarjeta = PagoDBM.suma(1, fecha1, fecha2);
+                    totalCheque = PagoDBM.suma(2, fecha1, fecha2);
+                    totalEgreso = 0;
+
+                    totalNeto = totalEfectivo + totalTarjeta + totalCheque - totalEgreso;
+                    _list = PagoDBM.ObtenerPagosReporteFactura(fecha1, fecha2);
+
+                    movimientos1.SetDataSource(_list);
+                    //movimientos1.Database.Tables[1].SetDataSource(_list2);
+
+                    movimientos1.SetParameterValue(1, "movimiento de caja");
+                    movimientos1.SetParameterValue(2, totalNeto);
+                    movimientos1.SetParameterValue(6, totalEfectivo);
+                    movimientos1.SetParameterValue(7, totalTarjeta);
+                    movimientos1.SetParameterValue(8, totalCheque);
+                    movimientos1.SetParameterValue(9, 0);
+
+
+                    crystalReportViewer1.ReportSource = movimientos1;
+                    crystalReportViewer1.Refresh();
+                    break;
+
+            }
+
+            
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox1 = new AboutBox1();
+            aboutBox1.ShowDialog();
         }
     }
 }

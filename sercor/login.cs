@@ -178,7 +178,7 @@ namespace sercor
             }
             else
             {
-                UsuarioSeleccionado = UsuarioDBM.ObtenerUsuario(txtUser.Text);
+                UsuarioSeleccionado = UsuarioDBM.ObtenerUsuarioPorUsuario(txtUser.Text);
                 if (UsuarioSeleccionado != null)
                 {
                     string passHashed = UsuarioSeleccionado.CONTRASENA;

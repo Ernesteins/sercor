@@ -19,6 +19,31 @@ namespace sercor
             return retorno;
         }
 
+        public static Detalle ObtenerDetalle(int pDetalle)
+        {
+            Detalle _detalle = new Detalle();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM detalle where ID_DETALLE='{0}'", pDetalle), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                
+
+                _detalle.ID_DETALLE = _reader.GetInt32(0);
+                _detalle.SUBTOTAL = _reader.GetDecimal(1);
+
+
+            }
+            conexion.Close();
+            return _detalle;
+        }
+
+
+
+
         public static int UltimoDetalle()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();

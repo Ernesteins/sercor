@@ -111,6 +111,12 @@ namespace sercor
                     int resultado = ProductoDBM.Modificar(pProducto, codigo);
                     if (resultado > 0)
                     {
+                        Registro nregistro = new Registro();
+                        nregistro.ID_PRODUCTO = pProducto.COD;
+                        nregistro.FECHA = FacturaDBM.obtenerFechaSistema();
+                        nregistro.CANTIDAD = pProducto.EXISTENCIA;
+                        nregistro.IDREGISTRO = RegistroDBM.UltimoRegistro() + 1;
+                        RegistroDBM.Agregar(nregistro);
                         mensaje = "Producto modificado con exito";
                         this.Close();
                     }

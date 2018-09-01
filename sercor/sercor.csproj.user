@@ -2,7 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
-    <PublishUrlHistory>C:\Users\eyase\Desktop\SercorPUB\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Users\eyase\Desktop\sercorPUB1\|C:\Users\eyase\Desktop\sercorPUB3\|C:\Users\eyase\Desktop\sercorPUB\|D:\Mega\Documentos\Proyectos\sercor\|C:\Users\eyase\Desktop\SercorPUB\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />
