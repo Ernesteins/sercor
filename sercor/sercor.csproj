@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\eyase\Desktop\SercorPUB\</PublishUrl>
+    <PublishUrl>D:\Mega\Documentos\Proyectos\sercor\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ProductName>Sercor</ProductName>
+    <PublisherName>CKPDsoft</PublisherName>
+    <SuiteName>Sercor DBM</SuiteName>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -81,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,10 +164,10 @@
     <Compile Include="imprimir.Designer.cs">
       <DependentUpon>imprimir.cs</DependentUpon>
     </Compile>
-    <Compile Include="inventario.cs">
+    <Compile Include="inventarioReporte.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>inventario.rpt</DependentUpon>
+      <DependentUpon>inventarioReporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="login.cs">
@@ -210,6 +219,9 @@
     <Compile Include="TrabajoDBM.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDBM.cs" />
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrativo.resx">
       <DependentUpon>Administrativo.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,9 +254,9 @@
     <EmbeddedResource Include="imprimir.resx">
       <DependentUpon>imprimir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="inventario.rpt">
+    <EmbeddedResource Include="inventarioReporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>inventario.cs</LastGenOutput>
+      <LastGenOutput>inventarioReporte.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
@@ -291,6 +303,7 @@
     <Content Include="Docs\modelo sercor 29-Julio.png" />
     <Content Include="Docs\modelo sercor 4-Agosto.png" />
     <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\CKPD %281%29.jpg" />
     <None Include="Resources\box.png" />
     <None Include="Resources\notepad.png" />
     <None Include="Resources\repeat.png" />

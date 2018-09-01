@@ -46,6 +46,106 @@ namespace sercor
             return _lista;
         }
 
+
+        public static decimal sumaEgreso(string fecha1, string fecha2)
+        {
+            decimal total = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "select sum(monto) from egreso WHERE fecha_egreso between '{0}' and '{1}'", fecha1, fecha2), conexion);       
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                try
+                {
+                    total = _reader.GetDecimal(0);
+                }
+                catch (System.Data.SqlTypes.SqlNullValueException)
+                {
+                    total = 0;
+                }
+            }
+            conexion.Close();
+            return total;
+        }
+
+
+        public static decimal suma(int tipoPago, string fecha1, string fecha2) {
+            //0 efectivo
+            //1 tarjeta
+            //2 cheque
+            decimal total=0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "select sum(monto) from pago WHERE tipo_pago='{0}' and fecha_abono between '{1}' and '{2}'",tipoPago, fecha1,fecha2), conexion);
+
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                try
+                {
+                    total = _reader.GetDecimal(0);
+                }
+                catch (System.Data.SqlTypes.SqlNullValueException)
+                {
+                    total = 0;
+                }
+            }
+            conexion.Close();
+            return total;
+        }
+
+
+
+        public static List<PagoReporte> ObtenerPagosReporte(string fecha1, string fecha2)
+        {
+            List<PagoReporte> _lista = new List<PagoReporte>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT fecha_abono, monto, descripcion FROM PAGO WHERE fecha_abono between '{0}' and '{1}' union " +
+           "select fecha_egreso, monto, descripcion from egreso where fecha_egreso between '{0}' and '{1}'", fecha1,fecha2), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                PagoReporte pPago = new PagoReporte();
+
+                pPago.FECHA_ABONO = _reader.GetString(0);
+                pPago.MONTO = _reader.GetDecimal(1);
+                pPago.DESCRIPCION = _reader.GetString(2);
+
+                _lista.Add(pPago);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
+        public static List<PagoReporte> ObtenerPagosReporteFactura(string fecha1, string fecha2)
+        {
+            List<PagoReporte> _lista = new List<PagoReporte>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT fecha_abono, monto, descripcion FROM PAGO WHERE fecha_abono between '{0}' and '{1}'", fecha1, fecha2), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                PagoReporte pPago = new PagoReporte();
+
+                pPago.FECHA_ABONO = _reader.GetString(0);
+                pPago.MONTO = _reader.GetDecimal(1);
+                pPago.DESCRIPCION = _reader.GetString(2);
+
+                _lista.Add(pPago);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
+
         public static List<Pago> ObtenerPagosFecha(string FechaInicio, String FechaFin)
         {
             List<Pago> _lista = new List<Pago>();

@@ -16,14 +16,14 @@ namespace sercor {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class inventario : ReportClass {
+    public class inventarioReporte : ReportClass {
         
-        public inventario() {
+        public inventarioReporte() {
         }
         
         public override string ResourceName {
             get {
-                return "inventario.rpt";
+                return "inventarioReporte.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace sercor {
         
         public override string FullResourceName {
             get {
-                return "sercor.inventario.rpt";
+                return "sercor.inventarioReporte.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace sercor {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cachedinventario : Component, ICachedReport {
+    public class CachedinventarioReporte : Component, ICachedReport {
         
-        public Cachedinventario() {
+        public CachedinventarioReporte() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace sercor {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            inventario rpt = new inventario();
+            inventarioReporte rpt = new inventarioReporte();
             rpt.Site = this.Site;
             return rpt;
         }

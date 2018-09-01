@@ -47,6 +47,11 @@ namespace sercor
             conexion.Close();
             return _lista;
         }
+
+  
+
+
+
         public static List<Egreso> ReporteEgresosFecha(String fechainicio, string fechafin)
         {
             List<Egreso> _lista = new List<Egreso>();
