@@ -183,3 +183,4 @@ C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.csprojAssemblyReferen
 C:\Users\eyase\source\repos\sercor\sercor\obj\Debug\sercor.Añadir_egreso.resources
 C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.Añadir_egreso.resources
 C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.AboutBox1.resources
+C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.AboutBox1.resources
