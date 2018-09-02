@@ -106,7 +106,7 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = global::sercor.Properties.Resources.CKPD__1_;
+            this.logoPictureBox.Image = global::sercor.Properties.Resources.ckpd;
             this.logoPictureBox.Location = new System.Drawing.Point(0, 0);
             this.logoPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.logoPictureBox.Name = "logoPictureBox";

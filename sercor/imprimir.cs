@@ -31,7 +31,7 @@ namespace sercor
 
                     factura1.SetParameterValue(11, fechaEntrega.ToString("yyyy-MM-dd"));
 
-                    MessageBox.Show(fechaEntrega.Date.Hour.ToString());
+                    //MessageBox.Show(fechaEntrega.Date.Hour.ToString());
 
                     factura1.SetParameterValue(12, fechaEntrega.ToString("HH:mm"));
 
