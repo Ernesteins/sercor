@@ -1043,6 +1043,7 @@ namespace sercor
 
         private void limpiaformfactura()
         {
+            vistaFactura.Rows.Clear();
             txtId.Text = "";
             txtName.Text = "";
             txtTelefono.Text = "";
@@ -1064,8 +1065,10 @@ namespace sercor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             try
             {
+                
                 //Variable de cliente
                 Cliente nCliente = new Cliente();
                 nCliente.ID_CLIENTE = txtId.Text;
@@ -1283,7 +1286,7 @@ namespace sercor
 
 
 
-            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
+            Form impresion = new imprimir(recibo, ordenTipo.SelectedIndex, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
                 Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
                 Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value);
             impresion.Show();
