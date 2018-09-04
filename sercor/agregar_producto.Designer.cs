@@ -128,6 +128,7 @@
             this.txtExistencia.Size = new System.Drawing.Size(175, 22);
             this.txtExistencia.TabIndex = 5;
             this.toolTip1.SetToolTip(this.txtExistencia, "Ingrese el valor de unidades que ingresará al inventario");
+            this.txtExistencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExistencia_KeyPress);
             // 
             // txtPrecio
             // 
@@ -139,6 +140,7 @@
             this.txtPrecio.Size = new System.Drawing.Size(175, 22);
             this.txtPrecio.TabIndex = 6;
             this.toolTip1.SetToolTip(this.txtPrecio, "Ingrese el preció que tendrá el producto");
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // label1
             // 

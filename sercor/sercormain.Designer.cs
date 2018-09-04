@@ -225,6 +225,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.inventarioReporte1 = new sercor.inventarioReporte();
             this.movimientos1 = new sercor.movimientos();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.pnForm.SuspendLayout();
             this.pnBody.SuspendLayout();
             this.pnMovCaja.SuspendLayout();
@@ -552,6 +554,8 @@
             // panel14
             // 
             this.panel14.AutoScroll = true;
+            this.panel14.Controls.Add(this.label29);
+            this.panel14.Controls.Add(this.label28);
             this.panel14.Controls.Add(this.label_idcuenta);
             this.panel14.Controls.Add(this.label_idcliente);
             this.panel14.Controls.Add(this.label_iddoc);
@@ -620,7 +624,7 @@
             this.label_iddoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_iddoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_iddoc.ForeColor = System.Drawing.Color.DimGray;
-            this.label_iddoc.Location = new System.Drawing.Point(88, 82);
+            this.label_iddoc.Location = new System.Drawing.Point(129, 91);
             this.label_iddoc.Name = "label_iddoc";
             this.label_iddoc.Size = new System.Drawing.Size(67, 31);
             this.label_iddoc.TabIndex = 51;
@@ -634,11 +638,11 @@
             this.label_TipoDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_TipoDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_TipoDoc.ForeColor = System.Drawing.Color.DimGray;
-            this.label_TipoDoc.Location = new System.Drawing.Point(26, 82);
+            this.label_TipoDoc.Location = new System.Drawing.Point(26, 91);
             this.label_TipoDoc.Name = "label_TipoDoc";
-            this.label_TipoDoc.Size = new System.Drawing.Size(58, 31);
+            this.label_TipoDoc.Size = new System.Drawing.Size(39, 31);
             this.label_TipoDoc.TabIndex = 50;
-            this.label_TipoDoc.Text = "Doc";
+            this.label_TipoDoc.Text = "---";
             // 
             // dgvCXCdetalle
             // 
@@ -987,6 +991,7 @@
             this.dgvCXC.Size = new System.Drawing.Size(731, 104);
             this.dgvCXC.TabIndex = 0;
             this.dgvCXC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCXC_CellClick);
+            this.dgvCXC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCXC_CellContentClick);
             // 
             // pnCxcMenu
             // 
@@ -2806,6 +2811,34 @@
             // 
             this.toolTip1.ToolTipTitle = "Asistente Secor";
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.DimGray;
+            this.label28.Location = new System.Drawing.Point(26, 76);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(34, 15);
+            this.label28.TabIndex = 54;
+            this.label28.Text = "Tipo";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.DimGray;
+            this.label29.Location = new System.Drawing.Point(129, 76);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(138, 15);
+            this.label29.TabIndex = 55;
+            this.label29.Text = "Numero de Documento";
+            // 
             // sercormain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3048,5 +3081,7 @@
         private System.Windows.Forms.DateTimePicker dtpReporteInicial;
         private inventarioReporte inventarioReporte1;
         private movimientos movimientos1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
     }
 }
