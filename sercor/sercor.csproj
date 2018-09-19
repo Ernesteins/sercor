@@ -221,6 +221,7 @@
     </Compile>
     <Compile Include="Registro.cs" />
     <Compile Include="RegistroDBM.cs" />
+    <Compile Include="Restore.cs" />
     <Compile Include="SDL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,6 +330,9 @@
     <Content Include="Docs\modelo sercor 29-Julio.png" />
     <Content Include="Docs\modelo sercor 4-Agosto.png" />
     <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\databaseUpload.png" />
+    <None Include="Resources\databaseOrigin.png" />
     <Content Include="sercor.ico" />
     <None Include="Resources\CKPD %281%29.jpg" />
     <None Include="Resources\box.png" />
