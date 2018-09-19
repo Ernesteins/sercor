@@ -1670,7 +1670,7 @@ namespace sercor
             _list = ProductoDBM.ObtenerProductosAgotados();
 
             inventarioReporte1.SetDataSource(_list);
-            inventarioReporte1.SetParameterValue(1, "de productos disponibles");
+            inventarioReporte1.SetParameterValue(1, "de productos adotados");
             crystalReportViewer1.ReportSource = inventarioReporte1;
             crystalReportViewer1.Refresh();
         }
@@ -1682,7 +1682,7 @@ namespace sercor
             _list = ProductoDBM.ObtenerProductosDisponibles();
 
             inventarioReporte1.SetDataSource(_list);
-            inventarioReporte1.SetParameterValue(1, "de productos agotados");
+            inventarioReporte1.SetParameterValue(1, "de productos disponibles");
             crystalReportViewer1.ReportSource = inventarioReporte1;
             crystalReportViewer1.Refresh();
         }

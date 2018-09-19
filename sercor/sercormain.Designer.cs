@@ -2346,7 +2346,7 @@
             this.btnAgotadoInventario.Size = new System.Drawing.Size(94, 25);
             this.btnAgotadoInventario.TabIndex = 48;
             this.btnAgotadoInventario.TabStop = false;
-            this.btnAgotadoInventario.Text = "Agotados";
+            this.btnAgotadoInventario.Text = "Disponibles";
             this.btnAgotadoInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgotadoInventario.UseVisualStyleBackColor = false;
             this.btnAgotadoInventario.Click += new System.EventHandler(this.btnAgotadoInventario_Click);
@@ -2364,7 +2364,7 @@
             this.btnDisponibleInventario.Size = new System.Drawing.Size(103, 25);
             this.btnDisponibleInventario.TabIndex = 46;
             this.btnDisponibleInventario.TabStop = false;
-            this.btnDisponibleInventario.Text = "Disponibles";
+            this.btnDisponibleInventario.Text = "Agotados";
             this.btnDisponibleInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDisponibleInventario.UseVisualStyleBackColor = false;
             this.btnDisponibleInventario.Click += new System.EventHandler(this.btnDisponibleInventario_Click);
