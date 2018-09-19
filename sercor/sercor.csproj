@@ -221,7 +221,6 @@
     </Compile>
     <Compile Include="Registro.cs" />
     <Compile Include="RegistroDBM.cs" />
-    <Compile Include="Restore.cs" />
     <Compile Include="SDL.cs">
       <SubType>Form</SubType>
     </Compile>

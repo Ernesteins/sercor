@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace sercor
@@ -272,6 +275,11 @@ namespace sercor
             {
 
             } 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
