@@ -1043,6 +1043,7 @@ namespace sercor
 
         private void limpiaformfactura()
         {
+            vistaFactura.Rows.Clear();
             txtId.Text = "";
             txtName.Text = "";
             txtTelefono.Text = "";
@@ -1064,8 +1065,10 @@ namespace sercor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             try
             {
+                
                 //Variable de cliente
                 Cliente nCliente = new Cliente();
                 nCliente.ID_CLIENTE = txtId.Text;
@@ -1283,7 +1286,7 @@ namespace sercor
 
 
 
-            Form impresion = new imprimir(recibo, 1, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
+            Form impresion = new imprimir(recibo, ordenTipo.SelectedIndex, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
                 Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
                 Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value);
             impresion.Show();
@@ -1473,10 +1476,11 @@ namespace sercor
             txtBancocxc.Text = "";
             txtChequecxc.Text = "";
             label_Nombre.Text = "Nombre Del Cliente";
-            label_TipoDoc.Text = "Doc";
+            label_TipoDoc.Text = "-----";
             label_iddoc.Text = "####";
             label_idcliente.Text = "#Id cliente";
             label_idcuenta.Text = "#Id cuenta";
+            dtAbono.Value = System.DateTime.Now; ;
         }
 
         private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1496,7 +1500,18 @@ namespace sercor
                 label_idcuenta.Text = cuentaseleccionada.ID_CUENTA.ToString();
                 label_idcliente.Text = cuentaseleccionada.ID_CLIENTE;
                 label_Nombre.Text = cuentaseleccionada.NOMBRE_CLIENTE;
-                label_TipoDoc.Text = cuentaseleccionada.TIPO.ToString();
+
+                switch (cuentaseleccionada.TIPO)
+                {
+                    case 0:
+                        label_TipoDoc.Text = "Orden";break;
+                    case 1:
+                        label_TipoDoc.Text = "Factura"; break;
+                    case 2:
+                        label_TipoDoc.Text = "Nota"; break;
+                    default:
+                        label_TipoDoc.Text = "Doc-I"; break;
+                }
                 label_iddoc.Text = cuentaseleccionada.ID_DOCUMENTO.ToString();
                 txtTotalcxc.Text = cuentaseleccionada.TOTAL.ToString();
                 txtSaldocxc.Text = cuentaseleccionada.SALDO.ToString();
@@ -1744,6 +1759,11 @@ namespace sercor
         {
             AboutBox1 aboutBox1 = new AboutBox1();
             aboutBox1.ShowDialog();
+        }
+
+        private void dgvCXC_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

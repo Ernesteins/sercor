@@ -118,5 +118,37 @@ namespace sercor
                 }              
             }   
         }
+
+        private void txtExistencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esNumero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        public bool esNumero(Char c)
+        {
+            if (Char.IsDigit(c) || Char.IsControl(c))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esDinero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        public bool esDinero(Char c)
+        {
+            if (Char.IsDigit(c) || Char.IsControl(c) || c == '.' || c == ',')
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

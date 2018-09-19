@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\eyase\Desktop\sercorPUB1\</PublishUrl>
+    <PublishUrl>C:\Sercor\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,13 +26,13 @@
     <PublisherName>CKPDsoft</PublisherName>
     <SuiteName>Sercor DBM</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,6 +64,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sercor.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -144,6 +147,18 @@
     </Compile>
     <Compile Include="Egreso.cs" />
     <Compile Include="EgresoDBM.cs" />
+    <Compile Include="nota.cs">
+      <DependentUpon>nota.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="orden.cs">
+      <DependentUpon>orden.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Factura.cs" />
     <Compile Include="factura1.cs">
       <AutoGen>True</AutoGen>
@@ -246,6 +261,14 @@
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="nota.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>nota.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="orden.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>orden.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="factura.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>factura1.cs</LastGenOutput>
@@ -306,6 +329,7 @@
     <Content Include="Docs\modelo sercor 29-Julio.png" />
     <Content Include="Docs\modelo sercor 4-Agosto.png" />
     <Content Include="Docs\Respaldos.txt" />
+    <Content Include="sercor.ico" />
     <None Include="Resources\CKPD %281%29.jpg" />
     <None Include="Resources\box.png" />
     <None Include="Resources\notepad.png" />
@@ -349,16 +373,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="CrystalDecisions.Shared">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Docs\consultas.sql">
       <Visible>False</Visible>
       <Group>
@@ -440,26 +454,6 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Docs\Respaldos.txt">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="log4net">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="sercor.pdb">
       <Visible>False</Visible>
       <Group>
       </Group>

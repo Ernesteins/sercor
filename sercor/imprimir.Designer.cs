@@ -30,6 +30,7 @@
         {
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.factura1 = new sercor.factura();
+            this.orden1 = new sercor.orden();
             this.SuspendLayout();
             // 
             // crystalReportViewer
@@ -67,5 +68,6 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
         private factura factura1;
+        private orden orden1;
     }
 }
