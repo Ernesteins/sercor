@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -257,10 +258,6 @@ namespace sercor
             refreshUsers();
         }
 
-        private void txtContrasenia_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -271,15 +268,70 @@ namespace sercor
                 MessageBox.Show("Por favor, a continuación reinicie Sercor","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 Application.Exit();
             }
-            else
-            {
-
-            } 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnListo_Click(object sender, EventArgs e)
         {
+            string adminHash;
+            adminHash = Hash.sha256(txtPassAdmin.Text);
+            if (adminHash == UsuarioDBM.ObtenerUsuarioPorUsuario("admin").CONTRASENA)
+            {
+                btnCrearCopia.Enabled = true;
+                btnRestaurarCopia.Enabled = true;
 
+                btnListo.Enabled = false;
+                txtPassAdmin.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Contraseña de administrador errónea","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+            }
+        }
+
+        private void btnCrearCopia_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivo(*.sql)|*.sql";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (MySqlConnection conn = bdComun.obtenerConexion())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            //conn.Open();
+                            mb.ExportToFile(sfd.FileName);
+                            conn.Close();
+                        }
+                    }
+                }
+                MessageBox.Show("Copia de seguridad creada con éxito","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnRestaurarCopia_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Archivo(*.sql)|*.sql";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (MySqlConnection conn = bdComun.obtenerConexion())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            //conn.Open();
+                            mb.ImportFromFile(ofd.FileName);
+                            conn.Close();
+                        }
+                    }
+                }
+                MessageBox.Show("Restauración exitosa", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
