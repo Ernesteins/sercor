@@ -272,20 +272,9 @@ namespace sercor
 
         private void btnListo_Click(object sender, EventArgs e)
         {
-            string adminHash;
-            adminHash = Hash.sha256(txtPassAdmin.Text);
-            if (adminHash == UsuarioDBM.ObtenerUsuarioPorUsuario("admin").CONTRASENA)
-            {
-                btnCrearCopia.Enabled = true;
-                btnRestaurarCopia.Enabled = true;
-
-                btnListo.Enabled = false;
-                txtPassAdmin.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Contraseña de administrador errónea","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Hand);
-            }
+            password = txtPassAdmin.Text;
+            txtPassAdmin.Enabled = false;
+            btnListo.Enabled = false;
         }
 
         private void btnCrearCopia_Click(object sender, EventArgs e)
@@ -310,28 +299,51 @@ namespace sercor
                 MessageBox.Show("Copia de seguridad creada con éxito","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
+        string password;
 
         private void btnRestaurarCopia_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Archivo(*.sql)|*.sql";
-            if (ofd.ShowDialog() == DialogResult.OK)
+            try
             {
-                using (MySqlConnection conn = bdComun.obtenerConexion())
+                string server = "127.0.0.1";
+                string databaseName = "sercorDB";
+                string user = "root";
+
+
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "Archivo(*.sql)|*.sql";
+
+                MySqlConnection conectar = new MySqlConnection("server=" + server + ";" +
+                    "database=" + databaseName + ";" +
+                    "Uid=" + user + ";" +
+                    "pwd=" + password + ";" +
+                    "SslMode=none;");
+
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (MySqlConnection conn = conectar)
                     {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.Connection = conn;
-                            //conn.Open();
-                            mb.ImportFromFile(ofd.FileName);
-                            conn.Close();
+                            using (MySqlBackup mb = new MySqlBackup(cmd))
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                mb.ImportFromFile(ofd.FileName);
+                                conn.Close();
+                            }
                         }
                     }
+                    MessageBox.Show("Restauración exitosa", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Restauración exitosa", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message,"Sercor",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                txtPassAdmin.Enabled = true;
+                btnListo.Enabled = true;
+            }
+            
         }
     }
 }
