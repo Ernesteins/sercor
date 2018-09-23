@@ -1495,8 +1495,46 @@ namespace sercor
 
         private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //detalleForm _detalle = new detalleForm(_factura);
-            //_detalle.Show();
+            
+            Pago _pago = new Pago();
+
+            
+            _pago.ID_PAGO = Convert.ToInt32(dgvCXCdetalle.SelectedRows[0].Cells[0].Value);
+            _pago.ID_CUENTA = int.Parse(dgvCXCdetalle.SelectedRows[0].Cells[1].Value.ToString());
+            _pago.FECHA_ABONO = dgvCXCdetalle.SelectedRows[0].Cells[2].Value.ToString();
+            _pago.TIPO_PAGO = Convert.ToInt32(dgvCXCdetalle.SelectedRows[0].Cells[3].Value);
+            _pago.MONTO = Convert.ToDecimal(dgvCXCdetalle.SelectedRows[0].Cells[4].Value);
+
+            //_pago.DESCRIPCION =dgvCXCdetalle.SelectedRows[0].Cells[5].Value.ToString();
+            _pago.DESCRIPCION = (dgvCXCdetalle.SelectedRows[0].Cells[5].Value==null)? "": dgvCXCdetalle.SelectedRows[0].Cells[5].Value.ToString();
+
+           // _pago.TARJETA = dgvCXCdetalle.SelectedRows[0].Cells[6].Value.ToString();
+            _pago.TARJETA = (dgvCXCdetalle.SelectedRows[0].Cells[6].Value == null) ?"": dgvCXCdetalle.SelectedRows[0].Cells[6].Value.ToString();
+
+            //_pago.TIPO = dgvCXCdetalle.SelectedRows[0].Cells[7].Value.ToString();
+            _pago.TIPO = (dgvCXCdetalle.SelectedRows[0].Cells[7].Value == null) ? "":dgvCXCdetalle.SelectedRows[0].Cells[7].Value.ToString();
+
+            //_pago.REF = dgvCXCdetalle.SelectedRows[0].Cells[8].Value.ToString();
+            _pago.REF = (dgvCXCdetalle.SelectedRows[0].Cells[8].Value == null) ?"": dgvCXCdetalle.SelectedRows[0].Cells[8].Value.ToString();
+
+            //_pago.BANCO = dgvCXCdetalle.SelectedRows[0].Cells[9].Value.ToString();
+            _pago.BANCO = (dgvCXCdetalle.SelectedRows[0].Cells[9].Value == null) ? "":dgvCXCdetalle.SelectedRows[0].Cells[9].Value.ToString();
+
+           // _pago.CHEQUE = dgvCXCdetalle.SelectedRows[0].Cells[10].Value.ToString();
+            _pago.CHEQUE = (dgvCXCdetalle.SelectedRows[0].Cells[10].Value == null) ? "":dgvCXCdetalle.SelectedRows[0].Cells[10].Value.ToString();
+
+            DetallePago _detalle = new DetallePago(_pago);
+
+            if (CuentaDBM.ObtenerCuentaporID_cuenta(_pago.ID_CUENTA).TOTAL == 0)
+            {
+                MessageBox.Show("Factura anulada", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }else if(_pago.MONTO==0){
+                MessageBox.Show("Pago completo o anulado", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                _detalle.Show();
+            }
         }
 
         private void dgvCXC_CellClick(object sender, DataGridViewCellEventArgs e)

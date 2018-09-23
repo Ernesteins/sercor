@@ -148,6 +148,12 @@
     <Compile Include="detalleForm.Designer.cs">
       <DependentUpon>detalleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetallePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetallePago.Designer.cs">
+      <DependentUpon>DetallePago.cs</DependentUpon>
+    </Compile>
     <Compile Include="editarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="detalleForm.resx">
       <DependentUpon>detalleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetallePago.resx">
+      <DependentUpon>DetallePago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editarUsuario.resx">
       <DependentUpon>editarUsuario.cs</DependentUpon>
