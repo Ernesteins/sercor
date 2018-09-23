@@ -1056,6 +1056,7 @@ namespace sercor
             txtAbono.Text = "0.00";
             txtSaldo.Text = "0.00";
             txtDescuento.Text = "0.00";
+            aplicarDescuento();
         }
 
         //primero se crea el CLiente 
@@ -1102,8 +1103,15 @@ namespace sercor
                 
                 nCuenta.TOTAL = Convert.ToDecimal(txtTotal.Text);
                 nCuenta.SALDO = nCuenta.TOTAL;
-                nCuenta.ESTADO_P = 0;
-                
+                if(decimal.Parse(txtAbono.Text)== decimal.Parse(txtTotal.Text))
+                {
+                    nCuenta.ESTADO_P = 1;
+                }
+                else
+                {
+                    nCuenta.ESTADO_P = 0;
+                }
+
                 /*nCuenta.TOTAL = nCuenta.TOTAL + CuentaDBM.ultimototal(nCuenta.ID_CUENTA);
                 nCuenta.SALDO = nCuenta.SALDO + CuentaDBM.consultarsaldo(nCuenta.ID_CUENTA);
                 CuentaDBM.actualizarcuenta(nCuenta.ID_CUENTA, nCuenta.SALDO, nCuenta.TOTAL);*/
@@ -1284,18 +1292,20 @@ namespace sercor
             }
 
 
-
-
-            Form impresion = new imprimir(recibo, ordenTipo.SelectedIndex, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
-                Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text), 
+            try{
+                Form impresion = new imprimir(recibo, ordenTipo.SelectedIndex, txtName.Text, txtId.Text, dateTime.Value, txtDireccion.Text, txtTelefono.Text,
+                Convert.ToDecimal(txtSubtotal.Text), 0, Convert.ToDecimal(txtIva.Text),
                 Convert.ToDecimal(txtTotal.Text), Convert.ToDecimal(txtAbono.Text), Convert.ToDecimal(txtSaldo.Text), dtpEntrega.Value);
-            impresion.Show();
-
+                impresion.Show();
+            }
+            catch(System.FormatException er)
+            {
+                MessageBox.Show(er.Message,"Sercor",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
             recibo.Clear();
 
             btnAllProducts_Click(null, null);
-            limpiaformfactura();
-            
+            limpiaformfactura(); 
         }
 
   

@@ -74,6 +74,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.vistaFactura = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAnular = new System.Windows.Forms.Button();
             this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vistaFactura)).BeginInit();
@@ -83,6 +84,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.btnAnular);
             this.panel8.Controls.Add(this.txtResponsable);
             this.panel8.Controls.Add(this.label19);
             this.panel8.Controls.Add(this.txtChque);
@@ -680,6 +682,25 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 594);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // btnAnular
+            // 
+            this.btnAnular.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAnular.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAnular.FlatAppearance.BorderSize = 0;
+            this.btnAnular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnular.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAnular.Image = global::sercor.Properties.Resources.error16;
+            this.btnAnular.Location = new System.Drawing.Point(523, 114);
+            this.btnAnular.Name = "btnAnular";
+            this.btnAnular.Size = new System.Drawing.Size(173, 25);
+            this.btnAnular.TabIndex = 45;
+            this.btnAnular.Text = "Anular";
+            this.btnAnular.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAnular.UseVisualStyleBackColor = false;
+            this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
+            // 
             // detalleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -748,5 +769,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtResponsable;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnAnular;
     }
 }

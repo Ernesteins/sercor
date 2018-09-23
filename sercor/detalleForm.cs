@@ -49,6 +49,21 @@ namespace sercor
 
             txtFechaEntrega.Text = _trabajo.FECHA_ENTREGA;
             txtResponsable.Text = _usuario.NOMBRE + " " + _usuario.APELLIDO;
+
+            if (_cuenta.TOTAL == 0){
+                txtTotal.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        private void btnAnular_Click(object sender, System.EventArgs e)
+        {
+           DialogResult result = MessageBox.Show("¿Está seguro de anular esta factura?","Sercor",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                CuentaDBM.actualizarcuenta(_cuenta.ID_CUENTA, 0, 0);
+                MessageBox.Show("Anulación exitosa","Sercor",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                this.Close();
+            }
         }
     }
 }

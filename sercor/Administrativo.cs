@@ -273,6 +273,8 @@ namespace sercor
         private void btnListo_Click(object sender, EventArgs e)
         {
             password = txtPassAdmin.Text;
+            btnCrearCopia.Enabled = true;
+            btnRestaurarCopia.Enabled = true;
             txtPassAdmin.Enabled = false;
             btnListo.Enabled = false;
         }

@@ -142,6 +142,7 @@
             // 
             this.btnCrearCopia.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCrearCopia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCrearCopia.Enabled = false;
             this.btnCrearCopia.FlatAppearance.BorderSize = 0;
             this.btnCrearCopia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearCopia.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,6 +163,7 @@
             // 
             this.btnRestaurarCopia.BackColor = System.Drawing.Color.Gainsboro;
             this.btnRestaurarCopia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRestaurarCopia.Enabled = false;
             this.btnRestaurarCopia.FlatAppearance.BorderSize = 0;
             this.btnRestaurarCopia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRestaurarCopia.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
