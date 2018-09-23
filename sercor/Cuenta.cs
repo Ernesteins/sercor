@@ -30,11 +30,10 @@
         public int TIPO { get; set; }
         public decimal TOTAL { get; set; }
         public decimal SALDO { get; set; }
-        public int ESTADO_P { get; set; }
 
-        public CuentaN() { }
+        public CuentaN() {}
 
-        public CuentaN(int ID_CUENTA, string ID_CLIENTE, string NOMBRE_CLIENTE, int ID_DOCUMENTO, int TIPO, decimal TOTAL, decimal SALDO, int ESTADO_P)
+        public CuentaN(int ID_CUENTA, string ID_CLIENTE, string NOMBRE_CLIENTE, int ID_DOCUMENTO, int TIPO, decimal TOTAL, decimal SALDO)
         {
             this.ID_CUENTA = ID_CUENTA;
             this.ID_CLIENTE = ID_CLIENTE;
@@ -43,7 +42,6 @@
             this.TIPO = TIPO;
             this.TOTAL = TOTAL;
             this.SALDO = SALDO;
-            this.ESTADO_P = ESTADO_P;
         }
     }
 }

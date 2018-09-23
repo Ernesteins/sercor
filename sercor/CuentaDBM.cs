@@ -11,7 +11,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-            "select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE;"), conexion);
+            "select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA;"), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -22,9 +22,9 @@ namespace sercor
                 cxcCuenta.ID_CLIENTE= _reader.GetString(1);
                 cxcCuenta.NOMBRE_CLIENTE = _reader.GetString(2);
                 cxcCuenta.ID_DOCUMENTO= _reader.GetInt32(3);
-                cxcCuenta.TOTAL = _reader.GetDecimal(4);
-                cxcCuenta.SALDO= _reader.GetDecimal(5);
-                cxcCuenta.ESTADO_P = _reader.GetInt32(6);
+                cxcCuenta.TIPO= _reader.GetInt32(4);
+                cxcCuenta.TOTAL = _reader.GetDecimal(5);
+                cxcCuenta.SALDO= _reader.GetDecimal(6);
                 
                 _lista.Add(cxcCuenta);
             }
@@ -39,15 +39,15 @@ namespace sercor
             MySqlCommand _comando;
             if (SaldoEstado == 1)
             {
-                _comando = new MySqlCommand(String.Format("select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE and saldo != '0' ;"), conexion);
+                _comando = new MySqlCommand(String.Format("select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA and saldo != '0' ;"), conexion);
             }
             else if (SaldoEstado == 2)
             {
-                _comando = new MySqlCommand(String.Format("select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE and saldo = '0' ;"), conexion);
+                _comando = new MySqlCommand(String.Format("select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA and saldo = '0' ;"), conexion);
             }
             else
             {
-                _comando = new MySqlCommand(String.Format("select ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO, TOTAL, SALDO, ESTADO_P FROM sercordb.CUENTA, cliente WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE;"), conexion);
+                _comando = new MySqlCommand(String.Format("select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA;"), conexion);
             }
             
 
@@ -60,9 +60,9 @@ namespace sercor
                 cxcCuenta.ID_CLIENTE = _reader.GetString(1);
                 cxcCuenta.NOMBRE_CLIENTE = _reader.GetString(2);
                 cxcCuenta.ID_DOCUMENTO = _reader.GetInt32(3);
-                cxcCuenta.TOTAL = _reader.GetDecimal(4);
-                cxcCuenta.SALDO = _reader.GetDecimal(5);
-                cxcCuenta.ESTADO_P = _reader.GetInt32(6);
+                cxcCuenta.TIPO= _reader.GetInt32(4);
+                cxcCuenta.TOTAL = _reader.GetDecimal(5);
+                cxcCuenta.SALDO = _reader.GetDecimal(6);
 
                 _lista.Add(cxcCuenta);
             }
@@ -76,7 +76,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-            "select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, CUENTA.ID_FACTURA AS ID_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO, ESTADO_P FROM CUENTA, CLIENTE, FACTURA WHERE FACTURA.ID_FACTURA = CUENTA.ID_FACTURA AND CUENTA.ID_CLIENTE= CLIENTE.ID_CLIENTE AND CUENTA.ID_CUENTA ='{0}';", codigo), conexion);
+            "select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, NOMBRE AS NOMBRE_CLIENTE, CUENTA.ID_FACTURA AS ID_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA, CLIENTE, FACTURA WHERE FACTURA.ID_FACTURA = CUENTA.ID_FACTURA AND CUENTA.ID_CLIENTE= CLIENTE.ID_CLIENTE AND CUENTA.ID_CUENTA ='{0}';", codigo), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             _reader.Read();
 
@@ -87,7 +87,6 @@ namespace sercor
             cxcCuenta.TIPO = _reader.GetInt32(4);
             cxcCuenta.TOTAL = _reader.GetDecimal(5);
             cxcCuenta.SALDO = _reader.GetDecimal(6);
-            cxcCuenta.ESTADO_P = _reader.GetInt32(7);
 
             return cxcCuenta;
         }
@@ -119,9 +118,9 @@ namespace sercor
             int retorno = 0;
             MySqlConnection conexion = bdComun.obtenerConexion(); 
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "Insert into Cuenta values ('{0}','{1}','{2}','{3}','{4}','{5}')",
+                "Insert into Cuenta values ('{0}','{1}','{2}','{3}','{4}',0)",
                 cxcCuenta.ID_CUENTA, cxcCuenta.ID_CLIENTE, cxcCuenta.ID_FACTURA, cxcCuenta.TOTAL, 
-                cxcCuenta.SALDO, cxcCuenta.ESTADO_P), conexion);
+                cxcCuenta.SALDO), conexion);
 
             retorno = comando.ExecuteNonQuery();
             //1 insertado | 0 error

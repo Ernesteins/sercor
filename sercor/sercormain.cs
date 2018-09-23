@@ -1171,7 +1171,7 @@ namespace sercor
                     nTrabajo.FACTURA = nFactura.ID_FACTURA;
                     nTrabajo.CUENTA = nCuenta.ID_CUENTA;
                     nTrabajo.FECHA_INICIO = nFactura.FECHA;
-                    nTrabajo.NOMBRE = txtId.Text;
+                    nTrabajo.NOMBRE = txtName.Text;
                     nTrabajo.ESTADO = 0;
                     nTrabajo.FECHA_ENTREGA = dtpEntrega.Value.ToString("yyyy-MM-dd HH:mm:ss");
                     for (int i = contador; i < vistaFactura.Rows.Count; i++)
@@ -1764,6 +1764,43 @@ namespace sercor
         private void dgvCXC_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cambiarEstadoTr();
+        }
+
+        private void dgvTrabajos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int estado = Convert.ToInt32(dgvTrabajos.CurrentRow.Cells[8].Value);
+            switch (estado)
+            {
+                case 1: 
+                    label_estado.Text = "Separado";
+                    label_estado.ForeColor = Color.Gold;
+                    break;
+                case 2:
+                    label_estado.Text = "Laboratorio";
+                    label_estado.ForeColor = Color.Red;
+                    break;
+                case 3:
+                    label_estado.Text = "Recibido";
+                    label_estado.ForeColor = Color.Green;
+                    break;
+                case 4:
+                    label_estado.Text = "Entregado";
+                    label_estado.ForeColor = Color.Blue;
+                    break;
+                default:
+                    label_estado.Text = "----------------";
+                    break;
+            }
         }
     }
 }
