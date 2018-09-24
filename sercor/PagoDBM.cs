@@ -20,6 +20,22 @@ namespace sercor
             return retorno;
         }
 
+        public static int Modificar(Pago pPago, int idPago)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update pago set MONTO='{0}'",pPago.MONTO, idPago), conexion);
+
+
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
         public static List<Pago> ObtenerPagos(int id_cuenta)
         {
             List<Pago> _lista = new List<Pago>();

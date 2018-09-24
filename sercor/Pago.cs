@@ -2,7 +2,7 @@
 
 namespace sercor
 {
-    class Pago
+    public class Pago
     {
         public int ID_PAGO { get; set; }
         public int ID_CUENTA { get; set; }
