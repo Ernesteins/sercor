@@ -42,7 +42,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION FROM PAGO WHERE ID_CUENTA = '{0}'",id_cuenta), conexion);
+           "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION, TARJETA, TIPO, REF, BANCO, CHEQUE FROM PAGO WHERE ID_CUENTA = '{0}'",id_cuenta), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -55,6 +55,39 @@ namespace sercor
                 pPago.TIPO_PAGO = _reader.GetInt32(3);
                 pPago.MONTO = _reader.GetDecimal(4);
                 pPago.DESCRIPCION = _reader.GetString(5);
+                pPago.TARJETA = _reader.GetString(6);
+                pPago.TIPO = _reader.GetString(7);
+                pPago.REF = _reader.GetString(8);
+                pPago.BANCO = _reader.GetString(9);
+                pPago.CHEQUE = _reader.GetString(10);
+
+                _lista.Add(pPago);
+            }
+            conexion.Close();
+            return _lista;
+        }
+        public static List<PagoDetalle> ObtenerPagosDetalle(int id_cuenta)
+        {
+            List<PagoDetalle> _lista = new List<PagoDetalle>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION, TARJETA, TIPO, REF, BANCO, CHEQUE FROM PAGO WHERE ID_CUENTA = '{0}'", id_cuenta), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                PagoDetalle pPago = new PagoDetalle();
+
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+                pPago.TARJETA = _reader.GetString(6);
+                pPago.TIPO = _reader.GetString(7);
+                pPago.REF = _reader.GetString(8);
+                pPago.BANCO = _reader.GetString(9);
+                pPago.CHEQUE = _reader.GetString(10);
 
                 _lista.Add(pPago);
             }

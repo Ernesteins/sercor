@@ -537,3 +537,4 @@ C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.csproj.CopyComplet
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.exe
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.pdb
 C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.DetallePago.resources
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.DetallePago.resources

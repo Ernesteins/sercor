@@ -1445,12 +1445,12 @@ namespace sercor
                 nPago.FECHA_ABONO = dtAbono.Value.ToString("yyyy-MM-dd HH-mm-ss");
                 nPago.TIPO_PAGO = metodoPagocxc.SelectedIndex;
                 nPago.MONTO = Convert.ToDecimal(txt_Abonocxc.Text);
-                if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = "PAGO EN EFECTIVO";//usar la descripcion de la zona de pago
+                if (nPago.TIPO_PAGO == 0) nPago.DESCRIPCION = txtConcepto.Text;//usar la descripcion de la zona de pago
                 else if (nPago.TIPO_PAGO == 1)
                 {
                     nPago.TARJETA = txtTarjetacxc.Text;
                     nPago.REF = txtRefcxc.Text;
-                    nPago.DESCRIPCION = "PAGO CON TARJETA DE CREDITO";
+                    nPago.DESCRIPCION = txtConcepto.Text;
                     switch (cmbTipocxc.SelectedIndex)
                     {
                         case 0: nPago.TIPO = "Corriente"; break;
@@ -1463,12 +1463,12 @@ namespace sercor
                 {
                     nPago.BANCO = txtBancocxc.Text;
                     nPago.CHEQUE = txtChequecxc.Text;
-                    nPago.DESCRIPCION = "PAGO CON CHEQUE";
+                    nPago.DESCRIPCION = txtConcepto.Text;
                 }
 
                 CuentaDBM.abono(cxcCuenta.ID_CUENTA, nPago.MONTO);
                 PagoDBM.Pagar(nPago);
-                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cxcCuenta.ID_CUENTA);
+                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagosDetalle(cxcCuenta.ID_CUENTA);
                 llenarcxc();
                 vaciarcxc();
             }
@@ -1544,7 +1544,7 @@ namespace sercor
             {
                 int codigo = Convert.ToInt32(dgvCXC.CurrentRow.Cells[0].Value);
                 CuentaN cuentaseleccionada = CuentaDBM.ObtenerCuentaNporID_cuenta(codigo);
-                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagos(cuentaseleccionada.ID_CUENTA);
+                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagosDetalle(cuentaseleccionada.ID_CUENTA);
                 label_idcuenta.Text = cuentaseleccionada.ID_CUENTA.ToString();
                 label_idcliente.Text = cuentaseleccionada.ID_CLIENTE;
                 label_Nombre.Text = cuentaseleccionada.NOMBRE_CLIENTE;

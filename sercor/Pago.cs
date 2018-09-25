@@ -18,6 +18,8 @@ namespace sercor
 
         public Pago() { }
 
+
+
         //pago con tarjeta
         public Pago(int pID_PAGO, int pID_CUENTA, string pFECHA_ABONO, int pTIPO_PAGO, Decimal pMONTO, string pDESCRIPCION, string pTARJETA, string pTIPO, string pREF)
         {
@@ -81,5 +83,19 @@ namespace sercor
             this.MONTO = pMONTO;
             this.DESCRIPCION = pDESCRIPCION;
         }
+    }
+    class PagoDetalle
+    {
+        public string FECHA_ABONO { get; set; }
+        public int TIPO_PAGO { get; set; }
+        public Decimal MONTO { get; set; }
+        public string DESCRIPCION { get; set; }
+        public string TARJETA { get; set; }
+        public string TIPO { get; set; }
+        public string REF { get; set; }
+        public string BANCO { get; set; }
+        public string CHEQUE { get; set; }
+
+        public PagoDetalle() { }
     }
 }
