@@ -52,6 +52,12 @@ namespace sercor
 
             if (_cuenta.TOTAL == 0){
                 txtTotal.ForeColor = System.Drawing.Color.Red;
+                txtId.Text = "";
+                txtName.Text = "";
+                txtTelefono.Text = "";
+                txtTelefono.Text = "";
+                txtDireccion.Text = "";
+                txtDate.Text = "";
             }
         }
 
