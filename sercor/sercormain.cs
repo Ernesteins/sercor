@@ -562,6 +562,11 @@ namespace sercor
                 txtDireccion.Text = ClienteDBM.ObtenerCliente(txtId.Text, null).DIRECCION;
 
                 dgvHistorial.DataSource = FacturaDBM.Historial(txtId.Text);
+
+                dgvHistorial.Columns["FACTOR_DESCUENTO"].Visible = false;
+                dgvHistorial.Columns["ID_FACTURA"].Visible = false;
+                dgvHistorial.Columns["ID_USUARIO"].Visible = false;
+                dgvHistorial.Columns["IVA"].Visible = false;
             }
             else
             {
@@ -575,10 +580,9 @@ namespace sercor
         {
             dgvProductos.DataSource = ProductoDBM.ObtenerProductos();
 
-            DataGridViewColumn column = dgvProductos.Columns[0];
-            column.Width = 50;
-
             cmbFiltro.SelectedIndex = 0;
+
+            dgvProductos.Columns["ESTADO"].Visible = false;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -1545,6 +1549,9 @@ namespace sercor
                 int codigo = Convert.ToInt32(dgvCXC.CurrentRow.Cells[0].Value);
                 CuentaN cuentaseleccionada = CuentaDBM.ObtenerCuentaNporID_cuenta(codigo);
                 dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagosDetalle(cuentaseleccionada.ID_CUENTA);
+
+                dgvCXCdetalle.Columns["TIPO_PAGO"].Visible = false;
+
                 label_idcuenta.Text = cuentaseleccionada.ID_CUENTA.ToString();
                 label_idcliente.Text = cuentaseleccionada.ID_CLIENTE;
                 label_Nombre.Text = cuentaseleccionada.NOMBRE_CLIENTE;
@@ -1809,11 +1816,6 @@ namespace sercor
             aboutBox1.ShowDialog();
         }
 
-        private void dgvCXC_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void label31_Click(object sender, EventArgs e)
         {
 
@@ -1849,6 +1851,21 @@ namespace sercor
                     label_estado.Text = "----------------";
                     break;
             }
+        }
+
+        private void dgvInventario_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvInventario.Columns["ESTADO"].Visible = false;
+        }
+
+        private void dgvTrabajos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvTrabajos.Columns["FACTURA"].Visible = false;
+        }
+
+        private void dgvIngresos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvIngresos.Columns["TIPO_PAGO"].Visible = false;
         }
     }
 }

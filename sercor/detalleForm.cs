@@ -51,13 +51,20 @@ namespace sercor
             txtResponsable.Text = _usuario.NOMBRE + " " + _usuario.APELLIDO;
 
             if (_cuenta.TOTAL == 0){
+                txtId.ForeColor = System.Drawing.Color.Red;
+                txtName.ForeColor = System.Drawing.Color.Red;
+                txtTelefono.ForeColor = System.Drawing.Color.Red;
+                txtDireccion.ForeColor = System.Drawing.Color.Red;
+                txtDate.ForeColor = System.Drawing.Color.Red;
                 txtTotal.ForeColor = System.Drawing.Color.Red;
-                txtId.Text = "";
-                txtName.Text = "";
-                txtTelefono.Text = "";
-                txtTelefono.Text = "";
-                txtDireccion.Text = "";
-                txtDate.Text = "";
+
+                txtId.Text = "ANULADO";
+                txtName.Text = "ANULADO";
+                txtTelefono.Text = "ANULADO";
+                txtDireccion.Text = "ANULADO";
+                txtDate.Text = "ANULADO";
+
+                btnAnular.Enabled = false;
             }
         }
 
