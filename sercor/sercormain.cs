@@ -1706,8 +1706,6 @@ namespace sercor
 
         private void btnOkReporte_Click(object sender, EventArgs e)
         {
-            
-
             switch (cmbReporte.SelectedIndex)
             {
                 case 1:

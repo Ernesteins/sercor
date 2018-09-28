@@ -312,14 +312,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="1182688">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="1184256">
       <assemblyIdentity name="sercor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uiZiLD5Kp47DipAy6OJj7kQJAPDHZjdg39J8YSB7ZvU=</dsig:DigestValue>
+        <dsig:DigestValue>5kFYHZmnRj0jD7kJDnDBPmpwN2pFd8HHVQdOU02b9gk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
