@@ -9,6 +9,7 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
+        bool permisoAdmin;
         //MUESTRA MENSAJES DES ERROR O NOTIFICACIONES
         private void toogleError(bool show, string mensaje, int tipo)//mostrar|mensaje a mostrar|1=error 2=aviso
         {
@@ -106,7 +107,9 @@ namespace sercor
 
             if (_privilegio1[0] == false)
             {
+                //Permiso de anular facturas
                 btnAdmin.Enabled = false;
+                permisoAdmin = false;
             }
             if (_privilegio1[1] == false)
             {
@@ -1416,7 +1419,7 @@ namespace sercor
             _factura.TIPO = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[10].Value);
             _factura.INDICE = Convert.ToInt32(dgvHistorial.SelectedRows[0].Cells[11].Value);
 
-            detalleForm _detalle = new detalleForm(_factura);
+            detalleForm _detalle = new detalleForm(_factura,permisoAdmin);
             _detalle.Show();
         }
 
@@ -1504,9 +1507,8 @@ namespace sercor
             {
                 int codigo = Convert.ToInt32(dgvCXC.CurrentRow.Cells[0].Value);
                 CuentaN cuentaseleccionada = CuentaDBM.ObtenerCuentaNporID_cuenta(codigo);
-                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagosDetalle(cuentaseleccionada.ID_CUENTA);
 
-                dgvCXCdetalle.Columns["TIPO_PAGO"].Visible = false;
+                dgvCXCdetalle.DataSource = PagoDBM.ObtenerPagosDetalle(cuentaseleccionada.ID_CUENTA);
 
                 label_idcuenta.Text = cuentaseleccionada.ID_CUENTA.ToString();
                 label_idcliente.Text = cuentaseleccionada.ID_CLIENTE;
@@ -1523,7 +1525,10 @@ namespace sercor
                     default:
                         label_TipoDoc.Text = "Doc-I"; break;
                 }
-                label_iddoc.Text = cuentaseleccionada.ID_DOCUMENTO.ToString();
+
+
+                label_iddoc.Text = FacturaDBM.ObtenerPorID(cuentaseleccionada.ID_DOCUMENTO).INDICE.ToString();
+
                 txtTotalcxc.Text = cuentaseleccionada.TOTAL.ToString();
                 txtSaldocxc.Text = cuentaseleccionada.SALDO.ToString();
             }
@@ -1817,11 +1822,40 @@ namespace sercor
         private void dgvIngresos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvIngresos.Columns["TIPO_PAGO"].Visible = false;
+            dgvIngresos.Columns["ID_PAGO"].Visible = false;
         }
 
         private void btnRefreshTr_Click(object sender, EventArgs e)
         {
             cmbEstadocxc_SelectedIndexChanged(null, null);
+        }
+
+        private void dgvHistorial_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvHistorial.Columns["ID_DETALLE"].Visible = false;
+        }
+
+        private void dgvCXC_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvCXC.Columns["ID_DOCUMENTO"].Visible = false;
+            dgvCXC.Columns["TIPO"].Visible = false;
+        }
+
+        private void dgvCXCdetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //int idPago = dgvCXCdetalle.Columns["ID_PAGO"].Index; 0
+            int idPago = int.Parse(dgvCXCdetalle.Rows[dgvCXCdetalle.SelectedRows[0].Index].Cells[0].Value.ToString());
+            MessageBox.Show(idPago.ToString());
+            DetallePago pagoDetalle = new DetallePago(idPago,permisoAdmin);
+            pagoDetalle.Show();
+            btnRefreshTr_Click(null, null);
+            dgvCXC_CellClick(null, null);
+        }
+
+        private void dgvCXCdetalle_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvCXCdetalle.Columns["ID_PAGO"].Visible = false;
+            dgvCXCdetalle.Columns["TIPO_PAGO"].Visible = false;
         }
     }
 }

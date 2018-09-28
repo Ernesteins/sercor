@@ -12,25 +12,37 @@ namespace sercor
 {
     public partial class DetallePago : Form
     {
-        int idPago;
         Pago pago;
-        Cuenta cuentaAnterior;
-        public DetallePago(Pago _pago)
+        decimal monto;
+
+
+        public DetallePago(int idPago, bool admin)
         {
             InitializeComponent();
+
+            if (admin == false)
+            {
+                btnAnular.Enabled = false;
+            }
+
             FormInstance.puntoDecimal();
-            pago = _pago;
+            pago = PagoDBM.ObtenerPagoIdPago(idPago);
 
-            cuentaAnterior=CuentaDBM.ObtenerCuentaporID_cuenta(pago.ID_CUENTA);
+            txtFecha.Text = pago.FECHA_ABONO;
+            txtMonto.Text = pago.MONTO.ToString();
+            txtDescripcion.Text = pago.DESCRIPCION;
+            txtTarjeta.Text = pago.TARJETA;
+            txtBanco.Text = pago.BANCO;
+            txtCheque.Text = pago.CHEQUE;
 
-            txtFecha.Text = _pago.FECHA_ABONO;
-            txtMonto.Text = _pago.MONTO.ToString();
-            txtDescripcion.Text = _pago.DESCRIPCION;
-            txtTarjeta.Text = _pago.TARJETA;
-            txtBanco.Text = _pago.BANCO;
-            txtCheque.Text = _pago.CHEQUE;
+            idPago = pago.ID_PAGO;
 
-            idPago = _pago.ID_PAGO;
+            if (pago.MONTO == 0)
+            {
+                btnAnular.Enabled = false;
+                txtDescripcion.Text = "ANULADO";
+                txtDescripcion.ForeColor = Color.Red;
+            }
         }
 
         private void btnAnular_Click(object sender, EventArgs e)
@@ -38,13 +50,16 @@ namespace sercor
             DialogResult result = MessageBox.Show("¿Está seguro de anular este pago?", "Sercor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                Pago anularPago = pago;
-                anularPago.MONTO = 0;
+                monto = pago.MONTO;
 
-                CuentaDBM.actualizarcuenta(pago.ID_CUENTA, cuentaAnterior.SALDO + pago.MONTO, cuentaAnterior.TOTAL);
+                PagoDBM.Anular(pago.ID_PAGO);
 
-                PagoDBM.Modificar(anularPago, idPago);
+                CuentaDBM.CuentaAnulacion(pago.ID_CUENTA, CuentaDBM.ObtenerCuentaNporID_cuenta(pago.ID_CUENTA).SALDO+monto);
+
                 MessageBox.Show("Anulación exitosa", "Sercor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else {
                 this.Close();
             }
         }

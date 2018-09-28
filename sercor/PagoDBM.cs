@@ -20,6 +20,23 @@ namespace sercor
             return retorno;
         }
 
+        public static int Anular(int idPago)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update pago set MONTO=0 where ID_PAGO='{0}'", idPago), conexion);
+
+
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
+        //TCODIGO INUTIL
         public static int Modificar(Pago pPago, int idPago)
         {
             int retorno = 0;
@@ -66,19 +83,20 @@ namespace sercor
             conexion.Close();
             return _lista;
         }
-        public static List<PagoDetalle> ObtenerPagosDetalle(int id_cuenta)
+
+        public static List<Pago> ObtenerPagosDetalle(int id_cuenta)
         {
-            List<PagoDetalle> _lista = new List<PagoDetalle>();
+            List<Pago> _lista = new List<Pago>();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT ID_PAGO, ID_CUENTA, FECHA_ABONO, TIPO_PAGO, MONTO, DESCRIPCION, TARJETA, TIPO, REF, BANCO, CHEQUE FROM PAGO WHERE ID_CUENTA = '{0}'", id_cuenta), conexion);
+           "SELECT * FROM PAGO WHERE ID_CUENTA = '{0}' and MONTO <> 0", id_cuenta), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
-                PagoDetalle pPago = new PagoDetalle();
-
+                Pago pPago = new Pago();
+                pPago.ID_PAGO = _reader.GetInt32(0);
                 pPago.FECHA_ABONO = _reader.GetString(2);
                 pPago.TIPO_PAGO = _reader.GetInt32(3);
                 pPago.MONTO = _reader.GetDecimal(4);
@@ -93,6 +111,34 @@ namespace sercor
             }
             conexion.Close();
             return _lista;
+        }
+
+
+        public static Pago ObtenerPagoIdPago(int idPago)
+        {
+            Pago pPago = new Pago();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM PAGO WHERE ID_PAGO = '{0}'", idPago), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                pPago.ID_PAGO = _reader.GetInt32(0);
+                pPago.ID_CUENTA = _reader.GetInt32(1);
+                pPago.FECHA_ABONO = _reader.GetString(2);
+                pPago.TIPO_PAGO = _reader.GetInt32(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
+                pPago.TARJETA = _reader.GetString(6);
+                pPago.TIPO = _reader.GetString(7);
+                pPago.REF = _reader.GetString(8);
+                pPago.BANCO = _reader.GetString(9);
+                pPago.CHEQUE = _reader.GetString(10);
+            }
+            conexion.Close();
+            return pPago;
         }
 
 

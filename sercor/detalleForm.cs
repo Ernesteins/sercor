@@ -11,9 +11,15 @@ namespace sercor
         Trabajo _trabajo = new Trabajo();
         Usuario _usuario = new Usuario();
         
-        public detalleForm(Factura _factura)
+        public detalleForm(Factura _factura,bool admin)
         {
             InitializeComponent();
+
+            if (admin == false)
+            {
+                btnAnular.Enabled = false;
+            }
+
             _cliente = ClienteDBM.ObtenerCliente(_factura.ID_CLIENTE, null);
             _pago = PagoDBM.ConsultarUnicoPago(_factura.ID_CUENTA);
             _cuenta = CuentaDBM.ObtenerCuentaporID_cuenta(_factura.ID_CUENTA);

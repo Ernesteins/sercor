@@ -247,6 +247,7 @@ namespace sercor
             conexion.Close();
             return total;
         }
+
         public static int actualizarcuenta(int idcuenta, decimal saldo, decimal total)
         {
             int retorno = 0;
@@ -261,7 +262,19 @@ namespace sercor
             return retorno;
         }
 
-        
+        public static int CuentaAnulacion(int idcuenta, decimal saldo)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update cuenta set saldo = '{0}' where id_cuenta = '{1}';",
+                saldo, idcuenta), conexion);
+
+            retorno = comando.ExecuteNonQuery();
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
 
     }
 }

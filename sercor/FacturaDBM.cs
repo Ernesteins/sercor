@@ -55,6 +55,29 @@ namespace sercor
             return pFactura;
         }
 
+        public static Factura ObtenerPorID(int idFactura)
+        {
+            Factura pFactura = new Factura();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM factura where ID_FACTURA='{0}'",idFactura), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+
+            while (_reader.Read())
+            {
+                pFactura.ID_FACTURA = _reader.GetInt32(0);
+                pFactura.ID_CLIENTE = _reader.GetString(1);
+                pFactura.ID_USUARIO = _reader.GetInt32(2);
+                
+                pFactura.IVA = _reader.GetDecimal(5);
+                pFactura.TOTAL = _reader.GetDecimal(6);
+                pFactura.FECHA = _reader.GetString(7);
+                pFactura.INDICE = _reader.GetInt32(11);
+            }
+            conexion.Close();
+            return pFactura;
+        }
+
         public static List<Factura> Historial(string idCliente)
         {
             List<Factura> _lista = new List<Factura>();
