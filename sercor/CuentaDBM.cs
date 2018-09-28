@@ -70,6 +70,45 @@ namespace sercor
             return _lista;
         }
 
+        public static List<CuentaN> ObtenerFiltroCi(int SaldoEstado, string idCliente)
+        {
+            List<CuentaN> _lista = new List<CuentaN>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando;
+            if (SaldoEstado == 1)
+            {
+                _comando = new MySqlCommand(String.Format("select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA and saldo != '0' and CUENTA.ID_CLIENTE='{0}';",idCliente), conexion);
+            }
+            else if (SaldoEstado == 2)
+            {
+                _comando = new MySqlCommand(String.Format("select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA and saldo = '0' and CUENTA.ID_CLIENTE='{0}';", idCliente), conexion);
+            }
+            else
+            {
+                _comando = new MySqlCommand(String.Format("select CUENTA.ID_CUENTA, CUENTA.ID_CLIENTE, CLIENTE.NOMBRE AS NOMBRE_CLIENTE, FACTURA.INDICE AS NUMERO_DOCUMENTO, FACTURA.TIPO, CUENTA.TOTAL, CUENTA.SALDO FROM CUENTA,Cliente,Factura WHERE CUENTA.ID_CLIENTE = CLIENTE.ID_CLIENTE AND CUENTA.ID_FACTURA = FACTURA.ID_FACTURA and CUENTA.ID_CLIENTE='{0}';", idCliente), conexion);
+            }
+
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                CuentaN cxcCuenta = new CuentaN();
+
+                cxcCuenta.ID_CUENTA = _reader.GetInt32(0);
+                cxcCuenta.ID_CLIENTE = _reader.GetString(1);
+                cxcCuenta.NOMBRE_CLIENTE = _reader.GetString(2);
+                cxcCuenta.ID_DOCUMENTO = _reader.GetInt32(3);
+                cxcCuenta.TIPO = _reader.GetInt32(4);
+                cxcCuenta.TOTAL = _reader.GetDecimal(5);
+                cxcCuenta.SALDO = _reader.GetDecimal(6);
+
+                _lista.Add(cxcCuenta);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
+
         public static CuentaN ObtenerCuentaNporID_cuenta(int codigo)
         {
             CuentaN cxcCuenta = new CuentaN();

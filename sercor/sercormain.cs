@@ -259,6 +259,7 @@ namespace sercor
             }
 
             txtId.AutoCompleteCustomSource = clienteId;
+            txtCXCI.AutoCompleteCustomSource = clienteId;
         }
 
         public Cliente clienteNombres { get; set; }
@@ -1856,6 +1857,16 @@ namespace sercor
         {
             dgvCXCdetalle.Columns["ID_PAGO"].Visible = false;
             dgvCXCdetalle.Columns["TIPO_PAGO"].Visible = false;
+        }
+
+        private void btnBuscarCXC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvCXC.DataSource = CuentaDBM.ObtenerFiltroCi(cmbEstadocxc.SelectedIndex,txtCXCI.Text);
+                toogleError(false, null, 1);
+            }
+            catch (FormatException) { toogleError(true, "NO HAY VALORES QUE BUSCAR", 2); }
         }
     }
 }
