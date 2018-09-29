@@ -13,7 +13,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-            "SELECT * FROM sercordb.trabajos"), conexion);
+            " SELECT ID_TRABAJO, factura.indice, FECHA_INICIO, FECHA_ENTREGA, NOMBRE_CL as NOMBRE, ARMAZON, LUNA, ESTADO FROM sercordb.trabajos, sercordb.factura where factura.id_cuenta = trabajos.id_cuenta;"), conexion);
             
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -22,13 +22,14 @@ namespace sercor
 
                 trTrabajo.ID = _reader.GetInt32(0);
                 trTrabajo.CUENTA = _reader.GetInt32(1);
-                trTrabajo.FACTURA = _reader.GetInt32(2);
-                trTrabajo.FECHA_INICIO = _reader.GetString(3);                
+                //trTrabajo.FACTURA = _reader.GetInt32(2);
+                trTrabajo.FECHA_INICIO = _reader.GetString(2);
+                trTrabajo.FECHA_ENTREGA = _reader.GetString(3);
                 trTrabajo.NOMBRE = _reader.GetString(4);
                 trTrabajo.ARMAZON = _reader.GetString(5);
                 trTrabajo.LUNA = _reader.GetString(6);
                 trTrabajo.ESTADO = _reader.GetInt32(7);
-                trTrabajo.FECHA_ENTREGA = _reader.GetString(8);
+                
                 _lista.Add(trTrabajo);
             }
             conexion.Close();

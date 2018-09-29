@@ -9,7 +9,7 @@ namespace sercor
 {
     public partial class sercormain : Form
     {
-        bool permisoAdmin;
+        bool permisoAdmin = true;
         //MUESTRA MENSAJES DES ERROR O NOTIFICACIONES
         private void toogleError(bool show, string mensaje, int tipo)//mostrar|mensaje a mostrar|1=error 2=aviso
         {
@@ -111,6 +111,7 @@ namespace sercor
                 btnAdmin.Enabled = false;
                 permisoAdmin = false;
             }
+
             if (_privilegio1[1] == false)
             {
                 pnInventario.Enabled = false;
@@ -1816,6 +1817,7 @@ namespace sercor
         private void dgvTrabajos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvTrabajos.Columns["FACTURA"].Visible = false;
+            dgvTrabajos.Columns["CUENTA"].HeaderText = "ID_DOCUMENTO";
         }
 
         private void dgvIngresos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -1844,7 +1846,7 @@ namespace sercor
         {
             //int idPago = dgvCXCdetalle.Columns["ID_PAGO"].Index; 0
             int idPago = int.Parse(dgvCXCdetalle.Rows[dgvCXCdetalle.SelectedRows[0].Index].Cells[0].Value.ToString());
-            MessageBox.Show(idPago.ToString());
+            //MessageBox.Show(idPago.ToString());
             DetallePago pagoDetalle = new DetallePago(idPago,permisoAdmin);
             pagoDetalle.Show();
             btnRefreshTr_Click(null, null);

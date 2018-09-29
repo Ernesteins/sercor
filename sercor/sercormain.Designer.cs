@@ -2824,7 +2824,6 @@
             this.cmbFiltroTrabajo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltroTrabajo.FormattingEnabled = true;
             this.cmbFiltroTrabajo.Items.AddRange(new object[] {
-            "FACTURA",
             "ESTADO"});
             this.cmbFiltroTrabajo.Location = new System.Drawing.Point(241, 5);
             this.cmbFiltroTrabajo.Name = "cmbFiltroTrabajo";

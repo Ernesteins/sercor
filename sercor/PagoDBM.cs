@@ -199,8 +199,8 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT fecha_abono, cliente.ID_CLIENTE, nombre, monto, descripcion FROM PAGO, cuenta, cliente WHERE pago.ID_CUENTA = cuenta.ID_CUENTA and cuenta.ID_CLIENTE = cliente.ID_CLIENTE and fecha_abono between '{0}' and '{1}' union " +
-           "select fecha_egreso, tipo_egreso, beneficiario, monto, descripcion from egreso where fecha_egreso between '{0}' and '{1}'", fecha1,fecha2), conexion);
+           "select fecha_abono, factura.tipo, factura.indice as identificador, nombre, monto, descripcion from factura, pago, cuenta, cliente where factura.id_cuenta = cuenta.id_cuenta and pago.ID_CUENTA = cuenta.ID_CUENTA and cuenta.ID_CLIENTE = cliente.ID_CLIENTE and fecha_abono between '{0}' and '{1}' union " +
+           "select fecha_egreso, tipo_egreso,tipo_egreso, beneficiario, monto, descripcion from egreso where fecha_egreso between '{0}' and '{1}'", fecha1,fecha2), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -208,10 +208,11 @@ namespace sercor
                 PagoReporte pPago = new PagoReporte();
                 
                 pPago.FECHA_ABONO = _reader.GetString(0);
-                pPago.IDENTIFICADOR = _reader.GetString(1);
-                pPago.NOMBRE = _reader.GetString(2);
-                pPago.MONTO = _reader.GetDecimal(3);
-                pPago.DESCRIPCION = _reader.GetString(4);
+                pPago.TIPO = _reader.GetString(1);
+                pPago.IDENTIFICADOR = _reader.GetString(2);
+                pPago.NOMBRE = _reader.GetString(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
 
                 _lista.Add(pPago);
             }
@@ -225,7 +226,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "select fecha_abono,cliente.id_cliente, nombre, monto, descripcion from pago, cuenta, cliente where pago.ID_CUENTA = cuenta.ID_CUENTA and cuenta.ID_CLIENTE = cliente.ID_CLIENTE and fecha_abono between '{0}' and '{1}'", fecha1, fecha2), conexion);
+           "select fecha_abono, factura.tipo, factura.indice as identificador, nombre, monto, descripcion from factura, pago, cuenta, cliente where factura.id_cuenta = cuenta.id_cuenta and pago.ID_CUENTA = cuenta.ID_CUENTA and cuenta.ID_CLIENTE = cliente.ID_CLIENTE and fecha_abono between '{0}' and '{1}'", fecha1, fecha2), conexion);
 
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -233,10 +234,11 @@ namespace sercor
                 PagoReporte pPago = new PagoReporte();
 
                 pPago.FECHA_ABONO = _reader.GetString(0);
-                pPago.IDENTIFICADOR = _reader.GetString(1);
-                pPago.NOMBRE = _reader.GetString(2);
-                pPago.MONTO = _reader.GetDecimal(3);
-                pPago.DESCRIPCION = _reader.GetString(4);
+                pPago.TIPO= _reader.GetString(1);
+                pPago.IDENTIFICADOR = _reader.GetString(2);
+                pPago.NOMBRE = _reader.GetString(3);
+                pPago.MONTO = _reader.GetDecimal(4);
+                pPago.DESCRIPCION = _reader.GetString(5);
 
                 _lista.Add(pPago);
             }
