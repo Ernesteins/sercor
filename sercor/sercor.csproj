@@ -11,8 +11,12 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+<<<<<<< HEAD
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\Cristian\Documents\Proyectos\sercor\Sercor\</PublishUrl>
+=======
+    <PublishUrl>C:\Users\Cristian\Desktop\</PublishUrl>
+>>>>>>> master
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,6 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+<<<<<<< HEAD
     <ProductName>Sercor</ProductName>
     <PublisherName>CKPDsoft</PublisherName>
     <SuiteName>Sercor DBM</SuiteName>
@@ -33,6 +38,14 @@
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>false</BootstrapperEnabled>
+=======
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+>>>>>>> master
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +67,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
+<<<<<<< HEAD
     <ManifestCertificateThumbprint>72C51A4DE69327374763EBF1160ACDF977981A0D</ManifestCertificateThumbprint>
+=======
+    <ManifestCertificateThumbprint>AD6C15D834A5C94E0B4F4258BA1C8B6739834CB5</ManifestCertificateThumbprint>
+>>>>>>> master
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>sercor_TemporaryKey.pfx</ManifestKeyFile>
@@ -65,9 +82,12 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+<<<<<<< HEAD
   <PropertyGroup>
     <ApplicationIcon>sercor.ico</ApplicationIcon>
   </PropertyGroup>
+=======
+>>>>>>> master
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -387,9 +407,12 @@
     <None Include="Resources\plus32.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+=======
+>>>>>>> master
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
@@ -401,6 +424,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <PublishFile Include="Docs\consultas.sql">
       <Visible>False</Visible>
@@ -496,5 +520,7 @@
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
+=======
+>>>>>>> master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

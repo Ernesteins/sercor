@@ -40,6 +40,7 @@ D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.editar_producto.re
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.agregar_producto.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.editar_producto.resources
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.cambiar_estado.resources
+<<<<<<< HEAD
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.cambiar_estado.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.SDL.resources
 D:\Documentos\Proyectos\sercor\sercor\sercor\obj\Debug\sercor.Administrativo.resources
@@ -388,11 +389,14 @@ C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\MySqlBackup.dll
 C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\Google.Protobuf.xml
 C:\Users\eyase\Source\Repos\sercor\sercor\bin\Debug\MySql.Data.xml
 C:\Users\eyase\Source\Repos\sercor\sercor\obj\Debug\sercor.exe.config
+=======
+>>>>>>> master
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\sercor.exe.config
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\sercor.exe.manifest
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\sercor.application
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\sercor.exe
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\sercor.pdb
+<<<<<<< HEAD
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\Microsoft.Win32.Primitives.dll
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\netstandard.dll
 C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\System.AppContext.dll
@@ -528,6 +532,16 @@ C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.login.resources
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.nuevoUsuario.resources
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.Properties.Resources.resources
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.SDL.resources
+=======
+C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\Google.Protobuf.dll
+C:\Users\Cristian\Source\Repos\sercor\sercor\bin\Debug\MySql.Data.xml
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.csprojAssemblyReference.cache
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.agregar_producto.resources
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.cambiar_estado.resources
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.editar_producto.resources
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.login.resources
+C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.Properties.Resources.resources
+>>>>>>> master
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.sercormain.resources
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.csproj.GenerateResource.cache
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.csproj.CoreCompileInputs.cache
@@ -536,5 +550,8 @@ C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.application
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.csproj.CopyComplete
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.exe
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.pdb
+<<<<<<< HEAD
 C:\Users\gabri\Source\Repos\sercor\sercor\obj\Debug\sercor.DetallePago.resources
 C:\Users\Cristian\Source\Repos\sercor\sercor\obj\Debug\sercor.DetallePago.resources
+=======
+>>>>>>> master

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="sercor.exe" version="1.0.0.0" publicKeyToken="9c87d25b6fb79ea3" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="sercor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="sercor.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opciones del manifiesto de UAC
+          Si desea cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el 
+          nodo requestedExecutionLevel por uno de los siguientes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si desea usar Virtualización de archivos y Registro para compatibilidad con 
+         versiones anteriores, elimine el nodo requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Protobuf.dll" size="294400">
+      <assemblyIdentity name="Google.Protobuf" version="3.5.1.0" publicKeyToken="A7D26565BAC4D604" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>kmmLSyM9YCkmP+X33YMDTg/6sJlFHUuInLwRv1o/LXM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="688640">
+      <assemblyIdentity name="MySql.Data" version="8.0.11.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>KeY+Kh5+A5CIBvHLVvNsTVoTRzg+tC+GiEhPwdF1Rrk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sercor.exe" size="339424">
+      <assemblyIdentity name="sercor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>2kb+Ce89BN/yH5kXnbQUaIFUqYAPITXhkZUGT1CUm8w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Docs\consultas.sql" size="5068">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xleJClMZ7z+TrjmOjd4Wyyn8aaTZEtKICvJhBe2vNEI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Docs\documentacion.txt" size="1804">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>7mIvvC38d1QUWg4VNnoiM4RZqG/oUtVKf5058AM+oaw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Docs\genesis.sql" size="17478">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2KmkzWpvbkiNkg1CbTtgk+H1o0W59v9zGKlCd/ztq1Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Docs\Respaldos.txt" size="1905">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OF2JaFJJmh/RucefWVXdmpnILhSmOA+mWByz+vYLBK4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sercor.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Vaio-Pc\Cristian" issuerKeyHash="b9aca1c5497a74e0675302dc3aee22fbad4a73c8" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>OG/ldPrC6HEhVdF9doNPZ7Y2CX7Wyzoinm4dwBwk2bk=</DigestValue></Reference></SignedInfo><SignatureValue>qiXZOJp4P5BjhyDMt9EKPFaunf2o0Jiq0BUvSMwN0DQMCczLPV3RB1JeYcgwl/+3bi+lHA/pGvjNx3pU/8BMBspKwK4hnZcrbP1cGMDAoucqglil6d7Tl9up4sPaBTJUXzOZbPVbcXvOuyaXY+zmHCcb9gdWm0eSVH+HgmEw3TM=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>1jpkXfEJ0XdchNQWS6fZH8sJY1jQo3q2QI0hJjqN7O09pJGUgGRfEQSLKlrhtQmHHpTftyM0zr9apyFlS+BHQMaO+dHIFlQ1ZwzjzhgmpMEdoHRuXWt+1kEkd9YZhAC5IxoX6swF1a5a4lPRDiQVt3rX4tyExMj6+uI58ng2VMM=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="b9d9241cc01d6e9e223acbd67e0936b6674f83767dd1552171e8c2fa74e56f38" Description="" Url=""><as:assemblyIdentity name="sercor.exe" version="1.0.0.0" publicKeyToken="9c87d25b6fb79ea3" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Vaio-Pc\Cristian</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>U9A3r8bLGwD2r/IaNCX9obuNLA19SYEooDWTQMY3zDo=</DigestValue></Reference></SignedInfo><SignatureValue>aQKlVgpti8Ximb4MnRVwp4mGLPZXAPl+LZcznbXMDBjFjpbcnzDHSf5PrPK1xsMP+AfS5/wDFvHeQj1XCRCRQ75hBLp/0pCPiIYZagYyn14n7TkeYy6pJAnhARSwd4PLIgz04o+AZJJpY9rQu4joaxlAWMWaXCWDG10y1ffT2TM=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>1jpkXfEJ0XdchNQWS6fZH8sJY1jQo3q2QI0hJjqN7O09pJGUgGRfEQSLKlrhtQmHHpTftyM0zr9apyFlS+BHQMaO+dHIFlQ1ZwzjzhgmpMEdoHRuXWt+1kEkd9YZhAC5IxoX6swF1a5a4lPRDiQVt3rX4tyExMj6+uI58ng2VMM=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQcJiSBq5sWKNGI/MlcvkV0DANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAAVgBhAGkAbwAtAFAAYwBcAEMAcgBpAHMAdABpAGEAbjAeFw0xODA5MTkyMjMwNTNaFw0xOTA5MjAwNDMwNTNaMCsxKTAnBgNVBAMeIABWAGEAaQBvAC0AUABjAFwAQwByAGkAcwB0AGkAYQBuMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDWOmRd8QnRd1yE1BZLp9kfywljWNCjerZAjSEmOo3s7T2kkZSAZF8RBIsqWuG1CYcelN+3IzTOv1qnIWVL4EdAxo750cgWVDVnDOPOGCakwR2gdG5da37WQSR31hmEALkjGhfqzAXVrlriU9EOJBW3etfi3ITEyPr64jnyeDZUwwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAEfdGCOTpp+LZzxM/fiRy3bIGjnq0LcnYTkrjbpnmpPQok+ZU+k1GFsCjZCEFzZipfj9D57qKAA0jpuk/qSAqnGizfmwozicU0A/HbG7KE6P7q0MCwk1Bz1+3I4nbNfA2SZ6lA5zv7SPGLhDNxja707jN+Hx0Sck/Uf5vz/YKsPJ</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
