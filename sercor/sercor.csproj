@@ -11,7 +11,12 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+<<<<<<< HEAD
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Cristian\Documents\Proyectos\sercor\Sercor\</PublishUrl>
+=======
     <PublishUrl>C:\Users\Cristian\Desktop\</PublishUrl>
+>>>>>>> master
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -21,12 +26,26 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+<<<<<<< HEAD
+    <ProductName>Sercor</ProductName>
+    <PublisherName>CKPDsoft</PublisherName>
+    <SuiteName>Sercor DBM</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>31</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+=======
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+>>>>>>> master
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,7 +67,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
+<<<<<<< HEAD
+    <ManifestCertificateThumbprint>72C51A4DE69327374763EBF1160ACDF977981A0D</ManifestCertificateThumbprint>
+=======
     <ManifestCertificateThumbprint>AD6C15D834A5C94E0B4F4258BA1C8B6739834CB5</ManifestCertificateThumbprint>
+>>>>>>> master
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>sercor_TemporaryKey.pfx</ManifestKeyFile>
@@ -59,10 +82,38 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+<<<<<<< HEAD
+  <PropertyGroup>
+    <ApplicationIcon>sercor.ico</ApplicationIcon>
+  </PropertyGroup>
+=======
+>>>>>>> master
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.12\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.NET.2.0.12.1\lib\netstandard2.0\MySqlBackup.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,11 +125,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo.Designer.cs">
+      <DependentUpon>Administrativo.cs</DependentUpon>
+    </Compile>
     <Compile Include="agregar_producto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="agregar_producto.Designer.cs">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Añadir_egreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Añadir_egreso.Designer.cs">
+      <DependentUpon>Añadir_egreso.cs</DependentUpon>
     </Compile>
     <Compile Include="bdComun.cs" />
     <Compile Include="cambiar_estado.cs">
@@ -91,30 +160,113 @@
     <Compile Include="ClienteDBM.cs" />
     <Compile Include="Cuenta.cs" />
     <Compile Include="CuentaDBM.cs" />
+    <Compile Include="Detalle.cs" />
+    <Compile Include="DetalleDBM.cs" />
+    <Compile Include="detalleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="detalleForm.Designer.cs">
+      <DependentUpon>detalleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetallePago.Designer.cs">
+      <DependentUpon>DetallePago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editarUsuario.Designer.cs">
+      <DependentUpon>editarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="editar_producto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="editar_producto.Designer.cs">
       <DependentUpon>editar_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Egreso.cs" />
+    <Compile Include="EgresoDBM.cs" />
+    <Compile Include="nota.cs">
+      <DependentUpon>nota.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="orden.cs">
+      <DependentUpon>orden.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Factura.cs" />
+    <Compile Include="factura1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>factura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="facturacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>facturacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FacturaDBM.cs" />
+    <Compile Include="FacturaImpresion.cs" />
     <Compile Include="FormInstance.cs" />
     <Compile Include="Hash.cs" />
+    <Compile Include="imprimir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="imprimir.Designer.cs">
+      <DependentUpon>imprimir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="inventarioReporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>inventarioReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="movimientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>movimientos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="nuevoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nuevoUsuario.Designer.cs">
+      <DependentUpon>nuevoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pago.cs" />
+    <Compile Include="PagoDBM.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="ProductoDBM.cs" />
+    <Compile Include="ProductoVendido.cs" />
+    <Compile Include="ProductoVendidoDBM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.cs" />
+    <Compile Include="RegistroDBM.cs" />
+    <Compile Include="SDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SDL.Designer.cs">
+      <DependentUpon>SDL.cs</DependentUpon>
     </Compile>
     <Compile Include="sercormain.cs">
       <SubType>Form</SubType>
@@ -126,26 +278,78 @@
     <Compile Include="TrabajoDBM.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDBM.cs" />
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo.resx">
+      <DependentUpon>Administrativo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="agregar_producto.resx">
       <DependentUpon>agregar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Añadir_egreso.resx">
+      <DependentUpon>Añadir_egreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="detalleForm.resx">
+      <DependentUpon>detalleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetallePago.resx">
+      <DependentUpon>DetallePago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editarUsuario.resx">
+      <DependentUpon>editarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editar_producto.resx">
       <DependentUpon>editar_producto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="nota.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>nota.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="orden.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>orden.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="factura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>factura1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="facturacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>facturacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="imprimir.resx">
+      <DependentUpon>imprimir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="inventarioReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>inventarioReporte.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="movimientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>movimientos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nuevoUsuario.resx">
+      <DependentUpon>nuevoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SDL.resx">
+      <DependentUpon>SDL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="sercormain.resx">
       <DependentUpon>sercormain.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -164,7 +368,24 @@
     <Content Include="Docs\consultas.sql" />
     <Content Include="Docs\documentacion.txt" />
     <Content Include="Docs\genesis.sql" />
+    <Content Include="Docs\genesis29julio.sql" />
+    <Content Include="Docs\genesis3Agosto.sql" />
+    <Content Include="Docs\genesis4Agosto.sql" />
+    <Content Include="Docs\modelo sercor 29-Julio.png" />
+    <Content Include="Docs\modelo sercor 4-Agosto.png" />
     <Content Include="Docs\Respaldos.txt" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\databaseUpload.png" />
+    <None Include="Resources\databaseOrigin.png" />
+    <None Include="Resources\refresh.png" />
+    <Content Include="sercor.ico" />
+    <None Include="Resources\CKPD %281%29.jpg" />
+    <None Include="Resources\box.png" />
+    <None Include="Resources\notepad.png" />
+    <None Include="Resources\repeat.png" />
+    <None Include="Resources\edit1.png" />
+    <None Include="Resources\tabs.png" />
+    <None Include="Resources\server.png" />
     <None Include="Resources\alarm16.png" />
     <None Include="Resources\save16.png" />
     <None Include="Resources\printer16.png" />
@@ -186,6 +407,12 @@
     <None Include="Resources\plus32.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+=======
+>>>>>>> master
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
@@ -197,5 +424,103 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+<<<<<<< HEAD
+  <ItemGroup>
+    <PublishFile Include="Docs\consultas.sql">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\documentacion.txt">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis.sql">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis29julio.sql">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis3Agosto.sql">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\genesis4Agosto.sql">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\modelo sercor 29-Julio.png">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\modelo sercor 4-Agosto.png">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Docs\Respaldos.txt">
+      <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+=======
+>>>>>>> master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

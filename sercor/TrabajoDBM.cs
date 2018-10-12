@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -16,7 +13,7 @@ namespace sercor
             MySqlConnection conexion = bdComun.obtenerConexion();
 
             MySqlCommand _comando = new MySqlCommand(String.Format(
-            "SELECT * FROM sercordb.trabajos"), conexion);
+            " SELECT ID_TRABAJO, factura.indice, FECHA_INICIO, FECHA_ENTREGA, NOMBRE_CL as NOMBRE, ARMAZON, LUNA, ESTADO FROM sercordb.trabajos, sercordb.factura where factura.id_cuenta = trabajos.id_cuenta;"), conexion);
             
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
@@ -25,13 +22,14 @@ namespace sercor
 
                 trTrabajo.ID = _reader.GetInt32(0);
                 trTrabajo.CUENTA = _reader.GetInt32(1);
-                trTrabajo.FACTURA = _reader.GetInt32(2);
-                trTrabajo.FECHA_INICIO = _reader.GetString(3);                
+                //trTrabajo.FACTURA = _reader.GetInt32(2);
+                trTrabajo.FECHA_INICIO = _reader.GetString(2);
+                trTrabajo.FECHA_ENTREGA = _reader.GetString(3);
                 trTrabajo.NOMBRE = _reader.GetString(4);
                 trTrabajo.ARMAZON = _reader.GetString(5);
                 trTrabajo.LUNA = _reader.GetString(6);
                 trTrabajo.ESTADO = _reader.GetInt32(7);
-                trTrabajo.FECHA_ENTREGA = _reader.GetString(8);
+                
                 _lista.Add(trTrabajo);
             }
             conexion.Close();
@@ -62,7 +60,36 @@ namespace sercor
             return trTrabajo;
 
         }
-        
+
+
+
+        public static Trabajo TrabajoFecha(int idFactura)
+        {
+            Trabajo trTrabajo = new Trabajo();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM trabajos where ID_FACTURA='{0}' limit 1", idFactura), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                trTrabajo.ID = _reader.GetInt32(0);
+                trTrabajo.CUENTA = _reader.GetInt32(1);
+                trTrabajo.FACTURA = _reader.GetInt32(2);
+                trTrabajo.FECHA_INICIO = _reader.GetString(3);
+                trTrabajo.NOMBRE = _reader.GetString(4);
+                trTrabajo.ARMAZON = _reader.GetString(5);
+                trTrabajo.LUNA = _reader.GetString(6);
+                trTrabajo.ESTADO = _reader.GetInt32(7);
+                trTrabajo.FECHA_ENTREGA = _reader.GetString(8);
+
+            }
+
+            conexion.Close();
+            return trTrabajo;
+
+        }
+
+
         public static List<Trabajo> ObtenerPorFiltro(int trID, int trCUENTA, int trFACTURA, string trFECHA_INICIO,
             string trFECHA_ENTREGA, string trNOMBRE, string trARMAZON, string trLUNA, int trESTADO)
         {
@@ -114,10 +141,9 @@ namespace sercor
 
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "insert into sercordb.trabajos (ID_TRABAJO, ID_CUENTA, ID_FACTURA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
-                "values ({0},{1},{2},{3},{4},{5},{6},{7},{8});",
-                tTrabajo.ID,tTrabajo.CUENTA,tTrabajo.FACTURA,tTrabajo.FECHA_INICIO,tTrabajo.NOMBRE,tTrabajo.ARMAZON,tTrabajo.LUNA,tTrabajo.ESTADO,tTrabajo.FECHA_ENTREGA), conexion);
-
+                "insert into sercordb.trabajos (ID_TRABAJO, ID_FACTURA, ID_CUENTA, FECHA_INICIO, NOMBRE_CL, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA) " +
+                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
+                tTrabajo.ID,tTrabajo.FACTURA,tTrabajo.CUENTA, tTrabajo.FECHA_INICIO,tTrabajo.NOMBRE,tTrabajo.ARMAZON,tTrabajo.LUNA,tTrabajo.ESTADO,tTrabajo.FECHA_ENTREGA), conexion);
             retorno = comando.ExecuteNonQuery();
 
             //1 insertado | 0 error
@@ -127,10 +153,19 @@ namespace sercor
         public static int ultimoTrabajo()
         {
             MySqlConnection conexion = bdComun.obtenerConexion();
-            MySqlCommand comando = new MySqlCommand("select max(ID_TRABAJO) from Trabajos;", conexion);
-            MySqlDataReader _reader = comando.ExecuteReader();
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT MAX(ID_TRABAJO) FROM TRABAJOS;"), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            int last = 0;
             _reader.Read();
-            int last = _reader.GetInt32(0);
+
+            if (!_reader.IsDBNull(0))
+            {
+                last = _reader.GetInt32(0);
+            }
+            else
+            {
+                last = 0;
+            }
             conexion.Close();
             return last;
         }

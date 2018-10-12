@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sercor
@@ -82,12 +75,6 @@ namespace sercor
             chklEstado.SetItemChecked(1, false);
             chklEstado.SetItemChecked(2, false);
             chklEstado.SetItemChecked(3, false);
-
-        }
-
-        private void chklEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

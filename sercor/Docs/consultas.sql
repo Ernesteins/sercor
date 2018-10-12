@@ -15,78 +15,30 @@ select * from sercordb.usuario LIMIT100;
 SELECT NOW();
 select * from SERCORDB.trabajos;
 
-/*INSERCIONES*/
-insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',0,0);
-insert into cliente values("1725158123","Ernesto Yaselga_cli","DOS PUENTES","0995193611");
-insert into sercordb.producto values ("001","prod_1","producto 1 de las pruebas","pruebas","pruebas","100","99.99","1");
-insert into sercordb.producto values ("002","prod_2","producto 2 de las pruebas","pruebas","pruebas","100","99.99","1");
-insert into sercordb.factura values ("001","1725158123","001",0,0,(SELECT NOW()),0,0);
-insert into sercordb.factura values ("002","1725158123","001",0,0,"2018-07-03 19:39:29",0,0);
-delete from SERCORDB.trabajos where ID_TRABAJO="001";
-insert into sercordb.trabajos values ("001","0","001",(SELECT NOW()),(SELECT nombre from sercordb.Cliente where id_cliente=(select id_cliente from sercordb.factura where id_factura = "001")),"AR01","LN20",1,(SELECT NOW()));
-/*insert into sercordb.cuenta values ("001","1725158123","001","");*/
-
-/*EDICION DE CLAVES Y TABLAS ERRONEAS*/
-Alter TABLE sercorDB.cliente MODIFY ID_CLIENTE CHAR(32);
-Alter TABLE sercorDB.usuario MODIFY CONTRASENA char varying(64);
-ALTER TABLE sercordb.cliente DROP APELLIDO;
-ALTER TABLE sercordb.cliente MODIFY NOMBRE char varying(100);
-
-Alter TABLE sercorDB.caja MODIFY FECHA datetime;
-Alter TABLE sercorDB.cambio_precios MODIFY FECHA_CAMBIO datetime;
-Alter TABLE sercorDB.egresos MODIFY FECHA datetime;
-Alter TABLE sercorDB.factura MODIFY FECHA datetime;
-Alter TABLE sercorDB.trabajos MODIFY FECHA_INICIO datetime;
-Alter TABLE sercorDB.trabajos MODIFY FECHA_ENTREGA datetime;
-Alter TABLE sercorDB.abono MODIFY FECHA datetime;
+/*INSERCIONES INICIALES*/
+/*insert into sercordb.usuario values(001, 1, 'Ernesteins','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','Ernesto','Yaselga','1725158123','Dos Puentes','0995193611',15,15);*/
+insert into sercordb.usuario values(000, 0, 'ADMIN','a82a8f1fd4ef1f2e42a0798868f8445ff9f524bfb6df460fb256f84ee8588e1b','Administrador','del sistema','0000000001','-Sercor-','0000000000',15,15);
+insert into sercordb.producto values ("L01","prod_1","LUNA|descripcion de producto luna","luna_pruebas","lune_pruebas","100","49.50","1");
+insert into sercordb.producto values ("A02","prod_2","ARMA|descripcion de producto armazon","armazon_pruebas","armazon_pruebas","100","99.99","1");
 
 
-Alter TABLE sercordb.producto drop foreign key FK_PRODUCTO_DETALLE_P_DETALLE;
-drop index DETALLE_PROD_FK on sercordb.producto;
-Alter TABLE sercordb.producto drop ID_DETALLE;
-
-alter table sercordb.factura drop foreign key  FK_FACTURA_FACT_DETA_DETALLE;
-drop index FACT_DETALLE2_FK ON sercordb.factura;
-Alter table sercordb.factura drop ID_DETALLE;
-
-alter table sercordb.factura drop foreign key  FK_FACTURA_FACTURA_T_TRABAJOS;
-drop index FACTURA_TRABAJOS2_FK ON sercordb.factura;
-Alter table sercordb.factura drop ID_TRABAJO;
-
-alter table sercordb.trabajos drop foreign key  FK_TRABAJOS_CUENTA_T_CUENTA;
-drop index CUENTA_TRABAJOS_FK ON sercordb.trabajos;
-Alter table sercordb.trabajos drop ID_CUENTA;
-
-alter table sercordb.cuenta drop foreign key  FK_CUENTA_CUENTA_C_CAJA;
-Alter table sercordb.cuenta drop ID_CAJA;
-
-alter table sercordb.detalle  add ID_PRODUCTO int(11);
-create  index PROD_DETALLE_FK on DETALLE (ID_PRODUCTO);
-alter table DETALLE add constraint FK_DETALLE_CT_PRODUCTO_T foreign key (ID_PRODUCTO) references producto (ID_PRODUCTO) on delete restrict on update restrict;
-
-alter table sercordb.cuenta add ID_FACTURA int(11);
-create  index CUENTA_FACTURA_FK on CUENTA (ID_FACTURA);
-alter table CUENTA add constraint FK_CUENTA_CUENTA_F_FACTURA foreign key (ID_FACTURA) references FACTURA (ID_FACTURA) on delete restrict on update restrict;
-
-alter table sercordb.factura drop foreign key  FK_FACTURA_FACT_CUEN_CUENTA;
-drop index FACT_CUENTA_FK ON sercordb.factura;
-Alter table sercordb.factura drop ID_CUENTA;
-
-Alter TABLE sercordb.trabajo drop foreign key FK_PRODUCTO_DETALLE_P_DETALLEID_CUENTAID_CUENTA;
-drop index DETALLE_PROD_FK on sercordb.producto;
-Alter TABLE sercordb.producto drop ID_DETALLE;
-
-/*Creación y edición de privilegios al sercoruser*/
+/*CreaciÃ³n y ediciÃ³n de privilegios al sercoruser*/
 CREATE USER 'sercoruser'@'localhost' IDENTIFIED BY 'S3rc0r';
-grant DELETE, INSERT, SELECT, UPDATE on abono 	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on caja	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cambio_precios	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cliente	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on cuenta	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on detalle	 to 'sercoruser'@'localhost';
-grant DELETE, INSERT, SELECT, UPDATE on egresos	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on egreso	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on factura	 to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on producto to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on trabajos to 'sercoruser'@'localhost';
 grant DELETE, INSERT, SELECT, UPDATE on usuario	 to 'sercoruser'@'localhost';
+grant DELETE, INSERT, SELECT, UPDATE on producto_vendido to 'sercoruser'@'localhost';
+grant INSERT, SELECT on pago to 'sercoruser'@'localhost';
 
+
+/*CONSULTAS DE REPORTES*/
+INVENTARIO :  "select IDREGISTRO, FECHA, registro_inventario.ID_PRODUCTO, ID_PRODUCTOINVENTARIO, registro_inventario.CANTIDAD from registro_inventario, producto_vendido where ID_PRODUCTO_V = producto_vendido.ID_PRODUCTO;"
+FACTURACION:  "select TIPO AS TIPO_DE_DOCUMENTO, ID_FACTURA AS ID_DOCUMENTO, ID_CLIENTE, ID_USUARIO, IVA, TOTAL, FECHA FROM FACTURA;"
+MOVIMIENTO DE CAJA: /*2 secciones*/ /*-ingresos arriba*/"select * pago" /*-egresos abajo*/"select * from egresos"

@@ -19,11 +19,6 @@ TIPO USUARIO
 INVESTIGAR
 	clienteNombres.Add(ClienteDBM.ObtenerNombres()[j].NOMBRE);
 
-NOTAS
-	servicio Mysql automatico al inicio
-	crisGRA1996_
-	30doorDIE
-
 	https://www.flaticon.com/packs/interaction-assets-2/11
 	https://www.flaticon.com/packs/essential-collection
 
@@ -42,6 +37,7 @@ PENDIENTE	[......]=Baja Prioridad
 
 	impedir el ingreso de letras en el numero telefónico
 	impedir el ingreso de numeros en el nombre
+
 		
 REALIZADO
 	bug primer ingreso multiplicar
@@ -60,6 +56,25 @@ COSAS DESCUBIERTAS
                 clienteNombres.Add(ClienteDBM.ObtenerNombres()[0].NOMBRE);
             }
             txtName.AutoCompleteCustomSource = clienteNombres;
+
+	select Descripcion from producto where Descripcion REGEXP 'ARMA' AND ID_PRODUCTO = 'A01';
+	select Descripcion from producto where Descripcion REGEXP 'LUNA' AND ID_PRODUCTO = 'A01';
 	
+	//pedir trabajos por fecha
+	select * from trabajos where fecha_inicio regexp "2018-08-04 02:*";
 
 URGENTE
+
+valores predeterminados del formulario sercormain deben ser '0' en total, subtotal, iva, etc..
+
+CREAR LOS REPORTES EN BASE A LAS CONSULTAS PERSONALIZADAS, POR EJEMPLO:
+ EN LUGAR DE : "select * from trabajos;"
+ USAR: " select ID_TRABAJO, ID_FACTURA AS ID_DOCUMENTO, ID_CUENTA, FECHA_INICIO, (SELECT NOMBRE FROM CLIENTE WHERE ID_CLIENTE = '1725158123') AS NOMBRE_CLIENTE, ARMAZON, LUNA, ESTADO, FECHA_ENTREGA from trabajos;"
+
+ EN LUGAR DE: "SELECT * FROM CUENTA;"
+ USAR: "select ID_CUENTA, ID_CLIENTE, (SELECT NOMBRE FROM CLIENTE WHERE ID_CLIENTE = ID_CLIENTE) AS NOMBRE_CLIENTE, ID_FACTURA AS ID_DOCUMENTO,(SELECT TIPO FROM FACTURA WHERE ID_FACTURA = ID_DOCUMENTO) AS TIPO, TOTAL, SALDO, ESTADO_P FROM CUENTA;"
+
+refrescar las facturas una vez creadas
+CORREGIR IVA (no va el porcentaje es el valor del iva en esa factura)
+
+modificar la BD para los valores de las tarjetas y los bancos, beneficio estadístico 

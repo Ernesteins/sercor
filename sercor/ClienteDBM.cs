@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using MySql.Data.MySqlClient;
 
 namespace sercor
 {
     public class ClienteDBM
     {
+        public static int Agregar(Cliente pCliente)
+        {
+            int retorno = 0;
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "INSERT INTO CLIENTE VALUES ('{0}','{1}','{2}', '{3}')",
+                pCliente.ID_CLIENTE,pCliente.NOMBRE,pCliente.DIRECCION,pCliente.TELEFONO),
+                conexion);
+            retorno = comando.ExecuteNonQuery();
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
         //PARA OBTENER TODOS LOS CLIENTES
         public static List<Cliente> ObtenerNombres()
         {
@@ -58,5 +68,20 @@ namespace sercor
 
         }
 
+        public static Boolean ExisteCliente (string pId)
+        {
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+                "SELECT ID_CLIENTE FROM cliente where ID_CLIENTE='{0}';", pId),
+                conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            _reader.Read();
+
+            if (_reader.HasRows)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace sercor
 {
@@ -17,15 +11,23 @@ namespace sercor
             string server = "127.0.0.1";
             string databaseName = "sercorDB";
             string user = "sercoruser";
-            string password = "S3rc0r";
+            string password = "f9f524bf";
 
-            MySqlConnection conectar = new MySqlConnection("server="+server+";" +
-                "database="+databaseName+";" +
-                "Uid="+user+";" +
-                "pwd="+password+";" +
+            //try{
+                MySqlConnection conectar = new MySqlConnection("server=" + server + ";" +
+                "database=" + databaseName + ";" +
+                "Uid=" + user + ";" +
+                "pwd=" + password + ";" +
                 "SslMode=none;");
-            conectar.Open();
-            return conectar;
+                conectar.Open();
+                return conectar;
+            //}
+            //catch (MySql.Data.MySqlClient.MySqlException)
+            //{
+                //MySqlConnection conectar = new MySqlConnection(null);
+                //conectar.Open();
+              //  return null;
+            //} 
         }
     }
 }

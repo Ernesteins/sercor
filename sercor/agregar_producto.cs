@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 namespace sercor
 {
     public partial class agregar_producto : Form
@@ -49,12 +41,31 @@ namespace sercor
             }
             else
             {
+                
+                
                 try
                 {
                     Producto pProducto = new Producto();
                     pProducto.COD = txtCodigo.Text.Trim();
                     pProducto.NOMBRE = txtNombre.Text.Trim();
-                    pProducto.DESCRIPCION = txtDescripcion.Text.Trim();
+
+                    string concat;
+                    if (rd3.Checked == true)
+                    {
+                        concat = "ARMA|";
+                    }
+                    else if (rd4.Checked == true)
+                    {
+                        concat = "LUNA|";
+                    }
+                    else
+                    {
+                        concat = "";
+                    }
+
+                    pProducto.DESCRIPCION = concat+txtDescripcion.Text.Trim();
+
+
                     pProducto.CATEGORIA = txtCategoria.Text.Trim();
                     pProducto.SUBCATEGORIA = txtSubcategoria.Text.Trim();
                     pProducto.EXISTENCIA = Convert.ToInt32(txtExistencia.Text);
@@ -64,12 +75,29 @@ namespace sercor
                     pProducto.PRECIO = Decimal.Round(Convert.ToDecimal(txtPrecio.Text), 2);
                     //MessageBox.Show(pProducto.PRECIO.ToString());
 
-                    pProducto.ESTADO = 1;
+                    int estado;
+                    if (rd1.Checked == true)
+                    {
+                        estado = 1;
+                    }
+                    else
+                    {
+                        estado = 0;
+                    }
+
+                    pProducto.ESTADO = estado;
                     //pCliente.Fecha_Nac = dtpFechaNacimiento.Value.Year + "/" + dtpFechaNacimiento.Value.Month + "/" + dtpFechaNacimiento.Value.Day;
 
                     int resultado = ProductoDBM.Agregar(pProducto);
                     if (resultado > 0)
                     {
+                        Registro nregistro = new Registro();
+                        nregistro.ID_PRODUCTO = pProducto.COD;
+                        nregistro.FECHA = FacturaDBM.obtenerFechaSistema();
+                        nregistro.CANTIDAD = pProducto.EXISTENCIA;
+                        nregistro.IDREGISTRO = RegistroDBM.UltimoRegistro() + 1;
+                        RegistroDBM.Agregar(nregistro);
+
                         //MessageBox.Show("Producto guardado con exito!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         mensaje = "Producto guardado con exito";
                         this.Close();
@@ -87,11 +115,40 @@ namespace sercor
                 }
                 catch (MySql.Data.MySqlClient.MySqlException) {
                     MessageBox.Show("Producto existente");
-                }
-
-
-                
+                }              
             }   
+        }
+
+        private void txtExistencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esNumero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        public bool esNumero(Char c)
+        {
+            if (Char.IsDigit(c) || Char.IsControl(c))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (esDinero(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        public bool esDinero(Char c)
+        {
+            if (Char.IsDigit(c) || Char.IsControl(c) || c == '.' || c == ',')
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -39,6 +39,62 @@ namespace sercor
         }
 
 
+        public static List<Producto> ObtenerProductosAgotados()
+        {
+            List<Producto> _lista = new List<Producto>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM producto where EXISTENCIA=0"), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Producto pProducto = new Producto();
+
+                pProducto.COD = _reader.GetString(0);
+                pProducto.NOMBRE = _reader.GetString(1);
+                pProducto.DESCRIPCION = _reader.GetString(2);
+                pProducto.CATEGORIA = _reader.GetString(3);
+                pProducto.SUBCATEGORIA = _reader.GetString(4);
+                pProducto.EXISTENCIA = _reader.GetInt32(5);
+                pProducto.PRECIO = _reader.GetDecimal(6);
+                pProducto.ESTADO = _reader.GetInt32(7);
+
+                _lista.Add(pProducto);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
+        public static List<Producto> ObtenerProductosDisponibles()
+        {
+            List<Producto> _lista = new List<Producto>();
+            MySqlConnection conexion = bdComun.obtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT * FROM producto where EXISTENCIA<>0"), conexion);
+
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                Producto pProducto = new Producto();
+
+                pProducto.COD = _reader.GetString(0);
+                pProducto.NOMBRE = _reader.GetString(1);
+                pProducto.DESCRIPCION = _reader.GetString(2);
+                pProducto.CATEGORIA = _reader.GetString(3);
+                pProducto.SUBCATEGORIA = _reader.GetString(4);
+                pProducto.EXISTENCIA = _reader.GetInt32(5);
+                pProducto.PRECIO = _reader.GetDecimal(6);
+                pProducto.ESTADO = _reader.GetInt32(7);
+
+                _lista.Add(pProducto);
+            }
+            conexion.Close();
+            return _lista;
+        }
+
         public static List<ProductoEstado> ObtenerProductosEstado()//sin estado
         {
             List<ProductoEstado> _lista = new List<ProductoEstado>();
@@ -67,12 +123,13 @@ namespace sercor
             return _lista;
         }
 
+        //usar esto para comparaciones
         public static Producto ObtenerProductoCod(string pCod)
         {
             Producto pProducto = new Producto();
             MySqlConnection conexion = bdComun.obtenerConexion();
 
-            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT ID_PRODUCTO, NOMBRE, DESCRIPCION, CATEGORIA, SUBCATEGORIA, EXISTENCIA, PRECIO FROM producto  where ID_PRODUCTO='{0}'", pCod), conexion);
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT * FROM producto  where ID_PRODUCTO='{0}'", pCod), conexion);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -83,7 +140,7 @@ namespace sercor
                 pProducto.SUBCATEGORIA = _reader.GetString(4);
                 pProducto.EXISTENCIA = _reader.GetInt32(5);
                 pProducto.PRECIO = _reader.GetDecimal(6);
-
+                pProducto.ESTADO = _reader.GetInt32(7);
             }
 
             conexion.Close();
@@ -140,14 +197,30 @@ namespace sercor
             return retorno;
         }
 
+
+        public static int ActualizarStock(int existencia, string codigo)
+        {
+            int retorno = 0;
+
+            MySqlConnection conexion = bdComun.obtenerConexion();
+            MySqlCommand comando = new MySqlCommand(string.Format(
+                "update producto set EXISTENCIA='{0}' where ID_PRODUCTO='{1}'", existencia, codigo), conexion);
+
+
+            retorno = comando.ExecuteNonQuery();
+
+            //1 insertado | 0 error
+            conexion.Close();
+            return retorno;
+        }
+
         public static int Modificar(Producto pProducto, string codigo)
         {
             int retorno = 0;
 
             MySqlConnection conexion = bdComun.obtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format(
-                "update producto set ID_PRODUCTO='{0}', NOMBRE='{1}', DESCRIPCION='{2}', CATEGORIA='{3}', SUBCATEGORIA='{4}'," +
-                "EXISTENCIA='{5}', PRECIO='{6}', ESTADO='{7}' where ID_PRODUCTO='{8}'", pProducto.COD, pProducto.NOMBRE, pProducto.DESCRIPCION, pProducto.CATEGORIA,
+                "update producto set ID_PRODUCTO='{0}', NOMBRE='{1}', DESCRIPCION='{2}', CATEGORIA='{3}', SUBCATEGORIA='{4}',EXISTENCIA='{5}', PRECIO='{6}', ESTADO='{7}' where ID_PRODUCTO='{8}'", pProducto.COD, pProducto.NOMBRE, pProducto.DESCRIPCION, pProducto.CATEGORIA,
                 pProducto.SUBCATEGORIA, pProducto.EXISTENCIA, pProducto.PRECIO, pProducto.ESTADO, codigo),conexion);
 
 
